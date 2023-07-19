@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <div>
-      <div className="btm-nav bg-red">
+      <div className="btm-nav h-12 bg-red">
         <button className="active bg-grey text-dark border-none">
           <svg
             xmlns="http://www.w3.org/2000/svg"
