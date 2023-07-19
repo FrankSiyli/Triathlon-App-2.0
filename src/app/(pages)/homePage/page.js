@@ -12,7 +12,7 @@ const Week = ({ week }) => (
     <div className="collapse-title mb-2 bg-grey text-light text-2xl peer-checked:bg-red peer-checked:text-light ">
       {week}
     </div>
-    <div className="collapse-content peer-checked:bg-light peer-checked:text-secondary-content">
+    <div className="collapse-content peer-checked:bg-none peer-checked:text-secondary-content">
       {days.map((day) => (
         <Day key={uuidv1()} day={day} />
       ))}
@@ -26,7 +26,7 @@ const Day = ({ day }) => (
     <div className="collapse-title mb-2 bg-grey text-light text-xl peer-checked:bg-red peer-checked:text-light ">
       {day}
     </div>
-    <div className="collapse-content peer-checked:bg-light peer-checked:text-secondary-content">
+    <div className="collapse-content peer-checked:bg-none peer-checked:text-secondary-content">
       {sessions.map((session) => (
         <Session key={session.id} session={session} />
       ))}
