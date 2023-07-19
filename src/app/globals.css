@@ -7,13 +7,21 @@
   box-sizing: border-box;
 }
 
-:root {
-  --first-color: #222c37;
-  --second-color: #f5f4f5;
-  --third-color: #a8b0c6;
-  --fourth-color: #b4506b;
+html {
+  overflow: hidden;
+  width: 100%;
 }
 
 body {
-  background-color: var(--first-color);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  color: #f5f4f5;
+  background-color: #222c37;
+}
+
+.hero-image {
+  background-image: url("../../public/images/logoSmall.png");
 }

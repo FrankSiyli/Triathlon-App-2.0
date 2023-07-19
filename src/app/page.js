@@ -3,7 +3,10 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import logo from "public/images/logoSmall.png";
 import "./globals.css";
-
+/* 
+MIT License
+Copyright © 2023 Material Tailwind by Creative Tim
+ */
 export default function Home() {
   const router = useRouter();
   setTimeout(() => {
