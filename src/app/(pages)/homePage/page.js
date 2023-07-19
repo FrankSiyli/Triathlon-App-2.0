@@ -3,11 +3,13 @@ import Footer from "@/app/components/Footer/Footer";
 import "../../globals.css";
 import { v1 as uuidv1 } from "uuid";
 import React from "react";
+import Image from "next/image";
+import logo from "../../../../public/images/logoSmall.png";
 
 const Week = ({ week }) => (
   <div className="collapse collapse-arrow rounded-none mt-2">
     <input type="checkbox" className="peer" />
-    <div className="collapse-title mb-2 bg-grey text-light text-3xl peer-checked:bg-red peer-checked:text-light ">
+    <div className="collapse-title mb-2 bg-grey text-light text-2xl peer-checked:bg-red peer-checked:text-light ">
       {week}
     </div>
     <div className="collapse-content peer-checked:bg-light peer-checked:text-secondary-content">
@@ -18,9 +20,8 @@ const Week = ({ week }) => (
   </div>
 );
 
-// Day component
 const Day = ({ day }) => (
-  <div className="collapse collapse-arrow rounded-none mt-4">
+  <div className="collapse rounded-none mt-4">
     <input type="checkbox" className="peer" />
     <div className="collapse-title mb-2 bg-grey text-light text-xl peer-checked:bg-red peer-checked:text-light ">
       {day}
@@ -33,14 +34,15 @@ const Day = ({ day }) => (
   </div>
 );
 
-// Session component
 const Session = ({ session }) => (
   <div className="text-center">
-    <div className="collapse collapse-arrow rounded-none mt-4">
+    <div className="collapse  rounded-none mt-4">
       <input type="checkbox" className="peer" />
-      <div className="collapse-title flex content-around text-center mb-2 bg-grey text-light text-xl peer-checked:bg-red peer-checked:text-light">
-        <div>{session.icon}</div>
-        <div className="ml-2">{session.subTitle}</div>
+      <div className="collapse-title   mb-2 bg-grey text-light text-xl peer-checked:bg-red peer-checked:text-light">
+        <div className="flex flex-row">
+          <div className="left- 2 mr-4">{session.icon}</div>
+          <div className="">{session.subTitle}</div>
+        </div>
       </div>
       <div className="collapse-content peer-checked:bg-light peer-checked:text-secondary-content">
         <ul>
@@ -55,7 +57,6 @@ const Session = ({ session }) => (
   </div>
 );
 
-// Page component
 function Page() {
   return (
     <>
@@ -67,6 +68,13 @@ function Page() {
         {weeks.map((week) => (
           <Week key={uuidv1()} week={week} />
         ))}
+        <Image
+          src={logo}
+          alt="hero-image"
+          className=" opacity-5 mt-10"
+          width={300}
+          height={300}
+        />
       </div>
 
       <Footer />
