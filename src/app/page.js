@@ -3,15 +3,12 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import logo from "public/images/logoSmall.png";
 import "./globals.css";
-/* 
-MIT License
-Copyright © 2023 Material Tailwind by Creative Tim
- */
+
 export default function Home() {
   const router = useRouter();
   setTimeout(() => {
     router.push("/homePage");
-  }, 3000);
+  }, 2000);
 
   return (
     <main className="flex min-h-screen flex-col items-center ">
