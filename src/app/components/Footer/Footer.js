@@ -1,10 +1,22 @@
+"use client";
+import Link from "next/link";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 function Footer() {
+  const currentRoute = usePathname();
+  const activeStyle = " bg-dark border ";
+  const nonActiveStyle = "bg-red border";
+
   return (
     <div>
-      <div className="btm-nav h-12 bg-red">
-        <button className="active bg-grey text-dark border-none">
+      <div className="btm-nav h-15 ">
+        <Link
+          href="/homePage"
+          className={
+            currentRoute === "/homePage" ? activeStyle : nonActiveStyle
+          }
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -20,8 +32,13 @@ function Footer() {
             />
           </svg>
           <span className="btm-nav-label">Home</span>
-        </button>
-        <button>
+        </Link>
+        <Link
+          href="/plansPage"
+          className={
+            currentRoute === "/plansPage" ? activeStyle : nonActiveStyle
+          }
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -37,8 +54,13 @@ function Footer() {
             />
           </svg>
           <span className="btm-nav-label">Pläne</span>
-        </button>
-        <button>
+        </Link>
+        <Link
+          href="/profilPage"
+          className={
+            currentRoute === "/profilPage" ? activeStyle : nonActiveStyle
+          }
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -54,7 +76,7 @@ function Footer() {
             />
           </svg>
           <span className="btm-nav-label">Profil</span>
-        </button>
+        </Link>
       </div>
     </div>
   );

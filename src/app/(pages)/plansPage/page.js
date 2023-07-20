@@ -3,21 +3,12 @@ import Image from "next/image";
 import React from "react";
 import logo from "../../../../public/images/logoSmall.png";
 
-//profil
-/* ftp
-HRmax
-weight
-PBs
-old plans*/
-
-// impressum
-//datenschutzerklärung
 
 function Page() {
   return (
     <>
       <div className="flex min-h-screen mb-20 flex-col items-center p-4">
-        profil
+        plans
         <Image
           src={logo}
           alt="hero-image"

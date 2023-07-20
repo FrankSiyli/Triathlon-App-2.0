@@ -60,7 +60,7 @@ const Session = ({ session }) => (
 function Page() {
   return (
     <>
-      <button className="btn btn-secondary border-none disabled bg-red m-5 text-2xl">
+      <button className="btn btn-secondary active:border-none border-none  bg-red m-5 text-2xl">
         Beispielplan
       </button>
 
