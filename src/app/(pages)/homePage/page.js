@@ -1,29 +1,76 @@
 "use client";
+import { useState } from "react";
 import Footer from "@/app/components/Footer/Footer";
 import "../../globals.css";
 import { v1 as uuidv1 } from "uuid";
-import React from "react";
 import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
 
-const Week = ({ week }) => (
-  <div className="collapse collapse-arrow rounded-none mt-2">
-    <input type="checkbox" className="peer" />
-    <div className="collapse-title mb-2 bg-grey text-light text-2xl peer-checked:bg-red peer-checked:text-light ">
-      {week}
+const Week = ({ week, handleBackClick, handleNextClick }) => {
+  return (
+    <div className="rounded-none mt-2 ">
+      <div className="flex justify-between items-center h-10 rounded-md m-2 bg-grey text-dark text-2xl peer-checked:bg-red peer-checked:text-light ">
+        <button
+          onClick={handleBackClick}
+          className="h-10 w-16 flex justify-center items-center bg-red rounded-md active:scale-90"
+        >
+          {week === weeks[0] ? (
+            <div></div>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+              />
+            </svg>
+          )}
+        </button>
+        {week}
+        <button
+          onClick={handleNextClick}
+          className="h-10 w-16 flex justify-center items-center bg-red rounded-md active:scale-90"
+        >
+          {week === weeks[weeks.length - 1] ? (
+            <div></div>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+              />
+            </svg>
+          )}
+        </button>
+      </div>
+      <div className="collapse-content peer-checked:bg-none peer-checked:text-secondary-content">
+        {days.map((day) => (
+          <Day key={uuidv1()} day={day} />
+        ))}
+      </div>
     </div>
-    <div className="collapse-content peer-checked:bg-none peer-checked:text-secondary-content">
-      {days.map((day) => (
-        <Day key={uuidv1()} day={day} />
-      ))}
-    </div>
-  </div>
-);
+  );
+};
 
 const Day = ({ day }) => (
-  <div className="collapse rounded-none mt-4">
+  <div className="collapse collapse-arrow rounded-none mt-4">
     <input type="checkbox" className="peer" />
-    <div className="collapse-title mb-2 bg-grey text-light text-xl peer-checked:bg-red peer-checked:text-light ">
+    <div className="collapse-title mb-2 bg-grey text-dark text-xl peer-checked:bg-red peer-checked:text-light ">
       {day}
     </div>
     <div className="collapse-content peer-checked:bg-none peer-checked:text-secondary-content">
@@ -58,25 +105,45 @@ const Session = ({ session }) => (
 );
 
 function Page() {
+  const [actualWeek, setActualWeek] = useState(weeks[0]);
+  const handleBackClick = () => {
+    const currentIndex = weeks.indexOf(actualWeek);
+    const newIndex = currentIndex - 1;
+    if (newIndex >= 0) {
+      setActualWeek(weeks[newIndex]);
+    }
+  };
+
+  const handleNextClick = () => {
+    const currentIndex = weeks.indexOf(actualWeek);
+    const newIndex = currentIndex + 1;
+    if (newIndex < weeks.length) {
+      setActualWeek(weeks[newIndex]);
+    }
+  };
   return (
     <>
       <button className="btn btn-secondary active:border-none border-none  bg-red m-5 text-2xl">
         Beispielplan
       </button>
-
-      <div className="flex min-h-screen mb-20 flex-col items-center p-4">
-        {weeks.map((week) => (
-          <Week key={uuidv1()} week={week} />
-        ))}
-        <Image
-          src={logo}
-          alt="hero-image"
-          className=" opacity-5 mt-10"
-          width={300}
-          height={300}
-        />
+      <div>
+        <div>
+          <Week
+            key={uuidv1()}
+            week={actualWeek}
+            handleBackClick={handleBackClick}
+            handleNextClick={handleNextClick}
+          />
+        </div>
       </div>
 
+      <Image
+        src={logo}
+        alt="hero-image"
+        className=" opacity-5 mx-auto mb-20"
+        width={300}
+        height={300}
+      />
       <Footer />
     </>
   );
