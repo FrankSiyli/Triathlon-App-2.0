@@ -3,8 +3,8 @@ import React from "react";
 function Footer() {
   return (
     <div>
-      <div className="btm-nav">
-        <button>
+      <div className="btm-nav h-12 bg-red">
+        <button className="active bg-grey text-dark border-none">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -38,7 +38,7 @@ function Footer() {
           </svg>
           <span className="btm-nav-label">Pläne</span>
         </button>
-        <button className="active">
+        <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
