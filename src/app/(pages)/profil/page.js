@@ -50,7 +50,7 @@ function Page() {
             className="btn m-3 bg-red border border-light text-light"
             href="/datenschutz"
           >
-            Datenschutzerklärung
+            Datenschutz
           </Link>
         </div>
       </div>
