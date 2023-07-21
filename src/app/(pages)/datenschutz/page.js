@@ -47,7 +47,7 @@ function Page() {
         die für uns als verantwortliche Stelle zuständige Behörde. Eine Liste
         der Aufsichtsbehörden (für den nichtöffentlichen Bereich) mit Anschrift
         finden Sie unter:{" "}
-        <Link to="https://www.bfdi.bund.de/DE/Service/Anschriften/Laender/Laender-node.html">
+        <Link href="https://www.bfdi.bund.de/DE/Service/Anschriften/Laender/Laender-node.html">
           https://www.bfdi.bund.de/DE/Service/Anschriften/Laender/Laender-node.html.
         </Link>
         <p>Kontaktformular</p>
