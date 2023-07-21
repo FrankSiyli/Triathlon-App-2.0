@@ -10,7 +10,7 @@ function Footer() {
 
   return (
     <div>
-      <div className="btm-nav h-15 ">
+      <div className="btm-nav h-15 z-50">
         <Link
           href="/homePage"
           className={
