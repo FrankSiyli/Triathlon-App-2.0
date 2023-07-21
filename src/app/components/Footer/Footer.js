@@ -13,9 +13,7 @@ function Footer() {
       <div className="btm-nav h-15 gap-1 z-50">
         <Link
           href="/home"
-          className={
-            currentRoute === "/homePage" ? activeStyle : nonActiveStyle
-          }
+          className={currentRoute === "/home" ? activeStyle : nonActiveStyle}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -35,9 +33,7 @@ function Footer() {
         </Link>
         <Link
           href="/plans"
-          className={
-            currentRoute === "/plansPage" ? activeStyle : nonActiveStyle
-          }
+          className={currentRoute === "/plans" ? activeStyle : nonActiveStyle}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,9 +53,7 @@ function Footer() {
         </Link>
         <Link
           href="/profil"
-          className={
-            currentRoute === "/profilPage" ? activeStyle : nonActiveStyle
-          }
+          className={currentRoute === "/profil" ? activeStyle : nonActiveStyle}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
