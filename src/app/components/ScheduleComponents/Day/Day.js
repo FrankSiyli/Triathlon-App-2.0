@@ -3,9 +3,9 @@ import Session from "../Session/Session";
 import { v1 as uuidv1 } from "uuid";
 
 const Day = ({ day }) => (
-  <div className="collapse collapse-arrow rounded-md mt-4">
+  <div className="collapse collapse-arrow rounded-md mt-1">
     <input type="checkbox" className="peer" />
-    <div className="collapse-title bg-dark text-light text-xl peer-checked:bg-red peer-checked:text-light ">
+    <div className="collapse-title bg-red border border-light text-light text-xl peer-checked:bg-red peer-checked:text-light ">
       {day}
     </div>
     <div className="collapse-content peer-checked:bg-none peer-checked:text-secondary-content">

@@ -12,7 +12,7 @@ function Footer() {
     <div>
       <div className="btm-nav h-15 gap-1 z-50">
         <Link
-          href="/homePage"
+          href="/home"
           className={
             currentRoute === "/homePage" ? activeStyle : nonActiveStyle
           }
@@ -34,7 +34,7 @@ function Footer() {
           <span className="btm-nav-label">Home</span>
         </Link>
         <Link
-          href="/plansPage"
+          href="/plans"
           className={
             currentRoute === "/plansPage" ? activeStyle : nonActiveStyle
           }
@@ -56,7 +56,7 @@ function Footer() {
           <span className="btm-nav-label">Pläne</span>
         </Link>
         <Link
-          href="/profilPage"
+          href="/profil"
           className={
             currentRoute === "/profilPage" ? activeStyle : nonActiveStyle
           }
