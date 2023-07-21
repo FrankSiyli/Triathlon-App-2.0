@@ -5,12 +5,12 @@ import { usePathname } from "next/navigation";
 
 function Footer() {
   const currentRoute = usePathname();
-  const activeStyle = " bg-dark border ";
-  const nonActiveStyle = "bg-red border";
+  const activeStyle = " bg-dark border rounded-sm";
+  const nonActiveStyle = "bg-red rounded-sm";
 
   return (
     <div>
-      <div className="btm-nav h-15 z-50">
+      <div className="btm-nav h-15 gap-1 z-50">
         <Link
           href="/homePage"
           className={

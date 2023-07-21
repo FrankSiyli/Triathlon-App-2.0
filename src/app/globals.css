@@ -16,8 +16,9 @@ body {
   height: 100%;
   width: 100%;
   position: fixed;
+  flex-direction: column;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   color: #f5f4f5;
-  background-color: #222c37;
+  background-color: #1d2732;
 }
