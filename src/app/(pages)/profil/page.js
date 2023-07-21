@@ -1,8 +1,18 @@
+"use client";
 import Footer from "@/app/components/Footer/Footer";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 function Page() {
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleAlertClick = () => {
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  };
+
   return (
     <>
       <button className="btn btn-secondary pointer-events-none border-light  bg-red m-5 text-2xl text-light">
@@ -19,13 +29,24 @@ function Page() {
           placeholder="👉"
           className="input  border border-red w-full max-w-xs"
         />
-        <button className="btn  m-1 bg-red border border-light text-light">
+
+        <button
+          onClick={handleAlertClick}
+          className="btn  m-1 bg-red border border-light text-light"
+        >
           Enter
         </button>
+        {showAlert && (
+          <div className="alert alert-info w-40 absolute">
+            <span>Coming soon</span>
+          </div>
+        )}
+
         <div className="border border-red rounded-md text-center p-3 m-10 bg-dark">
           <p className="mt-3">Du kennst deinen Maximalpuls nicht?</p>
           <p>Kein Problem</p>
           <Link
+            onClick={handleAlertClick}
             className="btn w-20 m-3 bg-red border border-light text-light"
             href=""
           >
@@ -33,7 +54,7 @@ function Page() {
           </Link>
           <p>findest du Informationen.</p>
         </div>
-        <div className="mt-20 text-center">
+        <div className="mt-20 flex flex-col">
           <Link
             className="btn mx-auto m-3 bg-red border border-light text-light"
             href="/impressum"

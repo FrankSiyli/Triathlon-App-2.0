@@ -26,7 +26,7 @@ const Week = () => {
   return (
     <>
       <div className=" m-4">
-        <div className="flex justify-between m-4 items-center h-10 rounded-md border border-light bg-dark text-light text-2xl peer-checked:bg-red peer-checked:text-light ">
+        <div className="flex justify-between  my-7 items-center h-10 rounded-md border border-light bg-dark text-light text-2xl peer-checked:bg-red peer-checked:text-light ">
           <button
             onClick={handleBackClick}
             className="h-10 w-16 flex justify-center items-center border border-light bg-red rounded-md active:scale-90"
@@ -75,7 +75,7 @@ const Week = () => {
             )}
           </button>
         </div>
-        <div className="collapse-content peer-checked:bg-none peer-checked:text-secondary-content">
+        <div className="collapse-content mb-20 peer-checked:bg-none peer-checked:text-secondary-content">
           {days.map((day) => (
             <Day key={uuidv1()} day={day} />
           ))}
