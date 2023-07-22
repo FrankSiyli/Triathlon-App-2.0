@@ -33,15 +33,15 @@ function Page() {
           />
         </svg>
       </Link>
-      <div className="border border-light rounded-md p-4 mx-1 mb-5  bg-dark text-center">
+      <div className="border border-light rounded-md p-4 max-w-xl mx-auto mb-5  bg-dark text-center">
         <p>
           Du hast deinen FTP Wert bereits auf einer smarten Rolle ermittelt?
         </p>
         <p>Dann kannst du hier deine Trainingszonen berechnen.</p>
       </div>
-      <div className="schrift">
-        <div className="WinputCalculator">
-          <div className="ml-2">
+      <div className="">
+        <div className="">
+          <div className="max-w-xl mx-auto flex flex-col items-center justify-center">
             {showAlert && (
               <div className="alert alert-info w-40 absolute">
                 <span>Coming soon</span>
@@ -79,7 +79,7 @@ function Page() {
           </div>
         </div>
         <div className="overflow-x-auto">
-          <table className="table table-xs table-pin-rows table-pin-cols mb-20 bg-dark text-light text-center">
+          <table className="table table-xs table-pin-rows table-pin-cols max-w-3xl mx-auto mb-20 bg-dark text-light text-center">
             <thead className="text-light">
               <tr>
                 <td>Zone</td>
