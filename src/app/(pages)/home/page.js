@@ -7,11 +7,11 @@ import Week from "@/app/components/ScheduleComponents/Week/Week";
 function Page(week, handleBackClick, handleNextClick) {
   return (
     <>
-      <button className="btn btn-secondary pointer-events-none border-light  bg-red m-5 text-2xl text-light">
+      <button className="btn btn-secondary pointer-events-none border-light  bg-red m-5 text-xl text-light">
         Beispielplan
       </button>
       <div>
-        <div>
+        <div className="max-w-xl mx-auto">
           <Week
             key={uuidv1()}
             week={week}
