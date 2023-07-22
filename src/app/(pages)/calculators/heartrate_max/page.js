@@ -33,7 +33,7 @@ function Page() {
           />
         </svg>
       </Link>
-      <div className="border border-light rounded-md p-4 m-1 bg-dark text-center">
+      <div className="border border-light max-w-xl mx-auto rounded-md p-4 m-1 bg-dark text-center">
         <p>
           Einem HRmax Test sollten mehrere Monate mit strukturiertem Training
           vorangehen.
@@ -48,7 +48,7 @@ function Page() {
           professionelle Leistungsdiagnostik.
         </p>
       </div>
-      <div className="ml-2">
+      <div className="max-w-xl mx-auto flex flex-col justify-center items-center">
         {showAlert && (
           <div className="alert alert-info w-40 absolute">
             <span>Coming soon</span>
@@ -83,7 +83,7 @@ function Page() {
         </button>
       </div>
       <div className="overflow-x-auto">
-        <table className="table table-xs table-pin-rows table-pin-cols mb-20 bg-dark text-light text-center border border-light">
+        <table className="table table-xs table-pin-rows table-pin-cols max-w-3xl mx-auto mb-20 bg-dark text-light text-center border border-light">
           <thead className="text-light">
             <tr>
               <td>Zone</td>
