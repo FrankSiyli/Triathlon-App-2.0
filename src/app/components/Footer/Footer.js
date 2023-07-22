@@ -10,7 +10,7 @@ function Footer() {
 
   return (
     <div>
-      <div className="btm-nav h-15 gap-1 z-50">
+      <div className="btm-nav max-w-xl mx-auto h-10 footer-text gap-1 z-50">
         <Link
           href="/home"
           className={currentRoute === "/home" ? activeStyle : nonActiveStyle}

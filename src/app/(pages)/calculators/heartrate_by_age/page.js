@@ -33,7 +33,7 @@ function Page() {
           />
         </svg>
       </Link>
-      <div className="border border-light rounded-md p-4 mx-1 mb-5  bg-dark text-center">
+      <div className="border border-light rounded-md p-4 mx-auto max-w-xl mb-5  bg-dark text-center">
         <p>
           Wenn du am Anfang deiner sportlichen Entwicklung stehst oder nach
           einer Pause wieder einsteigen möchtest kannst du auch die Formeln
@@ -41,8 +41,8 @@ function Page() {
         </p>
       </div>
 
-      <div className="ml-2 mt-10 ">
-        <button className="btn btn-secondary pointer-events-none border-light  bg-red   text-light">
+      <div className="flex flex-col justify-center items-center mx-auto max-w-xl mt-10 ">
+        <button className="btn pointer-events-none border-light  bg-red   text-light">
           <p className="text-xl ">Damen</p>
           <br />
           <p className="text-dark">HRmax = 209-(0.9 x Alter) </p>
@@ -60,7 +60,7 @@ function Page() {
 
         <button
           onClick={handleAlertClick}
-          className="btn btn-sm  mb-10 bg-red border border-light text-light rounded-r-none"
+          className="btn btn-sm  mb-20 bg-red border border-light text-light rounded-md"
           id="HrDamenCalculateBtn"
           /*  onclick="HrDamenAlter(),
               clearHrDamenInput()
@@ -68,13 +68,13 @@ function Page() {
         >
           Calculate
         </button>
-        <input
+        {/* <input
           className="bg-light h-8 ml-1 rounded-r-md text-dark"
           maxLength={3}
           type="text"
           id="HrDamenCalculatorOutput"
           readOnly
-        />
+        /> */}
       </div>
       {showAlert && (
         <div className="alert alert-info w-40 absolute">
@@ -82,8 +82,8 @@ function Page() {
         </div>
       )}
 
-      <div className="ml-2 ">
-        <button className="btn btn-secondary pointer-events-none border-light  bg-red mt-20  text-light">
+      <div className="flex flex-col justify-center items-center mx-auto max-w-xl  ">
+        <button className="btn pointer-events-none border-light  bg-red mt-20  text-light">
           <p className="text-xl ">Herren</p>
           <br />
           <p className="text-dark">HRmax = 214-(0.8 x Alter) </p>
@@ -102,7 +102,7 @@ function Page() {
 
         <button
           onClick={handleAlertClick}
-          className="btn btn-sm  mb-20 bg-red border border-light text-light rounded-r-none"
+          className="btn btn-sm  mb-20 bg-red border border-light text-light rounded-md"
           id="HrHerrenCalculateBtn"
           /* onclick="HrHerrenAlter(),
               clearHrHerrenInput()
@@ -111,13 +111,13 @@ function Page() {
           Calculate
         </button>
 
-        <input
+        {/* <input
           className="bg-light h-8 ml-1 rounded-r-md text-dark"
           maxLength={3}
           type="text"
           id="HrHerrenCalculatorOutput"
           readOnly
-        />
+        /> */}
       </div>
     </>
   );
