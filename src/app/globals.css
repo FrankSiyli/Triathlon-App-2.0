@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --first: #f5f4f5;
+  --second: #222c37;
+  --third: #b4506b;
+  --fourth: #a8b0c6;
+}
+
 * ::-webkit-scrollbar {
   display: none;
   box-sizing: border-box;
@@ -25,6 +32,11 @@ body {
 
 .footer-text {
   font-size: 0.6rem;
+}
+
+input {
+  background-color: var(--second);
+  text-align: center;
 }
 
 td {

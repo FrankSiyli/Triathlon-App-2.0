@@ -4,14 +4,9 @@ import "../../../globals.css";
 import Link from "next/link";
 
 function Page() {
-  const [showAlert, setShowAlert] = useState(false);
+  const [hrDamenCalculatorInput, setHrDamenCalculatorInput] = useState("");
+  const [hrHerrenCalculatorInput, setHrHerrenCalculatorInput] = useState("");
 
-  const handleAlertClick = () => {
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
-  };
   return (
     <>
       <Link
@@ -59,7 +54,6 @@ function Page() {
         />
 
         <button
-          onClick={handleAlertClick}
           className="btn btn-sm  mb-20 bg-red border border-light text-light rounded-md"
           id="HrDamenCalculateBtn"
           /*  onclick="HrDamenAlter(),
@@ -76,11 +70,6 @@ function Page() {
           readOnly
         /> */}
       </div>
-      {showAlert && (
-        <div className="alert alert-info w-40 absolute">
-          <span>Coming soon</span>
-        </div>
-      )}
 
       <div className="flex flex-col justify-center items-center mx-auto max-w-xl  ">
         <button className="btn pointer-events-none border-light  bg-red mt-20  text-light">
@@ -101,7 +90,6 @@ function Page() {
         />
 
         <button
-          onClick={handleAlertClick}
           className="btn btn-sm  mb-20 bg-red border border-light text-light rounded-md"
           id="HrHerrenCalculateBtn"
           /* onclick="HrHerrenAlter(),
