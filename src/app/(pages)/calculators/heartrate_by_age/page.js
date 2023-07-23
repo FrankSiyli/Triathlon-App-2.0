@@ -4,56 +4,6 @@ import "../../../globals.css";
 import Link from "next/link";
 
 function Page() {
-  const [hrDamenCalculatorInput, setHrDamenCalculatorInput] = useState("");
-  const [hrHerrenCalculatorInput, setHrHerrenCalculatorInput] = useState("");
-  /* HRmaxDamenRechner*/
-
-  let HrDamenCalculatorInput = document.getElementById(
-    "HrDamenCalculatorInput"
-  );
-  const handleHrDamenCalculatorInputKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleHrDamenAlter();
-      setHrDamenCalculatorInput("");
-    }
-  };
-
-  const handleHrDamenAlter = () => {
-    const a2 = parseFloat(hrDamenCalculatorInput);
-    const b2 = 0.9 * a2;
-    const c2 = 209 - b2;
-
-    // Update the state with the calculated value
-    // Use Math.round to get an integer value
-    document.getElementById("HrDamenCalculatorOutput").value = Math.round(c2);
-  };
-
-  const clearHrDamenInput = () => {
-    setHrDamenCalculatorInput("");
-  };
-  /* HRmaxHerrenRechner*/
-
-  const handleHrHerrenCalculatorInputKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleHrHerrenAlter();
-      setHrHerrenCalculatorInput("");
-    }
-  };
-
-  const handleHrHerrenAlter = () => {
-    const d2 = parseFloat(hrHerrenCalculatorInput);
-    const e2 = 0.8 * d2;
-    const f2 = 214 - e2;
-
-    // Update the state with the calculated value
-    // Use Math.round to get an integer value
-    document.getElementById("HrHerrenCalculatorOutput").value = Math.round(f2);
-  };
-
-  const clearHrHerrenInput = () => {
-    setHrHerrenCalculatorInput("");
-  };
-
   return (
     <>
       <Link
@@ -137,7 +87,6 @@ function Page() {
         />
 
         <button
-          onClick={handleAlertClick}
           className="btn btn-sm  mb-20 bg-third border border-first text-first rounded-md"
           id="HrHerrenCalculateBtn"
           /* onclick="HrHerrenAlter(),
