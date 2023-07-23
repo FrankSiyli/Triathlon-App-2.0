@@ -4,14 +4,56 @@ import "../../../globals.css";
 import Link from "next/link";
 
 function Page() {
-  const [showAlert, setShowAlert] = useState(false);
+  const [hrDamenCalculatorInput, setHrDamenCalculatorInput] = useState("");
+  const [hrHerrenCalculatorInput, setHrHerrenCalculatorInput] = useState("");
+  /* HRmaxDamenRechner*/
 
-  const handleAlertClick = () => {
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
+  let HrDamenCalculatorInput = document.getElementById(
+    "HrDamenCalculatorInput"
+  );
+  const handleHrDamenCalculatorInputKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleHrDamenAlter();
+      setHrDamenCalculatorInput("");
+    }
   };
+
+  const handleHrDamenAlter = () => {
+    const a2 = parseFloat(hrDamenCalculatorInput);
+    const b2 = 0.9 * a2;
+    const c2 = 209 - b2;
+
+    // Update the state with the calculated value
+    // Use Math.round to get an integer value
+    document.getElementById("HrDamenCalculatorOutput").value = Math.round(c2);
+  };
+
+  const clearHrDamenInput = () => {
+    setHrDamenCalculatorInput("");
+  };
+  /* HRmaxHerrenRechner*/
+
+  const handleHrHerrenCalculatorInputKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleHrHerrenAlter();
+      setHrHerrenCalculatorInput("");
+    }
+  };
+
+  const handleHrHerrenAlter = () => {
+    const d2 = parseFloat(hrHerrenCalculatorInput);
+    const e2 = 0.8 * d2;
+    const f2 = 214 - e2;
+
+    // Update the state with the calculated value
+    // Use Math.round to get an integer value
+    document.getElementById("HrHerrenCalculatorOutput").value = Math.round(f2);
+  };
+
+  const clearHrHerrenInput = () => {
+    setHrHerrenCalculatorInput("");
+  };
+
   return (
     <>
       <Link
@@ -59,7 +101,6 @@ function Page() {
         />
 
         <button
-          onClick={handleAlertClick}
           className="btn btn-sm  mb-20 bg-red border border-light text-light rounded-md"
           id="HrDamenCalculateBtn"
           /*  onclick="HrDamenAlter(),
@@ -76,11 +117,6 @@ function Page() {
           readOnly
         /> */}
       </div>
-      {showAlert && (
-        <div className="alert alert-info w-40 absolute">
-          <span>Coming soon</span>
-        </div>
-      )}
 
       <div className="flex flex-col justify-center items-center mx-auto max-w-xl  ">
         <button className="btn pointer-events-none border-light  bg-red mt-20  text-light">
