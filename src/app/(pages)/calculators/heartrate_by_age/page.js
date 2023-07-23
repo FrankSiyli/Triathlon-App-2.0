@@ -4,9 +4,6 @@ import "../../../globals.css";
 import Link from "next/link";
 
 function Page() {
-  const [hrDamenCalculatorInput, setHrDamenCalculatorInput] = useState("");
-  const [hrHerrenCalculatorInput, setHrHerrenCalculatorInput] = useState("");
-
   return (
     <>
       <Link
