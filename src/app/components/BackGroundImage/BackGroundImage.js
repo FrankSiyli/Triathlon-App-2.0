@@ -9,7 +9,7 @@ function BackGroundImage() {
   useEffect(() => {
     setTimeout(() => {
       setLogoOpacity(0.2);
-    }, 2500);
+    }, 2000);
   }, []);
 
   return (

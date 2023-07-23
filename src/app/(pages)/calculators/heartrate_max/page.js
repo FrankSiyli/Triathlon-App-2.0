@@ -4,18 +4,50 @@ import "../../../globals.css";
 import Link from "next/link";
 
 function Page() {
+  const [calculatorInput, setCalculatorInput] = useState("");
+  const [tgOutput1, setTgOutput1] = useState("");
+  const [tgOutput2, setTgOutput2] = useState("");
+  const [tgOutput3, setTgOutput3] = useState("");
+  const [tgOutput4, setTgOutput4] = useState("");
+  const [tgOutput5, setTgOutput5] = useState("");
+  const [anaerobicOutput, setAnaerobicOutput] = useState("");
+  const [aerobicOutput, setAerobicOutput] = useState("");
   const [showAlert, setShowAlert] = useState(false);
 
-  const handleAlertClick = () => {
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
+  const calculatePercentages = () => {
+    const a = parseFloat(calculatorInput);
+    const b = a / 100;
+    if (
+      calculatorInput === "" ||
+      calculatorInput < 100 ||
+      calculatorInput > 300
+    ) {
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
+    } else {
+      setTgOutput1(`${Math.round(b * 50)} - ${Math.round(b * 60)}`);
+      setTgOutput2(`${Math.round(b * 60)} - ${Math.round(b * 70)}`);
+      setTgOutput3(`${Math.round(b * 70)} - ${Math.round(b * 80)}`);
+      setTgOutput4(`${Math.round(b * 80)} - ${Math.round(b * 90)}`);
+      setTgOutput5(`${Math.round(b * 90)} - ${Math.round(b * 100)}`);
+      setAnaerobicOutput(Math.round(b * 85));
+      setAerobicOutput(Math.round(b * 60));
+      setCalculatorInput("");
+    }
   };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      calculatePercentages();
+    }
+  };
+
   return (
     <>
       <Link
-        className="btn  m-3 bg-red border border-light text-light"
+        className="btn  m-3 bg-third border border-first text-first"
         href="/profil"
       >
         <svg
@@ -33,7 +65,7 @@ function Page() {
           />
         </svg>
       </Link>
-      <div className="border border-light max-w-xl mx-auto rounded-md p-4 m-1 bg-dark text-center">
+      <div className="border border-first max-w-xl mx-auto rounded-md p-4 m-1 bg-second text-center">
         <p>
           Einem HRmax Test sollten mehrere Monate mit strukturiertem Training
           vorangehen.
@@ -48,46 +80,40 @@ function Page() {
           professionelle Leistungsdiagnostik.
         </p>
       </div>
-      <div className="max-w-xl mx-auto flex flex-col justify-center items-center">
+      <div className="max-w-xl mx-auto flex flex-col justify-center items-center ">
         {showAlert && (
-          <div className="alert alert-info w-40 absolute">
-            <span>Coming soon</span>
+          <div className="alert alert-info max-w-md h-10 bg-first absolute flex justify-center m-10">
+            <span>Bitte trage deine HRmax ein.</span>
           </div>
         )}
         <label className="label mt-10 ">
-          <span className="label-text-alt text-light ">Dein Maximalpuls</span>
+          <span className="label-text-alt text-first ">Dein Maximalpuls</span>
         </label>
+
         <input
           type="number"
-          maxLength={3}
           placeholder="HRmax z.B. 185"
-          id="heartrateInput"
-          className="input  border border-red mb-3 w-full max-w-xs"
+          className="input  border border-third mb-3 w-full max-w-xs"
+          value={calculatorInput}
+          onChange={(e) => setCalculatorInput(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
 
         <button
-          onClick={handleAlertClick}
-          className="btn btn-sm  mb-10 bg-red border border-grey text-light"
+          type="submit"
+          className="btn btn-sm  mb-10 bg-third border border-grey text-first"
           id="calculateBtn"
-          /* onClick="percentage1();
-            percentage2();
-            percentage3();
-            percentage4();
-            percentage5();
-            percentageAnaerob();
-            percentageAerob();
-            clearHR();
-            " */
+          onClick={calculatePercentages}
         >
           Calculate
         </button>
       </div>
       <div className="overflow-x-auto">
-        <table className="table table-xs table-pin-rows table-pin-cols max-w-3xl mx-auto mb-20 bg-dark text-light text-center border border-light">
-          <thead className="text-light">
+        <table className="table table-xs table-pin-rows table-pin-cols max-w-3xl  mx-auto mb-20 bg-second text-first text-center border border-first">
+          <thead className="text-first">
             <tr>
               <td>Zone</td>
-              <td>HR percent</td>
+              <td className="w-20">HR in %</td>
               <td>Target HR bpm</td>
               <td>Thresholds bpm</td>
             </tr>
@@ -98,9 +124,9 @@ function Page() {
               <td>90 - 100</td>
               <td>
                 <input
-                  className="w-20 bg-dark"
-                  type="number"
-                  id="tgOutput5"
+                  className="w-20"
+                  type="text"
+                  value={tgOutput5}
                   readOnly
                 />
               </td>
@@ -110,18 +136,18 @@ function Page() {
               <td>80 - 90</td>
               <td>
                 <input
-                  className="w-20 bg-dark"
-                  type="number"
-                  id="tgOutput4"
+                  className="w-20 "
+                  type="text"
+                  value={tgOutput4}
                   readOnly
                 />
               </td>
               <td>
                 Anaerobic{" "}
                 <input
-                  className="w-20 bg-dark"
-                  type="number"
-                  id="anaerobicOutput"
+                  className="w-20 "
+                  type="text"
+                  value={anaerobicOutput}
                   readOnly
                 />
               </td>
@@ -131,9 +157,9 @@ function Page() {
               <td>70 - 80</td>
               <td>
                 <input
-                  className="w-20 bg-dark"
-                  type="number"
-                  id="tgOutput3"
+                  className="w-20 "
+                  type="text"
+                  value={tgOutput3}
                   readOnly
                 />
               </td>
@@ -143,18 +169,18 @@ function Page() {
               <td>60 - 70</td>
               <td>
                 <input
-                  className="w-20 bg-dark"
-                  type="number"
-                  id="tgOutput2"
+                  className="w-20 "
+                  type="text"
+                  value={tgOutput2}
                   readOnly
                 />
               </td>
               <td>
                 Aerobic{" "}
                 <input
-                  className="w-20 bg-dark"
-                  type="number"
-                  id="aerobicOutput"
+                  className="w-20 "
+                  type="text"
+                  value={aerobicOutput}
                   readOnly
                 />
               </td>
@@ -164,9 +190,9 @@ function Page() {
               <td>50 - 60</td>
               <td>
                 <input
-                  className="w-20 bg-dark"
-                  type="number"
-                  id="tgOutput1"
+                  className="w-20 "
+                  type="text"
+                  value={tgOutput1}
                   readOnly
                 />
               </td>
