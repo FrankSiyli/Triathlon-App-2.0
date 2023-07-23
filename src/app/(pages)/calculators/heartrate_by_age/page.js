@@ -57,7 +57,7 @@ function Page() {
   return (
     <>
       <Link
-        className="btn  m-3 bg-red border border-light text-light"
+        className="btn  m-3 bg-third border border-first text-first"
         href="/profil"
       >
         <svg
@@ -75,7 +75,7 @@ function Page() {
           />
         </svg>
       </Link>
-      <div className="border border-light rounded-md p-4 mx-auto max-w-xl mb-5  bg-dark text-center">
+      <div className="border border-first rounded-md p-4 mx-auto max-w-xl mb-5  bg-second text-center">
         <p>
           Wenn du am Anfang deiner sportlichen Entwicklung stehst oder nach
           einer Pause wieder einsteigen möchtest kannst du auch die Formeln
@@ -84,24 +84,24 @@ function Page() {
       </div>
 
       <div className="flex flex-col justify-center items-center mx-auto max-w-xl mt-10 ">
-        <button className="btn pointer-events-none border-light  bg-red   text-light">
+        <button className="btn pointer-events-none border-first  bg-third   text-first">
           <p className="text-xl ">Damen</p>
           <br />
-          <p className="text-dark">HRmax = 209-(0.9 x Alter) </p>
+          <p className="text-second">HRmax = 209-(0.9 x Alter) </p>
         </button>
         <label className="label  ">
-          <span className="label-text-alt text-light ">Dein Alter</span>
+          <span className="label-text-alt text-first ">Dein Alter</span>
         </label>
         <input
           type="number"
           maxLength={3}
           placeholder="z.B. 35"
           id="HrDamenCalculatorInput"
-          className="input  border border-red mb-3 w-full max-w-xs"
+          className="input  border border-third mb-3 w-full max-w-xs"
         />
 
         <button
-          className="btn btn-sm  mb-20 bg-red border border-light text-light rounded-md"
+          className="btn btn-sm  mb-20 bg-third border border-first text-first rounded-md"
           id="HrDamenCalculateBtn"
           /*  onclick="HrDamenAlter(),
               clearHrDamenInput()
@@ -110,7 +110,7 @@ function Page() {
           Calculate
         </button>
         {/* <input
-          className="bg-light h-8 ml-1 rounded-r-md text-dark"
+          className="bg-first h-8 ml-1 rounded-r-md text-second"
           maxLength={3}
           type="text"
           id="HrDamenCalculatorOutput"
@@ -119,26 +119,26 @@ function Page() {
       </div>
 
       <div className="flex flex-col justify-center items-center mx-auto max-w-xl  ">
-        <button className="btn pointer-events-none border-light  bg-red mt-20  text-light">
+        <button className="btn pointer-events-none border-first  bg-third mt-20  text-first">
           <p className="text-xl ">Herren</p>
           <br />
-          <p className="text-dark">HRmax = 214-(0.8 x Alter) </p>
+          <p className="text-second">HRmax = 214-(0.8 x Alter) </p>
         </button>
 
         <label className="label ">
-          <span className="label-text-alt text-light ">Dein Alter</span>
+          <span className="label-text-alt text-first ">Dein Alter</span>
         </label>
         <input
           type="number"
           maxLength={3}
           placeholder="z.B. 35"
           id="HrHerrenCalculatorInput"
-          className="input  border border-red mb-3 w-full max-w-xs"
+          className="input  border border-third mb-3 w-full max-w-xs"
         />
 
         <button
           onClick={handleAlertClick}
-          className="btn btn-sm  mb-20 bg-red border border-light text-light rounded-md"
+          className="btn btn-sm  mb-20 bg-third border border-first text-first rounded-md"
           id="HrHerrenCalculateBtn"
           /* onclick="HrHerrenAlter(),
               clearHrHerrenInput()
@@ -148,7 +148,7 @@ function Page() {
         </button>
 
         {/* <input
-          className="bg-light h-8 ml-1 rounded-r-md text-dark"
+          className="bg-first h-8 ml-1 rounded-r-md text-second"
           maxLength={3}
           type="text"
           id="HrHerrenCalculatorOutput"

@@ -1,6 +1,5 @@
 import Footer from "@/app/components/Footer/Footer";
 import React from "react";
-import BackGroundImage from "@/app/components/BackGroundImage/BackGroundImage";
 
 function Page() {
   return (

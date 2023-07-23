@@ -4,7 +4,7 @@ import Link from "next/link";
 const Session = ({ session }) => (
   <Link
     href=""
-    className="flex flex-row justify-between items-center h-16 p-2 m-1 bg-dark text-xl"
+    className="flex flex-row justify-between items-center h-16 p-2 m-1 bg-second text-xl"
   >
     <div className=" scale-150 ml-2">{session.icon}</div>
     <div className="">{session.subTitle}</div>

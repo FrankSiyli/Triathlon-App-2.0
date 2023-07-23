@@ -15,24 +15,24 @@ function Page() {
 
   return (
     <>
-      <button className="btn pointer-events-none border-light  bg-red m-5 text-xl text-light">
+      <button className="btn pointer-events-none border-first  bg-third m-5 text-xl text-first">
         Hey user.name 👋
       </button>
       <div className="flex min-h-screen max-w-xl mx-auto mb-20 flex-col items-center p-4">
         <label className="label">
-          <span className="label-text-alt text-light text-xl">
+          <span className="label-text-alt text-first text-xl">
             Dein Maximalpuls
           </span>
         </label>
         <input
           type="number"
           placeholder="👉"
-          className="input  border border-red w-full max-w-xs"
+          className="input  border border-third w-full max-w-xs"
         />
 
         <button
           onClick={handleAlertClick}
-          className="btn  m-1 bg-red border border-light text-light"
+          className="btn  m-1 bg-third border border-first text-first"
         >
           Enter
         </button>
@@ -42,31 +42,31 @@ function Page() {
           </div>
         )}
 
-        <div className="border border-red rounded-md text-center p-3 mt-20  bg-dark">
+        <div className="border border-third rounded-md text-center p-3 mt-20  bg-second">
           <p className="mt-3">Du kennst deinen Maximalpuls nicht?</p>
           <p>Kein Problem, hier findest du Informationen.</p>
           <div className="flex flex-col items-center mt-5">
             <Link
-              className=" text-red underline text-xl"
+              className=" text-third underline text-xl"
               href="/calculators/heartrate_by_age"
             >
               HRmax nach Alter
             </Link>
             <Link
-              className=" text-red underline text-xl m-5"
+              className=" text-third underline text-xl m-5"
               href="/calculators/heartrate_max"
             >
               Puls Zonen
             </Link>
             <Link
-              className=" text-red underline text-xl"
+              className=" text-third underline text-xl"
               href="/calculators/power_watt"
             >
               Watt Zonen
             </Link>
           </div>
         </div>
-        <div className="mt-20 flex flex-row text-light gap-2 underline">
+        <div className="mt-20 flex flex-row text-first gap-2 underline">
           <Link className=" " href="/impressum">
             Impressum
           </Link>
