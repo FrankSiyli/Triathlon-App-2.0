@@ -15,7 +15,7 @@ function Page() {
   return (
     <>
       <Link
-        className="btn  m-3 bg-red border border-light text-light"
+        className="btn  m-3 bg-third border border-first text-first"
         href="/profil"
       >
         <svg
@@ -33,7 +33,7 @@ function Page() {
           />
         </svg>
       </Link>
-      <div className="border border-light rounded-md p-4 max-w-xl mx-auto mb-5  bg-dark text-center">
+      <div className="border border-first rounded-md p-4 max-w-xl mx-auto mb-5  bg-second text-center">
         <p>
           Du hast deinen FTP Wert bereits auf einer smarten Rolle ermittelt?
         </p>
@@ -48,7 +48,7 @@ function Page() {
               </div>
             )}
             <label className="label mt-10 ">
-              <span className="label-text-alt text-light ">
+              <span className="label-text-alt text-first ">
                 Dein Maximalpuls
               </span>
             </label>
@@ -57,12 +57,12 @@ function Page() {
               maxLength={3}
               placeholder="FTP z.B. 250"
               id="WattInput"
-              className="input  border border-red mb-3 w-full max-w-xs"
+              className="input  border border-third mb-3 w-full max-w-xs"
             />
 
             <button
               onClick={handleAlertClick}
-              className="btn btn-sm  mb-10 bg-red border border-light text-light"
+              className="btn btn-sm  mb-10 bg-third border border-first text-first"
               id="WcalculateBtn"
               /* onclick="wattZones7(); 
             wattZones6(); 
@@ -79,8 +79,8 @@ function Page() {
           </div>
         </div>
         <div className="overflow-x-auto">
-          <table className="table table-xs table-pin-rows table-pin-cols max-w-3xl mx-auto mb-20 bg-dark text-light text-center">
-            <thead className="text-light">
+          <table className="table table-xs table-pin-rows table-pin-cols max-w-3xl mx-auto mb-20 bg-second text-first text-center">
+            <thead className="text-first">
               <tr>
                 <td>Zone</td>
                 <td>Power in Watt</td>
@@ -93,7 +93,7 @@ function Page() {
                 </td>
                 <td className="tg1">
                   <input
-                    className="bg-dark"
+                    className="bg-second"
                     type="text"
                     id="tgOutput700"
                     readOnly
@@ -106,7 +106,7 @@ function Page() {
                 </td>
                 <td className="tg1">
                   <input
-                    className="bg-dark"
+                    className="bg-second"
                     type="text"
                     id="tgOutput600"
                     readOnly
@@ -119,7 +119,7 @@ function Page() {
                 </td>
                 <td className="tg1">
                   <input
-                    className="bg-dark"
+                    className="bg-second"
                     type="text"
                     id="tgOutput500"
                     readOnly
@@ -132,7 +132,7 @@ function Page() {
                 </td>
                 <td className="tg1">
                   <input
-                    className="bg-dark"
+                    className="bg-second"
                     type="text"
                     id="tgOutput400"
                     readOnly
@@ -145,7 +145,7 @@ function Page() {
                 </td>
                 <td className="tg1">
                   <input
-                    className="bg-dark"
+                    className="bg-second"
                     type="text"
                     id="tgOutput300"
                     readOnly
@@ -158,7 +158,7 @@ function Page() {
                 </td>
                 <td className="tg1">
                   <input
-                    className="bg-dark"
+                    className="bg-second"
                     type="text"
                     id="tgOutput200"
                     readOnly
@@ -171,7 +171,7 @@ function Page() {
                 </td>
                 <td className="tg1">
                   <input
-                    className="bg-dark"
+                    className="bg-second"
                     type="text"
                     id="tgOutput100"
                     readOnly

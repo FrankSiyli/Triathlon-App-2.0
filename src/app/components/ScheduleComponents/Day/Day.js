@@ -5,7 +5,7 @@ import { v1 as uuidv1 } from "uuid";
 const Day = ({ day }) => (
   <div className="collapse collapse-arrow rounded-md  mt-1">
     <input type="checkbox" className="peer" />
-    <div className="collapse-title bg-dark text-light peer-checked:bg-red peer-checked:text-light ">
+    <div className="collapse-title bg-second text-first peer-checked:bg-third peer-checked:text-first ">
       {day}
     </div>
     <div className="collapse-content peer-checked:bg-none peer-checked:text-secondary-content">
