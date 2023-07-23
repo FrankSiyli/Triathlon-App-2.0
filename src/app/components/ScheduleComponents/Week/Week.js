@@ -26,10 +26,10 @@ const Week = () => {
   return (
     <>
       <div className=" m-4">
-        <div className="flex justify-between my-7 items-center h-10 rounded-md border border-light bg-dark text-light text-xl peer-checked:bg-red peer-checked:text-light ">
+        <div className="flex justify-between my-7 items-center h-10 rounded-md border border-first bg-second text-first text-xl peer-checked:bg-third peer-checked:text-first ">
           <button
             onClick={handleBackClick}
-            className="h-9 w-16 flex justify-center items-center bg-red rounded-md active:scale-90"
+            className="h-9 w-16 flex justify-center items-center bg-third rounded-md active:scale-90"
           >
             {week === weeks[0] ? (
               <div></div>
@@ -53,7 +53,7 @@ const Week = () => {
           <p>{week}</p>
           <button
             onClick={handleNextClick}
-            className="h-9 w-16 flex justify-center items-center bg-red rounded-md active:scale-90"
+            className="h-9 w-16 flex justify-center items-center bg-third rounded-md active:scale-90"
           >
             {week === weeks[weeks.length - 1] ? (
               <div></div>

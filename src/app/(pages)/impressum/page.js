@@ -5,7 +5,7 @@ function Page() {
   return (
     <div>
       <Link
-        className="btn  m-3 bg-red border border-light text-light"
+        className="btn  m-3 bg-third border border-first text-first"
         href="/profil"
       >
         <svg

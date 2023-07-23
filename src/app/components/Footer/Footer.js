@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 
 function Footer() {
   const currentRoute = usePathname();
-  const activeStyle = " bg-dark border rounded-sm";
-  const nonActiveStyle = "bg-red rounded-sm";
+  const activeStyle = " bg-second border rounded-sm";
+  const nonActiveStyle = "bg-third rounded-sm";
 
   return (
     <div>
