@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     colors: {
       first: "#f5f4f5",
-      second: "#222c37",
+      second: "#222c3787",
       third: "#b4506b",
       fourth: "#a8b0c6",
     },

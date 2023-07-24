@@ -15,7 +15,7 @@ function Page() {
   return (
     <>
       <Link
-        className="btn  m-3 bg-third border border-first text-first"
+        className="btn btn-sm  m-3 bg-third border border-first text-first"
         href="/profil"
       >
         <svg
@@ -48,8 +48,8 @@ function Page() {
               </div>
             )}
             <label className="label mt-10 ">
-              <span className="label-text-alt text-first ">
-                Dein Maximalpuls
+              <span className="label-text-alt text-first text-xl">
+                Deine FTP
               </span>
             </label>
             <input
@@ -79,7 +79,7 @@ function Page() {
           </div>
         </div>
         <div className="overflow-x-auto">
-          <table className="table table-xs table-pin-rows table-pin-cols max-w-3xl mx-auto mb-20 bg-second text-first text-center">
+          <table className="table table-xs table-pin-rows table-pin-cols max-w-3xl mx-auto bg-second text-first text-center">
             <thead className="text-first">
               <tr>
                 <td>Zone</td>

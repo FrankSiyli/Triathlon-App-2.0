@@ -15,7 +15,7 @@ function Page() {
 
   return (
     <>
-      <button className="btn pointer-events-none border-first  bg-third m-5 text-xl text-first">
+      <button className="btn btn-sm pointer-events-none border-first  bg-third m-5 text-xl text-first">
         Hey user.name 👋
       </button>
       <div className="flex min-h-screen max-w-xl mx-auto mb-20 flex-col items-center p-4">
@@ -26,13 +26,13 @@ function Page() {
         </label>
         <input
           type="number"
-          placeholder="👉"
+          placeholder="HRmax z.B. 185"
           className="input  border border-third w-full max-w-xs"
         />
 
         <button
           onClick={handleAlertClick}
-          className="btn  m-1 bg-third border border-first text-first"
+          className="btn btn-sm  m-3 bg-third border border-first text-first"
         >
           Enter
         </button>
