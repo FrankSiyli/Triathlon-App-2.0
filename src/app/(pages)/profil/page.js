@@ -41,29 +41,10 @@ function Page() {
 
   return (
     <>
-      <button className="btn btn-sm pointer-events-none border-first  bg-third m-5 text-xl text-first">
+      <button className="btn pointer-events-none border-first  bg-third m-5 text-xl text-first">
         Hey user.name 👋
       </button>
       <div className="flex min-h-screen max-w-xl mx-auto mb-20 flex-col items-center p-4">
-
-        <label className="label">
-          <span className="label-text-alt text-first text-xl">
-            Dein Maximalpuls
-          </span>
-        </label>
-        <input
-          type="number"
-          placeholder="HRmax z.B. 185"
-          className="input  border border-third w-full max-w-xs"
-        />
-
-        <button
-          onClick={handleAlertClick}
-          className="btn btn-sm  m-3 bg-third border border-first text-first"
-        >
-          Enter
-        </button>
-
         {showAlert && (
           <div className="alert alert-info max-w-md h-10 bg-first absolute flex justify-center m-10">
             <span>Bitte trage deine HRmax ein.</span>
