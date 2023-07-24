@@ -33,7 +33,7 @@ const Page = () => {
       setTgOutput4(`${Math.round(b1 * 80)} - ${Math.round(b1 * 90)}`);
       setTgOutput5(`${Math.round(b1 * 90)} - ${Math.round(b1 * 100)}`);
       setTgOutput6(`${Math.round(b1 * 120)} - ${Math.round(b1 * 150)}`);
-      setTgOutput7(`${Math.round(b1 * 150)} - ${"8000W"}`);
+      setTgOutput7(`${Math.round(b1 * 150)} - ${"8000"}`);
       setCalculatorInput("");
     }
   };
