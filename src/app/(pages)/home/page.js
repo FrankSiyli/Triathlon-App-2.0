@@ -7,7 +7,7 @@ import Week from "@/app/components/ScheduleComponents/Week/Week";
 function Page(week, handleBackClick, handleNextClick) {
   return (
     <>
-      <button className="btn btn-secondary pointer-events-none border-first  bg-third m-5 text-xl text-first">
+      <button className="btn btn-sm pointer-events-none border-first  bg-third m-5 text-xl text-first">
         Beispielplan
       </button>
       <div>
