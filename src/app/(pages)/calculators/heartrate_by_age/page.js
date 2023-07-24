@@ -4,11 +4,10 @@ import "../../../globals.css";
 import Link from "next/link";
 
 function Page() {
-
   return (
     <>
       <Link
-        className="btn  m-3 bg-third border border-first text-first"
+        className="btn btn-sm  m-3 bg-third border border-first text-first"
         href="/profil"
       >
         <svg
@@ -88,9 +87,7 @@ function Page() {
         />
 
         <button
-
           className="btn btn-sm  mb-20 bg-third border border-first text-first rounded-md"
-
           id="HrHerrenCalculateBtn"
           /* onclick="HrHerrenAlter(),
               clearHrHerrenInput()

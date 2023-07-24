@@ -9,5 +9,7 @@ export default function Home() {
     router.push("/home");
   }, 2000);
 
-  return <main className="flex min-h-screen flex-col items-center "></main>;
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center "></main>
+  );
 }
