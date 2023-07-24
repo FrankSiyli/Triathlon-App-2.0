@@ -9,7 +9,6 @@ function Page() {
   const [savedHrMax, setSavedHrMax] = useState();
   const [showHrInput, setShowHrInput] = useState(true);
   const [showSavedHrMax, setShowSavedHrMax] = useState(false);
-
   const handleInputClick = () => {
     if (
       calculatorInput === "" ||
@@ -38,10 +37,12 @@ function Page() {
       handleInputClick();
     }
   };
+  const date = new Date();
+  const currentYear = date.getFullYear();
 
   return (
     <>
-      <button className="btn pointer-events-none border-first  bg-third m-5 text-xl text-first">
+      <button className="btn btn-sm pointer-events-none border-first  bg-third m-5 text-xl text-first">
         Hey user.name 👋
       </button>
       <div className="flex min-h-screen max-w-xl mx-auto mb-20 flex-col items-center p-4">
@@ -125,6 +126,7 @@ function Page() {
             Datenschutz
           </Link>
         </div>
+        <div>© Siyli-endurance-coaching 2022-{currentYear} </div>
       </div>
       <Footer />
     </>
