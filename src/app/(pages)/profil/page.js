@@ -54,12 +54,12 @@ function Page() {
           <>
             <label className="label">
               <span className="label-text-alt text-first text-xl">
-                Bitte trage deine HRmax ein
+                Dein Maximalpuls
               </span>
             </label>
             <input
               type="number"
-              placeholder="👉"
+              placeholder="zwischen 100 und 300"
               value={calculatorInput}
               onChange={(e) => setCalculatorInput(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -75,7 +75,7 @@ function Page() {
         )}
         {showSavedHrMax && (
           <>
-            <div className="flex flex-col items-center justify-center ">
+            <div className="flex flex-col items-center justify-center text-xl">
               Dein gespeicherter Maximalpuls:{" "}
               <p className="m-3 text-center text-first border border-third w-20 rounded-md text-2xl">
                 {savedHrMax}
