@@ -18,6 +18,7 @@ function BackGroundImage() {
         src={logo}
         alt="hero-image"
         className=" object-contain"
+        priority
         style={{ opacity: logoOpacity }}
         width={300}
         height={300}
