@@ -76,11 +76,9 @@ function Page() {
         )}
         {showSavedHrMax && (
           <>
-            <div className="flex flex-col items-center justify-center text-xl">
+            <div className="border border-first bg-second text-center text-md  p-2 rounded-md">
               Dein gespeicherter Maximalpuls:{" "}
-              <p className="m-3 text-center text-first border border-third w-20 rounded-md text-2xl">
-                {savedHrMax}
-              </p>
+              <p className="text-xl text-third">{savedHrMax}</p>
             </div>
             <button
               onClick={handleChangeHrMaxClick}
