@@ -94,7 +94,7 @@ function Page() {
 
         <input
           type="number"
-          placeholder="HRmax z.B. 185"
+          placeholder="zwischen 100 und 300"
           className="input  border border-third mb-3 w-full max-w-xs"
           value={calculatorInput}
           onChange={(e) => setCalculatorInput(e.target.value)}
@@ -103,7 +103,7 @@ function Page() {
 
         <button
           type="submit"
-          className="btn btn-sm  mb-10 bg-third border border-grey text-first"
+          className="btn btn-sm  mb-10 bg-third border border-first text-first"
           id="calculateBtn"
           onClick={calculatePercentages}
         >
