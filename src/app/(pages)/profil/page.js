@@ -2,6 +2,7 @@
 import Footer from "@/app/components/Footer/Footer";
 import React, { useState } from "react";
 import Link from "next/link";
+import "../../globals.css";
 
 function Page() {
   const [showAlert, setShowAlert] = useState(false);
