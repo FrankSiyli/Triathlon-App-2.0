@@ -18,7 +18,7 @@ function AlertButton() {
             <span>Coming soon</span>
           </div>
         )}
-        <button onClick={handleAlertClick}>fdgdg</button>
+        <button onClick={handleAlertClick}></button>
       </div>
     </div>
   );

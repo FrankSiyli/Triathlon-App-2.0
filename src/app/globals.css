@@ -30,16 +30,22 @@ body {
   background-color: #1d2732;
 }
 
-.footer-text {
+.icon-text {
   font-size: 0.6rem;
 }
 
-input {
+input[type="number"] {
+  background-color: var(--second);
+  text-align: center;
+}
+
+input[type="text"] {
   background-color: var(--second);
   text-align: center;
 }
 
 td {
+  background-color: var(--second);
   height: 3rem;
   border: solid 1px rgba(255, 255, 255, 0.56);
 }
