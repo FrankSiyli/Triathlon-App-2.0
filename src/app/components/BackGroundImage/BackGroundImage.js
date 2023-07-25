@@ -8,7 +8,7 @@ function BackGroundImage() {
 
   useEffect(() => {
     setTimeout(() => {
-      setLogoOpacity(0.1);
+      setLogoOpacity(0.05);
     }, 2000);
   }, []);
 
@@ -18,6 +18,7 @@ function BackGroundImage() {
         src={logo}
         alt="hero-image"
         className=" object-contain"
+        priority
         style={{ opacity: logoOpacity }}
         width={300}
         height={300}

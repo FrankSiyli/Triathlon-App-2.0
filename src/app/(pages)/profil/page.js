@@ -2,6 +2,7 @@
 import Footer from "@/app/components/Footer/Footer";
 import React, { useState } from "react";
 import Link from "next/link";
+import "../../globals.css";
 
 function Page() {
   const [showAlert, setShowAlert] = useState(false);
@@ -9,7 +10,6 @@ function Page() {
   const [savedHrMax, setSavedHrMax] = useState();
   const [showHrInput, setShowHrInput] = useState(true);
   const [showSavedHrMax, setShowSavedHrMax] = useState(false);
-
   const handleInputClick = () => {
     if (
       calculatorInput === "" ||
@@ -38,14 +38,18 @@ function Page() {
       handleInputClick();
     }
   };
+  const date = new Date();
+  const currentYear = date.getFullYear();
 
   return (
     <>
+
       <div className="flex max-w-xl mx-auto">
         <button className="btn pointer-events-none border-first  bg-third m-5 text-xl text-first">
           Hey user.name 👋
         </button>
       </div>
+
       <div className="flex min-h-screen max-w-xl mx-auto mb-20 flex-col items-center p-4">
         {showAlert && (
           <div className="alert alert-info max-w-md h-10 bg-first absolute flex justify-center m-10">
@@ -56,12 +60,12 @@ function Page() {
           <>
             <label className="label">
               <span className="label-text-alt text-first text-xl">
-                Dein Maximalpuls
+                Dein Maximalpuls in bpm
               </span>
             </label>
             <input
               type="number"
-              placeholder="zwischen 100 und 300"
+              placeholder="z.B. 185"
               value={calculatorInput}
               onChange={(e) => setCalculatorInput(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -77,11 +81,9 @@ function Page() {
         )}
         {showSavedHrMax && (
           <>
-            <div className="flex flex-col items-center justify-center text-xl">
+            <div className="border border-first bg-second text-center text-md  p-2 rounded-md">
               Dein gespeicherter Maximalpuls:{" "}
-              <p className="m-3 text-center text-first border border-third w-20 rounded-md text-2xl">
-                {savedHrMax}
-              </p>
+              <p className="text-xl text-third">{savedHrMax}</p>
             </div>
             <button
               onClick={handleChangeHrMaxClick}
@@ -127,6 +129,7 @@ function Page() {
             Datenschutz
           </Link>
         </div>
+        <div>© Siyli-endurance-coaching 2022-{currentYear} </div>
       </div>
       <Footer />
     </>

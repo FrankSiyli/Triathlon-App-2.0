@@ -90,13 +90,13 @@ function Page() {
         )}
         <label className="label mt-10 ">
           <span className="label-text-alt text-first text-xl">
-            Dein Maximalpuls
+            Dein Maximalpuls in bpm
           </span>
         </label>
 
         <input
           type="number"
-          placeholder="zwischen 100 und 300"
+          placeholder="z.B. 185"
           className="input  border border-third mb-3 w-full max-w-xs"
           value={calculatorInput}
           onChange={(e) => setCalculatorInput(e.target.value)}
