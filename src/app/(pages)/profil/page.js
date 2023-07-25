@@ -43,9 +43,8 @@ function Page() {
 
   return (
     <>
-
       <div className="flex max-w-xl mx-auto">
-        <button className="btn pointer-events-none border-first  bg-third m-5 text-xl text-first">
+        <button className="btn btn-sm pointer-events-none border-first  bg-third m-5 text-xl text-first">
           Hey user.name 👋
         </button>
       </div>
