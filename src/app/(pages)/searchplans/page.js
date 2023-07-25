@@ -1,4 +1,5 @@
 "use client";
+import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import Link from "next/link";
 import React, { useState } from "react";
 import { v1 as uuidv1 } from "uuid";
@@ -13,27 +14,8 @@ function Page() {
   };
   return (
     <>
-      <div className="flex max-w-xl mx-auto">
-        <Link
-          className="btn btn-sm  m-1 bg-third border border-first text-first"
-          href="/plans"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-            />
-          </svg>
-        </Link>
-      </div>
+      <BackButton href="/plans" />
+
       <div className="flex flex-col items-center  mt-10 gap-5 ">
         {kindOfSport.map((item) => (
           <Link
