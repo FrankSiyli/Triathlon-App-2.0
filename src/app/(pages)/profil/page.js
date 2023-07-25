@@ -43,9 +43,13 @@ function Page() {
 
   return (
     <>
-      <button className="btn btn-sm pointer-events-none border-first  bg-third m-5 text-xl text-first">
-        Hey user.name 👋
-      </button>
+
+      <div className="flex max-w-xl mx-auto">
+        <button className="btn pointer-events-none border-first  bg-third m-5 text-xl text-first">
+          Hey user.name 👋
+        </button>
+      </div>
+
       <div className="flex min-h-screen max-w-xl mx-auto mb-20 flex-col items-center p-4">
         {showAlert && (
           <div className="alert alert-info max-w-md h-10 bg-first absolute flex justify-center m-10">
