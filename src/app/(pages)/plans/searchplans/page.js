@@ -20,7 +20,7 @@ function Page() {
         {kindOfSport.map((item) => (
           <Link
             onClick={handleAlertClick}
-            href="/searchplans"
+            href=""
             className="bg-second w-72 h-20 flex justify-around items-center p-3 gap-3  rounded-md text-xl text-first"
             key={uuidv1()}
           >

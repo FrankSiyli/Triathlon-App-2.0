@@ -6,6 +6,7 @@ import "../../globals.css";
 
 function Page() {
   const [showAlert, setShowAlert] = useState(false);
+  const [showAlert_2, setShowAlert_2] = useState(false);
   const [calculatorInput, setCalculatorInput] = useState("");
   const [savedHrMax, setSavedHrMax] = useState();
   const [showHrInput, setShowHrInput] = useState(true);
@@ -41,13 +42,53 @@ function Page() {
   const date = new Date();
   const currentYear = date.getFullYear();
 
+  const handleAlertClick_2 = () => {
+    setShowAlert_2(true);
+    setTimeout(() => {
+      setShowAlert_2(false);
+    }, 2000);
+  };
+
+  const handleAlertClick = () => {
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  };
+
   return (
     <>
-      <div className="flex max-w-xl mx-auto">
+      {/**-----------------------if no session show login buttons------------------------------ */}
+      <div className="flex flex-row justify-center mx-auto w-screen max-w-xl">
+        <Link
+          onClick={handleAlertClick_2}
+          href=""
+          className="btn btn-sm  m-3 bg-third border border-first text-first"
+        >
+          Log in
+        </Link>
+        <div className="max-w-xl mx-auto flex flex-col items-center justify-center">
+          {showAlert_2 && (
+            <div className="alert alert-info w-40 absolute">
+              <span>Coming soon</span>
+            </div>
+          )}
+        </div>
+        <Link
+          onClick={handleAlertClick_2}
+          href=""
+          className="btn btn-sm  m-3 bg-fourth border border-first text-first"
+        >
+          Sign up
+        </Link>
+      </div>
+
+      {/**-----------------------if session show user.name and a logout button------------------------------ */}
+      {/* <div className="flex max-w-xl mx-auto">
         <button className="btn btn-sm pointer-events-none border-first  bg-third m-5 text-xl text-first">
           Hey user.name 👋
         </button>
-      </div>
+      </div> */}
 
       <div className="flex min-h-screen max-w-xl mx-auto mb-20 flex-col items-center p-4">
         {showAlert && (
@@ -118,13 +159,13 @@ function Page() {
           </div>
         </div>
         <div className="mt-20 flex flex-row text-first gap-2 underline">
-          <Link className=" " href="/impressum">
+          <Link className=" " href="/legal/impressum">
             Impressum
           </Link>
-          <Link className="" href="/agb">
+          <Link className="" href="/legal/agb">
             AGB
           </Link>
-          <Link className="" href="/privacy_policy">
+          <Link className="" href="/legal/privacy_policy">
             Datenschutz
           </Link>
         </div>
