@@ -79,7 +79,7 @@ const Page = () => {
             />
 
             <button
-              className="btn btn-sm  mb-10 bg-third border border-first text-first"
+              className="btn btn-sm  mb-10 bg-third border border-first/50 text-first"
               onClick={calculateWattZones}
             >
               Berechnen

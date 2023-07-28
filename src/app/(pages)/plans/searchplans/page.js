@@ -21,7 +21,7 @@ function Page() {
           <Link
             onClick={handleAlertClick}
             href=""
-            className="bg-second w-72 h-20 flex justify-between  border-l  items-center p-3 gap-3  rounded-md text-xl text-first"
+            className="bg-second w-72 h-20 flex justify-between  border-l border-first/30 items-center p-3 gap-3  rounded-md text-xl text-first"
             key={uuidv1()}
           >
             {item}
