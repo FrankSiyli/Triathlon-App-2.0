@@ -96,7 +96,7 @@ function Page() {
         {womenCalculatedHr && (
           <div className="border border-first bg-second text-center text-md p-2 rounded-md">
             Dein berechneter Maximalpuls:{" "}
-            <p className="text-xl text-third">{womenCalculatedHr}</p>
+            <p className="text-xl ">{womenCalculatedHr}</p>
           </div>
         )}
       </div>
@@ -135,7 +135,7 @@ function Page() {
         {menCalculatedHr && (
           <div className="border border-first bg-second text-center text-md m-3 p-2 rounded-md">
             Dein berechneter Maximalpuls:{" "}
-            <p className="text-xl text-third">{menCalculatedHr}</p>
+            <p className="text-xl ">{menCalculatedHr}</p>
           </div>
         )}
       </div>
