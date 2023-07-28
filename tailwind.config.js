@@ -10,9 +10,9 @@ module.exports = {
   theme: {
     colors: {
       first: "#f5f4f5",
-      second: "#222c3787",
-      third: "#b4506b",
-      fourth: "#a8b0c6",
+      second: "#35558287",
+      third: "#007CA687",
+      fourth: "#00A3B187",
     },
   },
   plugins: [require("daisyui")],

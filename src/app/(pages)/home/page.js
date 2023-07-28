@@ -55,7 +55,7 @@ function Page() {
       {/**-----------------------------------week scroll buttons---------------------------------- */}
 
       <div className="flex flex-col mx-auto max-w-xl  mb-20">
-        <div className="flex justify-between my-7 items-center h-10 m-4 rounded-md border  border-first/50 bg-second text-first  peer-checked:bg-third peer-checked:text-first ">
+        <div className="flex justify-between my-7 items-center h-10 m-4 rounded-md border  border-first/50  text-first  peer-checked:bg-third peer-checked:text-first ">
           <button
             onClick={handleBackClick}
             className="h-9 w-16 flex justify-center items-center bg-third rounded-md active:scale-90"
@@ -114,7 +114,7 @@ function Page() {
               className="collapse  max-w-xl rounded-md border-l border-first/30 gap-1"
             >
               <input type="checkbox" className="peer" />
-              <div className="collapse-title flex flex-row justify-between  bg-second text-first  peer-checked:bg-third ">
+              <div className="collapse-title flex flex-row justify-between   text-first   ">
                 <p>{day}</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +137,7 @@ function Page() {
                   <span>(Next feature on my list :-)</span>
                 </div>
               )}
-              <div className="collapse-content  text-first bg-second    ">
+              <div className="collapse-content  text-first     ">
                 {activities.map((activity) => (
                   <button
                     onClick={handleAlertClick}
@@ -145,7 +145,7 @@ function Page() {
                     className="collapse  max-w-xl my-1  rounded-md "
                   >
                     <input type="checkbox" className="peer" />
-                    <div className="collapse-title flex flex-row justify-between bg-second  text-first border-l  border-first/30 peer-checked:bg-second  ">
+                    <div className="collapse-title flex flex-row justify-between  text-first border  border-first/30 peer-checked:bg-second  ">
                       <div className="flex flex-col items-start ">
                         <p className="icon-text underline underline-offset-2 ">
                           {activity[0]}
