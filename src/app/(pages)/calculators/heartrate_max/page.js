@@ -48,7 +48,7 @@ function Page() {
   return (
     <>
       <BackButton href="/profil" />
-      <div className="border border-first max-w-xl mx-auto rounded-md p-4 m-1 bg-second text-center">
+      <div className="border border-first/50 max-w-xl mx-auto rounded-md p-4 m-1  text-center">
         <p>
           Einem HRmax Test sollten mehrere Monate mit strukturiertem Training
           vorangehen.
@@ -78,7 +78,7 @@ function Page() {
         <input
           type="number"
           placeholder="z.B. 185"
-          className="input  border border-third mb-3 w-full max-w-xs"
+          className="input  border border-first/50 mb-3 w-full max-w-xs"
           value={calculatorInput}
           onChange={(e) => setCalculatorInput(e.target.value)}
           onKeyDown={handleKeyDown}

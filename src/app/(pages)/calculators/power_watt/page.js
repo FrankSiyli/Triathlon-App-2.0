@@ -49,7 +49,7 @@ const Page = () => {
     <>
       <BackButton href="/profil" />
 
-      <div className="border border-first rounded-md p-4 max-w-xl mx-auto mb-5  bg-second text-center">
+      <div className="border border-first/50 rounded-md p-4 max-w-xl mx-auto mb-5   text-center">
         <p>
           Du hast deinen FTP Wert bereits auf einer smarten Rolle ermittelt?
         </p>
@@ -75,7 +75,7 @@ const Page = () => {
               value={calculatorInput}
               onChange={(e) => setCalculatorInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="input  border border-third mb-3 w-full max-w-xs"
+              className="input  border border-first/50 mb-3 w-full max-w-xs"
             />
 
             <button

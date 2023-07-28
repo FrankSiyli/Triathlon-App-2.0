@@ -109,7 +109,7 @@ function Page() {
               value={calculatorInput}
               onChange={(e) => setCalculatorInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="input  border border-third w-full max-w-xs"
+              className="input  border border-first/50 w-full max-w-xs"
             />
             <button
               onClick={handleInputClick}
@@ -134,24 +134,24 @@ function Page() {
           </>
         )}
 
-        <div className="border border-third rounded-md text-center p-3 mt-20  bg-second">
+        <div className="border border-first/50 rounded-md text-center p-3 mt-20  ">
           <p className="mt-3">Du kennst deinen Maximalpuls nicht?</p>
           <p>Kein Problem, hier findest du Informationen.</p>
           <div className="flex flex-col items-center mt-5">
             <Link
-              className=" text-third underline text-xl"
+              className="underline  underline-offset-2 "
               href="/calculators/heartrate_by_age"
             >
               HRmax nach Alter
             </Link>
             <Link
-              className=" text-third underline text-xl m-5"
+              className="underline  underline-offset-2  m-5"
               href="/calculators/heartrate_max"
             >
               Puls Zonen
             </Link>
             <Link
-              className=" text-third underline text-xl"
+              className="underline  underline-offset-2 "
               href="/calculators/power_watt"
             >
               Watt Zonen

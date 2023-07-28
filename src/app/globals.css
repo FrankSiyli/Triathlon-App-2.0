@@ -4,9 +4,9 @@
 
 :root {
   --first: #f5f4f5;
-  --second: #222c3787;
-  --third: #b4506b;
-  --fourth: #a8b0c6;
+  --second: #35558287;
+  --third: #007ca687;
+  --fourth: #00a3b187;
 }
 
 * ::-webkit-scrollbar {
@@ -27,7 +27,17 @@ body {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   color: #f5f4f5;
-  background-color: #1d2732;
+  background-image: linear-gradient(
+    to right bottom,
+    #1d2732,
+    #232f3c,
+    #293746,
+    #2f3f50,
+    #2f3f50,
+    #293746,
+    #232f3c,
+    #1d2732
+  );
 }
 
 .icon-text {
