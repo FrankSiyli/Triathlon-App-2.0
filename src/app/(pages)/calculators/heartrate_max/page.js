@@ -65,7 +65,7 @@ function Page() {
       </div>
       <div className="max-w-xl mx-auto flex flex-col justify-center items-center ">
         {showAlert && (
-          <div className="alert alert-info fixed inset-x-0 inset-y-3 max-w-md h-10 bg-first  flex justify-center ">
+          <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
             <span>Bitte trage deine HRmax ein (100-300)</span>
           </div>
         )}
