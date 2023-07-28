@@ -90,7 +90,7 @@ function Page() {
           id="calculateBtn"
           onClick={calculatePercentages}
         >
-          Calculate
+          Berechnen
         </button>
       </div>
       <div className="overflow-x-auto">

@@ -82,7 +82,7 @@ const Page = () => {
               className="btn btn-sm  mb-10 bg-third border border-first text-first"
               onClick={calculateWattZones}
             >
-              Calculate
+              Berechnen
             </button>
           </div>
         </div>
