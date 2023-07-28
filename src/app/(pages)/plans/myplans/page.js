@@ -12,7 +12,7 @@ function Page() {
       <BackButton href="/plans" />
       <div className="flex flex-col items-center  mt-10 gap-5 ">
         {myPlans.length === 0 ? (
-          <div className="border rounded-md p-3">
+          <div className="border border-first/50 rounded-md p-5">
             Es sind noch keine Pläne vorhanden
           </div>
         ) : (
