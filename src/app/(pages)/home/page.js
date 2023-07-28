@@ -22,17 +22,17 @@ function Page() {
     }
   };
 
-  const currentWeekDaysArray = [];
-  const currentWeekDays = examplePlan.sessions[currentWeek - 1].sessions.map(
-    (days) => (
-      <p key={uuidv1()} className="text-2xl text-first">
-        {currentWeekDaysArray.push(days.day)}
-      </p>
-    )
-  );
+  const currentWeekSessions = examplePlan.sessions[currentWeek - 1].sessions;
+  const activitiesByDay = currentWeekSessions.reduce((acc, session) => {
+    const { day, activity, description } = session;
+    if (!acc[day]) {
+      acc[day] = [];
+    }
+    acc[day].push([activity, description]);
+    return acc;
+  }, {});
+  console.log(activitiesByDay);
 
-  /*   console.log("days", currentWeekDaysArray);
-   */
   return (
     <>
       <div className="flex flex-col max-w-xl mx-auto">
@@ -46,7 +46,7 @@ function Page() {
 
       {/**-----------------------------------week scroll buttons---------------------------------- */}
 
-      <div className="max-w-xl  mb-20">
+      <div className="flex flex-col mx-auto max-w-xl  mb-20">
         <div className="flex justify-between my-7 items-center h-10 m-4 rounded-md border border-first bg-second text-first  peer-checked:bg-third peer-checked:text-first ">
           <button
             onClick={handleBackClick}
@@ -99,20 +99,49 @@ function Page() {
         </div>
 
         {/**-----------------------------------days---------------------------------- */}
-
-        {currentWeekDaysArray.map((currentWeekDay) => (
-          <div key={uuidv1()} className="collapse mx-auto w-80 my-1 rounded-md">
-            <input type="checkbox" className="peer" />
-            <div className="collapse-title  bg-second text-first  peer-checked:bg-third ">
-              <p>{currentWeekDay}</p>
+        <div className="flex flex-col mx-4 items-center">
+          {Object.entries(activitiesByDay).map(([day, activities]) => (
+            <div key={uuidv1()} className="collapse  max-w-xl   rounded-md">
+              <input type="checkbox" className="peer" />
+              <div className="collapse-title flex flex-row justify-between  bg-second text-first  peer-checked:bg-third ">
+                <p>{day}</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              </div>
+              {/**-----------------------------------activities---------------------------------- */}
+              <div className="collapse-content  text-first bg-second border-first  border-b ">
+                {activities.map((activity) => (
+                  <div
+                    key={uuidv1()}
+                    className="collapse  max-w-xl m-1  rounded-md "
+                  >
+                    <input type="checkbox" className="peer" />
+                    <div className="collapse-title flex flex-row justify-between   bg-second text-first  peer-checked:bg-third ">
+                      <div className="flex flex-col justify-center content-center">
+                        <p className="icon-text underline underline-offset-2 ">
+                          {activity[0]}
+                        </p>
+                        <p>{activity[1]}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="collapse-content  text-first bg-second border-first  border-b ">
-              <p>hello</p>
-              <p>hello</p>
-              <p>hello</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <Footer />
@@ -120,58 +149,100 @@ function Page() {
   );
 }
 const examplePlan = {
-  name: "Beginner Triathlon Training",
+  name: "Beispielplan",
   duration: 2,
   sessions: [
     {
       week: 1,
       sessions: [
         {
-          day: "Monday",
-          activity: "Swimming",
-          description: "Warm-up drills",
-          duration: "30 minutes",
-          intensity: "Low",
+          day: "Montag",
+          activity: "Schwimmen",
+          description: "Aufwärmübungen",
+          duration: "30 Minuten",
+          intensity: "Niedrig",
         },
         {
-          day: "Tuesday",
-          activity: "Cycling",
-          description: "Easy ride",
-          duration: "1 hour",
-          intensity: "Low",
+          day: "Montag",
+          activity: "Yoga",
+          description: "Entspannungsübungen",
+          duration: "20 Minuten",
+          intensity: "Niedrig",
         },
         {
-          day: "Wednesday",
-          activity: "Running",
-          description: "Interval training",
-          duration: "45 minutes",
-          intensity: "Medium",
+          day: "Montag",
+          activity: "Stabilitätstraining",
+          description: "Core-Übungen",
+          duration: "15 Minuten",
+          intensity: "Mittel",
         },
         {
-          day: "Thursday",
-          activity: "Rest",
-          description: "Rest day",
+          day: "Dienstag",
+          activity: "Radfahren",
+          description: "Leichtes Fahren",
+          duration: "1 Stunde",
+          intensity: "Niedrig",
+        },
+        {
+          day: "Dienstag",
+          activity: "Yoga",
+          description: "Dehnungsübungen",
+          duration: "25 Minuten",
+          intensity: "Niedrig",
+        },
+        {
+          day: "Dienstag",
+          activity: "Stabilitätstraining",
+          description: "Gleichgewichtsübungen",
+          duration: "15 Minuten",
+          intensity: "Mittel",
+        },
+        {
+          day: "Mittwoch",
+          activity: "Laufen",
+          description: "Intervalltraining",
+          duration: "45 Minuten",
+          intensity: "Mittel",
+        },
+        {
+          day: "Mittwoch",
+          activity: "Yoga",
+          description: "Atemübungen",
+          duration: "20 Minuten",
+          intensity: "Niedrig",
+        },
+        {
+          day: "Mittwoch",
+          activity: "Stabilitätstraining",
+          description: "Beckenstabilisation",
+          duration: "15 Minuten",
+          intensity: "Mittel",
+        },
+        {
+          day: "Donnerstag",
+          activity: "Ruhepause",
+          description: "Ruhetag",
           duration: "N/A",
           intensity: "N/A",
         },
         {
-          day: "Friday",
-          activity: "Cycling",
-          description: "Long ride",
-          duration: "1.5 hours",
-          intensity: "Medium",
+          day: "Freitag",
+          activity: "Radfahren",
+          description: "Lange Radtour",
+          duration: "1,5 Stunden",
+          intensity: "Mittel",
         },
         {
-          day: "Saturday",
-          activity: "Running",
-          description: "Easy run",
-          duration: "30 minutes",
-          intensity: "Low",
+          day: "Samstag",
+          activity: "Laufen",
+          description: "Leichtes Laufen",
+          duration: "30 Minuten",
+          intensity: "Niedrig",
         },
         {
-          day: "Sunday",
-          activity: "Rest",
-          description: "Rest day",
+          day: "Sonntag",
+          activity: "Ruhepause",
+          description: "Ruhetag",
           duration: "N/A",
           intensity: "N/A",
         },
@@ -181,51 +252,51 @@ const examplePlan = {
       week: 2,
       sessions: [
         {
-          day: "Monday",
-          activity: "Swimming",
-          description: "Endurance swim",
-          duration: "45 minutes",
-          intensity: "Medium",
+          day: "Montag",
+          activity: "Schwimmen",
+          description: "Ausdauerschwimmen",
+          duration: "45 Minuten",
+          intensity: "Mittel",
         },
         {
-          day: "Tuesday",
-          activity: "Cycling",
-          description: "Hill repeats",
-          duration: "1 hour",
-          intensity: "High",
+          day: "Dienstag",
+          activity: "Radfahren",
+          description: "Bergwiederholungen",
+          duration: "1 Stunde",
+          intensity: "Hoch",
         },
         {
-          day: "Wednesday",
-          activity: "Running",
-          description: "Tempo run",
-          duration: "1 hour",
-          intensity: "High",
+          day: "Mittwoch",
+          activity: "Laufen",
+          description: "Tempotraining",
+          duration: "1 Stunde",
+          intensity: "Hoch",
         },
         {
-          day: "Thursday",
-          activity: "Rest",
-          description: "Rest day",
+          day: "Donnerstag",
+          activity: "Ruhepause",
+          description: "Ruhetag",
           duration: "N/A",
           intensity: "N/A",
         },
         {
-          day: "Friday",
-          activity: "Cycling",
-          description: "Recovery ride",
-          duration: "45 minutes",
-          intensity: "Low",
+          day: "Freitag",
+          activity: "Radfahren",
+          description: "Erholungsfahrt",
+          duration: "45 Minuten",
+          intensity: "Niedrig",
         },
         {
-          day: "Saturday",
-          activity: "Running",
-          description: "Long run",
-          duration: "1.5 hours",
-          intensity: "Medium",
+          day: "Samstag",
+          activity: "Laufen",
+          description: "Langer Lauf",
+          duration: "1,5 Stunden",
+          intensity: "Mittel",
         },
         {
-          day: "Sunday",
-          activity: "Rest",
-          description: "Rest day",
+          day: "Sonntag",
+          activity: "Ruhepause",
+          description: "Ruhetag",
           duration: "N/A",
           intensity: "N/A",
         },
