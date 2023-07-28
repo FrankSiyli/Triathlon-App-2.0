@@ -59,8 +59,8 @@ const Page = () => {
         <div className="">
           <div className="max-w-xl mx-auto flex flex-col items-center justify-center">
             {showAlert && (
-              <div className="alert alert-info max-w-md h-10 bg-first absolute flex justify-center m-10">
-                <span>Bitte trage deine FTP ein.</span>
+              <div className="alert alert-info fixed inset-x-0 inset-y-3 max-w-md h-10 bg-first  flex justify-center ">
+                <span>Bitte trage deine FTP ein (50-500)</span>
               </div>
             )}
             <label className="label mt-10 ">

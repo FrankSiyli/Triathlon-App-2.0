@@ -40,7 +40,7 @@ function Page() {
               />
             </svg>
             {showAlert && (
-              <div className="alert alert-info w-40 absolute">
+              <div className="alert alert-info fixed inset-x-0 inset-y-3 max-w-md h-10 bg-first  flex justify-center ">
                 <span>Coming soon</span>
               </div>
             )}
