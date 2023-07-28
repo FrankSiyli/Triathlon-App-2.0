@@ -7,7 +7,7 @@ function Page() {
   return (
     <>
       <div className="flex max-w-xl mx-auto">
-        <button className="btn btn-sm pointer-events-none border-first  bg-third m-3  text-first">
+        <button className="btn btn-sm pointer-events-none border-first/50  bg-third m-3  text-first">
           Pläne
         </button>
       </div>
@@ -15,7 +15,7 @@ function Page() {
       <div className="flex flex-col items-center  mt-10 gap-5  max-w-xl mx-auto  ">
         <Link
           href="/plans/searchplans"
-          className="bg-second w-72 h-20 flex justify-between  border-l  items-center p-3 gap-3  rounded-md text-xl text-first"
+          className="bg-second w-72 h-20 flex justify-between  border-l border-first/30  items-center p-3 gap-3  rounded-md text-xl text-first"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ function Page() {
         </Link>
         <Link
           href="/plans/myplans"
-          className="bg-second w-72 h-20 flex justify-between  border-l  items-center p-3 gap-3  rounded-md text-xl text-first"
+          className="bg-second w-72 h-20 flex justify-between  border-l border-first/30 items-center p-3 gap-3  rounded-md text-xl text-first"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

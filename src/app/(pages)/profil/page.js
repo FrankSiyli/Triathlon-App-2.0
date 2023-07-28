@@ -63,7 +63,7 @@ function Page() {
         <Link
           onClick={handleAlertClick_2}
           href=""
-          className="btn btn-sm  m-3 bg-third border border-first text-first"
+          className="btn btn-sm  m-3 bg-third border border-first/50 text-first"
         >
           Log in
         </Link>
@@ -77,7 +77,7 @@ function Page() {
         <Link
           onClick={handleAlertClick_2}
           href=""
-          className="btn btn-sm  m-3 bg-fourth border border-first text-first"
+          className="btn btn-sm  m-3 bg-fourth border border-first/50 text-first"
         >
           Sign up
         </Link>
@@ -85,7 +85,7 @@ function Page() {
 
       {/**-----------------------if session --> show user.name and a logout button------------------------------ */}
       {/* <div className="flex max-w-xl mx-auto">
-        <button className="btn btn-sm pointer-events-none border-first  bg-third m-5 text-xl text-first">
+        <button className="btn btn-sm pointer-events-none border-first/50  bg-third m-5 text-xl text-first">
           Hey user.name 👋
         </button>
       </div> */}
@@ -113,7 +113,7 @@ function Page() {
             />
             <button
               onClick={handleInputClick}
-              className="btn btn-sm m-3 bg-third border border-first text-first"
+              className="btn btn-sm m-3 bg-third border border-first/50 text-first"
             >
               Enter
             </button>

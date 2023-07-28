@@ -65,7 +65,7 @@ function Page() {
       </div>
 
       <div className="flex flex-col justify-center items-center mx-auto max-w-xl mt-10 ">
-        <button className="btn pointer-events-none border-first  bg-third   text-first">
+        <button className="btn pointer-events-none border-first/50 bg-third   text-first">
           <p className="text-xl ">Damen</p>
           <br />
           <p className="">HRmax = 209-(0.9 x Alter) </p>
@@ -89,7 +89,7 @@ function Page() {
         )}
         <button
           onClick={handleWomenInputClick}
-          className="btn btn-sm m-3 bg-third border border-first text-first"
+          className="btn btn-sm m-3 bg-third border border-first/50 text-first"
         >
           Berechnen
         </button>
@@ -102,7 +102,7 @@ function Page() {
       </div>
 
       <div className="flex flex-col justify-center items-center mx-auto max-w-xl  ">
-        <button className="btn pointer-events-none border-first  bg-third mt-20  text-first">
+        <button className="btn pointer-events-none border-first/50 bg-third mt-20  text-first">
           <p className="text-xl ">Herren</p>
           <br />
           <p className="">HRmax = 214-(0.8 x Alter) </p>
@@ -128,7 +128,7 @@ function Page() {
 
         <button
           onClick={handleMenInputClick}
-          className="btn btn-sm bg-third border border-first text-first"
+          className="btn btn-sm bg-third border border-first/50 text-first"
         >
           Berechnen
         </button>
