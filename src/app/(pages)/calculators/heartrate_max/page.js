@@ -48,7 +48,7 @@ function Page() {
   return (
     <>
       <BackButton href="/profil" />
-      <div className="border border-first max-w-xl mx-auto rounded-md p-4 m-1 bg-second text-center">
+      <div className="border border-first/50 max-w-xl mx-auto rounded-md p-4 m-1  text-center">
         <p>
           Einem HRmax Test sollten mehrere Monate mit strukturiertem Training
           vorangehen.
@@ -78,7 +78,7 @@ function Page() {
         <input
           type="number"
           placeholder="z.B. 185"
-          className="input  border border-third mb-3 w-full max-w-xs"
+          className="input  border border-first/50 mb-3 w-full max-w-xs"
           value={calculatorInput}
           onChange={(e) => setCalculatorInput(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -86,15 +86,15 @@ function Page() {
 
         <button
           type="submit"
-          className="btn btn-sm  mb-10 bg-third border border-first text-first"
+          className="btn btn-sm  mb-10 bg-third border border-first/50 text-first"
           id="calculateBtn"
           onClick={calculatePercentages}
         >
-          Calculate
+          Berechnen
         </button>
       </div>
-      <div className="overflow-x-auto">
-        <table className="table table-xs table-pin-rows table-pin-cols max-w-3xl  mx-auto  bg-second text-first text-center border border-first">
+      <div className="overflow-x-auto flex justify-center">
+        <table className="table table-xs table-pin-rows table-pin-cols m-1 max-w-xl   text-first text-center border border-first/50">
           <thead className="text-first">
             <tr>
               <td>Zone</td>

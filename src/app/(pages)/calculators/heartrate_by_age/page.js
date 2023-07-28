@@ -56,7 +56,7 @@ function Page() {
     <>
       <BackButton href="/profil" />
 
-      <div className="border border-first rounded-md p-4 mx-auto max-w-xl mb-5  bg-second text-center">
+      <div className="border border-first/50 rounded-md p-4 mx-auto max-w-xl mb-5  text-center">
         <p>
           Wenn du am Anfang deiner sportlichen Entwicklung stehst oder nach
           einer Pause wieder einsteigen möchtest kannst du auch die Formeln
@@ -65,7 +65,7 @@ function Page() {
       </div>
 
       <div className="flex flex-col justify-center items-center mx-auto max-w-xl mt-10 ">
-        <button className="btn pointer-events-none border-first  bg-third   text-first">
+        <button className="btn pointer-events-none border-first/50 bg-third   text-first">
           <p className="text-xl ">Damen</p>
           <br />
           <p className="">HRmax = 209-(0.9 x Alter) </p>
@@ -80,7 +80,7 @@ function Page() {
           value={womenCalculatorInput}
           onChange={(e) => setWomenCalculatorInput(e.target.value)}
           onKeyDown={handleWomenKeyDown}
-          className="input  border border-third w-full max-w-xs"
+          className="input  border border-first/50 w-full max-w-xs"
         />
         {womenShowAlert && (
           <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
@@ -89,20 +89,20 @@ function Page() {
         )}
         <button
           onClick={handleWomenInputClick}
-          className="btn btn-sm m-3 bg-third border border-first text-first"
+          className="btn btn-sm m-3 bg-third border border-first/50 text-first"
         >
-          Calculate
+          Berechnen
         </button>
         {womenCalculatedHr && (
           <div className="border border-first bg-second text-center text-md p-2 rounded-md">
             Dein berechneter Maximalpuls:{" "}
-            <p className="text-xl text-third">{womenCalculatedHr}</p>
+            <p className="text-xl ">{womenCalculatedHr}</p>
           </div>
         )}
       </div>
 
       <div className="flex flex-col justify-center items-center mx-auto max-w-xl  ">
-        <button className="btn pointer-events-none border-first  bg-third mt-20  text-first">
+        <button className="btn pointer-events-none border-first/50 bg-third mt-20  text-first">
           <p className="text-xl ">Herren</p>
           <br />
           <p className="">HRmax = 214-(0.8 x Alter) </p>
@@ -123,23 +123,23 @@ function Page() {
           value={menCalculatorInput}
           onChange={(e) => setMenCalculatorInput(e.target.value)}
           onKeyDown={handleMenKeyDown}
-          className="input  border border-third mb-3 w-full max-w-xs"
+          className="input  border border-first/50 mb-3 w-full max-w-xs"
         />
 
         <button
           onClick={handleMenInputClick}
-          className="btn btn-sm bg-third border border-first text-first"
+          className="btn btn-sm bg-third border border-first/50 text-first"
         >
-          Calculate
+          Berechnen
         </button>
         {menCalculatedHr && (
           <div className="border border-first bg-second text-center text-md m-3 p-2 rounded-md">
             Dein berechneter Maximalpuls:{" "}
-            <p className="text-xl text-third">{menCalculatedHr}</p>
+            <p className="text-xl ">{menCalculatedHr}</p>
           </div>
         )}
       </div>
-      <div className="border border-first max-w-xl mx-auto rounded-md p-4 mt-20 m-1 bg-second text-center">
+      <div className="border border-first/50 max-w-xl mx-auto rounded-md p-4 mt-20 m-1  text-center">
         <p>
           Einem HRmax Test sollten mehrere Monate mit strukturiertem Training
           vorangehen.

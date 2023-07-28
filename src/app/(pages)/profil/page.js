@@ -63,7 +63,7 @@ function Page() {
         <Link
           onClick={handleAlertClick_2}
           href=""
-          className="btn btn-sm  m-3 bg-third border border-first text-first"
+          className="btn btn-sm  m-3 bg-third border border-first/50 text-first"
         >
           Log in
         </Link>
@@ -77,7 +77,7 @@ function Page() {
         <Link
           onClick={handleAlertClick_2}
           href=""
-          className="btn btn-sm  m-3 bg-fourth border border-first text-first"
+          className="btn btn-sm  m-3 bg-fourth border border-first/50 text-first"
         >
           Sign up
         </Link>
@@ -85,7 +85,7 @@ function Page() {
 
       {/**-----------------------if session --> show user.name and a logout button------------------------------ */}
       {/* <div className="flex max-w-xl mx-auto">
-        <button className="btn btn-sm pointer-events-none border-first  bg-third m-5 text-xl text-first">
+        <button className="btn btn-sm pointer-events-none border-first/50  bg-third m-5 text-xl text-first">
           Hey user.name 👋
         </button>
       </div> */}
@@ -109,11 +109,11 @@ function Page() {
               value={calculatorInput}
               onChange={(e) => setCalculatorInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="input  border border-third w-full max-w-xs"
+              className="input  border border-first/50 w-full max-w-xs"
             />
             <button
               onClick={handleInputClick}
-              className="btn btn-sm m-3 bg-third border border-first text-first"
+              className="btn btn-sm m-3 bg-third border border-first/50 text-first"
             >
               Enter
             </button>
@@ -134,24 +134,24 @@ function Page() {
           </>
         )}
 
-        <div className="border border-third rounded-md text-center p-3 mt-20  bg-second">
+        <div className="border border-first/50 rounded-md text-center p-3 mt-20  ">
           <p className="mt-3">Du kennst deinen Maximalpuls nicht?</p>
           <p>Kein Problem, hier findest du Informationen.</p>
           <div className="flex flex-col items-center mt-5">
             <Link
-              className=" text-third underline text-xl"
+              className="underline  underline-offset-2 "
               href="/calculators/heartrate_by_age"
             >
               HRmax nach Alter
             </Link>
             <Link
-              className=" text-third underline text-xl m-5"
+              className="underline  underline-offset-2  m-5"
               href="/calculators/heartrate_max"
             >
               Puls Zonen
             </Link>
             <Link
-              className=" text-third underline text-xl"
+              className="underline  underline-offset-2 "
               href="/calculators/power_watt"
             >
               Watt Zonen

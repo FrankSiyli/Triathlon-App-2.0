@@ -16,12 +16,12 @@ function Page() {
     <>
       <BackButton href="/plans" />
 
-      <div className="flex flex-col items-center  mt-10 gap-5 ">
+      <div className="flex flex-col items-center  mt-10 gap-5  max-w-xl mx-auto  ">
         {kindOfSport.map((item) => (
           <Link
             onClick={handleAlertClick}
             href=""
-            className="bg-second w-72 h-20 flex justify-around items-center p-3 gap-3  rounded-md text-xl text-first"
+            className=" w-72 h-20 flex justify-between  border border-first/30 items-center p-3 gap-3  rounded-md text-xl text-first"
             key={uuidv1()}
           >
             {item}

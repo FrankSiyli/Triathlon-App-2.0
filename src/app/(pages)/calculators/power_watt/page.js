@@ -49,7 +49,7 @@ const Page = () => {
     <>
       <BackButton href="/profil" />
 
-      <div className="border border-first rounded-md p-4 max-w-xl mx-auto mb-5  bg-second text-center">
+      <div className="border border-first/50 rounded-md p-4 max-w-xl mx-auto mb-5   text-center">
         <p>
           Du hast deinen FTP Wert bereits auf einer smarten Rolle ermittelt?
         </p>
@@ -75,19 +75,19 @@ const Page = () => {
               value={calculatorInput}
               onChange={(e) => setCalculatorInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="input  border border-third mb-3 w-full max-w-xs"
+              className="input  border border-first/50 mb-3 w-full max-w-xs"
             />
 
             <button
-              className="btn btn-sm  mb-10 bg-third border border-first text-first"
+              className="btn btn-sm  mb-10 bg-third border border-first/50 text-first"
               onClick={calculateWattZones}
             >
-              Calculate
+              Berechnen
             </button>
           </div>
         </div>
-        <div className="overflow-x-auto">
-          <table className="table table-xs table-pin-rows table-pin-cols max-w-xl  mx-auto  bg-second text-first text-center border border-first">
+        <div className="overflow-x-auto flex justify-center">
+          <table className="table table-xs table-pin-rows table-pin-cols m-1 max-w-xl  text-first text-center border border-first">
             <thead className="text-first">
               <tr>
                 <td>Zone</td>
