@@ -70,11 +70,7 @@ function Page() {
           <br />
           <p className="">HRmax = 209-(0.9 x Alter) </p>
         </button>
-        {womenShowAlert && (
-          <div className="alert alert-info max-w-md h-10 bg-first absolute flex justify-center m-10">
-            <span>Bitte trage dein Alter ein.</span>
-          </div>
-        )}
+
         <label className="label  ">
           <span className="label-text-alt text-first text-xl">Dein Alter</span>
         </label>
@@ -86,6 +82,11 @@ function Page() {
           onKeyDown={handleWomenKeyDown}
           className="input  border border-third w-full max-w-xs"
         />
+        {womenShowAlert && (
+          <div className="alert alert-info fixed inset-x-0 inset-y-3 max-w-md h-10 bg-first  flex justify-center ">
+            <span>Bitte trage dein Alter ein (0-100)</span>
+          </div>
+        )}
         <button
           onClick={handleWomenInputClick}
           className="btn btn-sm m-3 bg-third border border-first text-first"
@@ -106,14 +107,15 @@ function Page() {
           <br />
           <p className="">HRmax = 214-(0.8 x Alter) </p>
         </button>
-        {menShowAlert && (
-          <div className="alert alert-info max-w-md h-10 bg-first absolute flex justify-center m-10">
-            <span>Bitte trage dein Alter ein.</span>
-          </div>
-        )}
+
         <label className="label ">
           <span className="label-text-alt text-first text-xl">Dein Alter</span>
         </label>
+        {menShowAlert && (
+          <div className="alert alert-info fixed inset-x-0 inset-y-3 max-w-md h-10 bg-first  flex justify-center ">
+            <span>Bitte trage dein Alter ein (0-100)</span>
+          </div>
+        )}
         <input
           type="number"
           maxLength={3}

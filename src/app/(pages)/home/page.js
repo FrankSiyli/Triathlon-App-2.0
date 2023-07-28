@@ -3,8 +3,16 @@ import Footer from "@/app/components/Footer/Footer";
 import "../../globals.css";
 import { v1 as uuidv1 } from "uuid";
 import { useState } from "react";
+import Link from "next/link";
 
 function Page() {
+  const [showAlert, setShowAlert] = useState(false);
+  const handleAlertClick = () => {
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  };
   const numberOfPlanWeeks = Object.keys(examplePlan.sessions).map((weekIndex) =>
     parseInt(weekIndex)
   );
@@ -101,7 +109,7 @@ function Page() {
         {/**-----------------------------------days---------------------------------- */}
         <div className="flex flex-col mx-4 items-center">
           {Object.entries(activitiesByDay).map(([day, activities]) => (
-            <div key={uuidv1()} className="collapse  max-w-xl   rounded-md">
+            <div key={uuidv1()} className="collapse  max-w-xl   rounded-md ">
               <input type="checkbox" className="peer" />
               <div className="collapse-title flex flex-row justify-between  bg-second text-first  peer-checked:bg-third ">
                 <p>{day}</p>
@@ -111,7 +119,7 @@ function Page() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-6 h-6 mr-4"
                 >
                   <path
                     strokeLinecap="round"
@@ -121,22 +129,42 @@ function Page() {
                 </svg>
               </div>
               {/**-----------------------------------activities---------------------------------- */}
-              <div className="collapse-content  text-first bg-second border-first  border-b ">
+              {showAlert && (
+                <div className="alert alert-info fixed inset-x-0 inset-y-3 max-w-md h-10 bg-first  flex justify-center z-50">
+                  <span>(Next feature on my list :-)</span>
+                </div>
+              )}
+              <div className="collapse-content  text-first bg-second border-first  border-b   ">
                 {activities.map((activity) => (
-                  <div
+                  <button
+                    onClick={handleAlertClick}
                     key={uuidv1()}
-                    className="collapse  max-w-xl m-1  rounded-md "
+                    className="collapse  max-w-xl my-1  rounded-md "
                   >
                     <input type="checkbox" className="peer" />
-                    <div className="collapse-title flex flex-row justify-between   bg-second text-first  peer-checked:bg-third ">
-                      <div className="flex flex-col justify-center content-center">
+                    <div className="collapse-title flex flex-row justify-between   bg-second text-first  peer-checked:bg-second  ">
+                      <div className="flex flex-col items-start ">
                         <p className="icon-text underline underline-offset-2 ">
                           {activity[0]}
                         </p>
                         <p>{activity[1]}</p>
                       </div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6 mt-2"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
                     </div>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
