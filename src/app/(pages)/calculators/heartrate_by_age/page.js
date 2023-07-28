@@ -91,7 +91,7 @@ function Page() {
           onClick={handleWomenInputClick}
           className="btn btn-sm m-3 bg-third border border-first text-first"
         >
-          Calculate
+          Berechnen
         </button>
         {womenCalculatedHr && (
           <div className="border border-first bg-second text-center text-md p-2 rounded-md">
@@ -130,7 +130,7 @@ function Page() {
           onClick={handleMenInputClick}
           className="btn btn-sm bg-third border border-first text-first"
         >
-          Calculate
+          Berechnen
         </button>
         {menCalculatedHr && (
           <div className="border border-first bg-second text-center text-md m-3 p-2 rounded-md">

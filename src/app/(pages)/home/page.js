@@ -109,7 +109,10 @@ function Page() {
         {/**-----------------------------------days---------------------------------- */}
         <div className="flex flex-col mx-4 items-center">
           {Object.entries(activitiesByDay).map(([day, activities]) => (
-            <div key={uuidv1()} className="collapse  max-w-xl   rounded-md ">
+            <div
+              key={uuidv1()}
+              className="collapse  max-w-xl rounded-md border-l gap-1"
+            >
               <input type="checkbox" className="peer" />
               <div className="collapse-title flex flex-row justify-between  bg-second text-first  peer-checked:bg-third ">
                 <p>{day}</p>
@@ -134,7 +137,7 @@ function Page() {
                   <span>(Next feature on my list :-)</span>
                 </div>
               )}
-              <div className="collapse-content  text-first bg-second border-first  border-b   ">
+              <div className="collapse-content  text-first bg-second    ">
                 {activities.map((activity) => (
                   <button
                     onClick={handleAlertClick}
@@ -142,7 +145,7 @@ function Page() {
                     className="collapse  max-w-xl my-1  rounded-md "
                   >
                     <input type="checkbox" className="peer" />
-                    <div className="collapse-title flex flex-row justify-between   bg-second text-first  peer-checked:bg-second  ">
+                    <div className="collapse-title flex flex-row justify-between   bg-second text-first border-l peer-checked:bg-second  ">
                       <div className="flex flex-col items-start ">
                         <p className="icon-text underline underline-offset-2 ">
                           {activity[0]}
