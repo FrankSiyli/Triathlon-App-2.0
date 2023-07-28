@@ -93,8 +93,8 @@ function Page() {
           Berechnen
         </button>
       </div>
-      <div className="overflow-x-auto">
-        <table className="table table-xs table-pin-rows table-pin-cols max-w-3xl  mx-auto  bg-second text-first text-center border border-first">
+      <div className="overflow-x-auto flex justify-center">
+        <table className="table table-xs table-pin-rows table-pin-cols m-1 max-w-xl   text-first text-center border border-first/50">
           <thead className="text-first">
             <tr>
               <td>Zone</td>
