@@ -130,7 +130,7 @@ function Page() {
               </div>
               {/**-----------------------------------activities---------------------------------- */}
               {showAlert && (
-                <div className="alert alert-info fixed inset-x-0 inset-y-3 max-w-md h-10 bg-first  flex justify-center z-50">
+                <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center z-50">
                   <span>(Next feature on my list :-)</span>
                 </div>
               )}
