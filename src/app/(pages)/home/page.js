@@ -39,16 +39,12 @@ function Page() {
     acc[day].push([activity, description]);
     return acc;
   }, {});
-  console.log(activitiesByDay);
 
   return (
     <>
       <div className="flex flex-col max-w-xl mx-auto">
-        <button className="btn btn-sm pointer-events-none  border-first/50  bg-third m-5  text-first">
+        <button className="btn btn-sm pointer-events-none mx-auto  border-first/50  bg-third m-5  text-first">
           {examplePlan.name}
-        </button>
-        <button className="btn btn-sm pointer-events-none w-32  border-first/50  bg-third  ml-5 text-first">
-          {examplePlan.duration} Wochen
         </button>
       </div>
 
@@ -79,7 +75,7 @@ function Page() {
               </svg>
             )}
           </button>
-          <p>{`Woche ${currentWeek}`}</p>
+          <p>{`Woche ${currentWeek} / ${numberOfPlanWeeks.length}`}</p>
           <button
             onClick={handleNextClick}
             className="h-9 w-16 flex justify-center items-center bg-third rounded-md active:scale-90"
@@ -109,10 +105,7 @@ function Page() {
         {/**-----------------------------------days---------------------------------- */}
         <div className="flex flex-col mx-4 items-center">
           {Object.entries(activitiesByDay).map(([day, activities]) => (
-            <div
-              key={uuidv1()}
-              className="collapse  max-w-xl rounded-md border-l border-first/30 gap-1"
-            >
+            <div key={uuidv1()} className="collapse  max-w-xl rounded-md ">
               <input type="checkbox" className="peer" />
               <div className="collapse-title flex flex-row justify-between   text-first   ">
                 <p>{day}</p>
@@ -122,7 +115,7 @@ function Page() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 mr-4"
+                  className="w-6 h-6"
                 >
                   <path
                     strokeLinecap="round"
@@ -145,7 +138,7 @@ function Page() {
                     className="collapse  max-w-xl my-1  rounded-md "
                   >
                     <input type="checkbox" className="peer" />
-                    <div className="collapse-title flex flex-row justify-between  text-first border  border-first/30 peer-checked:bg-second  ">
+                    <div className="collapse-title flex flex-row justify-between  text-first bg-second  ">
                       <div className="flex flex-col items-start ">
                         <p className="icon-text underline underline-offset-2 ">
                           {activity[0]}
