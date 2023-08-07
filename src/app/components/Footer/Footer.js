@@ -5,13 +5,12 @@ import { usePathname } from "next/navigation";
 
 function Footer() {
   const currentRoute = usePathname();
-  const activeStyle =
-    "bg-fourth rounded-md border border-first/50 scale-y-110 ";
-  const nonActiveStyle = "bg-third rounded-md border border-first/50";
+  const activeStyle = "bg-fourth  border border-first/50 scale-y-110 ";
+  const nonActiveStyle = "bg-third ";
 
   return (
     <div>
-      <div className="btm-nav max-w-xl mx-auto bg-#222c3787 h-10 icon-text gap-1 z-50">
+      <div className="btm-nav max-w-xl mx-auto bg-#222c3787 h-10 icon-text  z-50">
         <Link
           href="/home"
           className={currentRoute === "/home" ? activeStyle : nonActiveStyle}
