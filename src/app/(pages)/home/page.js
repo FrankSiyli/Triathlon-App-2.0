@@ -3,16 +3,23 @@ import Footer from "@/app/components/Footer/Footer";
 import "../../globals.css";
 import { v1 as uuidv1 } from "uuid";
 import { useState } from "react";
-import Link from "next/link";
+import logo from "../../../../public/images/logoSmall.png";
+import Image from "next/image";
 
 function Page() {
-  const [showAlert, setShowAlert] = useState(false);
-  const handleAlertClick = () => {
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
+  const [openOverlayIndexes, setOpenOverlayIndexes] = useState([]);
+
+  const handleToggleOverlay = (dayIndex, activityIndex) => {
+    const clickedIndex = dayIndex * 1000 + activityIndex;
+    if (openOverlayIndexes.includes(clickedIndex)) {
+      setOpenOverlayIndexes(
+        openOverlayIndexes.filter((item) => item !== clickedIndex)
+      );
+    } else {
+      setOpenOverlayIndexes([...openOverlayIndexes, clickedIndex]);
+    }
   };
+
   const numberOfPlanWeeks = Object.keys(examplePlan.sessions).map((weekIndex) =>
     parseInt(weekIndex)
   );
@@ -32,11 +39,11 @@ function Page() {
 
   const currentWeekSessions = examplePlan.sessions[currentWeek - 1].sessions;
   const activitiesByDay = currentWeekSessions.reduce((acc, session) => {
-    const { day, activity, description } = session;
+    const { day, activity, description, sessionParts } = session;
     if (!acc[day]) {
       acc[day] = [];
     }
-    acc[day].push([activity, description]);
+    acc[day].push([activity, description, sessionParts]);
     return acc;
   }, {});
 
@@ -104,7 +111,7 @@ function Page() {
 
         {/**-----------------------------------days---------------------------------- */}
         <div className="flex flex-col mx-4 items-center">
-          {Object.entries(activitiesByDay).map(([day, activities]) => (
+          {Object.entries(activitiesByDay).map(([day, activity], dayIndex) => (
             <div key={uuidv1()} className="collapse  max-w-xl rounded-md ">
               <input type="checkbox" className="peer" />
               <div className="collapse-title flex flex-row justify-between   text-first   ">
@@ -124,26 +131,71 @@ function Page() {
                   />
                 </svg>
               </div>
+
               {/**-----------------------------------activities---------------------------------- */}
-              {showAlert && (
-                <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center z-50">
-                  <span>(Next feature on my list :-)</span>
-                </div>
-              )}
+
               <div className="collapse-content  text-first     ">
-                {activities.map((activity) => (
+                {activity.map((singleActivity, activityIndex) => (
                   <button
-                    onClick={handleAlertClick}
-                    key={uuidv1()}
-                    className="collapse  max-w-xl my-1  rounded-md "
+                    onClick={() => handleToggleOverlay(dayIndex, activityIndex)}
+                    key={activityIndex}
+                    className="collapse   max-w-xl my-1  rounded-md "
                   >
                     <input type="checkbox" className="peer" />
-                    <div className="collapse-title flex flex-row justify-between  text-first bg-second  ">
-                      <div className="flex flex-col items-start ">
-                        <p className="icon-text underline underline-offset-2 ">
-                          {activity[0]}
-                        </p>
-                        <p>{activity[1]}</p>
+                    <div className="collapse-title  flex flex-row justify-between  text-first bg-second  ">
+                      <div className=" text-left">
+                        <div>
+                          <p className="underline underline-offset-2 text-sm">
+                            {singleActivity[0]}
+                          </p>
+
+                          <p>{singleActivity[1]}</p>
+
+                          {/*----------------------------------session overlay----------------------------------- */}
+
+                          {singleActivity[2].map(
+                            (sessionSection) =>
+                              openOverlayIndexes.includes(
+                                dayIndex * 1000 + activityIndex
+                              ) && (
+                                <div
+                                  key={activityIndex}
+                                  className="alert alert-info  fixed top-0 left-0 z-50  text-xl h-full w-full rounded-none overlay-background text-first flex flex-col justify-center "
+                                >
+                                  <Image
+                                    src={logo}
+                                    alt="logo"
+                                    className="fixed top-0 left-0 m-3  "
+                                    width={100}
+                                    height={100}
+                                  />
+                                  <div className="fixed top-0 right-0 m-8">
+                                    <p className="underline underline-offset-2 text-sm">
+                                      {singleActivity[0]}
+                                    </p>
+                                    <p>{singleActivity[1]}</p>
+                                  </div>
+                                  <div className="mt-10">
+                                    <p className="underline">Warm up:</p>
+                                    <p>{sessionSection.warmUp}</p>
+                                    <br />
+                                    <p className="underline">Hauptteil:</p>
+                                    {sessionSection?.main.map(
+                                      (singleSection) => (
+                                        <p key={uuidv1()}>{singleSection}</p>
+                                      )
+                                    )}
+                                    <br />
+                                    <p className="underline">Cool down:</p>
+                                    <p>{sessionSection.coolDown}</p>
+                                  </div>
+                                  <p className="absolute bottom-0 text-sm">
+                                    click anywhere
+                                  </p>
+                                </div>
+                              )
+                          )}
+                        </div>
                       </div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -172,6 +224,10 @@ function Page() {
     </>
   );
 }
+const bikeTreshold = 190;
+const runTreshold = 200;
+const swim100mPace = 120;
+
 const examplePlan = {
   name: "Beispielplan",
   duration: 2,
@@ -182,93 +238,220 @@ const examplePlan = {
         {
           day: "Montag",
           activity: "Schwimmen",
-          description: "Aufwärmübungen",
-          duration: "30 Minuten",
-          intensity: "Niedrig",
+          description: "500 / 1000 / 500",
+          sessionParts: [
+            {
+              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              main: [
+                `500 m @ ${0.8 * swim100mPace}s/100m `,
+                `1000 m @ ${0.7 * swim100mPace}s/100m `,
+                `500 m @ ${0.8 * swim100mPace}s/100m`,
+              ],
+              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+            },
+          ],
         },
         {
           day: "Montag",
-          activity: "Yoga",
-          description: "Entspannungsübungen",
-          duration: "20 Minuten",
-          intensity: "Niedrig",
+          activity: "Laufen",
+          description: "3 x 10 min",
+          sessionParts: [
+            {
+              warmUp: `10 min @ ${0.7 * runTreshold}bpm`,
+              main: [
+                `10 min @ ${0.8 * runTreshold}bpm`,
+                `10 min @ ${0.9 * runTreshold}bpm`,
+                `10 min @ ${0.8 * runTreshold}bpm`,
+              ],
+              coolDown: `5 min @ ${0.7 * runTreshold}bpm`,
+            },
+          ],
         },
         {
           day: "Montag",
           activity: "Stabilitätstraining",
           description: "Core-Übungen",
-          duration: "15 Minuten",
-          intensity: "Mittel",
+          sessionParts: [
+            {
+              warmUp: "30 sek hüpfen",
+              main: [
+                `1 min Hampelmann`,
+                `1 min Liegestütz`,
+                `1 min Plank`,
+                `1 min hampelmann`,
+                `1 min Liegestütz`,
+              ],
+              coolDown: "2 min liegen und tief ein und ausatmen",
+            },
+          ],
         },
         {
           day: "Dienstag",
           activity: "Radfahren",
-          description: "Leichtes Fahren",
-          duration: "1 Stunde",
-          intensity: "Niedrig",
+          description: "3 x 10 min",
+          sessionParts: [
+            {
+              warmUp: `10 min @ ${0.7 * bikeTreshold}bpm`,
+              main: [
+                `10 min @ ${0.8 * bikeTreshold}bpm`,
+                `10 min @ ${0.9 * bikeTreshold}bpm`,
+                `10 min @ ${0.8 * bikeTreshold}bpm`,
+              ],
+              coolDown: `5 min @ ${0.7 * bikeTreshold}bpm`,
+            },
+          ],
         },
         {
           day: "Dienstag",
           activity: "Yoga",
           description: "Dehnungsübungen",
-          duration: "25 Minuten",
-          intensity: "Niedrig",
+          sessionParts: [
+            {
+              warmUp: "2 min Kopf und Schulterkreisen im sitzen",
+              main: [
+                `1 min Katze`,
+                `1 min Hund`,
+                `1 min Baby`,
+                `1 min Krähe`,
+                `1 min Oktopus`,
+              ],
+              coolDown: "2 min liegen und tief ein und ausatmen",
+            },
+          ],
         },
         {
           day: "Dienstag",
           activity: "Stabilitätstraining",
-          description: "Gleichgewichtsübungen",
-          duration: "15 Minuten",
-          intensity: "Mittel",
+          description: "Core-Übungen",
+          sessionParts: [
+            {
+              warmUp: "30 sek hüpfen",
+              main: [
+                `1 min Hampelmann`,
+                `1 min Liegestütz`,
+                `1 min Plank`,
+                `1 min hampelmann`,
+                `1 min Liegestütz`,
+              ],
+              coolDown: "2 min liegen und tief ein und ausatmen",
+            },
+          ],
         },
         {
           day: "Mittwoch",
           activity: "Laufen",
-          description: "Intervalltraining",
-          duration: "45 Minuten",
-          intensity: "Mittel",
+          description: "3 x 10 min",
+          sessionParts: [
+            {
+              warmUp: `10 min @ ${0.7 * runTreshold}bpm`,
+              main: [
+                `10 min @ ${0.8 * runTreshold}bpm`,
+                `10 min @ ${0.9 * runTreshold}bpm`,
+                `10 min @ ${0.8 * runTreshold}bpm`,
+              ],
+              coolDown: `5 min @ ${0.7 * runTreshold}bpm`,
+            },
+          ],
         },
         {
           day: "Mittwoch",
           activity: "Yoga",
-          description: "Atemübungen",
-          duration: "20 Minuten",
-          intensity: "Niedrig",
+          description: "Dehnungsübungen",
+          sessionParts: [
+            {
+              warmUp: "2 min Kopf und Schulterkreisen im sitzen",
+              main: [
+                `1 min Katze`,
+                `1 min Hund`,
+                `1 min Baby`,
+                `1 min Krähe`,
+                `1 min Oktopus`,
+              ],
+              coolDown: "2 min liegen und tief ein und ausatmen",
+            },
+          ],
         },
         {
           day: "Mittwoch",
           activity: "Stabilitätstraining",
-          description: "Beckenstabilisation",
-          duration: "15 Minuten",
-          intensity: "Mittel",
+          description: "Core-Übungen",
+          sessionParts: [
+            {
+              warmUp: "30 sek hüpfen",
+              main: [
+                `1 min Hampelmann`,
+                `1 min Liegestütz`,
+                `1 min Plank`,
+                `1 min hampelmann`,
+                `1 min Liegestütz`,
+              ],
+              coolDown: "2 min liegen und tief ein und ausatmen",
+            },
+          ],
         },
         {
           day: "Donnerstag",
-          activity: "Ruhepause",
-          description: "Ruhetag",
-          duration: "N/A",
-          intensity: "N/A",
+          activity: "schwimmen",
+          description: "500 / 1000 / 500",
+          sessionParts: [
+            {
+              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              main: [
+                `500 m @ ${0.8 * swim100mPace}s/100m `,
+                `1000 m @ ${0.7 * swim100mPace}s/100m `,
+                `500 m @ ${0.8 * swim100mPace}s/100m`,
+              ],
+              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+            },
+          ],
         },
         {
           day: "Freitag",
           activity: "Radfahren",
-          description: "Lange Radtour",
-          duration: "1,5 Stunden",
-          intensity: "Mittel",
+          description: "3 x 10 min",
+          sessionParts: [
+            {
+              warmUp: `10 min @ ${0.7 * bikeTreshold}bpm`,
+              main: [
+                `10 min @ ${0.8 * bikeTreshold}bpm`,
+                `10 min @ ${0.9 * bikeTreshold}bpm`,
+                `10 min @ ${0.8 * bikeTreshold}bpm`,
+              ],
+              coolDown: `5 min @ ${0.7 * bikeTreshold}bpm`,
+            },
+          ],
         },
         {
           day: "Samstag",
           activity: "Laufen",
-          description: "Leichtes Laufen",
-          duration: "30 Minuten",
-          intensity: "Niedrig",
+          description: "3 x 10 min",
+          sessionParts: [
+            {
+              warmUp: `10 min @ ${0.7 * runTreshold}bpm`,
+              main: [
+                `10 min @ ${0.8 * runTreshold}bpm`,
+                `10 min @ ${0.9 * runTreshold}bpm`,
+                `10 min @ ${0.8 * runTreshold}bpm`,
+              ],
+              coolDown: `5 min @ ${0.7 * runTreshold}bpm`,
+            },
+          ],
         },
         {
           day: "Sonntag",
-          activity: "Ruhepause",
-          description: "Ruhetag",
-          duration: "N/A",
-          intensity: "N/A",
+          activity: "Schwimmen",
+          description: "500 / 1000 / 500",
+          sessionParts: [
+            {
+              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              main: [
+                `500 m @ ${0.8 * swim100mPace}s/100m `,
+                `1000 m @ ${0.7 * swim100mPace}s/100m `,
+                `500 m @ ${0.8 * swim100mPace}s/100m`,
+              ],
+              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+            },
+          ],
         },
       ],
     },
@@ -278,51 +461,114 @@ const examplePlan = {
         {
           day: "Montag",
           activity: "Schwimmen",
-          description: "Ausdauerschwimmen",
-          duration: "45 Minuten",
-          intensity: "Mittel",
+          description: "500 / 1000 / 500",
+          sessionParts: [
+            {
+              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              main: [
+                `500 m @ ${0.8 * swim100mPace}s/100m `,
+                `1000 m @ ${0.7 * swim100mPace}s/100m `,
+                `500 m @ ${0.8 * swim100mPace}s/100m`,
+              ],
+              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+            },
+          ],
         },
         {
           day: "Dienstag",
           activity: "Radfahren",
-          description: "Bergwiederholungen",
-          duration: "1 Stunde",
-          intensity: "Hoch",
+          description: "3 x 10 min",
+          sessionParts: [
+            {
+              warmUp: `10 min @ ${0.7 * bikeTreshold}bpm`,
+              main: [
+                `10 min @ ${0.8 * bikeTreshold}bpm`,
+                `10 min @ ${0.9 * bikeTreshold}bpm`,
+                `10 min @ ${0.8 * bikeTreshold}bpm`,
+              ],
+              coolDown: `5 min @ ${0.7 * bikeTreshold}bpm`,
+            },
+          ],
         },
         {
           day: "Mittwoch",
           activity: "Laufen",
-          description: "Tempotraining",
-          duration: "1 Stunde",
-          intensity: "Hoch",
+          description: "3 x 10 min",
+          sessionParts: [
+            {
+              warmUp: `10 min @ ${0.7 * runTreshold}bpm`,
+              main: [
+                `10 min @ ${0.8 * runTreshold}bpm`,
+                `10 min @ ${0.9 * runTreshold}bpm`,
+                `10 min @ ${0.8 * runTreshold}bpm`,
+              ],
+              coolDown: `5 min @ ${0.7 * runTreshold}bpm`,
+            },
+          ],
         },
         {
           day: "Donnerstag",
-          activity: "Ruhepause",
-          description: "Ruhetag",
-          duration: "N/A",
-          intensity: "N/A",
+          activity: "Schwimmen",
+          description: "500 / 1000 / 500",
+          sessionParts: [
+            {
+              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              main: [
+                `500 m @ ${0.8 * swim100mPace}s/100m `,
+                `1000 m @ ${0.7 * swim100mPace}s/100m `,
+                `500 m @ ${0.8 * swim100mPace}s/100m`,
+              ],
+              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+            },
+          ],
         },
         {
           day: "Freitag",
           activity: "Radfahren",
-          description: "Erholungsfahrt",
-          duration: "45 Minuten",
-          intensity: "Niedrig",
+          description: "3 x 10 min",
+          sessionParts: [
+            {
+              warmUp: `10 min @ ${0.7 * bikeTreshold}bpm`,
+              main: [
+                `10 min @ ${0.8 * bikeTreshold}bpm`,
+                `10 min @ ${0.9 * bikeTreshold}bpm`,
+                `10 min @ ${0.8 * bikeTreshold}bpm`,
+              ],
+              coolDown: `5 min @ ${0.7 * bikeTreshold}bpm`,
+            },
+          ],
         },
         {
           day: "Samstag",
           activity: "Laufen",
-          description: "Langer Lauf",
-          duration: "1,5 Stunden",
-          intensity: "Mittel",
+          description: "3 x 10 min",
+          sessionParts: [
+            {
+              warmUp: `10 min @ ${0.7 * runTreshold}bpm`,
+              main: [
+                `10 min @ ${0.8 * runTreshold}bpm`,
+                `10 min @ ${0.9 * runTreshold}bpm`,
+                `10 min @ ${0.8 * runTreshold}bpm`,
+              ],
+              coolDown: `5 min @ ${0.7 * runTreshold}bpm`,
+            },
+          ],
         },
         {
           day: "Sonntag",
-          activity: "Ruhepause",
-          description: "Ruhetag",
-          duration: "N/A",
-          intensity: "N/A",
+          activity: "Schwimmen",
+          description: "500 / 1000 / 500",
+          sessionParts: [
+            {
+              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              main: [
+                `500 m @ ${0.8 * swim100mPace}s/100m `,
+                `1000 m @ ${0.7 * swim100mPace}s/100m `,
+                `500 m @ ${0.8 * swim100mPace}s/100m`,
+              ],
+              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+            },
+          ],
         },
       ],
     },
