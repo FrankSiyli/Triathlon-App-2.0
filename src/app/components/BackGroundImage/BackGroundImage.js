@@ -8,7 +8,7 @@ function BackGroundImage() {
 
   useEffect(() => {
     setTimeout(() => {
-      setLogoOpacity(0.02);
+      setLogoOpacity(0.01);
     }, 2000);
   }, []);
 

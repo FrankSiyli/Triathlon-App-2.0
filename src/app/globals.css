@@ -44,6 +44,8 @@ body {
   font-size: 0.6rem;
 }
 
+/*----------------tables----------------------*/
+
 input[type="number"] {
   background-color: var(--second);
   text-align: center;
@@ -83,4 +85,28 @@ tr {
 }
 #zone5 {
   background-color: rgba(255, 0, 0, 0.7);
+}
+
+/*----------------session overlay----------------------*/
+
+.overlay-background {
+  background-image: linear-gradient(
+    to right bottom,
+    #1d2732,
+    #232f3c,
+    #293746,
+    #2f3f50,
+    #2f3f50,
+    #293746,
+    #232f3c,
+    #1d2732
+  );
+}
+
+.overlay-visible {
+  display: block;
+}
+
+.overlay-hidden {
+  display: none;
 }
