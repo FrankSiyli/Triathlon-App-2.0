@@ -160,7 +160,7 @@ function Page() {
                               ) && (
                                 <div
                                   key={activityIndex}
-                                  className="alert alert-info  fixed top-0 left-0 z-50  text-xl h-full w-full rounded-none overlay-background text-first flex flex-col justify-center "
+                                  className="fixed top-0 left-0  z-50 overflow-auto text-xl max-h-full h-full w-full rounded-none overlay-background text-first flex flex-col justify-center items-center text-center"
                                 >
                                   <Image
                                     src={logo}
@@ -175,7 +175,7 @@ function Page() {
                                     </p>
                                     <p>{singleActivity[1]}</p>
                                   </div>
-                                  <div className="mt-10">
+                                  <div className="mt-80 mb-20">
                                     <p className="underline">Warm up:</p>
                                     <p>{sessionSection.warmUp}</p>
                                     <br />
@@ -188,10 +188,10 @@ function Page() {
                                     <br />
                                     <p className="underline">Cool down:</p>
                                     <p>{sessionSection.coolDown}</p>
+                                    <p className="m-10 text-sm">
+                                      click anywhere
+                                    </p>
                                   </div>
-                                  <p className="absolute bottom-0 text-sm">
-                                    click anywhere
-                                  </p>
                                 </div>
                               )
                           )}
