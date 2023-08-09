@@ -56,7 +56,7 @@ function Page() {
     <>
       <BackButton href="/profil" />
 
-      <div className="border border-first/50 rounded-md p-4 mx-auto max-w-xl mb-5  text-center">
+      <div className="w-11/12 border border-first/50 rounded-md p-4 mx-auto max-w-xl mb-5  text-center">
         <p>
           Wenn du am Anfang deiner sportlichen Entwicklung stehst oder nach
           einer Pause wieder einsteigen möchtest kannst du auch die Formeln
@@ -139,7 +139,7 @@ function Page() {
           </div>
         )}
       </div>
-      <div className="border border-first/50 max-w-xl mx-auto rounded-md p-4 mt-20 m-1  text-center">
+      <div className="w-11/12 border border-first/50 max-w-xl mx-auto rounded-md p-4 mt-20 m-1  text-center">
         <p>
           Einem HRmax Test sollten mehrere Monate mit strukturiertem Training
           vorangehen.

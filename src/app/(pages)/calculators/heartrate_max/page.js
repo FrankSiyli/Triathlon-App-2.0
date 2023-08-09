@@ -48,7 +48,7 @@ function Page() {
   return (
     <>
       <BackButton href="/profil" />
-      <div className="border border-first/50 max-w-xl mx-auto rounded-md p-4 m-1  text-center">
+      <div className="w-11/12 border border-first/50 max-w-xl mx-auto rounded-md p-4 m-1  text-center">
         <p>
           Einem HRmax Test sollten mehrere Monate mit strukturiertem Training
           vorangehen.

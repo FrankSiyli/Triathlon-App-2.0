@@ -49,7 +49,7 @@ const Page = () => {
     <>
       <BackButton href="/profil" />
 
-      <div className="border border-first/50 rounded-md p-4 max-w-xl mx-auto mb-5   text-center">
+      <div className="w-11/12 border border-first/50 rounded-md p-4 max-w-xl mx-auto mb-5   text-center">
         <p>
           Du hast deinen FTP Wert bereits auf einer smarten Rolle ermittelt?
         </p>
