@@ -118,12 +118,12 @@ function Page() {
         </div>
 
         {/**-----------------------------------days---------------------------------- */}
-        <div className="flex flex-col items-center max-w-xl">
+        <div className="flex flex-col items-center">
           {Object.entries(activitiesByDay).map(([day, activity], dayIndex) => (
             <div key={uuidv1()}>
               <div
                 onClick={() => toggleDay(dayIndex)}
-                className="flex flex-row justify-between w-screen  my-3 mx-auto  text-first   "
+                className="flex flex-row justify-between w-screen max-w-xl  my-3 mx-auto  text-first   "
               >
                 <p className="ml-5">{day}</p>
                 <svg
@@ -169,7 +169,7 @@ function Page() {
                                 ) && (
                                   <div
                                     key={activityIndex}
-                                    className="fixed top-0 left-0  z-50 overflow-auto text-xl max-h-screen h-screen w-screen rounded-none overlay-background text-first flex flex-col justify-center items-center text-center"
+                                    className="fixed top-0 left-0 right-0 bottom-0  z-50 overflow-auto text-xl max-h-screen h-screen w-screen rounded-none overlay-background text-first flex flex-col justify-center items-center text-center"
                                   >
                                     <div className="">
                                       <Image
