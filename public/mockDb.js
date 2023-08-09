@@ -1,9 +1,10 @@
-const bikeTreshold = 190;
-const runTreshold = 200;
-const swim100mPace = 120;
+import { formatTime, tresholdsAndPaces } from "@/app/components/utils";
+
+const { swim100mPace, runTreshold, bikeTreshold } = tresholdsAndPaces();
 
 const examplePlan = {
   name: "Beispielplan",
+  price: "free",
   duration: 2,
   sessions: [
     {
@@ -15,13 +16,13 @@ const examplePlan = {
           description: "500 / 1000 / 500",
           sessionParts: [
             {
-              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              warmUp: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
               main: [
-                `500 m @ ${0.8 * swim100mPace}s/100m `,
-                `1000 m @ ${0.7 * swim100mPace}s/100m `,
-                `500 m @ ${0.8 * swim100mPace}s/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
+                `1000 m @ ${formatTime(0.9 * swim100mPace)} min/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
               ],
-              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              coolDown: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
             },
           ],
         },
@@ -169,13 +170,13 @@ const examplePlan = {
           description: "500 / 1000 / 500",
           sessionParts: [
             {
-              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              warmUp: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
               main: [
-                `500 m @ ${0.8 * swim100mPace}s/100m `,
-                `1000 m @ ${0.7 * swim100mPace}s/100m `,
-                `500 m @ ${0.8 * swim100mPace}s/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
+                `1000 m @ ${formatTime(0.9 * swim100mPace)} min/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
               ],
-              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              coolDown: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
             },
           ],
         },
@@ -217,13 +218,13 @@ const examplePlan = {
           description: "500 / 1000 / 500",
           sessionParts: [
             {
-              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              warmUp: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
               main: [
-                `500 m @ ${0.8 * swim100mPace}s/100m `,
-                `1000 m @ ${0.7 * swim100mPace}s/100m `,
-                `500 m @ ${0.8 * swim100mPace}s/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
+                `1000 m @ ${formatTime(0.9 * swim100mPace)} min/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
               ],
-              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              coolDown: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
             },
           ],
         },
@@ -238,13 +239,13 @@ const examplePlan = {
           description: "500 / 1000 / 500",
           sessionParts: [
             {
-              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              warmUp: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
               main: [
-                `500 m @ ${0.8 * swim100mPace}s/100m `,
-                `1000 m @ ${0.7 * swim100mPace}s/100m `,
-                `500 m @ ${0.8 * swim100mPace}s/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
+                `1000 m @ ${formatTime(0.9 * swim100mPace)} min/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
               ],
-              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              coolDown: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
             },
           ],
         },
@@ -286,13 +287,13 @@ const examplePlan = {
           description: "500 / 1000 / 500",
           sessionParts: [
             {
-              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              warmUp: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
               main: [
-                `500 m @ ${0.8 * swim100mPace}s/100m `,
-                `1000 m @ ${0.7 * swim100mPace}s/100m `,
-                `500 m @ ${0.8 * swim100mPace}s/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
+                `1000 m @ ${formatTime(0.9 * swim100mPace)} min/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
               ],
-              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              coolDown: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
             },
           ],
         },
@@ -334,13 +335,13 @@ const examplePlan = {
           description: "500 / 1000 / 500",
           sessionParts: [
             {
-              warmUp: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              warmUp: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
               main: [
-                `500 m @ ${0.8 * swim100mPace}s/100m `,
-                `1000 m @ ${0.7 * swim100mPace}s/100m `,
-                `500 m @ ${0.8 * swim100mPace}s/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
+                `1000 m @ ${formatTime(0.9 * swim100mPace)} min/100m`,
+                `500 m @ ${formatTime(1 * swim100mPace)} min/100m`,
               ],
-              coolDown: `200 m @ ${0.9 * swim100mPace}s/100m`,
+              coolDown: `200 m @ ${formatTime(1.1 * swim100mPace)} min/100m`,
             },
           ],
         },
