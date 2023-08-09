@@ -56,6 +56,11 @@ input[type="text"] {
   text-align: center;
 }
 
+input[type="time"] {
+  background-color: var(--second);
+  text-align: center;
+}
+
 td {
   height: 3rem;
   border: 1px solid var(--first);
