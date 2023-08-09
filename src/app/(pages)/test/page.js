@@ -2,13 +2,13 @@
 import React, { useState } from "react";
 
 function TestPage() {
-  const [openOverlayIndex, setOpenOverlayIndex] = useState(-1);
+  const [openOverlay, setOpenOverlay] = useState(-1);
 
   const handleToggleOverlay = (index) => {
-    if (openOverlayIndex === index) {
-      setOpenOverlayIndex(-1); // Close the overlay if already open
+    if (openOverlay === index) {
+      setOpenOverlay(-1); // Close the overlay if already open
     } else {
-      setOpenOverlayIndex(index); // Open the clicked overlay
+      setOpenOverlay(index); // Open the clicked overlay
     }
   };
 
@@ -23,7 +23,7 @@ function TestPage() {
             Day: {item.day}
           </button>
 
-          {openOverlayIndex === index && (
+          {openOverlay === index && (
             <button
               onClick={() => handleToggleOverlay(index)}
               className="btn btn-secondary mx-5"

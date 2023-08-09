@@ -110,3 +110,9 @@ tr {
 .overlay-hidden {
   display: none;
 }
+
+@media (orientation: landscape) {
+  .global-css-overlay {
+    margin-top: 20rem;
+  }
+}
