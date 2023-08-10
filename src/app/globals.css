@@ -107,17 +107,3 @@ tr {
     #1d2732
   );
 }
-
-.overlay-visible {
-  display: block;
-}
-
-.overlay-hidden {
-  display: none;
-}
-
-@media (orientation: landscape) {
-  .global-css-overlay {
-    margin-top: 20rem;
-  }
-}
