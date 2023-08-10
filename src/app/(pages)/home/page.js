@@ -28,6 +28,20 @@ function Page() {
 
   return (
     <>
+      <p className="fixed hidden xl:block">
+        Mobile only
+        <br />
+        <br />
+        Option 1: use your mobile
+        <br />
+        Option 2: resize your browser
+        <br />
+        Option 3: use your dev tools
+        <br />
+        <br />
+        Enjoy your trainings schedule
+      </p>
+
       <div className="flex flex-col mx-auto max-w-xl relative  min-h-screen w-screen">
         <button className="btn btn-sm pointer-events-none mx-auto  border-first/50  bg-third m-5  text-first">
           {examplePlan.name}
