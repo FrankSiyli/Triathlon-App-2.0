@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { formatTime } from "@/app/components/helperFunctions";
+import { formatTime } from "@/app/helperFunctions";
 import "../../../globals.css";
 
 function SwimTimeCalculator() {
