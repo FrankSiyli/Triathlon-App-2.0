@@ -1,7 +1,4 @@
-import {
-  formatTime,
-  tresholdsAndPaces,
-} from "@/app/components/helperFunctions";
+import { formatTime, tresholdsAndPaces } from "@/app/helperFunctions";
 
 const { swim100mPace, runTreshold, bikeTreshold } = tresholdsAndPaces();
 
