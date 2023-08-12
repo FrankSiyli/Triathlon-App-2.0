@@ -37,7 +37,7 @@ function Page() {
         </div>
 
         <div className="border border-first/50 rounded-md text-center p-3   ">
-          <p className="mt-3">Wissenwertes:</p>
+          <p className="mt-3">Wissenswertes:</p>
           <div className="flex flex-col items-center mt-5">
             <Link
               className="underline  underline-offset-2  mb-2"
