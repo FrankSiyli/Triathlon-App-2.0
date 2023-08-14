@@ -38,6 +38,8 @@ body {
     #232f3c,
     #1d2732
   );
+  white-space: pre-line;
+  vertical-align: bottom;
 }
 
 .icon-text {

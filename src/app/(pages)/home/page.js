@@ -13,17 +13,21 @@ import { useCurrentWeek } from "./stateHooks/useCurrentWeek";
 import { useActivitiesByDay } from "./logicFunctions/useActivitiesByDay";
 
 function Page() {
-  const numberOfPlanWeeks = Object.keys(examplePlan.sessions).map((weekIndex) =>
-    parseInt(weekIndex)
+  const boughtUserPlans = [examplePlan];
+  const numberOfPlanWeeks = Object.keys(boughtUserPlans[0].sessions).map(
+    (weekIndex) => parseInt(weekIndex)
   );
 
   const { openOverlay, toggleOverlay } = useOpenOverlay();
   const { openDay, toggleDay } = useOpenDay();
   const { currentWeek, handleBackClick, handleNextClick } = useCurrentWeek(
-    Object.keys(examplePlan.sessions).map((weekIndex) => parseInt(weekIndex))
+    Object.keys(boughtUserPlans[0].sessions).map((weekIndex) =>
+      parseInt(weekIndex)
+    )
   );
 
-  const currentWeekSessions = examplePlan.sessions[currentWeek - 1].sessions;
+  const currentWeekSessions =
+    boughtUserPlans[0].sessions[currentWeek - 1].sessions;
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
 
   return (
@@ -42,9 +46,9 @@ function Page() {
         Enjoy your trainings schedule
       </p>
 
-      <div className="flex flex-col mx-auto max-w-xl relative  min-h-screen w-screen">
+      <div className="flex flex-col mx-auto max-w-xl relative  min-h-screen w-screen mb-20">
         <button className="btn btn-sm pointer-events-none mx-auto  border-first/50  bg-third m-5  text-first">
-          {examplePlan.name}
+          {boughtUserPlans[0].name}
         </button>
 
         <WeekScrollButtons
@@ -84,6 +88,7 @@ function Page() {
                   activityIndex={activityIndex}
                   openOverlay={openOverlay}
                   toggleOverlay={toggleOverlay}
+                  boughtUserPlans={boughtUserPlans[0]}
                   initialOpen={openOverlay.includes(
                     dayIndex * 1000 + activityIndex
                   )}

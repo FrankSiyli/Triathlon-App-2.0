@@ -51,6 +51,6 @@ function Page() {
   );
 }
 
-const kindOfSport = ["Triathlonpläne", "Laufpläne", "Schwimmpläne", "Radpläne"];
+const kindOfSport = ["Triathlonpläne"];
 
 export default Page;

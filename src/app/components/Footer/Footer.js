@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 function Footer() {
   const currentRoute = usePathname();
-  const activeStyle = "bg-fourth  border border-first/50 scale-y-110 ";
+  const activeStyle = "bg-fourth";
   const nonActiveStyle = "bg-third ";
 
   return (
