@@ -36,7 +36,7 @@ const SessionOverlay = ({
                   </p>
                   <p>{singleActivity[1]}</p>
                   <p>
-                    Total Distance:{" "}
+                    Distanz:{" "}
                     {sessionSection.warmUp.multiplier *
                       sessionSection.warmUp.distance +
                       sessionSection.main.reduce(
@@ -47,9 +47,12 @@ const SessionOverlay = ({
                       sessionSection.coolDown.multiplier *
                         sessionSection.coolDown.distance}
                     m
-                  </p>{" "}
+                  </p>
+                  <p>Zeit:</p>
                 </div>
               </div>
+
+              {/**if distance > 0 show distance and hide duration and opposite */}
 
               <div className="mt-10">
                 <div className="border border-first/50  rounded-md mx-5">
