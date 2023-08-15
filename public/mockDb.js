@@ -38,11 +38,12 @@ const examplePlan = {
                 `${(distance = 50)}m @ ${swimZ1} `,
                 ` 5er Atmung`,
                 `\n`,
-                `4x  (gesamt ${(distance = 200)}m)`,
 
+                `4x  (gesamt ${(distance = 200)}m)`,
                 `${(repetitionDistance = 25)}m @ ${swimZ5} `,
                 ` möglichst wenig Züge`,
                 `${(repetitionDistance = 25)}m @ ${swimZ2} `,
+
                 `\n`,
                 `${(distance = 100)}m @ ${swimZ2} `,
                 `${(distance = 100)}m @ ${swimZ3} `,
@@ -409,3 +410,22 @@ const examplePlan = {
 };
 
 export default examplePlan;
+
+const data = {
+  id: 1,
+  name: "frank",
+  bankAccount1: {
+    multiplier: 0,
+    balance: 100,
+  },
+  bankAccount2: {
+    multiplier: 3,
+    balance: 200,
+  },
+};
+
+const totalBalance =
+  data.bankAccount1.balance +
+  data.bankAccount2.balance * data.bankAccount2.multiplier;
+
+console.log("Total Balance:", totalBalance);
