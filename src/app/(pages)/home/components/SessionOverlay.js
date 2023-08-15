@@ -34,7 +34,6 @@ const SessionOverlay = ({
                     {singleActivity[0]}
                   </p>
                   <p>{singleActivity[1]}</p>
-                  Total Distance:
                 </div>
               </div>
 
