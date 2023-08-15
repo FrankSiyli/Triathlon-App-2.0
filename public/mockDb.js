@@ -1,5 +1,28 @@
 import { formatTime, tresholdsAndPaces } from "@/app/helperFunctions";
 
+//_________________________________________________________________________
+//_________________________________________________________________________
+const data = {
+  id: 1,
+  name: "frank",
+  bankAccount1: {
+    multiplier: 3,
+    balance: 100,
+  },
+  bankAccount2: {
+    multiplier: 3,
+    balance: 200,
+  },
+};
+
+const totalBalance =
+  data.bankAccount1.balance * data.bankAccount1.multiplier +
+  data.bankAccount2.balance * data.bankAccount2.multiplier;
+
+console.log("Total Balance:", totalBalance);
+//_________________________________________________________________________
+//_________________________________________________________________________
+
 const { swim100mPace, runTreshold, bikeTreshold } = tresholdsAndPaces();
 
 let distance = 0;
@@ -27,65 +50,39 @@ const examplePlan = {
           description: "4x4x100m Steigerungen",
           sessionParts: [
             {
-              warmUp: `${(distance = 250)}m @ ${swimZ1} `,
+              warmUp: {
+                multiplier: 3,
+                distance: 250,
+                zone: 1,
+              },
+
               main: [
-                `${(distance = 50)}m @ ${swimZ1} `,
-                ` 2er Atmung`,
-                `${(distance = 50)}m @ ${swimZ1} `,
-                ` 3er Atmung`,
-                `${(distance = 50)}m @ ${swimZ1} `,
-                ` 4er Atmung`,
-                `${(distance = 50)}m @ ${swimZ1} `,
-                ` 5er Atmung`,
-                `\n`,
-
-                `4x  (gesamt ${(distance = 200)}m)`,
-                `${(repetitionDistance = 25)}m @ ${swimZ5} `,
-                ` möglichst wenig Züge`,
-                `${(repetitionDistance = 25)}m @ ${swimZ2} `,
-
-                `\n`,
-                `${(distance = 100)}m @ ${swimZ2} `,
-                `${(distance = 100)}m @ ${swimZ3} `,
-                `${(distance = 100)}m @ ${swimZ4} `,
-                `${(distance = 100)}m @ ${swimZ5} `,
-                `\n`,
-                `${(distance = 200)}m @ ${swimZ1} `,
-                ` alle Lagen`,
-                `\n`,
-                `${(distance = 100)}m @ ${swimZ2} `,
-                `${(distance = 100)}m @ ${swimZ3} `,
-                `${(distance = 100)}m @ ${swimZ4} `,
-                `${(distance = 100)}m @ ${swimZ5} `,
-                `\n`,
-                `${(distance = 100)}m @ ${swimZ1}  
-                Unterwasserarmvorschwung`,
-                `${(distance = 100)}m @ ${swimZ1}  `,
-                `Schultern maximal nach vorne bringen`,
-                `${(distance = 100)}m @ ${swimZ1}  `,
-                `nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen `,
-                `${(distance = 100)}m @ ${swimZ1}  `,
-                `entspannte Finger und Hände`,
-                `\n`,
-                `${(distance = 100)}m @ ${swimZ2} `,
-                `${(distance = 100)}m @ ${swimZ3} `,
-                `${(distance = 100)}m @ ${swimZ4} `,
-                `${(distance = 100)}m @ ${swimZ5} `,
-                `\n`,
-                `${(distance = 200)}m @ ${swimZ1}  `,
-                `alle Lagen`,
-                `\n`,
-                `${(distance = 100)}m @ ${swimZ2} `,
-                `${(distance = 100)}m @ ${swimZ3} `,
-                `${(distance = 100)}m @ ${swimZ4} `,
-                `${(distance = 100)}m @ ${swimZ5} `,
-                `${(distance = 200)}m @ ${swimZ4} `,
+                {
+                  multiplier: 3,
+                  distance: 250,
+                  zone: 3,
+                  exercise: "blablabla",
+                },
+                {
+                  multiplier: 1,
+                  distance: 250,
+                  zone: 2,
+                  exercise: "blablabla",
+                },
               ],
-              coolDown: `${(distance = 250)}m @ ${swimZ1} `,
+              coolDown: {
+                multiplier: 3,
+                distance: 250,
+                zone: 1,
+              },
             },
           ],
         },
-        {
+      ],
+    },
+  ],
+};
+/* {
           day: "Montag",
           activity: "Laufen",
           description: "3 x 10 min",
@@ -404,28 +401,6 @@ const examplePlan = {
             },
           ],
         },
-      ],
-    },
-  ],
-};
+     */
 
 export default examplePlan;
-
-const data = {
-  id: 1,
-  name: "frank",
-  bankAccount1: {
-    multiplier: 0,
-    balance: 100,
-  },
-  bankAccount2: {
-    multiplier: 3,
-    balance: 200,
-  },
-};
-
-const totalBalance =
-  data.bankAccount1.balance +
-  data.bankAccount2.balance * data.bankAccount2.multiplier;
-
-console.log("Total Balance:", totalBalance);
