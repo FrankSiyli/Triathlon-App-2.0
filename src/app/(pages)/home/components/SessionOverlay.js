@@ -39,15 +39,24 @@ const SessionOverlay = ({
 
               <div className="mt-10">
                 <p className="underline">Warm up:</p>
-                <p>{sessionSection.warmUp}</p>
+                <p>{sessionSection.warmUp.multiplier}x</p>
+                <p>{sessionSection.warmUp.distance}m</p>
+                <p>Zone:{sessionSection.warmUp.zone}</p>
                 <br />
                 <p className="underline">Hauptteil:</p>
-                {sessionSection?.main.map((singleSection) => (
-                  <p key={uuidv1()}>{singleSection}</p>
+                {sessionSection.main.map((mainSection, mainIndex) => (
+                  <div key={mainIndex}>
+                    <p>Multiplier: {mainSection.multiplier}x</p>
+                    <p>Distance: {mainSection.distance}m</p>
+                    <p>Zone: {mainSection.zone}</p>
+                    <p>{mainSection.exercise}</p>
+                    <br />
+                  </div>
                 ))}
-                <br />
                 <p className="underline">Cool down:</p>
-                <p>{sessionSection.coolDown}</p>
+                <p>{sessionSection.coolDown.multiplier}x</p>
+                <p>{sessionSection.coolDown.distance}m</p>
+                <p>Zone:{sessionSection.coolDown.zone}</p>
               </div>
             </div>
           )
