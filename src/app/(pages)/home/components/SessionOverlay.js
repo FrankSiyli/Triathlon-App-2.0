@@ -8,6 +8,7 @@ const SessionOverlay = ({
   activityIndex,
   openOverlay,
   toggleOverlay,
+
   initialOpen = false,
 }) => {
   return (
@@ -29,34 +30,59 @@ const SessionOverlay = ({
                   width={100}
                   height={100}
                 />
-                <div className="text-right mr-3">
+                <div className="text-right mr-3 ">
                   <p className="underline underline-offset-2 text-sm">
                     {singleActivity[0]}
                   </p>
                   <p>{singleActivity[1]}</p>
+                  <p>
+                    Total Distance:{" "}
+                    {sessionSection.warmUp.multiplier *
+                      sessionSection.warmUp.distance +
+                      sessionSection.main.reduce(
+                        (total, mainSection) =>
+                          total + mainSection.multiplier * mainSection.distance,
+                        0
+                      ) +
+                      sessionSection.coolDown.multiplier *
+                        sessionSection.coolDown.distance}
+                    m
+                  </p>{" "}
                 </div>
               </div>
 
               <div className="mt-10">
-                <p className="underline">Warm up:</p>
-                <p>{sessionSection.warmUp.multiplier}x</p>
-                <p>{sessionSection.warmUp.distance}m</p>
-                <p>Zone:{sessionSection.warmUp.zone}</p>
-                <br />
-                <p className="underline">Hauptteil:</p>
-                {sessionSection.main.map((mainSection, mainIndex) => (
-                  <div key={mainIndex}>
-                    <p>Multiplier: {mainSection.multiplier}x</p>
-                    <p>Distance: {mainSection.distance}m</p>
-                    <p>Zone: {mainSection.zone}</p>
-                    <p>{mainSection.exercise}</p>
-                    <br />
+                <div className="border border-first/50  rounded-md mx-5">
+                  <p className="underline text-xl mt-10">Warm up:</p>
+                  <div className="flex flex-row justify-between m-10 ">
+                    <p>{sessionSection.warmUp.multiplier}x</p>
+                    <p>{sessionSection.warmUp.distance}m</p>
+                    <p>Zone:{sessionSection.warmUp.zone}</p>
                   </div>
-                ))}
-                <p className="underline">Cool down:</p>
-                <p>{sessionSection.coolDown.multiplier}x</p>
-                <p>{sessionSection.coolDown.distance}m</p>
-                <p>Zone:{sessionSection.coolDown.zone}</p>
+                </div>
+                <br />
+                <div className="border border-first/50  rounded-md mx-5">
+                  <p className="underline text-xl mt-10">Hauptteil:</p>
+                  {sessionSection.main.map((mainSection, mainIndex) => (
+                    <div key={mainIndex}>
+                      <div className="flex flex-row justify-between m-10 ">
+                        <p>{mainSection.multiplier}x</p>
+                        <p>{mainSection.distance}m</p>
+                        <p>Zone: {mainSection.zone}</p>
+                      </div>
+                      <p className="">{mainSection.exercise}</p>
+                      <br />
+                    </div>
+                  ))}
+                </div>
+                <div className="border border-first/50  rounded-md mx-5 mt-5">
+                  <p className="underline text-xl mt-10">Cool down:</p>
+                  <div className="flex flex-row justify-between m-10 ">
+                    <p>{sessionSection.coolDown.multiplier}x</p>
+                    <p>{sessionSection.coolDown.distance}m</p>
+                    <p>Zone:{sessionSection.coolDown.zone}</p>
+                  </div>
+                </div>
               </div>
             </div>
           )
