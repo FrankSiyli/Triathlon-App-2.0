@@ -52,6 +52,7 @@ const examplePlan = {
             {
               warmUp: {
                 multiplier: 1,
+                duration: 0,
                 distance: 250,
                 zone: 1,
               },
@@ -60,12 +61,14 @@ const examplePlan = {
                 {
                   multiplier: 3,
                   distance: 250,
+                  duration: 0,
                   zone: 3,
                   exercise: "blablabla",
                 },
                 {
                   multiplier: 1,
                   distance: 250,
+                  duration: 0,
                   zone: 2,
                   exercise: "blablabla",
                 },
@@ -73,6 +76,7 @@ const examplePlan = {
               coolDown: {
                 multiplier: 1,
                 distance: 250,
+                duration: 0,
                 zone: 1,
               },
             },
