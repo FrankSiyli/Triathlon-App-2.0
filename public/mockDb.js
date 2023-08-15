@@ -51,7 +51,7 @@ const examplePlan = {
           sessionParts: [
             {
               warmUp: {
-                multiplier: 3,
+                multiplier: 1,
                 distance: 250,
                 zone: 1,
               },
@@ -71,7 +71,7 @@ const examplePlan = {
                 },
               ],
               coolDown: {
-                multiplier: 3,
+                multiplier: 1,
                 distance: 250,
                 zone: 1,
               },
