@@ -56,8 +56,8 @@ const SessionOverlay = ({
 
               <div className="mt-10">
                 <div className="border border-first/50  rounded-md mx-5">
-                  <p className="underline text-xl mt-10">Warm up:</p>
-                  <div className="flex flex-row justify-between m-10 ">
+                  <p className="underline text-xl mt-5">Warm up:</p>
+                  <div className="flex flex-row justify-between m-5  p-3 rounded-md bg-second ">
                     <p>{sessionSection.warmUp.multiplier}x</p>
                     <p>{sessionSection.warmUp.distance}m</p>
                     <p>Zone:{sessionSection.warmUp.zone}</p>
@@ -65,22 +65,45 @@ const SessionOverlay = ({
                 </div>
                 <br />
                 <div className="border border-first/50  rounded-md mx-5">
-                  <p className="underline text-xl mt-10">Hauptteil:</p>
-                  {sessionSection.main.map((mainSection, mainIndex) => (
+                  <p className="underline text-xl mt-5 mb-5">Hauptteil:</p>
+                  {sessionSection.main.map((mainSection, exerciseIndex) => (
                     <div key={mainIndex}>
-                      <div className="flex flex-row justify-between m-10 ">
-                        <p>{mainSection.multiplier}x</p>
-                        <p>{mainSection.distance}m</p>
-                        <p>Zone: {mainSection.zone}</p>
+                      <div className="flex flex-col  mx-5  p-3 rounded-md bg-second ">
+                        key={exerciseIndex}
+                        <div className="flex flex-row justify-between">
+                          <p>{mainSection.multiplier}x</p>
+                          {mainSection.exercises.map(
+                            (exercise, exerciseIndex) => (
+                              <div
+                                key={exerciseIndex}
+                                className="flex justify-center mt-5"
+                              >
+                                <p>{exercise.name}</p>
+                                <p>Distance: {exercise.distance}m</p>
+                                <p>Duration: {exercise.duration} minutes</p>
+                                <p>Zone: {exercise.zone}</p>
+                              </div>
+                            )
+                          )}
+                        </div>
+                        <div className="flex  justify-center mt-5">
+                          <div
+                            key={exerciseIndex}
+                            className="flex justify-center mt-5"
+                          >
+                            {exercise.name}
+                            {/* Display additional exercise properties if needed */}
+                            <p>Duration: {exercise.duration} minutes</p>
+                          </div>
+                        </div>
                       </div>
-                      <p className="">{mainSection.exercise}</p>
                       <br />
                     </div>
                   ))}
                 </div>
                 <div className="border border-first/50  rounded-md mx-5 mt-5">
-                  <p className="underline text-xl mt-10">Cool down:</p>
-                  <div className="flex flex-row justify-between m-10 ">
+                  <p className="underline text-xl mt-5">Cool down:</p>
+                  <div className="flex flex-row justify-between m-5  p-3 rounded-md bg-second ">
                     <p>{sessionSection.coolDown.multiplier}x</p>
                     <p>{sessionSection.coolDown.distance}m</p>
                     <p>Zone:{sessionSection.coolDown.zone}</p>

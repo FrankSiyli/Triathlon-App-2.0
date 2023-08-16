@@ -19,7 +19,6 @@ const totalBalance =
   data.bankAccount1.balance * data.bankAccount1.multiplier +
   data.bankAccount2.balance * data.bankAccount2.multiplier;
 
-console.log("Total Balance:", totalBalance);
 //_________________________________________________________________________
 //_________________________________________________________________________
 
@@ -60,10 +59,21 @@ const examplePlan = {
               main: [
                 {
                   multiplier: 3,
-                  distance: 250,
-                  duration: 0,
-                  zone: 3,
-                  exercise: "blablabla",
+
+                  exercises: [
+                    {
+                      name: "bla",
+                      distance: 50,
+                      duration: 0,
+                      zone: 3,
+                    },
+                    {
+                      name: "blu",
+                      distance: 25,
+                      duration: 0,
+                      zone: 1,
+                    },
+                  ],
                 },
                 {
                   multiplier: 1,
