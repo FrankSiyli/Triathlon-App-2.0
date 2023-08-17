@@ -21,7 +21,7 @@ function Page() {
           <Link
             onClick={handleAlertClick}
             href=""
-            className=" w-72 h-20 flex justify-between  bg-second items-center p-3 gap-3  rounded-md text-xl text-first"
+            className=" w-72 h-20 flex justify-between btn btn-outline  linear-background items-center  gap-3  rounded-md text-xl text-first"
             key={uuidv1()}
           >
             {item}

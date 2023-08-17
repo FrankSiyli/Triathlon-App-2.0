@@ -5,7 +5,7 @@ const ActivityButton = ({
   activityIndex,
 }) => (
   <button onClick={() => toggleOverlay(dayIndex, activityIndex)}>
-    <div className="flex h-14 my-1 w-80 justify-between items-center rounded-md bg-second ">
+    <div className="flex h-14 my-1 w-80 justify-between items-center text-first rounded-md btn btn-outline  linear-background ">
       <div className="ml-5 text-left">
         <p className="underline underline-offset-2 text-sm">
           {singleActivity[0]}
