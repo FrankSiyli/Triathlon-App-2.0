@@ -6,7 +6,7 @@ import examplePlan from "../../../../public/mockDb";
 import WeekScrollButtons from "./components/WeekScrollButtons";
 import DayComponent from "./components/DayComponent";
 import ActivityButton from "./components/ActivityButton";
-import SessionOverlay from "./components/SessionOverlay";
+import SessionOverlay from "./components/SessionsOverlay/SessionOverlay";
 import { useOpenOverlay } from "./stateHooks/useOpenOverlay";
 import { useOpenDay } from "./stateHooks/useOpenDay";
 import { useCurrentWeek } from "./stateHooks/useCurrentWeek";
