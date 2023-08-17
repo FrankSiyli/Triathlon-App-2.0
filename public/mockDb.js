@@ -49,16 +49,24 @@ const examplePlan = {
           description: "4x4x100m Steigerungen",
           sessionParts: [
             {
-              warmUp: {
-                multiplier: 1,
-                duration: 0,
-                distance: 250,
-                zone: 1,
-              },
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "bla",
+                      distance: 50,
+                      duration: 0,
+                      zone: 1,
+                    },
+                  ],
+                },
+              ],
 
               main: [
                 {
-                  multiplier: 3,
+                  multiplier: 2,
 
                   exercises: [
                     {
@@ -77,18 +85,30 @@ const examplePlan = {
                 },
                 {
                   multiplier: 1,
-                  distance: 250,
-                  duration: 0,
-                  zone: 2,
-                  exercise: "blablabla",
+                  exercises: [
+                    {
+                      name: "blub",
+                      distance: 50,
+                      duration: 0,
+                      zone: 3,
+                    },
+                  ],
                 },
               ],
-              coolDown: {
-                multiplier: 1,
-                distance: 250,
-                duration: 0,
-                zone: 1,
-              },
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "bla",
+                      distance: 50,
+                      duration: 0,
+                      zone: 1,
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
