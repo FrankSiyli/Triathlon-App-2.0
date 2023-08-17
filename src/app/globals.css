@@ -46,6 +46,20 @@ body {
   font-size: 0.6rem;
 }
 
+.linear-background {
+  background-image: linear-gradient(
+    to right bottom,
+    #1d2732,
+    #232f3c,
+    #293746,
+    #2f3f50,
+    #2f3f50,
+    #293746,
+    #232f3c,
+    #1d2732
+  );
+}
+
 /*----------------tables----------------------*/
 
 input[type="number"] {

@@ -3,15 +3,17 @@ import React from "react";
 const WarmUpSection = ({ sessionSections }) => {
   return (
     <>
-      <div className="mt-10">
-        <div className="border border-first/50  rounded-md mx-5">
-          <p className=" text-xl mt-5">Warm up:</p>
+      <div className="mt-20">
+        <div className="relative border-2 border-first/50  rounded-md mx-5 ">
+          <p className="absolute -top-7 -left-4 btn btn-outline text-first p-2  linear-background text-xl">
+            Warm up
+          </p>
           {sessionSections.warmUp.map((warmUpSection, warmUpIndex) => (
             <div key={warmUpIndex}>
-              <div className="relative flex flex-col mx-5 my-3  p-1 rounded-md bg-second ">
+              <div className=" flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-third ">
                 {warmUpSection.exercises.map((exercise, exerciseIndex) => (
                   <div key={exerciseIndex}>
-                    <div className="flex flex-row justify-between mt-5 mx-3">
+                    <div className="flex flex-row justify-between items-center my-2 mx-3">
                       {exercise.distance > 0 ? (
                         <p>{exercise.distance}m</p>
                       ) : exercise.duration > 0 ? (
@@ -20,9 +22,11 @@ const WarmUpSection = ({ sessionSections }) => {
                       <p>{exercise.zone}</p>
                     </div>
                     <div>
-                      <p className="border  border-first/50  rounded-md mx-2 mt-2 p-3">
-                        {exercise.name}
-                      </p>
+                      {exercise.name.trim() !== "" ? (
+                        <p className="border border-first/50 text-sm rounded-md p-1 linear-background">
+                          {exercise.name}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
                 ))}

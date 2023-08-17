@@ -69,10 +69,10 @@ const examplePlan = {
 
                   exercises: [
                     {
-                      name: "bla",
-                      distance: 20,
+                      name: "einschwimmen",
+                      distance: 250,
                       duration: 0,
-                      zone: bikeHeartrateZ1,
+                      zone: swimZ1,
                     },
                   ],
                 },
@@ -80,20 +80,49 @@ const examplePlan = {
 
               main: [
                 {
-                  multiplier: 2,
+                  multiplier: 1,
 
                   exercises: [
                     {
-                      name: "bla",
+                      name: "2er Atmung",
                       distance: 50,
                       duration: 0,
-                      zone: 3,
+                      zone: swimZ1,
                     },
                     {
-                      name: "blu",
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
                       distance: 25,
                       duration: 0,
-                      zone: 1,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
                     },
                   ],
                 },
@@ -101,10 +130,166 @@ const examplePlan = {
                   multiplier: 1,
                   exercises: [
                     {
-                      name: "blub",
-                      distance: 50,
+                      name: "kraulen",
+                      distance: 100,
                       duration: 0,
-                      zone: 3,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
                     },
                   ],
                 },
@@ -115,10 +300,10 @@ const examplePlan = {
 
                   exercises: [
                     {
-                      name: "bla",
+                      name: "ausschwimmen",
                       distance: 50,
                       duration: 0,
-                      zone: 1,
+                      zone: swimZ1,
                     },
                   ],
                 },
