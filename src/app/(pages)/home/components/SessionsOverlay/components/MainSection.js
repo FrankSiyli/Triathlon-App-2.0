@@ -19,7 +19,7 @@ const MainSection = ({ sessionSections }) => {
                   <div key={exerciseIndex} className="">
                     <div className="flex flex-row justify-between mt-5 mx-3">
                       {exercise.distance}
-                      <p>Zone: {exercise.zone}</p>
+                      <p>{exercise.zone}</p>
                     </div>
                     <div>
                       <p className="border  border-first/50  rounded-md mx-2 mt-2 p-3">
