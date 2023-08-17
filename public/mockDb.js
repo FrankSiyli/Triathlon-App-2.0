@@ -1,39 +1,14 @@
 import { formatTime, tresholdsAndPaces } from "@/app/helperFunctions";
 
-//_________________________________________________________________________
-//_________________________________________________________________________
-const data = {
-  id: 1,
-  name: "frank",
-  bankAccount1: {
-    multiplier: 3,
-    balance: 100,
-  },
-  bankAccount2: {
-    multiplier: 3,
-    balance: 200,
-  },
-};
-
-const totalBalance =
-  data.bankAccount1.balance * data.bankAccount1.multiplier +
-  data.bankAccount2.balance * data.bankAccount2.multiplier;
-
-//_________________________________________________________________________
-//_________________________________________________________________________
-
 const { swim100mPace, runTreshold, bikeTreshold } = tresholdsAndPaces();
 
-let distance = 0;
-let repetitionDistance = 0;
-
-//swim zones:
-const swimZ1 = formatTime(swim100mPace + 20); // warm up / cool down
-const swimZ2 = formatTime(swim100mPace + 10); // endurance
-const swimZ3 = formatTime(swim100mPace + 5); // tempo
-const swimZ4 = formatTime(swim100mPace); // treshold
-const swimZ5 = formatTime(swim100mPace - 5); // anaerobic
-const swimZ6 = formatTime(swim100mPace - 10); // max effort
+//swim pace zones:
+const swimZ1 = `${formatTime(swim100mPace + 20)} min/100m`; // warm up / cool down
+const swimZ2 = `${formatTime(swim100mPace + 10)} min/100m`; // endurance
+const swimZ3 = `${formatTime(swim100mPace + 5)} min/100m`; // tempo
+const swimZ4 = `${formatTime(swim100mPace)} min/100m`; // treshold
+const swimZ5 = `${formatTime(swim100mPace - 5)} min/100m`; // anaerobic
+const swimZ6 = `${formatTime(swim100mPace - 10)} min/100m`; // max effort
 
 const examplePlan = {
   name: "Beispielplan",
@@ -56,9 +31,9 @@ const examplePlan = {
                   exercises: [
                     {
                       name: "bla",
-                      distance: 50,
+                      distance: 20,
                       duration: 0,
-                      zone: 1,
+                      zone: swimZ1,
                     },
                   ],
                 },

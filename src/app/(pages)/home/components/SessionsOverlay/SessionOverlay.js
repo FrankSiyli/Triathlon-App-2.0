@@ -9,6 +9,12 @@ import {
   totalCoolDownDistance,
 } from "./logicFunctions/totalDistanceFunction";
 
+import {
+  totalWarmUpDuration,
+  totalMainDuration,
+  totalCoolDownDuration,
+} from "./logicFunctions/totalDurationFunction";
+
 const SessionOverlay = ({
   singleActivity,
   dayIndex,
@@ -22,6 +28,12 @@ const SessionOverlay = ({
     const mainDistance = totalMainDistance(sessionSections);
     const coolDownDistance = totalCoolDownDistance(sessionSections);
     return warmUpDistance + mainDistance + coolDownDistance;
+  };
+  const calculateTotalDuration = (sessionSections) => {
+    const warmUpDuration = totalWarmUpDuration(sessionSections);
+    const mainDuration = totalMainDuration(sessionSections);
+    const coolDownDuration = totalCoolDownDuration(sessionSections);
+    return warmUpDuration + mainDuration + coolDownDuration;
   };
   return (
     <div
@@ -47,8 +59,11 @@ const SessionOverlay = ({
                     {singleActivity[0]}
                   </p>
                   <p>{singleActivity[1]}</p>
-                  <p>Distanz: {calculateTotalDistance(sessionSections)}m</p>
-                  <p>Zeit:</p>
+                  {calculateTotalDistance(sessionSections) > 0 ? (
+                    <p>Distanz: {calculateTotalDistance(sessionSections)}m</p>
+                  ) : calculateTotalDuration(sessionSections) > 0 ? (
+                    <p>Zeit: {calculateTotalDuration(sessionSections)}min</p>
+                  ) : null}
                 </div>
               </div>
 
