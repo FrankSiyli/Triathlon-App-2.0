@@ -8,15 +8,6 @@ import SwimTimeCalculator from "./SwimTimeCalculator/SwimTimeCalculator";
 import Impressum from "@/app/components/Impressum/Impressum";
 
 function Page() {
-  const [showAlertLogIn, setShowAlertLogIn] = useState(false);
-
-  const handleAlertClick_2 = () => {
-    setShowAlertLogIn(true);
-    setTimeout(() => {
-      setShowAlertLogIn(false);
-    }, 2000);
-  };
-
   return (
     <>
       <div className="w-11/12 max-w-xl mx-auto flex flex-col gap-5 justify-center content-center">

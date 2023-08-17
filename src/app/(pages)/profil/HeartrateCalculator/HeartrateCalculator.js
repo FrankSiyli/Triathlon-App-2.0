@@ -38,12 +38,6 @@ function HeartrateCalculator() {
     }
   };
 
-  const handleAlertClick = () => {
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
-  };
   return (
     <>
       <div className="flex  max-w-xl  flex-col items-center  ">
