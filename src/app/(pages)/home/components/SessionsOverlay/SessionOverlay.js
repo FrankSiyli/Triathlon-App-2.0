@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import logo from "../../../../../../public/images/logoSmall.png";
 import WarmUpSection from "./components/WarmUpSection";
 import MainSection from "./components/MainSection";
@@ -35,10 +36,11 @@ const SessionOverlay = ({
     const coolDownDuration = totalCoolDownDuration(sessionSections);
     return warmUpDuration + mainDuration + coolDownDuration;
   };
+
   return (
     <div
       onClick={() => toggleOverlay(dayIndex, activityIndex)}
-      className={`overlay-background absolute z-50 h-screen inset-0 text-center overflow-y-auto ${
+      className={`overlay-background absolute z-50 h-screen min-h-screen inset-0 text-center overflow-y-auto ${
         initialOpen ? "block" : "hidden"
       }`}
     >
@@ -66,11 +68,8 @@ const SessionOverlay = ({
                   ) : null}
                 </div>
               </div>
-
               <WarmUpSection sessionSections={sessionSections} />
-
               <MainSection sessionSections={sessionSections} />
-
               <CoolDownSection sessionSections={sessionSections} />
             </div>
           )

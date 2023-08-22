@@ -42,6 +42,15 @@ body {
   vertical-align: bottom;
 }
 
+@media print {
+  body {
+    height: auto;
+    -webkit-print-color-adjust: exact;
+    background-image: none !important;
+    color: black;
+  }
+}
+
 .icon-text {
   font-size: 0.6rem;
 }

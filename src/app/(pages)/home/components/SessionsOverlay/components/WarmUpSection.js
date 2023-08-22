@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 
-const WarmUpSection = ({ sessionSections }) => {
+const WarmUpSection = React.forwardRef(({ sessionSections }, ref) => {
   return (
     <>
       <div className="mt-20">
@@ -8,7 +8,7 @@ const WarmUpSection = ({ sessionSections }) => {
           <p className="absolute -top-7 -left-4 btn btn-outline text-first p-2  linear-background text-xl">
             Warm up
           </p>
-          {sessionSections.warmUp.map((warmUpSection, warmUpIndex) => (
+          {sessionSections?.warmUp.map((warmUpSection, warmUpIndex) => (
             <div key={warmUpIndex}>
               <div className=" flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-third ">
                 {warmUpSection.exercises.map((exercise, exerciseIndex) => (
@@ -39,6 +39,8 @@ const WarmUpSection = ({ sessionSections }) => {
       </div>
     </>
   );
-};
+});
+
+WarmUpSection.displayName = WarmUpSection;
 
 export default WarmUpSection;
