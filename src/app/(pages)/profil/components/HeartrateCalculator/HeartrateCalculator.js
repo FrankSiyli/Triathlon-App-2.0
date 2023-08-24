@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import "../../../globals.css";
+import "../../../../globals.css";
 
 function HeartrateCalculator() {
   const [showAlert, setShowAlert] = useState(false);

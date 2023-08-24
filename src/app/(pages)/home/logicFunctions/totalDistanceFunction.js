@@ -1,5 +1,5 @@
 export const calculateTotalDistance = (sectionType, sessionSections) =>
-  sessionSections[sectionType].reduce(
+  sessionSections[sectionType]?.reduce(
     (sum, section) =>
       sum +
       section.exercises.reduce(
@@ -11,10 +11,10 @@ export const calculateTotalDistance = (sectionType, sessionSections) =>
   );
 
 export const totalWarmUpDistance = (sessionSections) =>
-  calculateTotalDistance("warmUp", sessionSections);
+  calculateTotalDistance("warmUp", { sessionSections });
 
 export const totalMainDistance = (sessionSections) =>
-  calculateTotalDistance("main", sessionSections);
+  calculateTotalDistance("main", { sessionSections });
 
 export const totalCoolDownDistance = (sessionSections) =>
-  calculateTotalDistance("coolDown", sessionSections);
+  calculateTotalDistance("coolDown", { sessionSections });

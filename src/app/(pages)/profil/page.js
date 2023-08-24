@@ -3,8 +3,8 @@ import Footer from "@/app/components/Footer/Footer";
 import React, { useState } from "react";
 import Link from "next/link";
 import "../../globals.css";
-import HeartrateCalculator from "./HeartrateCalculator/HeartrateCalculator";
-import SwimTimeCalculator from "./SwimTimeCalculator/SwimTimeCalculator";
+import HeartrateCalculator from "./components/HeartrateCalculator/HeartrateCalculator";
+import SwimTimeCalculator from "./components/SwimTimeCalculator/SwimTimeCalculator";
 import Impressum from "@/app/components/Impressum/Impressum";
 
 function Page() {
