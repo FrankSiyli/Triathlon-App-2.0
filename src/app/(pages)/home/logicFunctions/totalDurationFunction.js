@@ -1,5 +1,5 @@
-export const calculateTotalDuration = () =>
-  sessionSections[sectionType].reduce(
+export const calculateTotalDuration = (sectionType, sessionSections) =>
+  sessionSections[sectionType]?.reduce(
     (sum, section) =>
       sum +
       section.exercises.reduce(
@@ -11,10 +11,10 @@ export const calculateTotalDuration = () =>
   );
 
 export const totalWarmUpDuration = (sessionSections) =>
-  calculateTotalDuration("warmUp", sessionSections);
+  calculateTotalDuration("warmUp", { sessionSections });
 
 export const totalMainDuration = (sessionSections) =>
-  calculateTotalDuration("main", sessionSections);
+  calculateTotalDuration("main", { sessionSections });
 
 export const totalCoolDownDuration = (sessionSections) =>
-  calculateTotalDuration("coolDown", sessionSections);
+  calculateTotalDuration("coolDown", { sessionSections });

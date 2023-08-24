@@ -44,11 +44,23 @@ body {
 
 @media print {
   body {
+    width: 210mm;
+    overflow: scroll;
     height: auto;
-    -webkit-print-color-adjust: exact;
     background-image: none !important;
     color: black;
   }
+  @page {
+    size: A4;
+  }
+}
+
+.print-page {
+  font-size: 0.7rem;
+  background: white;
+  width: 100%;
+  min-height: 100%;
+  color: black;
 }
 
 .icon-text {

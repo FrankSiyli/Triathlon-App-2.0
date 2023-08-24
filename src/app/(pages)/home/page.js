@@ -5,12 +5,14 @@ import { v1 as uuidv1 } from "uuid";
 import examplePlan from "../../../../public/mockDb";
 import WeekScrollButtons from "./components/WeekScrollButtons";
 import DayComponent from "./components/DayComponent";
-import ActivityButton from "./components/ActivityButton";
 import SessionOverlay from "./components/SessionsOverlay/SessionOverlay";
 import { useOpenOverlay } from "./stateHooks/useOpenOverlay";
 import { useOpenDay } from "./stateHooks/useOpenDay";
 import { useCurrentWeek } from "./stateHooks/useCurrentWeek";
 import { useActivitiesByDay } from "./logicFunctions/useActivitiesByDay";
+import Activity from "./components/Activity";
+import PlanName from "./components/PlanName";
+import MobileHint from "./components/MobileHint";
 
 function Page() {
   const boughtUserPlans = [examplePlan];
@@ -32,25 +34,9 @@ function Page() {
 
   return (
     <>
-      <p className="fixed hidden xl:block">
-        Mobile only
-        <br />
-        <br />
-        Option 1: use your mobile
-        <br />
-        Option 2: resize your browser
-        <br />
-        Option 3: use your dev tools
-        <br />
-        <br />
-        Enjoy your trainings schedule
-      </p>
-
+      <MobileHint />
       <div className="flex flex-col mx-auto max-w-xl relative  min-h-screen w-screen mb-20">
-        <button className="btn btn-sm pointer-events-none mx-auto  border-first/50  bg-third m-5  text-first">
-          {boughtUserPlans[0].name}
-        </button>
-
+        <PlanName boughtUserPlans={boughtUserPlans} />
         <WeekScrollButtons
           currentWeek={currentWeek}
           numberOfPlanWeeks={numberOfPlanWeeks}
@@ -62,18 +48,12 @@ function Page() {
           <div key={uuidv1()}>
             <DayComponent day={day} toggleDay={toggleDay} dayIndex={dayIndex} />
 
-            <div className="flex flex-col items-center">
-              {openDay === dayIndex &&
-                activity.map((singleActivity, activityIndex) => (
-                  <ActivityButton
-                    key={activityIndex}
-                    singleActivity={singleActivity}
-                    toggleOverlay={toggleOverlay}
-                    dayIndex={dayIndex}
-                    activityIndex={activityIndex}
-                  />
-                ))}
-            </div>
+            <Activity
+              openDay={openDay}
+              dayIndex={dayIndex}
+              activity={activity}
+              toggleOverlay={toggleOverlay}
+            />
           </div>
         ))}
 

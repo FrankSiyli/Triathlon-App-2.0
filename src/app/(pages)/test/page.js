@@ -1,73 +1,20 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+import "../../globals.css";
+import { PDFViewer } from "@react-pdf/renderer";
+import PDFContent from "@/app/(pages)/home/components/SessionsOverlay/components/PdfContent/PdfContent";
 
 function TestPage() {
-  const [openOverlay, setOpenOverlay] = useState(-1);
-
-  const handleToggleOverlay = (index) => {
-    if (openOverlay === index) {
-      setOpenOverlay(-1); // Close the overlay if already open
-    } else {
-      setOpenOverlay(index); // Open the clicked overlay
-    }
-  };
-
   return (
     <>
-      {testArray.map((item, index) => (
-        <div key={index}>
-          <button
-            className="btn btn-sm m-5 flex flex-col"
-            onClick={() => handleToggleOverlay(index)}
-          >
-            Day: {item.day}
-          </button>
-
-          {openOverlay === index && (
-            <button
-              onClick={() => handleToggleOverlay(index)}
-              className="btn btn-secondary mx-5"
-            >
-              Second Value: {item.secondValue}
-            </button>
-          )}
-        </div>
-      ))}
+      <PDFViewer style={{ width: "100%", height: "500px" }}>
+        <PDFContent />
+      </PDFViewer>
+      <button className="btn btn-primary mt-5" onClick={() => window.print()}>
+        Print Page
+      </button>
     </>
   );
 }
 
-const testArray = [
-  {
-    day: "montag",
-    secondValue: "montag",
-  },
-  {
-    day: "dienstag",
-    secondValue: "dienstag",
-  },
-  {
-    day: "mittwoch",
-    secondValue: "mittwoch",
-  },
-  {
-    day: "donnerstag",
-    secondValue: "donnerstag",
-  },
-  {
-    day: "freitag",
-    secondValue: "freitag",
-  },
-];
-
 export default TestPage;
-
-{
-  /**---------------------------------------------------------------------------------- */
-}
-{
-  /**---------------------------------------------------------------------------------- */
-}
-{
-  /**---------------------------------------------------------------------------------- */
-}
