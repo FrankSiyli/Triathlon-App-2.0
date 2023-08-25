@@ -1,6 +1,5 @@
 ## My goal is the App Store, so mobile only
 
-Please watch on your mobile or use your dev tools, thanks.
 
 <hr/>
 <br/>
