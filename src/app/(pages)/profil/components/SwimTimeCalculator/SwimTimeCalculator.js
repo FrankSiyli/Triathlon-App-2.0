@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import { formatTime } from "@/app/helperFunctions";
 import "../../../../globals.css";
+import { useRecoilState } from "recoil";
+import { savedSwimTimeState } from "@/app/recoil/atoms/savedSwimTimeState";
 
 function SwimTimeCalculator() {
   const [swimCalculatorInput, setSwimCalculatorInput] = useState(1200);
-  const [savedSwimTime, setSavedSwimTime] = useState();
+  const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
   const [showSwimTimeInput, setShowSwimTimeInput] = useState(true);
   const [showSavedSwimTime, setShowSavedSwimTime] = useState(false);
 

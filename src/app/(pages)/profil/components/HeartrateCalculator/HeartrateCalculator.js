@@ -1,11 +1,13 @@
 "use client";
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
 import "../../../../globals.css";
+import { savedHrMaxState } from "@/app/recoil/atoms/savedHrMaxState";
 
 function HeartrateCalculator() {
   const [showAlert, setShowAlert] = useState(false);
   const [heartrateCalculatorInput, setHeartrateCalculatorInput] = useState("");
-  const [savedHrMax, setSavedHrMax] = useState(160);
+  const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
   const [showHrInput, setShowHrInput] = useState(true);
   const [showSavedHrMax, setShowSavedHrMax] = useState(false);
 
