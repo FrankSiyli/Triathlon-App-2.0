@@ -1,20 +1,38 @@
-export const calculateTotalDuration = (sectionType, sessionSections) =>
-  sessionSections[sectionType]?.reduce(
-    (sum, section) =>
-      sum +
-      section.exercises.reduce(
-        (totalDuration, exercise) =>
-          totalDuration + section.multiplier * exercise.duration,
-        0
-      ),
-    0
-  );
+const calculateTotalDuration = (singleActivity) => {
+  let totalDuration = 0;
 
-export const totalWarmUpDuration = (sessionSections) =>
-  calculateTotalDuration("warmUp", { sessionSections });
+  singleActivity[2].forEach((sessionSections) => {
+    sessionSections.main.forEach((mainSection) => {
+      mainSection.exercises.forEach((mainExercise) => {
+        if (mainExercise.duration > 0) {
+          totalDuration += mainExercise.duration * mainSection.multiplier;
+        }
+      });
+    });
+  });
 
-export const totalMainDuration = (sessionSections) =>
-  calculateTotalDuration("main", { sessionSections });
+  singleActivity[2].forEach((sessionSections) => {
+    sessionSections.warmUp.forEach((warmUpSection) => {
+      warmUpSection.exercises.forEach((warmUpExercise) => {
+        if (warmUpExercise.duration > 0) {
+          totalDuration += warmUpExercise.duration * warmUpSection.multiplier;
+        }
+      });
+    });
+  });
 
-export const totalCoolDownDuration = (sessionSections) =>
-  calculateTotalDuration("coolDown", { sessionSections });
+  singleActivity[2].forEach((sessionSections) => {
+    sessionSections.coolDown.forEach((coolDownSection) => {
+      coolDownSection.exercises.forEach((coolDownExercise) => {
+        if (coolDownExercise.duration > 0) {
+          totalDuration +=
+            coolDownExercise.duration * coolDownSection.multiplier;
+        }
+      });
+    });
+  });
+
+  return totalDuration;
+};
+
+export default calculateTotalDuration;
