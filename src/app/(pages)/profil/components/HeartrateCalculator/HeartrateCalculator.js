@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import "../../../globals.css";
+import "../../../../globals.css";
 
 function HeartrateCalculator() {
   const [showAlert, setShowAlert] = useState(false);
@@ -38,12 +38,6 @@ function HeartrateCalculator() {
     }
   };
 
-  const handleAlertClick = () => {
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
-  };
   return (
     <>
       <div className="flex  max-w-xl  flex-col items-center  ">
