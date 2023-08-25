@@ -1,13 +1,16 @@
 "use client";
+import "../../../../globals.css";
 import React, { useState, useRef, forwardRef } from "react";
 import Image from "next/image";
 import logo from "../../../../../../public/images/logoSmall.png";
-import SessionSections from "../SessionSections";
 import PrintSessionSections from "../PrintSessionSections";
 import { useReactToPrint } from "react-to-print";
+import SessionSections from "../SessionSections";
+import calculateTotalDistance from "../../logicFunctions/totalDistanceFunction";
+import calculateTotalDuration from "../../logicFunctions/totalDurationFunction";
 
 const SessionOverlay = ({
-  totalDistance,
+  sessionSections,
   singleActivity,
   dayIndex,
   activityIndex,
@@ -22,8 +25,10 @@ const SessionOverlay = ({
   const printComponentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => printComponentRef.current,
-    copyStyles: false,
   });
+
+  const totalDistance = calculateTotalDistance(singleActivity, sessionSections);
+  const totalDuration = calculateTotalDuration(singleActivity, sessionSections);
 
   return (
     <div
@@ -42,8 +47,8 @@ const SessionOverlay = ({
         <div className="text-right mr-3 ">
           <p className="underline underline-offset-2">{singleActivity[0]}</p>
           <p className="my-1">{singleActivity[1]}</p>
-          <p>Distanz: {totalDistance}m</p>
-          <p>Zeit: min</p>
+          {totalDistance > 0 ? <p>Distanz: {totalDistance}m</p> : null}
+          {totalDuration > 0 ? <p>Zeit: {totalDuration}min</p> : null}
         </div>
       </div>
       {overlayView ? (
