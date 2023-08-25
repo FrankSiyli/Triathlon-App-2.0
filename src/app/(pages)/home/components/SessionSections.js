@@ -14,7 +14,7 @@ const SessionSections = ({
         (sessionSections, sectionIndex) =>
           openOverlay.includes(dayIndex * 1000 + activityIndex) && (
             <div key={activityIndex}>
-              <div className="overflow-scroll h-auto">
+              <div className="">
                 {/**----------------------------warmUpSection ------------------------------------*/}
                 {/**----------------------------warmUpSection ------------------------------------*/}
                 {/**----------------------------warmUpSection ------------------------------------*/}
@@ -111,7 +111,7 @@ const SessionSections = ({
                 {/**----------------------------coolDownSection ------------------------------------*/}
                 {/**----------------------------coolDownSection ------------------------------------*/}
                 {/**----------------------------coolDownSection ------------------------------------*/}
-                <div className="relative border border-first/50  rounded-md mx-5 mb-20">
+                <div className="relative border border-first/50  rounded-md mx-5 mb-10">
                   <p className="absolute -top-7 -left-4 btn btn-outline text-first p-2  linear-background text-xl">
                     Cool down
                   </p>

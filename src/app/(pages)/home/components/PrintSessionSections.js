@@ -1,4 +1,6 @@
 import React, { useRef, forwardRef } from "react";
+import logoBlack from "../../../../../public/images/logoSmallBlack.png";
+import Image from "next/image";
 
 const PrintSessionSections = forwardRef(
   ({ singleActivity, openOverlay, dayIndex, activityIndex }, ref) => {
@@ -6,16 +8,22 @@ const PrintSessionSections = forwardRef(
 
     return (
       <>
-        {" "}
         <div className="print-section" ref={ref}>
           {singleActivity[2].map(
             (sessionSections, sectionIndex) =>
               openOverlay.includes(dayIndex * 1000 + activityIndex) && (
                 <div key={activityIndex}>
-                  <div className=" print-page  p-1 m-3 mx-auto">
+                  <div className=" print-page  p-1 m-3 mx-auto ">
                     {/**----------------------------warmUpSection ------------------------------------*/}
                     {/**----------------------------warmUpSection ------------------------------------*/}
                     {/**----------------------------warmUpSection ------------------------------------*/}
+                    <Image
+                      src={logoBlack}
+                      alt="logo"
+                      className="mt-5  ml-5 "
+                      width={50}
+                      height={50}
+                    />
 
                     <p className="underline">Warm up</p>
                     {sessionSections?.warmUp.map(

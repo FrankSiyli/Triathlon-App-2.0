@@ -58,7 +58,7 @@ function Page() {
         ))}
 
         {Object.entries(activitiesByDay).map(([day, activity], dayIndex) => (
-          <div key={uuidv1()}>
+          <div className=" " key={dayIndex}>
             {openDay === dayIndex &&
               activity.map((singleActivity, activityIndex) => (
                 <SessionOverlay
