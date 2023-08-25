@@ -1,6 +1,6 @@
 "use client";
 import "../../../../globals.css";
-import React, { useState, useRef, forwardRef } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import logo from "../../../../../../public/images/logoSmall.png";
 import PrintSessionSections from "../PrintSessionSections";
@@ -32,7 +32,7 @@ const SessionOverlay = ({
 
   return (
     <div
-      className={`overlay-background absolute z-50 h-screen min-h-screen inset-0 text-center overflow-y-auto ${
+      className={`overlay-background fixed z-50 max-w-xl mx-auto inset-0 text-center overflow-y-scroll ${
         initialOpen ? "block" : "hidden"
       }`}
     >
