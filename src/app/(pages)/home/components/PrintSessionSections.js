@@ -7,12 +7,12 @@ const PrintSessionSections = forwardRef(
     return (
       <>
         {" "}
-        <div ref={ref}>
+        <div className="print-section" ref={ref}>
           {singleActivity[2].map(
             (sessionSections, sectionIndex) =>
               openOverlay.includes(dayIndex * 1000 + activityIndex) && (
                 <div key={activityIndex}>
-                  <div className=" print-page p-1 m-3 mx-auto">
+                  <div className=" print-page  p-1 m-3 mx-auto">
                     {/**----------------------------warmUpSection ------------------------------------*/}
                     {/**----------------------------warmUpSection ------------------------------------*/}
                     {/**----------------------------warmUpSection ------------------------------------*/}

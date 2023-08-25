@@ -6,6 +6,8 @@ const SessionSections = ({
   dayIndex,
   activityIndex,
 }) => {
+  let totalMainDistance = 0;
+
   return (
     <>
       {singleActivity[2].map(
@@ -83,7 +85,9 @@ const SessionSections = ({
                                   } mx-3`}
                                 >
                                   {mainExercise.distance > 0 ? (
-                                    <p>{mainExercise.distance}m</p>
+                                    <div>
+                                      <p>{mainExercise.distance}m</p>
+                                    </div>
                                   ) : mainExercise.duration > 0 ? (
                                     <p>{mainExercise.duration}min</p>
                                   ) : null}
