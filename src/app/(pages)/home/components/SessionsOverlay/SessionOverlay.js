@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, forwardRef } from "react";
 import Image from "next/image";
 import logo from "../../../../../../public/images/logoSmall.png";
 import SessionSections from "../SessionSections";
 import PrintSessionSections from "../PrintSessionSections";
+import { useReactToPrint } from "react-to-print";
 
 const SessionOverlay = ({
   totalDistance,
@@ -18,6 +19,11 @@ const SessionOverlay = ({
   const handleViewClick = () => {
     setOverlayView(!overlayView);
   };
+  const printComponentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => printComponentRef.current,
+    copyStyles: false,
+  });
 
   return (
     <div
@@ -79,6 +85,7 @@ const SessionOverlay = ({
       ) : (
         <>
           <PrintSessionSections
+            ref={printComponentRef}
             singleActivity={singleActivity}
             openOverlay={openOverlay}
             dayIndex={dayIndex}
@@ -92,7 +99,10 @@ const SessionOverlay = ({
               >
                 zurück
               </button>
-              <button className="btn btn-sm w-32 btn-outline text-first ">
+              <button
+                onClick={handlePrint}
+                className="btn btn-sm w-32 btn-outline text-first "
+              >
                 drucken
               </button>
             </div>

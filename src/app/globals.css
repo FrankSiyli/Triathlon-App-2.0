@@ -58,9 +58,9 @@ body {
 .print-page {
   font-size: 0.7rem;
   background: white;
-  width: 100%;
-  min-height: 100%;
   color: black;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
 
 .icon-text {
