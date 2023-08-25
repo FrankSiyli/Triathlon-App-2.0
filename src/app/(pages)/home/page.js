@@ -13,6 +13,8 @@ import { useActivitiesByDay } from "./logicFunctions/useActivitiesByDay";
 import Activity from "./components/Activity";
 import PlanName from "./components/PlanName";
 import MobileHint from "./components/MobileHint";
+import SavedHrMaxComponent from "@/app/recoil/components/SavedHrMaxComponent";
+import SavedSwimTimeComponent from "@/app/recoil/components/SavedSwimTimeComponent";
 
 function Page() {
   const boughtUserPlans = [examplePlan];
@@ -36,6 +38,8 @@ function Page() {
     <>
       <MobileHint />
       <div className="flex flex-col mx-auto max-w-xl relative  min-h-screen w-screen mb-20">
+        <SavedHrMaxComponent />
+        <SavedSwimTimeComponent />
         <PlanName boughtUserPlans={boughtUserPlans} />
         <WeekScrollButtons
           currentWeek={currentWeek}
