@@ -77,6 +77,260 @@ const examplePlan = {
                   ],
                 },
               ],
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Dienstag",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
 
               main: [
                 {
@@ -311,6 +565,3072 @@ const examplePlan = {
             },
           ],
         },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Mittwoch",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Donnerstag",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Freitag",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Samstag",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Sonntag",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+      ],
+    },
+    //---------week2-------------------------------------------------------------------------------------------------------------
+    {
+      week: 2,
+      sessions: [
+        {
+          day: "Montag",
+          activity: "Schwimmen",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Dienstag",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Mittwoch",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Donnerstag",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Freitag",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Samstag",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
+        {
+          day: "Sonntag",
+          activity: "Placeholder",
+          description: "4x4x100m Steigerungen",
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "einschwimmen",
+                      distance: 250,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+
+              main: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "2er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "3er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "4er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "5er Atmung",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 4,
+                  exercises: [
+                    {
+                      name: "möglichst wenig Züge",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                    {
+                      name: "entspannt",
+                      distance: 25,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Unterwasserarmvorschwung",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "Schultern maximal nach vorne bringen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "nach vorne gerade gestreckter Arm, kein Knick im Ellenbogen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                    {
+                      name: "entspannte Finger und Hände",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "alle Lagen",
+                      distance: 200,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ2,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ3,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ4,
+                    },
+                    {
+                      name: "kraulen",
+                      distance: 100,
+                      duration: 0,
+                      zone: swimZ5,
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+
+                  exercises: [
+                    {
+                      name: "ausschwimmen",
+                      distance: 50,
+                      duration: 0,
+                      zone: swimZ1,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        //----------------------------------------------------------------------------------------------------------------------
       ],
     },
   ],

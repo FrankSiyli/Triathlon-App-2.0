@@ -1,14 +1,5 @@
 const { swim100mPace } = tresholdsAndPaces();
 
-/**swim zones:
- */
-const swimZ1 = swim100mPace + 20; // warm up / cool down
-const swimZ2 = swim100mPace + 10; // endurance
-const swimZ3 = swim100mPace + 5; // tempo
-const swimZ4 = swim100mPace; // treshold
-const swimZ5 = swim100mPace - 5; // anaerobic
-const swimZ6 = swim100mPace - 10; // max effort
-
 let distance = 0;
 l;
 
