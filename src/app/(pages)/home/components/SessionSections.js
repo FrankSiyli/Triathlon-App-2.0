@@ -1,3 +1,4 @@
+import { useSavedValues } from "@/app/recoil/hooks";
 import React from "react";
 
 const SessionSections = ({
@@ -6,8 +7,16 @@ const SessionSections = ({
   dayIndex,
   activityIndex,
 }) => {
-  let totalMainDistance = 0;
-
+  const {
+    savedSwimTime,
+    savedHrMax,
+    swimZ1,
+    swimZ2,
+    swimZ3,
+    swimZ4,
+    swimZ5,
+    swimZ6,
+  } = useSavedValues();
   return (
     <>
       {singleActivity[2].map(

@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 
 import "./globals.css";
+import BackGroundImage from "./components/BackGroundImage/BackGroundImage";
 
 export default function Home() {
   const router = useRouter();
@@ -10,6 +11,8 @@ export default function Home() {
   }, 2000);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center "></main>
+    <main>
+      <BackGroundImage />
+    </main>
   );
 }
