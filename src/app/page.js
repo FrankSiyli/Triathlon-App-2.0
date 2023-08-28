@@ -22,7 +22,7 @@ export default function Home() {
 
   setTimeout(() => {
     router.push("/home");
-  }, isLoading + 1000);
+  }, isLoading + 3000);
 
   return (
     <main>

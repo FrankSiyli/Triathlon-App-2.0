@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 
 const TestPage = () => {
   const sessions = useRecoilValue(sessionsState);
+  console.log("sessions", sessions);
   return (
     <>
       <div>
