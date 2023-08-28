@@ -19,9 +19,11 @@ export default function Home() {
     }
   }, [sessions, setRecoilSessions]);
   const router = useRouter();
+
   setTimeout(() => {
     router.push("/home");
-  }, 4000);
+  }, isLoading + 1000);
+
   return (
     <main>
       {error ? <div>failed to load</div> : null}
