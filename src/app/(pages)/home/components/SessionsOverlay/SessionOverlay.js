@@ -40,10 +40,11 @@ const SessionOverlay = ({
         <Image
           src={logo}
           alt="logo"
-          className="mt-5  ml-5 "
-          width={100}
-          height={100}
+          className="mt-3  ml-3 "
+          width={80}
+          height={80}
         />
+
         <div className="text-right mr-3 ">
           <p className="underline underline-offset-2">{singleActivity[0]}</p>
           <p className="my-1">{singleActivity[1]}</p>
@@ -51,6 +52,7 @@ const SessionOverlay = ({
           {totalDuration > 0 ? <p>Zeit: {totalDuration}min</p> : null}
         </div>
       </div>
+
       {overlayView ? (
         <>
           <SessionSections
@@ -61,14 +63,14 @@ const SessionOverlay = ({
           />
           <div className="flex flex-col  items-center gap-10">
             <button
-              className="btn btn-sm w-32 btn-outline text-first "
+              className="btn btn-sm w-32 btn-outline text-first linear-background"
               onClick={handleViewClick}
             >
               Druckversion
             </button>
             <button
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
-              className="btn btn-circle btn-outline text-first mb-20"
+              className="btn btn-circle btn-outline text-first mb-20 linear-background"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -95,18 +97,20 @@ const SessionOverlay = ({
             openOverlay={openOverlay}
             dayIndex={dayIndex}
             activityIndex={activityIndex}
+            totalDistance={totalDistance}
+            totalDuration={totalDuration}
           />
           <div className="flex flex-col  items-center gap-10">
             <div className="flex flex-row gap-3">
               <button
-                className="btn btn-sm w-32 btn-outline text-first "
+                className="btn btn-sm w-32 btn-outline text-first linear-background"
                 onClick={handleViewClick}
               >
                 zurück
               </button>
               <button
                 onClick={handlePrint}
-                className="btn btn-sm w-32 btn-outline text-first "
+                className="btn btn-sm w-32 btn-outline text-first linear-background"
               >
                 drucken
               </button>
