@@ -4,7 +4,7 @@ const MobileHint = () => {
   return (
     <>
       {" "}
-      <p className="fixed hidden xl:block">
+      <p className="fixed left-0 hidden xl:block">
         Mobile only
         <br />
         <br />
