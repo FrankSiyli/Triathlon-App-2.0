@@ -15,6 +15,7 @@ import PlanName from "./components/PlanName";
 import MobileHint from "./components/MobileHint";
 import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
+import Link from "next/link";
 
 function Page() {
   const boughtUserPlans = [examplePlan];
@@ -38,6 +39,12 @@ function Page() {
     <>
       <MobileHint />
       <div className="flex flex-col mx-auto max-w-xl relative  min-h-screen w-screen mb-20">
+        <Link
+          className="btn btn-sm w-20 text-sm absolute right-0 top-0"
+          href="/test"
+        >
+          testpage
+        </Link>
         <Image
           src={logo}
           alt="logo"
