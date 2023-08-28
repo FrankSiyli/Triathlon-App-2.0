@@ -1,7 +1,19 @@
+"use client";
+import { sessionsState } from "@/app/recoil/atoms/sessionsState";
 import React from "react";
+import { useRecoilValue } from "recoil";
 
-const page = () => {
-  return <div>page</div>;
+const TestPage = () => {
+  const sessions = useRecoilValue(sessionsState);
+  return (
+    <>
+      <div>
+        {sessions?.map((session, id) => (
+          <div key={id}>{session.title}</div>
+        ))}
+      </div>
+    </>
+  );
 };
 
-export default page;
+export default TestPage;
