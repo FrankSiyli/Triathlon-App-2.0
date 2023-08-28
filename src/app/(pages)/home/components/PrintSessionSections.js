@@ -3,7 +3,17 @@ import logoBlack from "../../../../../public/images/logoSmallBlack.png";
 import Image from "next/image";
 
 const PrintSessionSections = forwardRef(
-  ({ singleActivity, openOverlay, dayIndex, activityIndex }, ref) => {
+  (
+    {
+      singleActivity,
+      openOverlay,
+      dayIndex,
+      activityIndex,
+      totalDistance,
+      totalDuration,
+    },
+    ref
+  ) => {
     const printComponentRef = useRef();
 
     return (
@@ -14,17 +24,30 @@ const PrintSessionSections = forwardRef(
               openOverlay.includes(dayIndex * 1000 + activityIndex) && (
                 <div key={activityIndex}>
                   <div className=" print-page  p-1 m-3 mx-auto ">
+                    <div className="flex flex-row justify-between">
+                      <Image
+                        src={logoBlack}
+                        alt="logo"
+                        className="mt-3  ml-3 "
+                        width={50}
+                        height={50}
+                      />
+                      <div className="text-right mr-3 ">
+                        <p className="underline underline-offset-2">
+                          {singleActivity[0]}
+                        </p>
+                        <p className="my-1">{singleActivity[1]}</p>
+                        {totalDistance > 0 ? (
+                          <p>Distanz: {totalDistance}m</p>
+                        ) : null}
+                        {totalDuration > 0 ? (
+                          <p>Zeit: {totalDuration}min</p>
+                        ) : null}
+                      </div>
+                    </div>
                     {/**----------------------------warmUpSection ------------------------------------*/}
                     {/**----------------------------warmUpSection ------------------------------------*/}
                     {/**----------------------------warmUpSection ------------------------------------*/}
-                    <Image
-                      src={logoBlack}
-                      alt="logo"
-                      className="mt-5  ml-5 "
-                      width={50}
-                      height={50}
-                    />
-
                     <p className="underline">Warm up</p>
                     {sessionSections?.warmUp.map(
                       (warmUpSection, warmUpIndex) => (
