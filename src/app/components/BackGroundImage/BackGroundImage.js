@@ -11,7 +11,7 @@ function BackGroundImage() {
       <Image
         src={logo}
         alt="hero-image"
-        className={` object-contain  ${logoOpacity}`}
+        className={`w-auto object-contain  ${logoOpacity}`}
         priority
         width={300}
         height={300}
