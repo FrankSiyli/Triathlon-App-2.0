@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import logo from "../../../../public/images/logoSmall.png";
 
-function BackGroundImage() {
+function BackGroundImage({ isLoading, error }) {
   const [logoOpacity, setLogoOpacity] = useState("block");
 
   return (
@@ -18,6 +18,8 @@ function BackGroundImage() {
       />
       <p className="mt-10">Life is good</p>
       <p>Triathlon makes it better</p>
+      {error ? <p className="absolute bottom-10">failed to load</p> : null}
+      {isLoading ? <p className="absolute bottom-10">loading...</p> : null}
     </div>
   );
 }

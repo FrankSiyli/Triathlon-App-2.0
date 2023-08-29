@@ -1,4 +1,4 @@
-import { formatTime } from "@/app/helperFunctions";
+import { formatTime } from "@/app/helperFunctions/formatTime";
 
 const swim100mPace = 120;
 const userMaxHeartrate = 200;
