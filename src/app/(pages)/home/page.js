@@ -20,8 +20,8 @@ import { dataFromMongoDbState } from "@/app/recoil/atoms/dataFromMongoDbState";
 function Page() {
   const data = useRecoilValue(dataFromMongoDbState);
   const boughtUserPlans = data?.plans;
-  const numberOfPlanWeeks = Object.keys(boughtUserPlans[0].sessions).map(
-    (weekIndex) => parseInt(weekIndex)
+  const numberOfPlanWeeks = boughtUserPlans[0]?.sessions.map((weekIndex) =>
+    parseInt(weekIndex)
   );
 
   const { openOverlay, toggleOverlay } = useOpenOverlay();
@@ -33,7 +33,7 @@ function Page() {
   );
 
   const currentWeekSessions =
-    boughtUserPlans[0].sessions[currentWeek - 1].sessions;
+    boughtUserPlans[0]?.sessions[currentWeek - 1].sessions;
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
 
   return (
