@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import logoBlack from "../../../../../public/images/logoSmallBlack.png";
 import Image from "next/image";
 
@@ -14,8 +14,6 @@ const PrintSessions = forwardRef(
     },
     ref
   ) => {
-    const printComponentRef = useRef();
-
     return (
       <>
         <div className="print-section" ref={ref}>
