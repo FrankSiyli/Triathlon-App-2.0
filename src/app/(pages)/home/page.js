@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import Footer from "@/app/components/NavBar/NavBar";
 import "../../globals.css";
 import { v1 as uuidv1 } from "uuid";
@@ -19,21 +20,20 @@ import { dataFromMongoDbState } from "@/app/recoil/atoms/dataFromMongoDbState";
 
 function Page() {
   const data = useRecoilValue(dataFromMongoDbState);
-  const boughtUserPlans = data?.plans;
-  const numberOfPlanWeeks = boughtUserPlans[0]?.sessions.map((weekIndex) =>
+  const userPlans = data?.plans;
+  const numberOfPlanWeeks = userPlans?.[0]?.sessions.map((weekIndex) =>
     parseInt(weekIndex)
   );
 
   const { openOverlay, toggleOverlay } = useOpenOverlay();
   const { openDay, toggleDay } = useOpenDay();
   const { currentWeek, handleBackClick, handleNextClick } = useCurrentWeek(
-    Object.keys(boughtUserPlans[0].sessions).map((weekIndex) =>
-      parseInt(weekIndex)
-    )
+    userPlans?.[0].sessions.map((weekIndex) => parseInt(weekIndex))
   );
 
   const currentWeekSessions =
-    boughtUserPlans[0]?.sessions[currentWeek - 1].sessions;
+    userPlans?.[0]?.sessions[currentWeek - 1].sessions;
+
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
 
   return (
@@ -48,7 +48,7 @@ function Page() {
           width={55}
           height={55}
         />
-        <PlanName boughtUserPlans={boughtUserPlans} />
+        <PlanName userPlans={userPlans} />
         <WeekScrollButtons
           currentWeek={currentWeek}
           numberOfPlanWeeks={numberOfPlanWeeks}
@@ -56,38 +56,40 @@ function Page() {
           handleNextClick={handleNextClick}
         />
 
-        {Object.entries(activitiesByDay).map(([day, activity], dayIndex) => (
-          <div key={uuidv1()}>
-            <Day day={day} toggleDay={toggleDay} dayIndex={dayIndex} />
+        {activitiesByDay &&
+          activitiesByDay.map(([day, activity], dayIndex) => (
+            <div key={uuidv1()}>
+              <Day day={day} toggleDay={toggleDay} dayIndex={dayIndex} />
 
-            <Activity
-              openDay={openDay}
-              dayIndex={dayIndex}
-              activity={activity}
-              toggleOverlay={toggleOverlay}
-            />
-          </div>
-        ))}
+              <Activity
+                openDay={openDay}
+                dayIndex={dayIndex}
+                activity={activity}
+                toggleOverlay={toggleOverlay}
+              />
+            </div>
+          ))}
 
-        {Object.entries(activitiesByDay).map(([day, activity], dayIndex) => (
-          <div className=" " key={dayIndex}>
-            {openDay === dayIndex &&
-              activity.map((singleActivity, activityIndex) => (
-                <SessionOverlay
-                  key={activityIndex}
-                  singleActivity={singleActivity}
-                  dayIndex={dayIndex}
-                  activityIndex={activityIndex}
-                  openOverlay={openOverlay}
-                  toggleOverlay={toggleOverlay}
-                  boughtUserPlans={boughtUserPlans[0]}
-                  initialOpen={openOverlay.includes(
-                    dayIndex * 1000 + activityIndex
-                  )}
-                />
-              ))}
-          </div>
-        ))}
+        {activitiesByDay &&
+          activitiesByDay.map(([day, activity], dayIndex) => (
+            <div className=" " key={dayIndex}>
+              {openDay === dayIndex &&
+                activity.map((singleActivity, activityIndex) => (
+                  <SessionOverlay
+                    key={activityIndex}
+                    singleActivity={singleActivity}
+                    dayIndex={dayIndex}
+                    activityIndex={activityIndex}
+                    openOverlay={openOverlay}
+                    toggleOverlay={toggleOverlay}
+                    userPlans={userPlans[0]}
+                    initialOpen={openOverlay.includes(
+                      dayIndex * 1000 + activityIndex
+                    )}
+                  />
+                ))}
+            </div>
+          ))}
       </div>
       <Footer />
     </>
