@@ -2,7 +2,6 @@
 import Footer from "@/app/components/NavBar/NavBar";
 import "../../globals.css";
 import { v1 as uuidv1 } from "uuid";
-import examplePlan from "../../../../public/mockDb";
 import WeekScrollButtons from "./components/WeekScrollButtons";
 import Day from "./components/Day";
 import SessionOverlay from "./components/SessionOverlay";
@@ -16,9 +15,12 @@ import MobileHint from "./components/MobileHint";
 import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
 import Link from "next/link";
+import { useRecoilValue } from "recoil";
+import { dataFromMongoDbState } from "@/app/recoil/atoms/dataFromMongoDbState";
 
 function Page() {
-  const boughtUserPlans = [examplePlan];
+  const data = useRecoilValue(dataFromMongoDbState);
+  const boughtUserPlans = data.plans;
   const numberOfPlanWeeks = Object.keys(boughtUserPlans[0].sessions).map(
     (weekIndex) => parseInt(weekIndex)
   );
