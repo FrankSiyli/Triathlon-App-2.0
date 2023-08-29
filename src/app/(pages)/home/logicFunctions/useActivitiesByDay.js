@@ -1,4 +1,8 @@
 export const useActivitiesByDay = (currentWeekSessions) => {
+  if (!Array.isArray(currentWeekSessions)) {
+    return [];
+  }
+
   const activitiesByDay = currentWeekSessions.reduce((acc, session) => {
     const { day, activity, description, sessionParts } = session;
     if (!acc[day]) {
@@ -6,7 +10,7 @@ export const useActivitiesByDay = (currentWeekSessions) => {
     }
     acc[day].push([activity, description, sessionParts]);
     return acc;
-  }, {});
+  }, []);
 
-  return activitiesByDay;
+  return Object.entries(activitiesByDay);
 };

@@ -16,10 +16,12 @@ function BackGroundImage({ isLoading, error }) {
         width={300}
         height={300}
       />
-      <p className="mt-10">Life is good</p>
-      <p>Triathlon makes it better</p>
-      {error ? <p className="absolute bottom-10">failed to load</p> : null}
-      {isLoading ? <p className="absolute bottom-10">loading...</p> : null}
+      <div className="relative mt-5 flex flex-col text-center items-center">
+        <p className="">Life is good</p>
+        <p>Triathlon makes it better</p>
+        {error ? <p className="absolute mt-20">failed to load</p> : null}
+        {isLoading ? <p className="absolute mt-20">loading...</p> : null}
+      </div>
     </div>
   );
 }
