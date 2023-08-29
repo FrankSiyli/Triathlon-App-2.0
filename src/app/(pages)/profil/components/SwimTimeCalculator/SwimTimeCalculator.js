@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { formatTime } from "@/app/helperFunctions";
+import { formatTime } from "@/app/helperFunctions/formatTime";
 import "../../../../globals.css";
 import { useRecoilState } from "recoil";
 import { savedSwimTimeState } from "@/app/recoil/atoms/savedSwimTimeState";

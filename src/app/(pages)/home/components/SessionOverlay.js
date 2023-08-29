@@ -1,13 +1,13 @@
 "use client";
-import "../../../../globals.css";
+import "../../../globals.css";
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import logo from "../../../../../../public/images/logoSmall.png";
-import PrintSessionSections from "../PrintSessionSections";
+import logo from "../../../../../public/images/logoSmall.png";
+import PrintSessions from "./PrintSessions";
 import { useReactToPrint } from "react-to-print";
-import SessionSections from "../SessionSections";
-import calculateTotalDistance from "../../logicFunctions/totalDistanceFunction";
-import calculateTotalDuration from "../../logicFunctions/totalDurationFunction";
+import Sessions from "./Sessions";
+import calculateTotalDistance from "../logicFunctions/totalDistanceFunction";
+import calculateTotalDuration from "../logicFunctions/totalDurationFunction";
 
 const SessionOverlay = ({
   sessionSections,
@@ -55,7 +55,7 @@ const SessionOverlay = ({
 
       {overlayView ? (
         <>
-          <SessionSections
+          <Sessions
             singleActivity={singleActivity}
             openOverlay={openOverlay}
             dayIndex={dayIndex}
@@ -91,7 +91,7 @@ const SessionOverlay = ({
         </>
       ) : (
         <>
-          <PrintSessionSections
+          <PrintSessions
             ref={printComponentRef}
             singleActivity={singleActivity}
             openOverlay={openOverlay}
