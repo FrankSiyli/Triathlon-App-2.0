@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { savedSwimTimeSelector } from "./selectors/SavedSwimTimeSelector";
 import { savedHrMaxSelector } from "./selectors/savedHrMaxSelector";
-import { formatTime } from "../helperFunctions";
+import { formatTime } from "../helperFunctions/formatTime";
 
 export const useSavedValues = () => {
   const savedSwimTime = useRecoilValue(savedSwimTimeSelector);

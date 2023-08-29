@@ -1,5 +1,5 @@
 "use client";
-import Footer from "@/app/components/Footer/Footer";
+import Footer from "@/app/components/NavBar/Footer";
 import React, { useState } from "react";
 import Link from "next/link";
 import "../../globals.css";

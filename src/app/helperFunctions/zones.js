@@ -1,6 +1,6 @@
 import React from "react";
-import { formatTime } from "@/app/helperFunctions";
-import { useSavedValues } from "./recoil/hooks";
+import { formatTime } from "@/app/helperFunctions/formatTime";
+import { useSavedValues } from "../recoil/hooks";
 const Zones = () => {
   const { savedSwimTime, savedHrMax } = useSavedValues();
   const swim100mPace = savedSwimTime;
