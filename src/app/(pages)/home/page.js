@@ -1,11 +1,11 @@
 "use client";
-import Footer from "@/app/components/Footer/Footer";
+import Footer from "@/app/components/NavBar/Footer";
 import "../../globals.css";
 import { v1 as uuidv1 } from "uuid";
 import examplePlan from "../../../../public/mockDb";
 import WeekScrollButtons from "./components/WeekScrollButtons";
-import DayComponent from "./components/DayComponent";
-import SessionOverlay from "./components/SessionsOverlay/SessionOverlay";
+import Day from "./components/Day";
+import SessionOverlay from "./components/SessionOverlay";
 import { useOpenOverlay } from "./stateHooks/useOpenOverlay";
 import { useOpenDay } from "./stateHooks/useOpenDay";
 import { useCurrentWeek } from "./stateHooks/useCurrentWeek";
@@ -46,11 +46,12 @@ function Page() {
           testpage
         </Link>
         <Image
+          priority
           src={logo}
           alt="logo"
-          className="mt-3  ml-3 absolute"
-          width={80}
-          height={80}
+          className="mt-3  ml-3 absolute w-auto"
+          width={55}
+          height={55}
         />
         <PlanName boughtUserPlans={boughtUserPlans} />
         <WeekScrollButtons
@@ -62,7 +63,7 @@ function Page() {
 
         {Object.entries(activitiesByDay).map(([day, activity], dayIndex) => (
           <div key={uuidv1()}>
-            <DayComponent day={day} toggleDay={toggleDay} dayIndex={dayIndex} />
+            <Day day={day} toggleDay={toggleDay} dayIndex={dayIndex} />
 
             <Activity
               openDay={openDay}
