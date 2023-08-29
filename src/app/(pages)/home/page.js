@@ -1,5 +1,5 @@
 "use client";
-import Footer from "@/app/components/NavBar/Footer";
+import Footer from "@/app/components/NavBar/NavBar";
 import "../../globals.css";
 import { v1 as uuidv1 } from "uuid";
 import examplePlan from "../../../../public/mockDb";
