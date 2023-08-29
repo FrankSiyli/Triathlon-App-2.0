@@ -20,7 +20,7 @@ import { dataFromMongoDbState } from "@/app/recoil/atoms/dataFromMongoDbState";
 
 function Page() {
   const data = useRecoilValue(dataFromMongoDbState);
-  const boughtUserPlans = data.plans;
+  const boughtUserPlans = data?.plans;
   const numberOfPlanWeeks = Object.keys(boughtUserPlans[0].sessions).map(
     (weekIndex) => parseInt(weekIndex)
   );
