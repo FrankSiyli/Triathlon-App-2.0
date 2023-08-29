@@ -14,7 +14,6 @@ import PlanName from "./components/PlanName";
 import MobileHint from "./components/MobileHint";
 import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
-import Link from "next/link";
 import { useRecoilValue } from "recoil";
 import { dataFromMongoDbState } from "@/app/recoil/atoms/dataFromMongoDbState";
 

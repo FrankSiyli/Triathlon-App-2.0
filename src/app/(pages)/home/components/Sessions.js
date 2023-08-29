@@ -1,24 +1,13 @@
-import { useSavedValues } from "@/app/recoil/hooks";
 import React from "react";
 
 const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
-  const {
-    savedSwimTime,
-    savedHrMax,
-    swimZ1,
-    swimZ2,
-    swimZ3,
-    swimZ4,
-    swimZ5,
-    swimZ6,
-  } = useSavedValues();
   return (
     <>
       {singleActivity[2].map(
         (sessionSections, sectionIndex) =>
           openOverlay.includes(dayIndex * 1000 + activityIndex) && (
             <div key={activityIndex}>
-              <div className="">
+              <div>
                 {/**----------------------------warmUpSection ------------------------------------*/}
                 {/**----------------------------warmUpSection ------------------------------------*/}
                 {/**----------------------------warmUpSection ------------------------------------*/}
