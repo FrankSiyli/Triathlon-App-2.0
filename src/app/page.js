@@ -19,7 +19,6 @@ export default function Home() {
       setRecoilSessions(data);
     }
   }, [data, setRecoilSessions]);
-  console.log(data);
   const router = useRouter();
 
   const navigateAfterLoading = () => {
