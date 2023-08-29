@@ -5,19 +5,20 @@ import "./globals.css";
 import BackGroundImage from "./components/BackGroundImage/BackGroundImage";
 import useSWR from "swr";
 import { useRecoilState } from "recoil";
-import { sessionsState } from "./recoil/atoms/sessionsState";
+import { dataFromMongoDbState } from "./recoil/atoms/dataFromMongoDbState";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Home() {
-  const { data: sessions, error, isLoading } = useSWR("/api/mongoDb", fetcher);
-  const [recoilSessions, setRecoilSessions] = useRecoilState(sessionsState);
+  const { data, error, isLoading } = useSWR("/api/mongoDb", fetcher);
+  const [recoilSessions, setRecoilSessions] =
+    useRecoilState(dataFromMongoDbState);
 
   useEffect(() => {
-    if (sessions) {
-      setRecoilSessions(sessions);
+    if (data) {
+      setRecoilSessions(data);
     }
-  }, [sessions, setRecoilSessions]);
+  }, [data, setRecoilSessions]);
   const router = useRouter();
 
   const navigateAfterLoading = () => {

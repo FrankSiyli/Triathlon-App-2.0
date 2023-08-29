@@ -26,7 +26,7 @@ const WeekScrollButtons = ({
         />
       </svg>
     </button>
-    <p>{`Woche ${currentWeek} / ${numberOfPlanWeeks.length}`}</p>
+    <p>{`Woche ${currentWeek} / ${numberOfPlanWeeks?.length}`}</p>
     <button
       onClick={handleNextClick}
       className="h-9 w-16 flex justify-center items-center bg-third rounded-md active:scale-90"
