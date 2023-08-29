@@ -2,7 +2,7 @@ import React, { useRef, forwardRef } from "react";
 import logoBlack from "../../../../../public/images/logoSmallBlack.png";
 import Image from "next/image";
 
-const PrintSessionSections = forwardRef(
+const PrintSessions = forwardRef(
   (
     {
       singleActivity,
@@ -168,6 +168,6 @@ const PrintSessionSections = forwardRef(
   }
 );
 
-PrintSessionSections.displayName = "PrintSessionSections";
+PrintSessions.displayName = "PrintSessions";
 
-export default PrintSessionSections;
+export default PrintSessions;

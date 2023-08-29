@@ -1,12 +1,7 @@
 import { useSavedValues } from "@/app/recoil/hooks";
 import React from "react";
 
-const SessionSections = ({
-  singleActivity,
-  openOverlay,
-  dayIndex,
-  activityIndex,
-}) => {
+const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
   const {
     savedSwimTime,
     savedHrMax,
@@ -163,4 +158,4 @@ const SessionSections = ({
   );
 };
 
-export default SessionSections;
+export default Sessions;

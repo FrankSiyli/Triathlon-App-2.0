@@ -3,14 +3,14 @@ import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
 
-function Footer() {
+function NavBar() {
   const currentRoute = usePathname();
-  const activeStyle = "linear-background";
-  const nonActiveStyle = "bg-third ";
+  const activeStyle = "border-t border-first";
+  const nonActiveStyle = " border-t border-neutral-800";
 
   return (
     <div>
-      <div className="btm-nav max-w-xl mx-auto bg-#222c3787 h-10 icon-text  z-40">
+      <div className="btm-nav max-w-xl mx-auto h-12 icon-text linear-background  z-40">
         <Link
           href="/home"
           className={currentRoute === "/home" ? activeStyle : nonActiveStyle}
@@ -76,4 +76,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default NavBar;
