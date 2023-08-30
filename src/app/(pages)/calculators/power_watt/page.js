@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import "../../../globals.css";
-import Link from "next/link";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 
 const Page = () => {
@@ -48,44 +47,42 @@ const Page = () => {
   return (
     <>
       <BackButton href="/profil" />
-
       <div className="w-11/12 border border-first/50 rounded-md p-4 max-w-xl mx-auto mb-5   text-center">
         <p>
           Du hast deinen FTP Wert bereits auf einer smarten Rolle ermittelt?
         </p>
         <p>Dann kannst du hier deine Trainingszonen berechnen.</p>
       </div>
-      <div className="">
-        <div className="">
-          <div className="max-w-xl mx-auto flex flex-col items-center justify-center">
-            {showAlert && (
-              <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
-                <span>Bitte trage deine FTP ein (50-500)</span>
-              </div>
-            )}
-            <label className="label mt-10 ">
-              <span className="label-text-alt text-first text-xl">
-                Deine FTP in Watt
-              </span>
-            </label>
-            <input
-              type="number"
-              maxLength={3}
-              placeholder="z.B. 250"
-              value={calculatorInput}
-              onChange={(e) => setCalculatorInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="input  border border-first/50 mb-3 w-full max-w-xs"
-            />
+      <div>
+        <div className="max-w-xl mx-auto flex flex-col items-center justify-center">
+          {showAlert && (
+            <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
+              <span>Bitte trage deine FTP ein (50-500)</span>
+            </div>
+          )}
+          <label className="label mt-10 ">
+            <span className="label-text-alt text-first text-xl">
+              Deine FTP in Watt
+            </span>
+          </label>
+          <input
+            type="number"
+            maxLength={3}
+            placeholder="z.B. 250"
+            value={calculatorInput}
+            onChange={(e) => setCalculatorInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="input  border border-first/50 mb-3 w-full max-w-xs"
+          />
 
-            <button
-              className="btn btn-sm  mb-10 bg-third border border-first/50 text-first"
-              onClick={calculateWattZones}
-            >
-              Berechnen
-            </button>
-          </div>
+          <button
+            className="btn btn-sm  mb-10 bg-third border border-first/50 text-first"
+            onClick={calculateWattZones}
+          >
+            Berechnen
+          </button>
         </div>
+
         <div className="overflow-x-auto flex justify-center">
           <table className="table table-xs table-pin-rows table-pin-cols m-1 max-w-xl  text-first text-center border border-first">
             <thead className="text-first">

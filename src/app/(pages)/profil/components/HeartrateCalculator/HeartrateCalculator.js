@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import "../../../../globals.css";
 import { savedHrMaxState } from "@/app/recoil/atoms/savedHrMaxState";
+import { heartrateInputFiredState } from "@/app/recoil/atoms/heartrateInputFiredState";
 
 function HeartrateCalculator() {
   const [showAlert, setShowAlert] = useState(false);
@@ -10,6 +11,9 @@ function HeartrateCalculator() {
   const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
   const [showHrInput, setShowHrInput] = useState(true);
   const [showSavedHrMax, setShowSavedHrMax] = useState(false);
+  const [heartrateInputFired, setHeartrateInputFired] = useRecoilState(
+    heartrateInputFiredState
+  );
 
   const handleHeartrateInputClick = () => {
     if (
@@ -26,8 +30,14 @@ function HeartrateCalculator() {
       setShowSavedHrMax(true);
       setSavedHrMax(heartrateCalculatorInput);
       setHeartrateCalculatorInput("");
+      setHeartrateInputFired(true);
     }
   };
+
+  useEffect(() => {
+    setShowHrInput(false);
+    setShowSavedHrMax(true);
+  }, [heartrateInputFired]);
 
   const handleChangeHrMaxClick = () => {
     setShowHrInput(true);
@@ -70,7 +80,7 @@ function HeartrateCalculator() {
               onClick={handleHeartrateInputClick}
               className="btn btn-sm m-3 bg-third border border-first/50 text-first"
             >
-              Enter
+              speichern
             </button>
           </>
         )}

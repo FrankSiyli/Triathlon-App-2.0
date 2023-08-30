@@ -17,10 +17,12 @@ import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
 import { useRecoilValue } from "recoil";
 import { dataFromMongoDbState } from "@/app/recoil/atoms/dataFromMongoDbState";
+import InputAlert from "./components/inputAlert";
 
 function Page() {
   const data = useRecoilValue(dataFromMongoDbState);
   const userPlans = data?.plans;
+
   const numberOfPlanWeeks = userPlans?.[0]?.sessions.map((weekIndex) =>
     parseInt(weekIndex)
   );
@@ -91,6 +93,7 @@ function Page() {
             </div>
           ))}
       </div>
+      <InputAlert />
       <Footer />
     </>
   );
