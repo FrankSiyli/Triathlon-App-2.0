@@ -17,7 +17,7 @@ import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
 import { useRecoilValue } from "recoil";
 import { dataFromMongoDbState } from "@/app/recoil/atoms/dataFromMongoDbState";
-import InputAlert from "./components/inputAlert";
+import InputAlert from "./components/InputAlert";
 
 function Page() {
   const data = useRecoilValue(dataFromMongoDbState);
