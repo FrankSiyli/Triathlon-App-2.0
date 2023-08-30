@@ -1,9 +1,11 @@
-const DayComponent = ({ day, toggleDay, dayIndex }) => (
+const Day = ({ day, toggleDay, dayIndex }) => (
   <div
     onClick={() => toggleDay(dayIndex)}
     className="flex flex-row justify-between my-3 cursor-pointer"
   >
-    <p className="ml-5">{day}</p>
+    <div key={dayIndex} className="ml-5 ">
+      {day}
+    </div>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -20,4 +22,4 @@ const DayComponent = ({ day, toggleDay, dayIndex }) => (
     </svg>
   </div>
 );
-export default DayComponent;
+export default Day;

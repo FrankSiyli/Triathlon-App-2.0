@@ -39,7 +39,7 @@ function Page() {
   return (
     <>
       <MobileHint />
-      <div className="flex flex-col mx-auto max-w-xl relative  min-h-screen w-screen mb-20">
+      <div className="flex flex-col mx-auto max-w-xl relative h-auto  w-screen mb-20 ">
         <Image
           priority
           src={logo}
