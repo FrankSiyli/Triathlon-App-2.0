@@ -1,6 +1,10 @@
 import React, { forwardRef } from "react";
 import logoBlack from "../../../../../public/images/logoSmallBlack.png";
 import Image from "next/image";
+import { savedSwimTimeState } from "@/app/recoil/atoms/savedSwimTimeState";
+import { useRecoilValue } from "recoil";
+import { savedHrMaxState } from "@/app/recoil/atoms/savedHrMaxState";
+import getZones from "@/app/helperFunctions/getZones";
 
 const PrintSessions = forwardRef(
   (
@@ -14,6 +18,8 @@ const PrintSessions = forwardRef(
     },
     ref
   ) => {
+    const savedSwimTime = useRecoilValue(savedSwimTimeState) / 10;
+    const savedHrMax = useRecoilValue(savedHrMaxState) / 10;
     return (
       <>
         <div className="print-section" ref={ref}>
@@ -44,8 +50,6 @@ const PrintSessions = forwardRef(
                       </div>
                     </div>
                     {/**----------------------------warmUpSection ------------------------------------*/}
-                    {/**----------------------------warmUpSection ------------------------------------*/}
-                    {/**----------------------------warmUpSection ------------------------------------*/}
                     <p className="underline">Warm up</p>
                     {sessionSections?.warmUp.map(
                       (warmUpSection, warmUpIndex) => (
@@ -63,7 +67,13 @@ const PrintSessions = forwardRef(
                                     ) : warmUpExercise.duration > 0 ? (
                                       <p>{warmUpExercise.duration}min</p>
                                     ) : null}
-                                    <p>{warmUpExercise.zone}</p>
+                                    <p>
+                                      {getZones(
+                                        warmUpExercise,
+                                        savedSwimTime,
+                                        savedHrMax
+                                      )}
+                                    </p>{" "}
                                   </div>
                                   <div>
                                     {warmUpExercise.name.trim() !== "" ? (
@@ -79,8 +89,6 @@ const PrintSessions = forwardRef(
                       )
                     )}
 
-                    {/**----------------------------mainSection ------------------------------------*/}
-                    {/**----------------------------mainSection ------------------------------------*/}
                     {/**----------------------------mainSection ------------------------------------*/}
                     <p className="underline">Hauptteil</p>
                     {sessionSections.main.map((mainSection, mainIndex) => {
@@ -105,7 +113,13 @@ const PrintSessions = forwardRef(
                                     ) : mainExercise.duration > 0 ? (
                                       <p>{mainExercise.duration}min</p>
                                     ) : null}
-                                    <p>{mainExercise.zone}</p>
+                                    <p>
+                                      {getZones(
+                                        mainExercise,
+                                        savedSwimTime,
+                                        savedHrMax
+                                      )}
+                                    </p>{" "}
                                   </div>
                                   <div>
                                     {mainExercise.name.trim() !== "" ? (
@@ -119,8 +133,6 @@ const PrintSessions = forwardRef(
                         </div>
                       );
                     })}
-                    {/**----------------------------coolDownSection ------------------------------------*/}
-                    {/**----------------------------coolDownSection ------------------------------------*/}
                     {/**----------------------------coolDownSection ------------------------------------*/}
                     <p className="underline">Cool down</p>
                     {sessionSections.coolDown.map(
@@ -139,7 +151,13 @@ const PrintSessions = forwardRef(
                                     ) : coolDownExercise.duration > 0 ? (
                                       <p>{coolDownExercise.duration}min</p>
                                     ) : null}
-                                    <p>{coolDownExercise.zone}</p>
+                                    <p>
+                                      {getZones(
+                                        coolDownExercise,
+                                        savedSwimTime,
+                                        savedHrMax
+                                      )}
+                                    </p>{" "}
                                   </div>
                                   <div>
                                     {coolDownExercise.name.trim() !== "" ? (
