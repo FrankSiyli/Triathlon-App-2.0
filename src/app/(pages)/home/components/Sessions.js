@@ -1,6 +1,13 @@
+import getZones from "@/app/helperFunctions/getZones";
+import { savedHrMaxState } from "@/app/recoil/atoms/savedHrMaxState";
+import { savedSwimTimeState } from "@/app/recoil/atoms/savedSwimTimeState";
 import React from "react";
+import { useRecoilValue } from "recoil";
 
 const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
+  const savedSwimTime = useRecoilValue(savedSwimTimeState) / 10;
+  const savedHrMax = useRecoilValue(savedHrMaxState) / 10;
+
   return (
     <>
       {singleActivity[2].map(
@@ -8,8 +15,6 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
           openOverlay.includes(dayIndex * 1000 + activityIndex) && (
             <div key={activityIndex}>
               <div>
-                {/**----------------------------warmUpSection ------------------------------------*/}
-                {/**----------------------------warmUpSection ------------------------------------*/}
                 {/**----------------------------warmUpSection ------------------------------------*/}
                 <div className="mt-20">
                   <div className="relative border-2 border-first/50  rounded-md mx-5 ">
@@ -29,7 +34,13 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                     ) : warmUpExercise.duration > 0 ? (
                                       <p>{warmUpExercise.duration}min</p>
                                     ) : null}
-                                    <p>{warmUpExercise.zone}</p>
+                                    <p>
+                                      {getZones(
+                                        warmUpExercise,
+                                        savedSwimTime,
+                                        savedHrMax
+                                      )}
+                                    </p>
                                   </div>
                                   <div>
                                     {warmUpExercise.name.trim() !== "" ? (
@@ -49,8 +60,6 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                     )}
                   </div>
                 </div>{" "}
-                {/**----------------------------mainSection ------------------------------------*/}
-                {/**----------------------------mainSection ------------------------------------*/}
                 {/**----------------------------mainSection ------------------------------------*/}
                 <div className="relative border border-first/50  rounded-md mx-5 my-10">
                   <p className="absolute -top-7 -left-4 btn btn-outline text-first p-2  linear-background text-xl">
@@ -84,7 +93,13 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                   ) : mainExercise.duration > 0 ? (
                                     <p>{mainExercise.duration}min</p>
                                   ) : null}
-                                  <p>{mainExercise.zone}</p>
+                                  <p>
+                                    {getZones(
+                                      mainExercise,
+                                      savedSwimTime,
+                                      savedHrMax
+                                    )}
+                                  </p>
                                 </div>
                                 <div>
                                   {mainExercise.name.trim() !== "" ? (
@@ -101,8 +116,6 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                     );
                   })}
                 </div>{" "}
-                {/**----------------------------coolDownSection ------------------------------------*/}
-                {/**----------------------------coolDownSection ------------------------------------*/}
                 {/**----------------------------coolDownSection ------------------------------------*/}
                 <div className="relative border border-first/50  rounded-md mx-5 mb-10">
                   <p className="absolute -top-7 -left-4 btn btn-outline text-first p-2  linear-background text-xl">
@@ -121,7 +134,13 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                   ) : coolDownExercise.duration > 0 ? (
                                     <p>{coolDownExercise.duration}min</p>
                                   ) : null}
-                                  <p>{coolDownExercise.zone}</p>
+                                  <p>
+                                    {getZones(
+                                      coolDownExercise,
+                                      savedSwimTime,
+                                      savedHrMax
+                                    )}
+                                  </p>
                                 </div>
                                 <div>
                                   {coolDownExercise.name.trim() !== "" ? (
