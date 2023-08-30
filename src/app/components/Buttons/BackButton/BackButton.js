@@ -4,10 +4,10 @@ import React from "react";
 function BackButton({ href }) {
   return (
     <>
-      <div className="flex max-w-xl mx-auto">
+      <div className="w-screen max-w-xl mx-auto">
         <Link
           href={href}
-          className="btn btn-sm  m-3 bg-third border border-first/50 text-first"
+          className="top-5 left-5 btn btn-sm  m-3 bg-third border border-first/50 text-first"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

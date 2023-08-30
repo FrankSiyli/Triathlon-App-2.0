@@ -10,6 +10,12 @@ import Impressum from "@/app/components/Impressum/Impressum";
 function Page() {
   return (
     <>
+      <div className="w-screen max-w-xl mx-auto">
+        <button className=" top-5 left-5 btn btn-sm pointer-events-none border-first/50  bg-third m-3  text-first">
+          Profil
+        </button>
+      </div>
+
       <div className="w-11/12 max-w-xl mx-auto flex flex-col gap-5 justify-center content-center">
         <HeartrateCalculator />
         <SwimTimeCalculator />

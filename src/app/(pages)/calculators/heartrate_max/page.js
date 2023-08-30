@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import "../../../globals.css";
-import Link from "next/link";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 
 function Page() {
@@ -63,127 +62,129 @@ function Page() {
           professionelle Leistungsdiagnostik.
         </p>
       </div>
-      <div className="max-w-xl mx-auto flex flex-col justify-center items-center ">
-        {showAlert && (
-          <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
-            <span>Bitte trage deine HRmax ein (100-300)</span>
-          </div>
-        )}
-        <label className="label mt-10 ">
-          <span className="label-text-alt text-first text-xl">
-            Dein Maximalpuls in bpm
-          </span>
-        </label>
+      <div>
+        <div className="max-w-xl mx-auto flex flex-col justify-center items-center ">
+          {showAlert && (
+            <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
+              <span>Bitte trage deine HRmax ein (100-300)</span>
+            </div>
+          )}
+          <label className="label mt-10 ">
+            <span className="label-text-alt text-first text-xl">
+              Dein Maximalpuls in bpm
+            </span>
+          </label>
 
-        <input
-          type="number"
-          placeholder="z.B. 185"
-          className="input  border border-first/50 mb-3 w-full max-w-xs"
-          value={calculatorInput}
-          onChange={(e) => setCalculatorInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
+          <input
+            type="number"
+            placeholder="z.B. 185"
+            className="input  border border-first/50 mb-3 w-full max-w-xs"
+            value={calculatorInput}
+            onChange={(e) => setCalculatorInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
 
-        <button
-          type="submit"
-          className="btn btn-sm  mb-10 bg-third border border-first/50 text-first"
-          id="calculateBtn"
-          onClick={calculatePercentages}
-        >
-          Berechnen
-        </button>
-      </div>
-      <div className="overflow-x-auto flex justify-center">
-        <table className="table table-xs table-pin-rows table-pin-cols m-1 max-w-xl   text-first text-center border border-first/50">
-          <thead className="text-first">
-            <tr>
-              <td>Zone</td>
-              <td className="w-20">HR in %</td>
-              <td>Target HR bpm</td>
-              <td>Thresholds bpm</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td id="zone5"> 5 Speed</td>
-              <td>90 - 100</td>
-              <td>
-                <input
-                  className="w-20"
-                  type="text"
-                  value={tgOutput5}
-                  readOnly
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="zone4">4 Anaerobic</td>
-              <td>80 - 90</td>
-              <td>
-                <input
-                  className="w-20 "
-                  type="text"
-                  value={tgOutput4}
-                  readOnly
-                />
-              </td>
-              <td>
-                Anaerobic <br />
-                <input
-                  className="w-20 "
-                  type="text"
-                  value={anaerobicOutput}
-                  readOnly
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="zone3">3 Aerobic</td>
-              <td>70 - 80</td>
-              <td>
-                <input
-                  className="w-20 "
-                  type="text"
-                  value={tgOutput3}
-                  readOnly
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="zone2">2 Base</td>
-              <td>60 - 70</td>
-              <td>
-                <input
-                  className="w-20 "
-                  type="text"
-                  value={tgOutput2}
-                  readOnly
-                />
-              </td>
-              <td>
-                Aerobic <br />
-                <input
-                  className="w-20 "
-                  type="text"
-                  value={aerobicOutput}
-                  readOnly
-                />
-              </td>
-            </tr>
-            <tr>
-              <td id="zone1">1 Warmup</td>
-              <td>50 - 60</td>
-              <td>
-                <input
-                  className="w-20 "
-                  type="text"
-                  value={tgOutput1}
-                  readOnly
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+          <button
+            type="submit"
+            className="btn btn-sm  mb-10 bg-third border border-first/50 text-first"
+            id="calculateBtn"
+            onClick={calculatePercentages}
+          >
+            Berechnen
+          </button>
+        </div>
+        <div className="overflow-x-auto flex justify-center">
+          <table className="table table-xs table-pin-rows table-pin-cols m-1 max-w-xl   text-first text-center border border-first/50">
+            <thead className="text-first">
+              <tr>
+                <td>Zone</td>
+                <td className="w-20">HR in %</td>
+                <td>Target HR bpm</td>
+                <td>Thresholds bpm</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="zone5"> 5 Speed</td>
+                <td>90 - 100</td>
+                <td>
+                  <input
+                    className="w-20"
+                    type="text"
+                    value={tgOutput5}
+                    readOnly
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td id="zone4">4 Anaerobic</td>
+                <td>80 - 90</td>
+                <td>
+                  <input
+                    className="w-20 "
+                    type="text"
+                    value={tgOutput4}
+                    readOnly
+                  />
+                </td>
+                <td>
+                  Anaerobic <br />
+                  <input
+                    className="w-20 "
+                    type="text"
+                    value={anaerobicOutput}
+                    readOnly
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td id="zone3">3 Aerobic</td>
+                <td>70 - 80</td>
+                <td>
+                  <input
+                    className="w-20 "
+                    type="text"
+                    value={tgOutput3}
+                    readOnly
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td id="zone2">2 Base</td>
+                <td>60 - 70</td>
+                <td>
+                  <input
+                    className="w-20 "
+                    type="text"
+                    value={tgOutput2}
+                    readOnly
+                  />
+                </td>
+                <td>
+                  Aerobic <br />
+                  <input
+                    className="w-20 "
+                    type="text"
+                    value={aerobicOutput}
+                    readOnly
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td id="zone1">1 Warmup</td>
+                <td>50 - 60</td>
+                <td>
+                  <input
+                    className="w-20 "
+                    type="text"
+                    value={tgOutput1}
+                    readOnly
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );

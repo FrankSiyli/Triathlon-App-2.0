@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./globals.css";
 import BackGroundImage from "./components/BackGroundImage/BackGroundImage";
@@ -11,6 +11,8 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Home() {
   const { data, error, isLoading } = useSWR("/api/mongoDb", fetcher);
+  const router = useRouter();
+  const [elapsedTime, setElapsedTime] = useState(0);
   const [recoilSessions, setRecoilSessions] =
     useRecoilState(dataFromMongoDbState);
 
@@ -19,20 +21,39 @@ export default function Home() {
       setRecoilSessions(data);
     }
   }, [data, setRecoilSessions]);
-  const router = useRouter();
+
+  useEffect(() => {
+    if (data) {
+      setRecoilSessions(data);
+    }
+  }, [data, setRecoilSessions]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setElapsedTime((prevTime) => prevTime + 1000);
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   const navigateAfterLoading = () => {
-    if (!isLoading) {
+    if (!isLoading && elapsedTime > 4000) {
       setTimeout(() => {
         router.push("/home");
-      }, 2000);
+      }, 1500);
     }
   };
   navigateAfterLoading();
 
   return (
     <main>
-      <BackGroundImage isLoading={isLoading} error={error} />
+      <BackGroundImage
+        isLoading={isLoading}
+        error={error}
+        elapsedTime={elapsedTime}
+      />
     </main>
   );
 }
