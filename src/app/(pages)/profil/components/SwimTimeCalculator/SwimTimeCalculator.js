@@ -1,21 +1,31 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { formatTime } from "@/app/helperFunctions/formatTime";
 import "../../../../globals.css";
 import { useRecoilState } from "recoil";
 import { savedSwimTimeState } from "@/app/recoil/atoms/savedSwimTimeState";
+import { swimTimeInputFiredState } from "@/app/recoil/atoms/swimTimeInputFiredState";
 
 function SwimTimeCalculator() {
   const [swimCalculatorInput, setSwimCalculatorInput] = useState(1200);
   const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
   const [showSwimTimeInput, setShowSwimTimeInput] = useState(true);
   const [showSavedSwimTime, setShowSavedSwimTime] = useState(false);
+  const [swimTimeInputFired, setSwinTimeInputFired] = useRecoilState(
+    swimTimeInputFiredState
+  );
 
   const handleSwimTimeInputClick = () => {
     setShowSwimTimeInput(false);
     setShowSavedSwimTime(true);
     setSavedSwimTime(swimCalculatorInput);
+    setSwinTimeInputFired(true);
   };
+
+  useEffect(() => {
+    setShowSwimTimeInput(false);
+    setShowSavedSwimTime(true);
+  }, [swimTimeInputFired]);
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -66,7 +76,7 @@ function SwimTimeCalculator() {
               onClick={handleSwimTimeInputClick}
               className="btn btn-sm m-3 bg-third border border-first/50 text-first"
             >
-              Enter
+              speichern
             </button>
           </>
         )}
