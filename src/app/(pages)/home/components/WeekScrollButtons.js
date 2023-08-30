@@ -33,7 +33,7 @@ const WeekScrollButtons = ({
       onClick={handleNextClick}
       className="h-9 w-16 flex justify-center items-center bg-third rounded-md active:scale-90"
     >
-      {currentWeek === numberOfPlanWeeks.length - 1 ? (
+      {currentWeek === numberOfPlanWeeks?.length - 1 ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
