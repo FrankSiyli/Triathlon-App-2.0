@@ -53,19 +53,18 @@ body {
 @media print {
   html,
   body {
-    height: 100vh;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden;
-    background-image: none !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+    text-align: center;
+    overflow: scroll;
+    background-image: none;
   }
 }
 
 .print-page {
-  font-size: 0.7rem;
+  width: 100%;
+  font-size: 0.8rem;
   background: white;
   color: black;
   print-color-adjust: exact;
