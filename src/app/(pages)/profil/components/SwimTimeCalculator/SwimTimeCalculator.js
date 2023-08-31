@@ -9,23 +9,14 @@ import { swimTimeInputFiredState } from "@/app/recoil/atoms/swimTimeInputFiredSt
 function SwimTimeCalculator() {
   const [swimCalculatorInput, setSwimCalculatorInput] = useState(1200);
   const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
-  const [showSwimTimeInput, setShowSwimTimeInput] = useState(true);
-  const [showSavedSwimTime, setShowSavedSwimTime] = useState(false);
   const [swimTimeInputFired, setSwinTimeInputFired] = useRecoilState(
     swimTimeInputFiredState
   );
 
   const handleSwimTimeInputClick = () => {
-    setShowSwimTimeInput(false);
-    setShowSavedSwimTime(true);
     setSavedSwimTime(swimCalculatorInput);
     setSwinTimeInputFired(true);
   };
-
-  useEffect(() => {
-    setShowSwimTimeInput(false);
-    setShowSavedSwimTime(true);
-  }, [swimTimeInputFired]);
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -34,19 +25,19 @@ function SwimTimeCalculator() {
   };
 
   const handleChangeSwimTimeClick = () => {
-    setShowSwimTimeInput(true);
-    setShowSavedSwimTime(false);
+    setSwinTimeInputFired(false);
   };
 
   return (
     <>
-      <div className="border border-first/50  rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center ">
-        {showSwimTimeInput && (
+      <div className="border border-fourth  rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center linear-background">
+        {!swimTimeInputFired && (
           <>
             <p>Schwimm-Pace-Berechnung</p>
             <label className="label">
               <p className="label-text-alt text-first text-xl text-center">
-                Deine 1000m PB
+                Deine 1000m P<span className="icon-text">ersönliche</span>B
+                <span className="icon-text">estleistung</span>
               </p>
             </label>
             <div>
@@ -80,7 +71,7 @@ function SwimTimeCalculator() {
             </button>
           </>
         )}
-        {showSavedSwimTime && (
+        {swimTimeInputFired && (
           <>
             Deine gespeicherte 1000m Schwimmzeit:{" "}
             <div className=" text-center  p-2">
