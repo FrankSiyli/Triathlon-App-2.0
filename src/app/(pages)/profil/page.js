@@ -27,7 +27,7 @@ function Page() {
               className="underline  underline-offset-2 "
               href="/calculators/heartrate_by_age"
             >
-              HRmax nach Alter
+              Maximalpuls nach Alter
             </Link>
             <Link
               className="underline  underline-offset-2 "

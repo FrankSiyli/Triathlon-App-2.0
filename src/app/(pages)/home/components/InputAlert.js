@@ -25,11 +25,11 @@ const InputAlert = () => {
     <>
       {showDiv && showInputAlert && (
         <div className="fixed w-screen h-screen flex items-center max-w-xl z-50">
-          <div className="alert alert-info h-1/2 flex justify-center flex-col text-xl m-5 ">
-            <span className="">
-              Gib auf deiner Profilseite deine HRmax und Schwimmpace ein um
-              persönliche Werte im Trainingsplan zu erhalten.
-            </span>
+          <div className="alert alert-info h-auto flex justify-center flex-col m-5 text-center">
+            Gib auf deiner Profilseite deinen{" "}
+            <span className="underline text-xl">Maximalpuls</span> und deine
+            <span className="underline text-xl">Schwimmzeit</span> ein um{" "}
+            persönliche Werte im Trainingsplan zu erhalten.
             <button
               onClick={() => handleInputAlertClick()}
               className="btn btn-circle btn-outline text-first linear-background m-10"
