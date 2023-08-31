@@ -22,7 +22,7 @@ const PrintSessions = forwardRef(
     const savedHrMax = useRecoilValue(savedHrMaxState) / 10;
     return (
       <>
-        <div className="print-section" ref={ref}>
+        <div ref={ref}>
           {singleActivity[2].map(
             (sessionSections, sectionIndex) =>
               openOverlay.includes(dayIndex * 1000 + activityIndex) && (
