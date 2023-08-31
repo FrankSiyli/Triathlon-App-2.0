@@ -3,43 +3,37 @@ import { formatTime } from "@/app/helperFunctions/formatTime";
 
 const getZones = (exercise, savedSwimTime, savedHrMax) => {
   // Swim pace zones
-  const swimZ1 = `${formatTime(Math.round(savedSwimTime + 20))} min/100m`; // warm up / cool down
-  const swimZ2 = `${formatTime(Math.round(savedSwimTime + 10))} min/100m`; // endurance
-  const swimZ3 = `${formatTime(Math.round(savedSwimTime + 5))} min/100m`; // tempo
-  const swimZ4 = `${formatTime(Math.round(savedSwimTime))} min/100m`; // threshold
-  const swimZ5 = `${formatTime(Math.round(savedSwimTime - 5))} min/100m`; // anaerobic
-  const swimZ6 = `${formatTime(Math.round(savedSwimTime - 10))} min/100m`; // max effort
+  const swimCalc = savedSwimTime / 10;
+  const swimZ1 = `${formatTime(Math.round(swimCalc + 20))} /100m`; // warm up / cool down
+  const swimZ2 = `${formatTime(Math.round(swimCalc + 10))} /100m`; // endurance
+  const swimZ3 = `${formatTime(Math.round(swimCalc + 5))} /100m`; // tempo
+  const swimZ4 = `${formatTime(Math.round(swimCalc))} /100m`; // threshold
+  const swimZ5 = `${formatTime(Math.round(swimCalc - 5))} /100m`; // anaerobic
+  const swimZ6 = `${formatTime(Math.round(swimCalc - 10))} /100m`; // max effort
   // Run heart rate zones
-  const runZ1 = `${Math.round(savedHrMax * 50)} - ${Math.round(
-    savedHrMax * 60
-  )} bpm`;
-  const runZ2 = `${Math.round(savedHrMax * 60)} - ${Math.round(
-    savedHrMax * 70
-  )} bpm`;
-  const runZ3 = `${Math.round(savedHrMax * 70)} - ${Math.round(
-    savedHrMax * 80
-  )} bpm`;
-  const runZ4 = `${Math.round(savedHrMax * 80)} - ${Math.round(
-    savedHrMax * 90
-  )} bpm`;
-  const runZ5 = `${Math.round(savedHrMax * 90)} - ${Math.round(
-    savedHrMax * 100
-  )} bpm`;
+  const a = parseFloat(savedHrMax);
+  const hrCalc = a / 100;
+  const runZ1 = `${Math.round(hrCalc * 50)} - ${Math.round(hrCalc * 60)} bpm`;
+  const runZ2 = `${Math.round(hrCalc * 60)} - ${Math.round(hrCalc * 75)} bpm`;
+  const runZ3 = `${Math.round(hrCalc * 75)} - ${Math.round(hrCalc * 85)} bpm`;
+  const runZ4 = `${Math.round(hrCalc * 85)} - ${Math.round(hrCalc * 95)} bpm`;
+  const runZ5 = `${Math.round(hrCalc * 95)} - ${Math.round(hrCalc * 100)} bpm`;
+
   // Bike heart rate zones
-  const bikeHeartrateZ1 = `${Math.round(savedHrMax * 45)} - ${Math.round(
-    savedHrMax * 55
+  const bikeHeartrateZ1 = `${Math.round(hrCalc * 50)} - ${Math.round(
+    hrCalc * 60
   )} bpm`;
-  const bikeHeartrateZ2 = `${Math.round(savedHrMax * 55)} - ${Math.round(
-    savedHrMax * 65
+  const bikeHeartrateZ2 = `${Math.round(hrCalc * 60)} - ${Math.round(
+    hrCalc * 65
   )} bpm`;
-  const bikeHeartrateZ3 = `${Math.round(savedHrMax * 65)} - ${Math.round(
-    savedHrMax * 75
+  const bikeHeartrateZ3 = `${Math.round(hrCalc * 65)} - ${Math.round(
+    hrCalc * 75
   )} bpm`;
-  const bikeHeartrateZ4 = `${Math.round(savedHrMax * 75)} - ${Math.round(
-    savedHrMax * 85
+  const bikeHeartrateZ4 = `${Math.round(hrCalc * 75)} - ${Math.round(
+    hrCalc * 85
   )} bpm`;
-  const bikeHeartrateZ5 = `${Math.round(savedHrMax * 85)} - ${Math.round(
-    savedHrMax * 95
+  const bikeHeartrateZ5 = `${Math.round(hrCalc * 85)} - ${Math.round(
+    hrCalc * 95
   )} bpm`;
 
   if (exercise.zone === "swimZ1") {
