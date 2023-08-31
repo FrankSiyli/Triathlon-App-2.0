@@ -1,13 +1,12 @@
 "use client";
 import "../../../globals.css";
 import React, { useState, useRef } from "react";
-import Image from "next/image";
-import logo from "../../../../../public/images/logoSmall.png";
 import PrintSessions from "./PrintSessions";
 import { useReactToPrint } from "react-to-print";
 import Sessions from "./Sessions";
 import calculateTotalDistance from "../logicFunctions/totalDistanceFunction";
 import calculateTotalDuration from "../logicFunctions/totalDurationFunction";
+import { formatTime } from "@/app/helperFunctions/formatTime";
 
 const SessionOverlay = ({
   sessionSections,
@@ -42,7 +41,10 @@ const SessionOverlay = ({
             <p className="underline underline-offset-2">{singleActivity[0]}</p>
             <p className="my-1">{singleActivity[1]}</p>
             {totalDistance > 0 ? <p>Distanz: {totalDistance}m</p> : null}
-            {totalDuration > 0 ? <p>Zeit: {totalDuration}min</p> : null}
+            {totalDistance > 0 && totalDuration > 0 ? <p>+</p> : null}
+            {totalDuration > 0 ? (
+              <p>Zeit: {formatTime(totalDuration)}</p>
+            ) : null}
           </div>
           <hr></hr>
           <Sessions
