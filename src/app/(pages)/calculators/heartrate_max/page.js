@@ -28,10 +28,10 @@ function Page() {
       }, 2000);
     } else {
       setTgOutput1(`${Math.round(b * 50)} - ${Math.round(b * 60)}`);
-      setTgOutput2(`${Math.round(b * 60)} - ${Math.round(b * 70)}`);
-      setTgOutput3(`${Math.round(b * 70)} - ${Math.round(b * 80)}`);
-      setTgOutput4(`${Math.round(b * 80)} - ${Math.round(b * 90)}`);
-      setTgOutput5(`${Math.round(b * 90)} - ${Math.round(b * 100)}`);
+      setTgOutput2(`${Math.round(b * 60)} - ${Math.round(b * 75)}`);
+      setTgOutput3(`${Math.round(b * 75)} - ${Math.round(b * 85)}`);
+      setTgOutput4(`${Math.round(b * 85)} - ${Math.round(b * 95)}`);
+      setTgOutput5(`${Math.round(b * 95)} - ${Math.round(b * 100)}`);
       setAnaerobicOutput(Math.round(b * 85));
       setAerobicOutput(Math.round(b * 60));
       setCalculatorInput("");
@@ -106,7 +106,7 @@ function Page() {
             <tbody>
               <tr>
                 <td id="zone5"> 5 Speed</td>
-                <td>90 - 100</td>
+                <td>95 - 100</td>
                 <td>
                   <input
                     className="w-20"
@@ -118,7 +118,7 @@ function Page() {
               </tr>
               <tr>
                 <td id="zone4">4 Anaerobic</td>
-                <td>80 - 90</td>
+                <td>85 - 95</td>
                 <td>
                   <input
                     className="w-20 "
@@ -139,7 +139,7 @@ function Page() {
               </tr>
               <tr>
                 <td id="zone3">3 Aerobic</td>
-                <td>70 - 80</td>
+                <td>75 - 85</td>
                 <td>
                   <input
                     className="w-20 "
@@ -151,7 +151,7 @@ function Page() {
               </tr>
               <tr>
                 <td id="zone2">2 Base</td>
-                <td>60 - 70</td>
+                <td>60 - 75</td>
                 <td>
                   <input
                     className="w-20 "

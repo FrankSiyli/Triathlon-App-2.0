@@ -1,3 +1,4 @@
+import { formatTime } from "@/app/helperFunctions/formatTime";
 import getZones from "@/app/helperFunctions/getZones";
 import { savedHrMaxState } from "@/app/recoil/atoms/savedHrMaxState";
 import { savedSwimTimeState } from "@/app/recoil/atoms/savedSwimTimeState";
@@ -5,9 +6,8 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 
 const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
-  const savedSwimTime = useRecoilValue(savedSwimTimeState) / 10;
-  const savedHrMax = useRecoilValue(savedHrMaxState) / 10;
-
+  const savedSwimTime = useRecoilValue(savedSwimTimeState);
+  const savedHrMax = useRecoilValue(savedHrMaxState);
   return (
     <>
       {singleActivity[2].map(
@@ -16,49 +16,60 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
             <div key={activityIndex}>
               <div>
                 {/**----------------------------warmUpSection ------------------------------------*/}
-                <div className="mt-20">
-                  <div className="relative border-2 border-first/50  rounded-md mx-5 ">
-                    <p className="absolute -top-7 -left-4 btn btn-outline text-first p-2  linear-background text-xl">
-                      Warm up
-                    </p>
-                    {sessionSections?.warmUp.map(
-                      (warmUpSection, warmUpIndex) => (
-                        <div key={warmUpIndex}>
-                          <div className=" flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-third ">
-                            {warmUpSection.exercises.map(
-                              (warmUpExercise, warmUpExerciseIndex) => (
-                                <div key={warmUpExerciseIndex}>
-                                  <div className="flex flex-row justify-between items-center my-2 mx-3">
-                                    {warmUpExercise.distance > 0 ? (
-                                      <p>{warmUpExercise.distance}m</p>
-                                    ) : warmUpExercise.duration > 0 ? (
-                                      <p>{warmUpExercise.duration}min</p>
-                                    ) : null}
-                                    <p>
-                                      {getZones(
-                                        warmUpExercise,
-                                        savedSwimTime,
-                                        savedHrMax
-                                      )}
-                                    </p>
-                                  </div>
-                                  <div>
-                                    {warmUpExercise.name.trim() !== "" ? (
-                                      <p className="border border-first/50 text-sm rounded-md p-1 linear-background">
-                                        {warmUpExercise.name}
-                                      </p>
-                                    ) : null}
-                                  </div>
-                                </div>
-                              )
-                            )}
+                <div className="relative border border-first/50  rounded-md mx-5 my-10">
+                  <p className="absolute -top-7 -left-4 btn btn-outline text-first p-2  linear-background text-xl">
+                    Warm Up
+                  </p>
+                  {sessionSections.warmUp.map((warmUpSection, warmUpIndex) => {
+                    return (
+                      <div key={warmUpIndex}>
+                        <div className="relative flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-third ">
+                          {warmUpSection.multiplier > 1 ? (
+                            <p className="absolute -top-7 left-4 mb-3 btn btn-outline text-first p-2  linear-background text-xl">
+                              {warmUpSection.multiplier} x{" "}
+                            </p>
+                          ) : null}
 
-                            <br />
-                          </div>
+                          {warmUpSection.exercises.map(
+                            (warmUpExercise, warmUpExerciseIndex) => (
+                              <div key={warmUpExerciseIndex}>
+                                <div
+                                  className={`flex flex-row justify-between items-center mt-${
+                                    warmUpExerciseIndex === 0 &&
+                                    warmUpSection.multiplier > 1
+                                      ? 10
+                                      : 2
+                                  } mx-3`}
+                                >
+                                  {warmUpExercise.distance > 0 ? (
+                                    <div>
+                                      <p>{warmUpExercise.distance}m</p>
+                                    </div>
+                                  ) : warmUpExercise.duration > 0 ? (
+                                    <p>{formatTime(warmUpExercise.duration)}</p>
+                                  ) : null}
+                                  <p>
+                                    {getZones(
+                                      warmUpExercise,
+                                      savedSwimTime,
+                                      savedHrMax
+                                    )}
+                                  </p>
+                                </div>
+                                <div>
+                                  {warmUpExercise.name.trim() !== "" ? (
+                                    <p className="border border-first/50 text-sm rounded-md p-1 linear-background">
+                                      {warmUpExercise.name}
+                                    </p>
+                                  ) : null}
+                                </div>
+                              </div>
+                            )
+                          )}
                         </div>
-                      )
-                    )}
-                  </div>
+                      </div>
+                    );
+                  })}
                 </div>{" "}
                 {/**----------------------------mainSection ------------------------------------*/}
                 <div className="relative border border-first/50  rounded-md mx-5 my-10">
@@ -77,7 +88,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
 
                           {mainSection.exercises.map(
                             (mainExercise, mainExerciseIndex) => (
-                              <div key={mainExerciseIndex} className="">
+                              <div key={mainExerciseIndex}>
                                 <div
                                   className={`flex flex-row justify-between items-center mt-${
                                     mainExerciseIndex === 0 &&
@@ -91,7 +102,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                       <p>{mainExercise.distance}m</p>
                                     </div>
                                   ) : mainExercise.duration > 0 ? (
-                                    <p>{mainExercise.duration}min</p>
+                                    <p>{formatTime(mainExercise.duration)}</p>
                                   ) : null}
                                   <p>
                                     {getZones(
@@ -127,12 +138,14 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                         <div className=" flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-third ">
                           {coolDownSection.exercises.map(
                             (coolDownExercise, coolDownExerciseIndex) => (
-                              <div key={coolDownExerciseIndex} className="">
+                              <div key={coolDownExerciseIndex}>
                                 <div className="flex flex-row justify-between mt-5 mx-3">
                                   {coolDownExercise.distance > 0 ? (
                                     <p>{coolDownExercise.distance}m</p>
                                   ) : coolDownExercise.duration > 0 ? (
-                                    <p>{coolDownExercise.duration}min</p>
+                                    <p>
+                                      {formatTime(coolDownExercise.duration)}
+                                    </p>
                                   ) : null}
                                   <p>
                                     {getZones(
