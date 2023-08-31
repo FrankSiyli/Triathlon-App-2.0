@@ -36,25 +36,26 @@ const SessionOverlay = ({
         initialOpen ? "block" : "hidden"
       }`}
     >
-      <div className="w-full h-auto flex justify-between items-center">
-        <Image
-          src={logo}
-          alt="logo"
-          className="mt-3  ml-3 w-auto"
-          width={80}
-          height={80}
-        />
-
-        <div className="text-right mr-3 ">
-          <p className="underline underline-offset-2">{singleActivity[0]}</p>
-          <p className="my-1">{singleActivity[1]}</p>
-          {totalDistance > 0 ? <p>Distanz: {totalDistance}m</p> : null}
-          {totalDuration > 0 ? <p>Zeit: {totalDuration}min</p> : null}
-        </div>
-      </div>
-
       {overlayView ? (
         <>
+          <div className="w-full h-auto flex justify-between items-center">
+            <Image
+              src={logo}
+              alt="logo"
+              className="mt-3  ml-3 w-auto"
+              width={80}
+              height={80}
+            />
+
+            <div className="text-right mr-3 ">
+              <p className="underline underline-offset-2">
+                {singleActivity[0]}
+              </p>
+              <p className="my-1">{singleActivity[1]}</p>
+              {totalDistance > 0 ? <p>Distanz: {totalDistance}m</p> : null}
+              {totalDuration > 0 ? <p>Zeit: {totalDuration}min</p> : null}
+            </div>
+          </div>
           <Sessions
             singleActivity={singleActivity}
             openOverlay={openOverlay}
@@ -137,6 +138,7 @@ const SessionOverlay = ({
           </div>
         </>
       )}
+      <p>Viel Spaß beim Training 🙂</p>
     </div>
   );
 };

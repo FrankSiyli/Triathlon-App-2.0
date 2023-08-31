@@ -9,8 +9,6 @@ function HeartrateCalculator() {
   const [showAlert, setShowAlert] = useState(false);
   const [heartrateCalculatorInput, setHeartrateCalculatorInput] = useState("");
   const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
-  const [showHrInput, setShowHrInput] = useState(true);
-  const [showSavedHrMax, setShowSavedHrMax] = useState(false);
   const [heartrateInputFired, setHeartrateInputFired] = useRecoilState(
     heartrateInputFiredState
   );
@@ -26,22 +24,14 @@ function HeartrateCalculator() {
         setShowAlert(false);
       }, 2000);
     } else {
-      setShowHrInput(false);
-      setShowSavedHrMax(true);
+      setHeartrateInputFired(true);
       setSavedHrMax(heartrateCalculatorInput);
       setHeartrateCalculatorInput("");
-      setHeartrateInputFired(true);
     }
   };
 
-  useEffect(() => {
-    setShowHrInput(false);
-    setShowSavedHrMax(true);
-  }, [heartrateInputFired]);
-
   const handleChangeHrMaxClick = () => {
-    setShowHrInput(true);
-    setShowSavedHrMax(false);
+    setHeartrateInputFired(false);
   };
 
   const handleKeyDown = (event) => {
@@ -59,8 +49,8 @@ function HeartrateCalculator() {
           </div>
         )}
       </div>
-      <div className="border border-first/50  rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center ">
-        {showHrInput && (
+      <div className="border border-fourth  rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center linear-background">
+        {!heartrateInputFired && (
           <>
             <p>Pulszonen-Berechnung</p>
             <label className="label">
@@ -84,7 +74,7 @@ function HeartrateCalculator() {
             </button>
           </>
         )}
-        {showSavedHrMax && (
+        {heartrateInputFired && (
           <>
             Dein gespeicherter Maximalpuls:{" "}
             <div className=" text-center  p-2">

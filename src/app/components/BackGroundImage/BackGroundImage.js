@@ -19,7 +19,7 @@ function BackGroundImage({ isLoading, error, elapsedTime }) {
         <p>Triathlon makes it better</p>
         <div className="absolute mt-20">
           {error ? <p>failed to load</p> : null}
-
+          {isLoading ? <p>loading</p> : null}
           {isLoading || elapsedTime < 4000 ? (
             <span className="loading loading-ring loading-lg"></span>
           ) : null}

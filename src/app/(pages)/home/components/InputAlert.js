@@ -9,7 +9,7 @@ const InputAlert = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShowDiv(true);
-    }, 4000);
+    }, 3000);
     return () => {
       clearTimeout(timeout);
     };
