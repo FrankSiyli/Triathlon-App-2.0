@@ -20,24 +20,17 @@ function Page() {
         <HeartrateCalculator />
         <SwimTimeCalculator />
 
-        <div className="border border-first/50 rounded-md text-center p-3   ">
-          <p className="mt-3">Du kennst deinen Maximalpuls nicht?</p>
-          <p>Kein Problem, hier findest du Informationen.</p>
-          <div className="flex flex-col items-center mt-5">
+        <div className="border border-first/50 rounded-md text-center p-3   mt-10">
+          <p className=" text-xl">Informationen</p>
+          <div className="flex flex-col items-center mt-5 gap-2">
             <Link
               className="underline  underline-offset-2 "
               href="/calculators/heartrate_by_age"
             >
               HRmax nach Alter
             </Link>
-          </div>
-        </div>
-
-        <div className="border border-first/50 rounded-md text-center p-3   ">
-          <p className="mt-3">Wissenswertes:</p>
-          <div className="flex flex-col items-center mt-5">
             <Link
-              className="underline  underline-offset-2  mb-2"
+              className="underline  underline-offset-2 "
               href="/calculators/heartrate_max"
             >
               Puls Zonen
