@@ -20,19 +20,19 @@ const getZones = (exercise, savedSwimTime, savedHrMax) => {
   const runZ5 = `${Math.round(hrCalc * 95)} - ${Math.round(hrCalc * 100)} bpm`;
 
   // Bike heart rate zones
-  const bikeHeartrateZ1 = `${Math.round(hrCalc * 50)} - ${Math.round(
+  const bikeHrZ1 = `${Math.round(hrCalc * 50)} - ${Math.round(
     hrCalc * 60
   )} bpm`;
-  const bikeHeartrateZ2 = `${Math.round(hrCalc * 60)} - ${Math.round(
+  const bikeHrZ2 = `${Math.round(hrCalc * 60)} - ${Math.round(
     hrCalc * 65
   )} bpm`;
-  const bikeHeartrateZ3 = `${Math.round(hrCalc * 65)} - ${Math.round(
+  const bikeHrZ3 = `${Math.round(hrCalc * 65)} - ${Math.round(
     hrCalc * 75
   )} bpm`;
-  const bikeHeartrateZ4 = `${Math.round(hrCalc * 75)} - ${Math.round(
+  const bikeHrZ4 = `${Math.round(hrCalc * 75)} - ${Math.round(
     hrCalc * 85
   )} bpm`;
-  const bikeHeartrateZ5 = `${Math.round(hrCalc * 85)} - ${Math.round(
+  const bikeHrZ5 = `${Math.round(hrCalc * 85)} - ${Math.round(
     hrCalc * 95
   )} bpm`;
 
@@ -58,16 +58,16 @@ const getZones = (exercise, savedSwimTime, savedHrMax) => {
     return runZ4;
   } else if (exercise.zone === "runZ5") {
     return runZ5;
-  } else if (exercise.zone === "bikeHeartrateZ1") {
-    return bikeHeartrateZ1;
-  } else if (exercise.zone === "bikeHeartrateZ2") {
-    return bikeHeartrateZ2;
-  } else if (exercise.zone === "bikeHeartrateZ3") {
-    return bikeHeartrateZ3;
-  } else if (exercise.zone === "bikeHeartrateZ4") {
-    return bikeHeartrateZ4;
-  } else if (exercise.zone === "bikeHeartrateZ5") {
-    return bikeHeartrateZ5;
+  } else if (exercise.zone === "bikeHrZ1") {
+    return bikeHrZ1;
+  } else if (exercise.zone === "bikeHrZ2") {
+    return bikeHrZ2;
+  } else if (exercise.zone === "bikeHrZ3") {
+    return bikeHrZ3;
+  } else if (exercise.zone === "bikeHrZ4") {
+    return bikeHrZ4;
+  } else if (exercise.zone === "bikeHrZ5") {
+    return bikeHrZ5;
   } else {
     return exercise.zone;
   }
