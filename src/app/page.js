@@ -42,7 +42,7 @@ export default function Home() {
     if (!isLoading && elapsedTime > 4000) {
       setTimeout(() => {
         router.push("/home");
-      }, 1500);
+      }, 500);
     }
   };
   navigateAfterLoading();
