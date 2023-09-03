@@ -28,7 +28,7 @@ const InputAlert = () => {
           <div className="alert alert-info h-auto flex justify-center flex-col m-5 text-center">
             Gib auf deiner Profilseite deinen{" "}
             <span className="underline text-xl">Maximalpuls</span> und deine
-            <span className="underline text-xl">Schwimmzeit</span> ein um{" "}
+            <span className="underline text-xl">Schwimmzeit</span> ein, um{" "}
             persönliche Werte im Trainingsplan zu erhalten.
             <button
               onClick={() => handleInputAlertClick()}
