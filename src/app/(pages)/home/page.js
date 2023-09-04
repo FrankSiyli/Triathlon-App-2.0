@@ -30,7 +30,8 @@ function Page() {
   const { openOverlay, toggleOverlay } = useOpenOverlay();
   const { openDay, toggleDay } = useOpenDay();
   const { currentWeek, handleBackClick, handleNextClick } = useCurrentWeek(
-    userPlans?.[0].sessions.map((weekIndex) => parseInt(weekIndex))
+    numberOfPlanWeeks,
+    toggleDay
   );
 
   const currentWeekSessions =

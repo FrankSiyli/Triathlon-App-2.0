@@ -31,7 +31,7 @@ const SessionOverlay = ({
 
   return (
     <div
-      className={`overlay-background fixed z-50 max-w-xl mx-auto inset-0 text-center overflow-y-scroll ${
+      className={`overlay-background fixed z-50 max-w-xl mx-auto inset-0 text-center overflow-x-hidden overflow-y-scroll ${
         initialOpen ? "block" : "hidden"
       }`}
     >
@@ -92,7 +92,7 @@ const SessionOverlay = ({
             totalDistance={totalDistance}
             totalDuration={totalDuration}
           />
-          <div className="flex flex-col  items-center gap-10">
+          <div className="flex flex-col items-center gap-10">
             <div className="flex flex-row gap-3">
               <button
                 className="btn btn-sm w-32 btn-outline text-first linear-background"

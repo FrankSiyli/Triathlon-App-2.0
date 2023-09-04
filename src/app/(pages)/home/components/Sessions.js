@@ -81,7 +81,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                       <div key={mainIndex}>
                         <div className="relative flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-third ">
                           {mainSection.multiplier > 1 ? (
-                            <p className="absolute -top-7 left-4 mb-3 btn btn-outline text-first p-2  linear-background text-xl">
+                            <p className="absolute -top-3 left-4 btn btn-outline text-first p-2  linear-background text-xl">
                               {mainSection.multiplier} x{" "}
                             </p>
                           ) : null}
