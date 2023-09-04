@@ -18,11 +18,11 @@ import logo from "../../../../public/images/logoSmall.png";
 import { useRecoilValue } from "recoil";
 import { dataFromMongoDbState } from "@/app/recoil/atoms/dataFromMongoDbState";
 import InputAlert from "./components/InputAlert";
+import useDataSafety from "@/app/helperFunctions/useDataSafety";
 
 function Page() {
   const data = useRecoilValue(dataFromMongoDbState);
   const userPlans = data?.plans;
-
   const numberOfPlanWeeks = userPlans?.[0]?.sessions.map((weekIndex) =>
     parseInt(weekIndex)
   );
@@ -38,6 +38,8 @@ function Page() {
     userPlans?.[0]?.sessions[currentWeek - 1].sessions;
 
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
+
+  useDataSafety();
 
   return (
     <>
