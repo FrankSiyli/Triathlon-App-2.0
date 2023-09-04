@@ -3,42 +3,23 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./globals.css";
 import BackGroundImage from "./components/BackGroundImage/BackGroundImage";
-import useSWR from "swr";
-import { useRecoilState } from "recoil";
-import { dataFromMongoDbState } from "./recoil/atoms/dataFromMongoDbState";
-
-const fetcher = (url) => fetch(url).then((res) => res.json());
+import useFetchData from "./helperFunctions/useFetchData";
 
 export default function Home() {
-  const { data, error, isLoading } = useSWR("/api/mongoDb", fetcher);
   const router = useRouter();
   const [elapsedTime, setElapsedTime] = useState(0);
-  const [recoilSessions, setRecoilSessions] =
-    useRecoilState(dataFromMongoDbState);
-
-  useEffect(() => {
-    if (data) {
-      setRecoilSessions(data);
-    }
-  }, [data, setRecoilSessions]);
-
-  useEffect(() => {
-    if (data) {
-      setRecoilSessions(data);
-    }
-  }, [data, setRecoilSessions]);
+  const { data, error, isLoading } = useFetchData();
 
   useEffect(() => {
     const timer = setInterval(() => {
       setElapsedTime((prevTime) => prevTime + 1000);
     }, 1000);
-
     return () => {
       clearInterval(timer);
     };
   }, []);
 
-  const navigateAfterLoading = () => {
+  const navigateAfterLoading = (isLoading) => {
     if (!isLoading && elapsedTime > 4000) {
       setTimeout(() => {
         router.push("/home");
