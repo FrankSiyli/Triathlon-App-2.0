@@ -28,7 +28,7 @@ const PrintSessions = forwardRef(
             (sessionSections, sectionIndex) =>
               openOverlay.includes(dayIndex * 1000 + activityIndex) && (
                 <div key={activityIndex}>
-                  <div className=" print-page  p-1 m-3 mx-auto ">
+                  <div className=" print-page  p-1 m-3 mx-auto min-h-screen">
                     <div className="flex flex-row justify-between">
                       <Image
                         src={logoBlack}
