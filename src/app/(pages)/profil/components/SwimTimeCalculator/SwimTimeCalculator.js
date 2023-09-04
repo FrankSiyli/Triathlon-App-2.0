@@ -41,6 +41,9 @@ function SwimTimeCalculator() {
               </p>
             </label>
             <div>
+              <p className="text-xl text-center mt-10">
+                {formatTime(swimCalculatorInput)} min
+              </p>
               <input
                 type="range"
                 list="tickmarks"
@@ -58,9 +61,6 @@ function SwimTimeCalculator() {
                 <option value="1500"></option>
                 <option value="1800"></option>
               </datalist>
-              <p className="text-xl text-center">
-                {formatTime(swimCalculatorInput)} min
-              </p>
             </div>
 
             <button
