@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import "../../../globals.css";
-import Link from "next/link";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 
 function Page() {
@@ -64,24 +63,25 @@ function Page() {
         </p>
       </div>
 
+      {/**-------------------------Damen----------------------------- */}
       <div className="flex flex-col justify-center items-center mx-auto max-w-xl mt-10 ">
-        <button className="btn pointer-events-none border-first/50 bg-third   text-first">
-          <p className="text-xl ">Damen</p>
-          <br />
-          <p className="">HRmax = 209-(0.9 x Alter) </p>
-        </button>
-
-        <label className="label  ">
-          <span className="label-text-alt text-first text-xl">Dein Alter</span>
-        </label>
-        <input
-          type="number"
-          placeholder="z.B. 35"
-          value={womenCalculatorInput}
-          onChange={(e) => setWomenCalculatorInput(e.target.value)}
-          onKeyDown={handleWomenKeyDown}
-          className="input  border border-first/50 w-full max-w-xs"
-        />
+        <div className="flex flex-row justify-center gap-1">
+          <button className="btn pointer-events-none border-first/50 bg-third   text-first">
+            <p className="text-xl ">Damen</p>
+            <br />
+          </button>
+          <div>
+            <input
+              type="number"
+              placeholder="Dein Alter z.B. 35"
+              value={womenCalculatorInput}
+              onChange={(e) => setWomenCalculatorInput(e.target.value)}
+              onKeyDown={handleWomenKeyDown}
+              className="input  border border-first/50 w-full max-w-xs"
+            />
+          </div>
+        </div>
+        <p className="icon-text m-3">HRmax = 209-(0.9 x Alter) </p>
         {womenShowAlert && (
           <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
             <span>Bitte trage dein Alter ein (0-100)</span>
@@ -89,43 +89,44 @@ function Page() {
         )}
         <button
           onClick={handleWomenInputClick}
-          className="btn btn-sm m-3 bg-third border border-first/50 text-first"
+          className="btn btn-sm  bg-third border border-first/50 text-first"
         >
           Berechnen
         </button>
         {womenCalculatedHr && (
-          <div className="border border-first bg-second text-center text-md p-2 rounded-md">
+          <div className="border border-first bg-second text-center text-md m-3 p-2 rounded-md">
             Dein berechneter Maximalpuls:{" "}
-            <p className="text-xl ">{womenCalculatedHr}</p>
+            <p className="text-xl ">{womenCalculatedHr} bpm</p>
           </div>
         )}
       </div>
 
-      <div className="flex flex-col justify-center items-center mx-auto max-w-xl  ">
-        <button className="btn pointer-events-none border-first/50 bg-third mt-20  text-first">
-          <p className="text-xl ">Herren</p>
-          <br />
-          <p className="">HRmax = 214-(0.8 x Alter) </p>
-        </button>
+      {/**-------------------------Herren----------------------------- */}
+      <div className="flex flex-col justify-center items-center mx-auto max-w-xl mt-10 ">
+        <div className="flex flex-row justify-center gap-1">
+          <button className="btn pointer-events-none border-first/50 bg-third  text-first">
+            <p className="text-xl ">Herren</p>
+            <br />
+          </button>
 
-        <label className="label ">
-          <span className="label-text-alt text-first text-xl">Dein Alter</span>
-        </label>
+          <div>
+            <input
+              type="number"
+              maxLength={3}
+              placeholder="Dein Alter z.B. 35"
+              value={menCalculatorInput}
+              onChange={(e) => setMenCalculatorInput(e.target.value)}
+              onKeyDown={handleMenKeyDown}
+              className="input  border border-first/50 w-full max-w-xs"
+            />
+          </div>
+        </div>
+        <p className="icon-text m-3">HRmax = 214-(0.8 x Alter) </p>
         {menShowAlert && (
           <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
             <span>Bitte trage dein Alter ein (0-100)</span>
           </div>
         )}
-        <input
-          type="number"
-          maxLength={3}
-          placeholder="z.B. 35"
-          value={menCalculatorInput}
-          onChange={(e) => setMenCalculatorInput(e.target.value)}
-          onKeyDown={handleMenKeyDown}
-          className="input  border border-first/50 mb-3 w-full max-w-xs"
-        />
-
         <button
           onClick={handleMenInputClick}
           className="btn btn-sm bg-third border border-first/50 text-first"
@@ -135,7 +136,7 @@ function Page() {
         {menCalculatedHr && (
           <div className="border border-first bg-second text-center text-md m-3 p-2 rounded-md">
             Dein berechneter Maximalpuls:{" "}
-            <p className="text-xl ">{menCalculatedHr}</p>
+            <p className="text-xl ">{menCalculatedHr} bpm</p>
           </div>
         )}
       </div>
