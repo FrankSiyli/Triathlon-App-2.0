@@ -5,19 +5,19 @@ import "../../globals.css";
 import { v1 as uuidv1 } from "uuid";
 import WeekScrollButtons from "./components/WeekScrollButtons";
 import Day from "./components/Day";
-import SessionOverlay from "./components/SessionOverlay";
+import SessionOverlay from "./components/SessionOverlay/SessionOverlay";
 import { useOpenOverlay } from "./stateHooks/useOpenOverlay";
 import { useOpenDay } from "./stateHooks/useOpenDay";
 import { useCurrentWeek } from "./stateHooks/useCurrentWeek";
 import { useActivitiesByDay } from "./logicFunctions/useActivitiesByDay";
 import Activity from "./components/Activity";
 import PlanName from "./components/PlanName";
-import MobileHint from "./components/MobileHint";
+import MobileHint from "./components/HintsAndAlerts/MobileHint";
 import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
 import { useRecoilValue } from "recoil";
 import { dataFromMongoDbState } from "@/app/recoil/atoms/dataFromMongoDbState";
-import InputAlert from "./components/InputAlert";
+import InputAlert from "./components/HintsAndAlerts/InputAlert";
 import useDataSafety from "@/app/helperFunctions/useDataSafety";
 
 function Page() {
