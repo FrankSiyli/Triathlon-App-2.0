@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import logoBlack from "../../../../../public/images/logoSmallBlack.png";
+import logoBlack from "../../../../../../public/images/logoSmallBlack.png";
 import Image from "next/image";
 import { savedSwimTimeState } from "@/app/recoil/atoms/savedSwimTimeState";
 import { useRecoilValue } from "recoil";
