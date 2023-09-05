@@ -2,12 +2,16 @@ import { formatTime } from "@/app/helperFunctions/formatTime";
 import getZones from "@/app/helperFunctions/getZones";
 import { savedHrMaxState } from "@/app/recoil/atoms/savedHrMaxState";
 import { savedSwimTimeState } from "@/app/recoil/atoms/savedSwimTimeState";
-import React from "react";
+import Image from "next/image";
+import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 
 const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
+  console.log(singleActivity);
   const savedSwimTime = useRecoilValue(savedSwimTimeState);
   const savedHrMax = useRecoilValue(savedHrMaxState);
+  const [clickedMainExerciseIndex, setClickedMainExerciseIndex] =
+    useState(null);
   return (
     <>
       {singleActivity[2].map(
@@ -114,9 +118,55 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                 </div>
                                 <div>
                                   {mainExercise.name.trim() !== "" ? (
-                                    <p className="border border-first/50 text-sm rounded-md p-1 linear-background">
+                                    <button
+                                      className={`border border-first/50 w-full text-sm rounded-md p-1 linear-background ${
+                                        mainExercise.imageLink
+                                          ? "underline underline-offset-4"
+                                          : ""
+                                      }`}
+                                      onClick={() => {
+                                        if (mainExercise.imageLink) {
+                                          setClickedMainExerciseIndex(
+                                            mainExerciseIndex
+                                          );
+                                        }
+                                      }}
+                                    >
                                       {mainExercise.name}
-                                    </p>
+                                    </button>
+                                  ) : null}
+                                  {mainExerciseIndex ===
+                                  clickedMainExerciseIndex ? (
+                                    <div className="flex flex-col items-center bg-second min-h-72 w-full">
+                                      <Image
+                                        width={200}
+                                        height={200}
+                                        src={`/images/yoga_images/${mainExercise.imageLink}.png`}
+                                        alt="yoga pose"
+                                        className="mt-10"
+                                      />
+                                      <button
+                                        onClick={() =>
+                                          setClickedMainExerciseIndex(null)
+                                        }
+                                        className="btn btn-circle btn-outline text-first m-10"
+                                      >
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          className="h-6 w-6"
+                                          fill="none"
+                                          viewBox="0 0 24 24"
+                                          stroke="currentColor"
+                                        >
+                                          <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M6 18L18 6M6 6l12 12"
+                                          />
+                                        </svg>
+                                      </button>
+                                    </div>
                                   ) : null}
                                 </div>
                               </div>
