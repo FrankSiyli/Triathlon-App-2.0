@@ -19,7 +19,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
               <div>
                 {/**----------------------------warmUpSection ------------------------------------*/}
                 <div className="relative border border-first/50  rounded-md mx-5 my-10">
-                  <p className="absolute -top-7 -left-4 btn btn-outline text-first p-2  linear-background text-xl">
+                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background ">
                     Warm Up
                   </p>
                   {sessionSections.warmUp.map((warmUpSection, warmUpIndex) => {
@@ -75,7 +75,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                 </div>{" "}
                 {/**----------------------------mainSection ------------------------------------*/}
                 <div className="relative border border-first/50  rounded-md mx-5 my-10">
-                  <p className="absolute -top-7 -left-4 btn btn-outline text-first p-2  linear-background text-xl">
+                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background">
                     Hauptteil
                   </p>
                   {sessionSections.main.map((mainSection, mainIndex) => {
@@ -177,7 +177,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                 </div>{" "}
                 {/**----------------------------coolDownSection ------------------------------------*/}
                 <div className="relative border border-first/50  rounded-md mx-5 mb-10">
-                  <p className="absolute -top-7 -left-4 btn btn-outline text-first p-2  linear-background text-xl">
+                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background">
                     Cool down
                   </p>
                   {sessionSections.coolDown.map(
