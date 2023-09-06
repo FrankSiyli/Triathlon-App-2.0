@@ -117,9 +117,9 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                 <div>
                                   {mainExercise.name.trim() !== "" ? (
                                     <button
-                                      className={`border border-first/50 w-full text-sm rounded-md p-1 linear-background ${
+                                      className={`border border-first/50 w-full text-sm rounded-md p-1 linear-background cursor-default ${
                                         mainExercise.imageLink
-                                          ? "underline underline-offset-4"
+                                          ? "underline decoration-first decoration-2 underline-offset-4 cursor-pointer "
                                           : ""
                                       }`}
                                       onClick={() => {
