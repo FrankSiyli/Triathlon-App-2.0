@@ -7,15 +7,13 @@ import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 
 const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
-  console.log(singleActivity);
   const savedSwimTime = useRecoilValue(savedSwimTimeState);
   const savedHrMax = useRecoilValue(savedHrMaxState);
-  const [clickedMainExerciseIndex, setClickedMainExerciseIndex] =
-    useState(null);
+  const [openInstructionImage, setOpenInstructionImage] = useState(null);
   return (
     <>
       {singleActivity[2].map(
-        (sessionSections, sectionIndex) =>
+        (sessionSections) =>
           openOverlay.includes(dayIndex * 1000 + activityIndex) && (
             <div key={activityIndex}>
               <div>
@@ -126,7 +124,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                       }`}
                                       onClick={() => {
                                         if (mainExercise.imageLink) {
-                                          setClickedMainExerciseIndex(
+                                          setOpenInstructionImage(
                                             mainExerciseIndex
                                           );
                                         }
@@ -136,7 +134,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                     </button>
                                   ) : null}
                                   {mainExerciseIndex ===
-                                  clickedMainExerciseIndex ? (
+                                  openInstructionImage ? (
                                     <div className="flex flex-col items-center bg-second min-h-72 w-full">
                                       <Image
                                         width={200}
@@ -147,7 +145,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                       />
                                       <button
                                         onClick={() =>
-                                          setClickedMainExerciseIndex(null)
+                                          setOpenInstructionImage(null)
                                         }
                                         className="btn btn-circle btn-outline text-first m-10"
                                       >
