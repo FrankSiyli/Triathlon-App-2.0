@@ -1,12 +1,12 @@
 import dbConnect from "../../database/dbConnect";
-import Plan from "../../database/models/Plan";
+import Plans from "../../database/models/Plans";
 
 export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
     try {
-      const plans = await Plan.find();
+      const plans = await Plans.find();
       return response.status(200).json({ plans });
     } catch (error) {
       return response.status(500).json({ message: "Server error" });
