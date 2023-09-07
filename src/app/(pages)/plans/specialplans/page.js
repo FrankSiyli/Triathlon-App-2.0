@@ -1,8 +1,6 @@
-"use client";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import Link from "next/link";
-import React, { useState } from "react";
-import { v1 as uuidv1 } from "uuid";
+import React from "react";
 
 function Page() {
   const [showAlert, setShowAlert] = useState(false);
@@ -14,8 +12,7 @@ function Page() {
   };
   return (
     <>
-      <BackButton href="/plans" />
-
+      <BackButton href="/searchplans" />
       <div className="flex flex-col items-center  mt-10 gap-5  max-w-xl mx-auto  ">
         {kindOfSport.map((item) => (
           <Link
@@ -50,7 +47,5 @@ function Page() {
     </>
   );
 }
-
-const kindOfSport = ["Triathlonpläne", "Laufpläne", "Spezialpläne"];
 
 export default Page;
