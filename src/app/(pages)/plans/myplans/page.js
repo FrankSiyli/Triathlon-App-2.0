@@ -1,4 +1,5 @@
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
+import NavBar from "@/app/components/NavBar/NavBar";
 import React from "react";
 import { v1 as uuidv1 } from "uuid";
 
@@ -45,6 +46,7 @@ function Page() {
           </div>
         )}
       </div>
+      <NavBar />
     </>
   );
 }
