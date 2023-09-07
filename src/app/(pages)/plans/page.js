@@ -1,5 +1,5 @@
 "use client";
-import Footer from "@/app/components/NavBar/NavBar";
+import NavBar from "@/app/components/NavBar/NavBar";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -82,7 +82,7 @@ function Page() {
           </svg>
         </Link>
       </div>
-      <Footer />
+      <NavBar />
     </>
   );
 }
