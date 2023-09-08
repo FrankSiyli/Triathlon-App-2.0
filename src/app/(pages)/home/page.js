@@ -16,13 +16,14 @@ import MobileHint from "./components/HintsAndAlerts/MobileHint";
 import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
 import { useRecoilValue } from "recoil";
-import { dataFromMongoDbState } from "@/app/recoil/atoms/dataFromMongoDbState";
+import { plansFromMongoDbState } from "@/app/recoil/atoms/plansFromMongoDbState";
 import InputAlert from "./components/HintsAndAlerts/InputAlert";
-import useDataSafety from "@/app/helperFunctions/useDataSafety";
+import useDataSafety from "@/app/fetchFunctions/useFetchPlansSafetyOnHomepage";
 
 function Page() {
-  const data = useRecoilValue(dataFromMongoDbState);
+  const data = useRecoilValue(plansFromMongoDbState);
   const userPlans = data?.plans;
+
   const numberOfPlanWeeks = userPlans?.[0]?.sessions.map((weekIndex) =>
     parseInt(weekIndex)
   );
