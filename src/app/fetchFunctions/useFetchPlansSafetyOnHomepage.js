@@ -1,10 +1,10 @@
 import React from "react";
-import { dataFromMongoDbState } from "../recoil/atoms/dataFromMongoDbState";
+import { plansFromMongoDbState } from "../recoil/atoms/plansFromMongoDbState";
 import { useRecoilValue } from "recoil";
 import { useRouter } from "next/navigation";
 
 function useDataSafety() {
-  const data = useRecoilValue(dataFromMongoDbState);
+  const data = useRecoilValue(plansFromMongoDbState);
   const router = useRouter();
 
   setTimeout(() => {
