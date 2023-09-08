@@ -13,7 +13,9 @@ function NavBar() {
       <div className="btm-nav max-w-xl mx-auto h-12 icon-text linear-background  z-40">
         <Link
           href="/home"
-          className={currentRoute === "/home" ? activeStyle : nonActiveStyle}
+          className={
+            currentRoute.startsWith("/home") ? activeStyle : nonActiveStyle
+          }
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +35,9 @@ function NavBar() {
         </Link>
         <Link
           href="/plans"
-          className={currentRoute === "/plans" ? activeStyle : nonActiveStyle}
+          className={
+            currentRoute.startsWith("/plans") ? activeStyle : nonActiveStyle
+          }
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +57,9 @@ function NavBar() {
         </Link>
         <Link
           href="/profil"
-          className={currentRoute === "/profil" ? activeStyle : nonActiveStyle}
+          className={
+            currentRoute.startsWith("/profil") ? activeStyle : nonActiveStyle
+          }
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

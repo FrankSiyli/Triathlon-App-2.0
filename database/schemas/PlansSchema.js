@@ -10,7 +10,8 @@ const exerciseSchema = new Schema({
   imageLink: { type: String },
 });
 
-const specialPlansSchema = new Schema({
+const PlansSchema = new Schema({
+  category: { type: String },
   name: { type: String },
   price: { type: String },
   duration: { type: Number },
@@ -50,8 +51,4 @@ const specialPlansSchema = new Schema({
   ],
 });
 
-const SpecialPlans =
-  mongoose.models.SpecialPlans ||
-  mongoose.model("plans_special", specialPlansSchema);
-
-export default SpecialPlans;
+export { PlansSchema };
