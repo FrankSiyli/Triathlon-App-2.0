@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import logo from "../../../../public/images/logoSmall.png";
 
-function BackGroundImage({ isLoading, error, elapsedTime }) {
+function BackGroundImage({ isLoading, error }) {
   return (
     <div className="fixed -top-20 left-0 w-screen h-screen  flex flex-col items-center justify-center mx-auto  ">
       <Image
@@ -19,7 +19,7 @@ function BackGroundImage({ isLoading, error, elapsedTime }) {
         <p>Triathlon makes it better</p>
         <div className="absolute mt-20">
           {error ? <p>failed to load</p> : null}
-          {isLoading || elapsedTime < 4000 ? (
+          {isLoading ? (
             <div>
               <p>loading</p>
               <span className="loading loading-ring loading-lg"></span>
