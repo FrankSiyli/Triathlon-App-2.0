@@ -10,7 +10,7 @@ const Activity = ({
   return (
     <>
       {" "}
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center bg-fourth mx-5 rounded-md">
         {openDay === dayIndex &&
           activity.map((singleActivity, activityIndex) => (
             <button
@@ -20,7 +20,7 @@ const Activity = ({
               }}
             >
               <div className="flex h-14 my-1 w-80 justify-between items-center text-first rounded-md btn btn-outline  linear-background ">
-                <div className="ml-5 text-left">
+                <div className="ml-2 text-left">
                   <p className="underline underline-offset-2 text-sm">
                     {singleActivity[0]}
                   </p>
@@ -32,7 +32,7 @@ const Activity = ({
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6 mr-5"
+                  className="w-6 h-6 mr-2"
                 >
                   <path
                     strokeLinecap="round"

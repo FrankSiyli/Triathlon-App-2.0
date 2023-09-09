@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 export const useOpenDay = () => {
-  const [openDay, setOpenDay] = useState(-1);
+  const [openDay, setOpenDay] = useState(null);
 
   const toggleDay = (dayIndex) => {
-    setOpenDay((prevOpenDay) => (prevOpenDay === dayIndex ? -1 : dayIndex));
+    setOpenDay(dayIndex === openDay ? -1 : dayIndex);
   };
 
   return {
