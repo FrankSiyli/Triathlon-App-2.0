@@ -22,6 +22,7 @@ import useDataSafety from "@/app/fetchFunctions/useFetchPlansSafetyOnHomepage";
 
 function Page() {
   const data = useRecoilValue(plansFromMongoDbState);
+
   const userPlans = data?.plans;
 
   const numberOfPlanWeeks = userPlans?.[0]?.sessions.map((weekIndex) =>
@@ -78,7 +79,7 @@ function Page() {
 
         {activitiesByDay &&
           activitiesByDay.map(([day, activity], dayIndex) => (
-            <div className=" " key={dayIndex}>
+            <div key={dayIndex}>
               {openDay === dayIndex &&
                 activity.map((singleActivity, activityIndex) => (
                   <SessionOverlay
