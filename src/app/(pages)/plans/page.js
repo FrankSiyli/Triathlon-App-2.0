@@ -1,4 +1,5 @@
 "use client";
+import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -6,16 +7,12 @@ import React, { useState } from "react";
 function Page() {
   return (
     <>
-      <div className="w-screen max-w-xl mx-auto">
-        <button className=" top-5 left-5 btn btn-sm pointer-events-none border-first/50  bg-third m-3  text-first">
-          Pläne
-        </button>
-      </div>
+      <BackButton href="/home" />
 
       <div className="flex flex-col items-center  mt-10 gap-5  max-w-xl mx-auto  ">
         <Link
           href="/plans/searchplans"
-          className=" w-72 h-14 flex justify-between  btn btn-outline  linear-background  items-center p-3 gap-3  rounded-md text-xl text-first"
+          className="flex flex-row justify-between border border-first/50 w-80 linear-background shadow-xl p-2 rounded-md mx-5 my-1 cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +46,7 @@ function Page() {
         </Link>
         <Link
           href="/plans/myplans"
-          className=" w-72 h-14 flex justify-between  btn btn-outline  linear-background items-center p-3 gap-3  rounded-md text-xl text-first"
+          className="flex flex-row justify-between border border-first/50 w-80 linear-background shadow-xl p-2 rounded-md mx-5 my-1 cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

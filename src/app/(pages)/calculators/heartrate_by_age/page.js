@@ -65,11 +65,11 @@ function Page() {
 
       {/**-------------------------Damen----------------------------- */}
       <div className="flex flex-col justify-center items-center mx-auto max-w-xl mt-10 ">
-        <div className="flex flex-row justify-center gap-1">
-          <button className="btn pointer-events-none border-first/50 bg-third   text-first">
-            <p className="text-xl ">Damen</p>
+        <div className="flex flex-row justify-center">
+          <p className=" border-first/50    text-first">
+            <p className="text-xl mt-2 mr-2">Damen</p>
             <br />
-          </button>
+          </p>
           <div>
             <input
               type="number"
@@ -81,7 +81,7 @@ function Page() {
             />
           </div>
         </div>
-        <p className="icon-text m-3">HRmax = 209-(0.9 x Alter) </p>
+        <p className="icon-text m-1">HRmax = 209-(0.9 x Alter) </p>
         {womenShowAlert && (
           <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
             <span>Bitte trage dein Alter ein (0-100)</span>
@@ -89,7 +89,7 @@ function Page() {
         )}
         <button
           onClick={handleWomenInputClick}
-          className="btn btn-sm  bg-third border border-first/50 text-first"
+          className="btn btn-sm  bg-third border border-first/50 text-first shadow-xl"
         >
           Berechnen
         </button>
@@ -103,11 +103,11 @@ function Page() {
 
       {/**-------------------------Herren----------------------------- */}
       <div className="flex flex-col justify-center items-center mx-auto max-w-xl mt-10 ">
-        <div className="flex flex-row justify-center gap-1">
-          <button className="btn pointer-events-none border-first/50 bg-third  text-first">
-            <p className="text-xl ">Herren</p>
+        <div className="flex flex-row justify-center">
+          <div className="  text-first">
+            <p className="text-xl mt-2 mr-2">Herren</p>
             <br />
-          </button>
+          </div>
 
           <div>
             <input
@@ -121,7 +121,7 @@ function Page() {
             />
           </div>
         </div>
-        <p className="icon-text m-3">HRmax = 214-(0.8 x Alter) </p>
+        <p className="icon-text m-1">HRmax = 214-(0.8 x Alter) </p>
         {menShowAlert && (
           <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
             <span>Bitte trage dein Alter ein (0-100)</span>
@@ -129,7 +129,7 @@ function Page() {
         )}
         <button
           onClick={handleMenInputClick}
-          className="btn btn-sm bg-third border border-first/50 text-first"
+          className="btn btn-sm bg-third border border-first/50 text-first shadow-xl"
         >
           Berechnen
         </button>
