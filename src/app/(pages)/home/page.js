@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import Footer from "@/app/components/NavBar/NavBar";
 import "../../globals.css";
@@ -22,9 +23,7 @@ import useDataSafety from "@/app/fetchFunctions/useFetchPlansSafetyOnHomepage";
 
 function Page() {
   const data = useRecoilValue(plansFromMongoDbState);
-
   const userPlans = data?.plans;
-
   const numberOfPlanWeeks = userPlans?.[0]?.sessions.map((weekIndex) =>
     parseInt(weekIndex)
   );
@@ -47,14 +46,6 @@ function Page() {
     <>
       <MobileHint />
       <div className="flex flex-col mx-auto max-w-xl relative h-auto  w-screen mb-20 ">
-        <Image
-          priority
-          src={logo}
-          alt="logo"
-          className="mt-3  ml-3 absolute w-auto"
-          width={55}
-          height={55}
-        />
         <PlanName userPlans={userPlans} />
         <WeekScrollButtons
           currentWeek={currentWeek}
@@ -66,7 +57,12 @@ function Page() {
         {activitiesByDay &&
           activitiesByDay.map(([day, activity], dayIndex) => (
             <div key={uuidv1()}>
-              <Day day={day} toggleDay={toggleDay} dayIndex={dayIndex} />
+              <Day
+                day={day}
+                toggleDay={toggleDay}
+                dayIndex={dayIndex}
+                openDay={openDay}
+              />
 
               <Activity
                 openDay={openDay}
@@ -97,6 +93,14 @@ function Page() {
                 ))}
             </div>
           ))}
+        <Image
+          priority
+          src={logo}
+          alt="logo"
+          className="mx-auto mt-10 w-24  "
+          width={100}
+          height={100}
+        />
       </div>
       <InputAlert />
       <Footer />

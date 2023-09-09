@@ -6,15 +6,12 @@ import "../../globals.css";
 import HeartrateCalculator from "./components/HeartrateCalculator/HeartrateCalculator";
 import SwimTimeCalculator from "./components/SwimTimeCalculator/SwimTimeCalculator";
 import Impressum from "@/app/components/Impressum/Impressum";
+import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 
 function Page() {
   return (
     <>
-      <div className="w-screen max-w-xl mx-auto">
-        <button className=" top-5 left-5 btn btn-sm pointer-events-none border-first/50  bg-third m-3  text-first">
-          Profil
-        </button>
-      </div>
+      <BackButton href="/home" />
 
       <div className="w-11/12 max-w-xl mx-auto flex flex-col gap-5 justify-center content-center">
         <HeartrateCalculator />
