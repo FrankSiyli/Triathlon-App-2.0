@@ -16,7 +16,7 @@ function Page() {
             Es sind noch keine Pläne vorhanden
           </div>
         ) : (
-          <div className="flex flex-col items-center gap-1">
+          <div className="flex flex-col items-center gap-1 ">
             <p className="text-xl m-5">Meine Pläne</p>
             {myPlans.map((myPlan) => (
               <div

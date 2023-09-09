@@ -3,9 +3,9 @@ import React from "react";
 const PlanName = ({ userPlans }) => {
   return (
     <>
-      <button className="btn btn-sm pointer-events-none mx-auto  border-first/50  bg-third m-5  text-first">
-        {userPlans?.[0]?.name}
-      </button>
+      <div className="mx-auto mb-3 mt-5  text-first border border-first/50 p-1 linear-background rounded-md shadow-xl ">
+        {userPlans?.[0].name}
+      </div>
     </>
   );
 };

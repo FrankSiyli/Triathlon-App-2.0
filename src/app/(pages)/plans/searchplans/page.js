@@ -2,7 +2,7 @@
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 
 function Page() {
   const characterMap = {
@@ -20,7 +20,7 @@ function Page() {
             href={kindOfPlan
               .toLowerCase()
               .replace(/[äöü]/g, (match) => characterMap[match] || match)}
-            className="  w-72 h-14 flex justify-between btn btn-outline  linear-background items-center  gap-3  rounded-md text-xl text-first"
+            className="flex flex-row justify-between border border-first/50 w-80 linear-background shadow-xl p-2 rounded-md mx-5 my-1 cursor-pointer"
             key={kindOfPlanIndex}
           >
             {kindOfPlan}
