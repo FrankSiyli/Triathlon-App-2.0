@@ -12,7 +12,7 @@ function Page() {
   return (
     <>
       <BackButton href="/plans/searchplans" />
-      <div className="flex flex-col items-center w-screen h-screen">
+      <div className="flex flex-col items-center  mt-10 gap-5  max-w-xl mx-auto  ">
         <div className="flex flex-row justify-between items-center border border-first/50 w-80 linear-background shadow-xl p-2 rounded-md mx-5 my-1 cursor-pointer">
           {specialPlans?.map((specialPlan, specialPlanIndex) => {
             return <div key={specialPlanIndex}>{specialPlan.name}</div>;
