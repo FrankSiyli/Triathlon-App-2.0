@@ -19,13 +19,13 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
               <div>
                 {/**----------------------------warmUpSection ------------------------------------*/}
                 <div className="relative border border-first/50  rounded-md mx-5 my-10">
-                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background ">
+                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background shadow-xl">
                     Warm Up
                   </p>
                   {sessionSections.warmUp.map((warmUpSection, warmUpIndex) => {
                     return (
                       <div key={warmUpIndex}>
-                        <div className="relative flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-third ">
+                        <div className="relative flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-fourth ">
                           {warmUpSection.multiplier > 1 ? (
                             <p className="absolute -top-7 left-4 mb-3 btn btn-outline text-first p-2  linear-background text-xl">
                               {warmUpSection.multiplier} x{" "}
@@ -60,7 +60,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                 </div>
                                 <div>
                                   {warmUpExercise.name.trim() !== "" ? (
-                                    <p className="border border-first/50 text-sm rounded-md p-1 linear-background">
+                                    <p className="border border-first/50 text-sm rounded-md p-1 linear-background shadow-xl">
                                       {warmUpExercise.name}
                                     </p>
                                   ) : null}
@@ -75,13 +75,13 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                 </div>{" "}
                 {/**----------------------------mainSection ------------------------------------*/}
                 <div className="relative border border-first/50  rounded-md mx-5 my-10">
-                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background">
+                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background shadow-xl">
                     Hauptteil
                   </p>
                   {sessionSections.main.map((mainSection, mainIndex) => {
                     return (
                       <div key={mainIndex}>
-                        <div className="relative flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-third ">
+                        <div className="relative flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-fourth ">
                           {mainSection.multiplier > 1 ? (
                             <p className="absolute -top-3 left-4 btn btn-outline text-first p-2  linear-background text-xl">
                               {mainSection.multiplier} x{" "}
@@ -117,16 +117,23 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                 <div>
                                   {mainExercise.name.trim() !== "" ? (
                                     <button
-                                      className={`border border-first/50 w-full text-sm rounded-md p-1 linear-background cursor-default ${
+                                      className={`border border-first/50 w-full text-sm rounded-md p-1 linear-background shadow-xl cursor-default ${
                                         mainExercise.imageLink
                                           ? "underline decoration-first decoration-2 underline-offset-4 cursor-pointer "
                                           : ""
                                       }`}
                                       onClick={() => {
                                         if (mainExercise.imageLink) {
-                                          setOpenInstructionImage(
-                                            mainExerciseIndex
-                                          );
+                                          if (
+                                            mainExerciseIndex ===
+                                            openInstructionImage
+                                          ) {
+                                            setOpenInstructionImage(null);
+                                          } else {
+                                            setOpenInstructionImage(
+                                              mainExerciseIndex
+                                            );
+                                          }
                                         }
                                       }}
                                     >
@@ -177,13 +184,13 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                 </div>{" "}
                 {/**----------------------------coolDownSection ------------------------------------*/}
                 <div className="relative border border-first/50  rounded-md mx-5 mb-10">
-                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background">
+                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background shadow-xl">
                     Cool down
                   </p>
                   {sessionSections.coolDown.map(
                     (coolDownSection, coolDownIndex) => (
                       <div key={coolDownIndex}>
-                        <div className=" flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-third ">
+                        <div className=" flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-fourth ">
                           {coolDownSection.exercises.map(
                             (coolDownExercise, coolDownExerciseIndex) => (
                               <div key={coolDownExerciseIndex}>
@@ -205,7 +212,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                 </div>
                                 <div>
                                   {coolDownExercise.name.trim() !== "" ? (
-                                    <p className="border border-first/50 text-sm rounded-md p-1 linear-background">
+                                    <p className="border border-first/50 text-sm rounded-md p-1 linear-background shadow-xl">
                                       {coolDownExercise.name}
                                     </p>
                                   ) : null}
