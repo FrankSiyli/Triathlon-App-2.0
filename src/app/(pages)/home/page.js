@@ -18,7 +18,6 @@ import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
 import { useRecoilValue } from "recoil";
 import { plansFromMongoDbState } from "@/app/recoil/atoms/plansFromMongoDbState";
-import InputAlert from "./components/HintsAndAlerts/InputAlert";
 import useDataSafety from "@/app/fetchFunctions/useFetchPlansSafetyOnHomepage";
 
 function Page() {
@@ -102,7 +101,6 @@ function Page() {
           height={100}
         />
       </div>
-      <InputAlert />
       <Footer />
     </>
   );

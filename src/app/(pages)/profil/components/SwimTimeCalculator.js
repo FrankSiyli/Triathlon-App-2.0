@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { formatTime } from "@/app/helperFunctions/formatTime";
-import "../../../../globals.css";
+import "../../../globals.css";
 import { useRecoilState } from "recoil";
 import { savedSwimTimeState } from "@/app/recoil/atoms/savedSwimTimeState";
 import { swimTimeInputFiredState } from "@/app/recoil/atoms/swimTimeInputFiredState";
@@ -30,7 +30,21 @@ function SwimTimeCalculator() {
 
   return (
     <>
-      <div className="border border-fourth  rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center linear-background">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="w-6 h-6 absolute top-10 right-28"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M19.5 4.5l-15 15m0 0h11.25m-11.25 0V8.25"
+        />
+      </svg>
+      <div className="border border-fourth mt-10 rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center linear-background">
         {!swimTimeInputFired && (
           <>
             <p>Schwimm-Pace-Berechnung</p>
