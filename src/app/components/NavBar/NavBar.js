@@ -58,7 +58,10 @@ function NavBar() {
         <Link
           href="/profil"
           className={
-            currentRoute.startsWith("/profil") ? activeStyle : nonActiveStyle
+            currentRoute.startsWith("/profil") ||
+            currentRoute.startsWith("/calculators")
+              ? activeStyle
+              : nonActiveStyle
           }
         >
           <svg

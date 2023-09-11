@@ -1,160 +1,47 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import "../../../globals.css";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
+import MenCalculatorByAge from "./components/MenCalculatorByAge";
+import WomenCalculatorByAge from "./components/WomenCalculatorByAge";
+import NavBar from "@/app/components/NavBar/NavBar";
 
 function Page() {
-  const [womenShowAlert, setWomenShowAlert] = useState(false);
-  const [menShowAlert, setMenShowAlert] = useState(false);
-  const [womenCalculatorInput, setWomenCalculatorInput] = useState("");
-  const [menCalculatorInput, setMenCalculatorInput] = useState("");
-  const [womenCalculatedHr, setWomenCalculatedHr] = useState("");
-  const [menCalculatedHr, setMenCalculatedHr] = useState("");
-  const handleWomenInputClick = () => {
-    if (
-      womenCalculatorInput === "" ||
-      womenCalculatorInput < 0 ||
-      womenCalculatorInput > 100
-    ) {
-      setWomenShowAlert(true);
-      setTimeout(() => {
-        setWomenShowAlert(false);
-      }, 2000);
-    } else {
-      setWomenCalculatedHr(Math.round(209 - 0.9 * womenCalculatorInput));
-      setWomenCalculatorInput("");
-    }
-  };
-  const handleMenInputClick = () => {
-    if (
-      menCalculatorInput === "" ||
-      menCalculatorInput < 0 ||
-      menCalculatorInput > 100
-    ) {
-      setMenShowAlert(true);
-      setTimeout(() => {
-        setMenShowAlert(false);
-      }, 2000);
-    } else {
-      setMenCalculatedHr(Math.round(214 - 0.8 * menCalculatorInput));
-      setMenCalculatorInput("");
-    }
-  };
-  const handleWomenKeyDown = (event) => {
-    if (event.key === "Enter") {
-      handleWomenInputClick();
-    }
-  };
-  const handleMenKeyDown = (event) => {
-    if (event.key === "Enter") {
-      handleMenInputClick();
-    }
-  };
-
   return (
     <>
       <BackButton href="/profil" />
-
-      <div className="w-11/12 border border-first/50 rounded-md p-4 mx-auto max-w-xl mb-5  text-center">
-        <p>
-          Wenn du am Anfang deiner sportlichen Entwicklung stehst oder nach
-          einer Pause wieder einsteigen möchtest kannst du auch die Formeln
-          benutzen um einen Richtwert zu erhalten.
-        </p>
-      </div>
-
-      {/**-------------------------Damen----------------------------- */}
-      <div className="flex flex-col justify-center items-center mx-auto max-w-xl mt-10 ">
-        <div className="flex flex-row justify-center">
-          <p className=" border-first/50    text-first">
-            <p className="text-xl mt-2 mr-2">Damen</p>
-            <br />
+      <div className="min-h-screen mb-60">
+        <div className="w-11/12 border border-first/50 linear-background rounded-md p-4 mb-5 mx-auto max-w-xl  text-center">
+          <p>
+            Wenn du am Anfang deiner sportlichen Entwicklung stehst oder nach
+            einer Pause wieder einsteigen möchtest kannst du auch die Formeln
+            benutzen um einen Richtwert zu erhalten.
           </p>
-          <div>
-            <input
-              type="number"
-              placeholder="Dein Alter z.B. 35"
-              value={womenCalculatorInput}
-              onChange={(e) => setWomenCalculatorInput(e.target.value)}
-              onKeyDown={handleWomenKeyDown}
-              className="input  border border-first/50 w-full max-w-xs"
-            />
-          </div>
         </div>
-        <p className="icon-text m-1">HRmax = 209-(0.9 x Alter) </p>
-        {womenShowAlert && (
-          <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
-            <span>Bitte trage dein Alter ein (0-100)</span>
-          </div>
-        )}
-        <button
-          onClick={handleWomenInputClick}
-          className="btn btn-sm  bg-third border border-first/50 text-first shadow-xl"
-        >
-          Berechnen
-        </button>
-        {womenCalculatedHr && (
-          <div className="border border-first bg-second text-center text-md m-3 p-2 rounded-md">
-            Dein berechneter Maximalpuls:{" "}
-            <p className="text-xl ">{womenCalculatedHr} bpm</p>
-          </div>
-        )}
-      </div>
 
-      {/**-------------------------Herren----------------------------- */}
-      <div className="flex flex-col justify-center items-center mx-auto max-w-xl mt-10 ">
-        <div className="flex flex-row justify-center">
-          <div className="  text-first">
-            <p className="text-xl mt-2 mr-2">Herren</p>
+        <div className="relative max-w-xl">
+          <WomenCalculatorByAge />
+          <MenCalculatorByAge />
+
+          <div className="mt-20 w-11/12 border border-first/50 linear-background max-w-xl mx-5 rounded-md p-4  text-center">
+            <p>
+              Einem HRmax Test sollten mehrere Monate mit strukturiertem
+              Training vorangehen.
+            </p>
             <br />
-          </div>
-
-          <div>
-            <input
-              type="number"
-              maxLength={3}
-              placeholder="Dein Alter z.B. 35"
-              value={menCalculatorInput}
-              onChange={(e) => setMenCalculatorInput(e.target.value)}
-              onKeyDown={handleMenKeyDown}
-              className="input  border border-first/50 w-full max-w-xs"
-            />
+            <p>
+              Falls du in den letzten 6 Monaten bei einem Event einen All OUT
+              Zielsprint angesetzt hast kannst du dir diese Puls-Werte gern mal
+              genauer anschauen.
+            </p>
+            <br />
+            <p>
+              Der sicherste Weg um genaue Werte zu erhalten bleibt eine
+              professionelle Leistungsdiagnostik.
+            </p>
           </div>
         </div>
-        <p className="icon-text m-1">HRmax = 214-(0.8 x Alter) </p>
-        {menShowAlert && (
-          <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
-            <span>Bitte trage dein Alter ein (0-100)</span>
-          </div>
-        )}
-        <button
-          onClick={handleMenInputClick}
-          className="btn btn-sm bg-third border border-first/50 text-first shadow-xl"
-        >
-          Berechnen
-        </button>
-        {menCalculatedHr && (
-          <div className="border border-first bg-second text-center text-md m-3 p-2 rounded-md">
-            Dein berechneter Maximalpuls:{" "}
-            <p className="text-xl ">{menCalculatedHr} bpm</p>
-          </div>
-        )}
       </div>
-      <div className="w-11/12 border border-first/50 max-w-xl mx-auto rounded-md p-4 mt-20 m-1  text-center">
-        <p>
-          Einem HRmax Test sollten mehrere Monate mit strukturiertem Training
-          vorangehen.
-        </p>
-        <p>
-          Falls du in den letzten 6 Monaten bei einem Event einen All OUT
-          Zielsprint angesetzt hast kannst du dir diese Puls-Werte gern mal
-          genauer anschauen.
-        </p>
-        <p>
-          Der sicherste Weg um genaue Werte zu erhalten bleibt eine
-          professionelle Leistungsdiagnostik.
-        </p>
-      </div>
+      <NavBar />
     </>
   );
 }
