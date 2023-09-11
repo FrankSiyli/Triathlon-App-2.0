@@ -6,10 +6,10 @@ const WeekScrollButtons = ({
   handleBackClick,
   handleNextClick,
 }) => (
-  <div className="flex justify-between mb-7 items-center h-10 mx-3 rounded-md border  border-first/50 shadow-xl">
+  <div className="flex justify-between mb-5 items-center  mx-5  linear-background rounded-xl  shadow-xl">
     <button
       onClick={handleBackClick}
-      className="h-9 w-16 flex justify-center items-center bg-third rounded-md active:scale-90 "
+      className="btn btn-sm btn-outline outline-first/50 w-12 flex justify-center items-center bg-third text-first shadow-xl"
     >
       {currentWeek > 1 ? (
         <svg
@@ -32,7 +32,7 @@ const WeekScrollButtons = ({
     <p>{`Woche ${currentWeek} / ${numberOfPlanWeeks?.length}`}</p>
     <button
       onClick={handleNextClick}
-      className="h-9 w-16 flex justify-center items-center bg-third rounded-md active:scale-90"
+      className="btn btn-sm btn-outline outline-first/50 w-12 flex justify-center items-center bg-third text-first shadow-xl"
     >
       {currentWeek === numberOfPlanWeeks?.length - 1 ? (
         <svg
