@@ -19,7 +19,7 @@ const Activity = ({
                 toggleOverlay(dayIndex, activityIndex);
               }}
             >
-              <div className="flex h-14 my-1 w-80 justify-between items-center text-first rounded-md btn btn-outline  linear-background ">
+              <div className="flex h-14 my-1 w-80 justify-between items-center font-light text-first rounded-md  border border-first/50  linear-background ">
                 <div className="ml-2 text-left">
                   <p className="underline underline-offset-2 text-sm">
                     {singleActivity[0]}

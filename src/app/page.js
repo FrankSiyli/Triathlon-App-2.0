@@ -7,10 +7,10 @@ import useFetchPlans from "./fetchFunctions/useFetchPlans";
 import useFetchSpecialPlans from "./fetchFunctions/useFetchSpecialPlans";
 
 export default function Home() {
+  const { error, isLoading } = useFetchPlans();
+  useFetchSpecialPlans();
   const router = useRouter();
   const [elapsedTime, setElapsedTime] = useState(0);
-  const { error, isLoading } = useFetchPlans();
-  const { errorSpecialPlans, isLoadingSpecialPlans } = useFetchSpecialPlans();
 
   useEffect(() => {
     const timer = setInterval(() => {
