@@ -44,7 +44,7 @@ function HeartrateCalculator() {
     <>
       <div className="flex  max-w-xl  flex-col items-center  ">
         {showAlert && (
-          <div className="fixed top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
+          <div className="fixed top-0 inset-x-0 flex flex-row mx-auto items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
             <span>Bitte trage deine HRmax ein (100-300)</span>
           </div>
         )}
