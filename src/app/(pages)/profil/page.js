@@ -34,7 +34,7 @@ function Page() {
           Gib hier deinen
           <span className=" text-xl"> Maximalpuls</span> und deine
           <span className=" text-xl"> 1000m Schwimmzeit</span> ein, um
-          persönliche Werte im Trainingsplan zu erhalten.
+          persönliche Werte im Trainingsplan auf der Homepage zu erhalten.
         </div>
 
         <div className="relative max-w-xl mt-5">
