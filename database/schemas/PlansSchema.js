@@ -16,7 +16,7 @@ const PlansSchema = new Schema({
   info: { type: String },
   price: { type: String },
   duration: { type: Number },
-  sessions: [
+  weeks: [
     {
       week: { type: Number },
       sessions: [

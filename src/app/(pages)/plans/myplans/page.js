@@ -1,51 +1,170 @@
+"use client";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
-import React from "react";
-import { v1 as uuidv1 } from "uuid";
-
-//map function for myplans is ready to rocknroll
+import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
+import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
+import React, { useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 function Page() {
-  const myPlans = [];
+  const [myPlans, setMyPlans] = useRecoilState(myPlansState);
+  const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
+  const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
+  const [showLoadOnHomepageToast, setShowLoadOnHomepageToast] = useState(false);
+  const [showDeleteToast, setShowDeleteToast] = useState(false);
+  const handleInfoClick = (index) => {
+    if (index === expandedPlanIndex) {
+      setExpandedPlanIndex(null);
+    } else {
+      setExpandedPlanIndex(index);
+    }
+  };
+
+  const handleLoadPlanClick = (event) => {
+    const expandedPlan = myPlans[expandedPlanIndex];
+    setHomepagePlan(expandedPlan);
+    setShowLoadOnHomepageToast(true);
+    setTimeout(() => {
+      setShowLoadOnHomepageToast(false);
+    }, 2000);
+    event.stopPropagation();
+  };
+
+  const handleRemovePlanClick = (expandedPlanIndex) => {
+    setMyPlans((prevPlans) => {
+      const updatedPlans = [...prevPlans];
+      updatedPlans.splice(expandedPlanIndex, 1);
+      setShowDeleteToast(true);
+      setExpandedPlanIndex(null);
+      setTimeout(() => {
+        setShowDeleteToast(false);
+      }, 2000);
+
+      return updatedPlans;
+    });
+  };
+
   return (
     <>
       <BackButton href="/plans" />
-      <div className="flex flex-col items-center  mt-10 gap-5 ">
-        {myPlans.length === 0 ? (
-          <div className="border border-first/50 rounded-md p-5">
-            Es sind noch keine Pläne vorhanden
-          </div>
-        ) : (
-          <div className="flex flex-col items-center gap-1 ">
-            <p className="text-xl m-5">Meine Pläne</p>
-            {myPlans.map((myPlan) => (
+      <p className=" mx-auto w-40 text-center -mt-10">Meine Pläne</p>
+      {myPlans.length === 0 ? (
+        <div className="border border-first/50 rounded-md p-2 text-center mt-20 mx-5">
+          Es wurde noch kein Plan geladen
+        </div>
+      ) : (
+        <div className=" flex flex-col items-center  mt-10 mb-20 gap-1  max-w-xl mx-5 ">
+          {myPlans?.map((myPlan, myPlanIndex) => {
+            return (
               <div
-                className="bg-second w-72  flex justify-between items-center text-center rounded-md text-xl text-first"
-                key={uuidv1()}
+                key={myPlanIndex}
+                className=" border border-first/50 w-full max-w-xl linear-background  shadow-xl p-2 rounded-md mx-5 my-1 "
               >
-                <div className="ml-3">{myPlan}</div>
-                <div className="flex flex-col  items-center m-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15"
-                    />
-                  </svg>
-                  <p className="icon-text">Plan laden</p>
+                <div
+                  onClick={() => handleInfoClick(myPlanIndex)}
+                  className=" flex flex-row justify-between cursor-pointer"
+                >
+                  <div className="ml-5">{myPlan.name}</div>
+                  {expandedPlanIndex === myPlanIndex ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 mr-2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.5 15.75l7.5-7.5 7.5 7.5"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 mr-2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  )}
                 </div>
+                {expandedPlanIndex === myPlanIndex && (
+                  <div className="mt-5 select-none ">
+                    <hr />
+                    <div className="m-3 mx-auto border border-first/50 p-1 w-24 text-sm text-center linear-background rounded-md shadow-xl">
+                      Wochen: {myPlan.duration}
+                    </div>
+                    <div className="font-light text-center">{myPlan.info}</div>
+                    <div className="flex justify-between mt-20">
+                      <div
+                        onClick={() => {
+                          handleRemovePlanClick(expandedPlanIndex);
+                        }}
+                        className="btn btn-sm flex  w-20 border border-first/50   text-first shadow-xl "
+                      >
+                        Löschen
+                      </div>
+                      <div
+                        onClick={handleLoadPlanClick}
+                        className="btn btn-sm flex  w-20  border border-first/50 bg-third  text-first shadow-xl "
+                      >
+                        Laden
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
-        )}
-      </div>
+            );
+          })}
+          {showLoadOnHomepageToast && (
+            <div className="absolute top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Auf Homepage geladen</span>
+            </div>
+          )}
+
+          {showDeleteToast && (
+            <div className="absolute top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Plan wurde gelöscht</span>
+            </div>
+          )}
+        </div>
+      )}
+
       <NavBar />
     </>
   );

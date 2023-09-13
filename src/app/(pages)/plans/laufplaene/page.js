@@ -6,6 +6,8 @@ function Page() {
   return (
     <>
       <BackButton href="/plans/searchplans" />
+      <p className=" mx-auto w-40 text-center -mt-10">Laufpläne</p>
+
       <p>Coming soon</p>
       <NavBar />
     </>

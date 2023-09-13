@@ -55,14 +55,14 @@ const SessionOverlay = ({
           />
           <div className="flex flex-col  items-center gap-10">
             <button
-              className="btn btn-sm w-32 btn-outline text-first linear-background"
+              className="btn btn-sm w-32 btn-outline text-first bg-third"
               onClick={handleViewClick}
             >
               Druckversion
             </button>
             <button
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
-              className="btn btn-circle btn-outline text-first mb-20 linear-background"
+              className="btn btn-circle btn-outline text-first mb-20 bg-third"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -95,25 +95,25 @@ const SessionOverlay = ({
           <div className="flex flex-col items-center gap-10">
             <div className="flex flex-row gap-3">
               <button
-                className="btn btn-sm w-32 btn-outline text-first linear-background"
+                className="btn btn-sm w-32 btn-outline text-first bg-third"
                 onClick={handleViewClick}
               >
                 zurück
               </button>
               <button
                 onClick={handlePrint}
-                className="btn btn-sm w-32 btn-outline text-first linear-background"
+                className="btn btn-sm w-32 btn-outline text-first bg-third"
               >
                 drucken
               </button>
             </div>
             <button
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
-              className="btn btn-circle btn-outline text-first mb-20"
+              className="btn btn-circle btn-outline text-first mb-20 bg-third"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-6 w-6 "
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
