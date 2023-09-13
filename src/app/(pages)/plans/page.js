@@ -2,14 +2,15 @@
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 
 function Page() {
   return (
     <>
       <BackButton href="/home" />
+      <p className=" mx-auto w-40 text-center -mt-10">Pläne</p>
 
-      <div className="flex flex-col items-center  mt-10 gap-5  max-w-xl mx-auto  ">
+      <div className="flex flex-col items-center  mt-10 gap-1  max-w-xl mx-auto  ">
         <Link
           href="/plans/searchplans"
           className="flex flex-row justify-between border border-first/50 w-80 linear-background shadow-xl p-2 rounded-md mx-5 my-1 cursor-pointer"

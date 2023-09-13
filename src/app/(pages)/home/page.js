@@ -17,7 +17,7 @@ import MobileHint from "./components/HintsAndAlerts/MobileHint";
 import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
 import { useRecoilValue } from "recoil";
-import { homepagePlanState } from "@/app/recoil/atoms/homepagePlanState";
+import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 
 function Page() {
   const data = useRecoilValue(homepagePlanState);
@@ -26,11 +26,11 @@ function Page() {
   const { openOverlay, toggleOverlay } = useOpenOverlay();
   const { openDay, toggleDay } = useOpenDay();
   const { currentWeek, handleBackClick, handleNextClick } = useCurrentWeek(
+    homepagePlan,
     numberOfPlanWeeks,
     toggleDay
   );
-
-  const currentWeekSessions = homepagePlan?.sessions[currentWeek - 1]?.sessions;
+  const currentWeekSessions = homepagePlan?.weeks?.[currentWeek]?.sessions;
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
 
   return (

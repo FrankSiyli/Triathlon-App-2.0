@@ -79,8 +79,8 @@ const MenCalculatorByAge = () => {
 
             <p className="icon-text m-1">HRmax = 214-(0.8 x Alter) </p>
             {menShowAlert && (
-              <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center">
-                <span>Bitte trage dein Alter ein (0-100)</span>
+          <div className="fixed top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
+          <span>Bitte trage dein Alter ein (0-100)</span>
               </div>
             )}
             <button
