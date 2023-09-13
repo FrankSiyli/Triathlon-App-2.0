@@ -64,7 +64,7 @@ const Page = () => {
         <div>
           <div className="max-w-xl mx-auto flex flex-col items-center justify-center">
             {showAlert && (
-              <div className="fixed top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
+              <div className="fixed mx-auto top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
                 <span>Bitte trage deine FTP ein (50-500)</span>
               </div>
             )}
