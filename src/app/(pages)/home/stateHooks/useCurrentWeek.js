@@ -11,7 +11,7 @@ export const useCurrentWeek = (numberOfPlanWeeks, toggleDay) => {
   };
 
   const handleNextClick = () => {
-    if (currentWeek < numberOfPlanWeeks.length) {
+    if (currentWeek < numberOfPlanWeeks) {
       setCurrentWeek(currentWeek + 1);
       toggleDay(-1);
     }

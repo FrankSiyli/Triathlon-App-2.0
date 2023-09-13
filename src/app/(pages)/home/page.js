@@ -17,16 +17,12 @@ import MobileHint from "./components/HintsAndAlerts/MobileHint";
 import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
 import { useRecoilValue } from "recoil";
-import { plansFromMongoDbState } from "@/app/recoil/atoms/plansFromMongoDbState";
-import useDataSafety from "@/app/fetchFunctions/useFetchPlansSafetyOnHomepage";
+import { homepagePlanState } from "@/app/recoil/atoms/homepagePlanState";
 
 function Page() {
-  const data = useRecoilValue(plansFromMongoDbState);
-  const userPlans = data?.plans;
-  const numberOfPlanWeeks = userPlans?.[0]?.sessions.map((weekIndex) =>
-    parseInt(weekIndex)
-  );
-
+  const data = useRecoilValue(homepagePlanState);
+  const homepagePlan = data;
+  const numberOfPlanWeeks = homepagePlan?.duration;
   const { openOverlay, toggleOverlay } = useOpenOverlay();
   const { openDay, toggleDay } = useOpenDay();
   const { currentWeek, handleBackClick, handleNextClick } = useCurrentWeek(
@@ -34,18 +30,14 @@ function Page() {
     toggleDay
   );
 
-  const currentWeekSessions =
-    userPlans?.[0]?.sessions[currentWeek - 1].sessions;
-
+  const currentWeekSessions = homepagePlan?.sessions[currentWeek - 1]?.sessions;
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
-
-  useDataSafety();
 
   return (
     <>
       <MobileHint />
       <div className="flex flex-col mx-auto max-w-xl relative h-auto  w-screen mb-20 ">
-        <PlanName userPlans={userPlans} />
+        <PlanName homepagePlan={homepagePlan} />
         <WeekScrollButtons
           currentWeek={currentWeek}
           numberOfPlanWeeks={numberOfPlanWeeks}
@@ -84,7 +76,7 @@ function Page() {
                     activityIndex={activityIndex}
                     openOverlay={openOverlay}
                     toggleOverlay={toggleOverlay}
-                    userPlans={userPlans[0]}
+                    homepagePlan={homepagePlan}
                     initialOpen={openOverlay.includes(
                       dayIndex * 1000 + activityIndex
                     )}
