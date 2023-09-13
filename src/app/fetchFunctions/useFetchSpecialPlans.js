@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import useSWR from "swr";
 import { useRecoilState } from "recoil";
-import { specialPlansFromMongoDbState } from "../recoil/atoms/specialPlansFromMongoDbState";
+import { specialPlansFromMongoDbState } from "../recoil/atoms/plans/specialPlansFromMongoDbState";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 

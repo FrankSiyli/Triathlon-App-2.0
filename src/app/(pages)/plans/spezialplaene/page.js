@@ -3,16 +3,17 @@ import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
 import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { specialPlansFromMongoDbState } from "@/app/recoil/atoms/specialPlansFromMongoDbState";
-import { homepagePlanState } from "@/app/recoil/atoms/homepagePlanState";
+import { specialPlansFromMongoDbState } from "@/app/recoil/atoms/plans/specialPlansFromMongoDbState";
+import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
+import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
 
 function Page() {
   const data = useRecoilValue(specialPlansFromMongoDbState);
   const specialPlans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
+  const [myPlans, setMyPlans] = useRecoilState(myPlansState);
   const [showToast, setShowToast] = useState(false);
-
   const handleInfoClick = (index) => {
     if (index === expandedPlanIndex) {
       setExpandedPlanIndex(null);
@@ -28,13 +29,16 @@ function Page() {
     setTimeout(() => {
       setShowToast(false);
     }, 2000);
+    setMyPlans((prevPlans) => [...prevPlans, expandedPlan]);
     event.stopPropagation();
   };
 
   return (
     <>
       <BackButton href="/plans/searchplans" />
-      <div className=" flex flex-col items-center  mt-10 gap-5  max-w-xl mx-5 ">
+      <p className=" mx-auto w-40 text-center -mt-10">Spezialpläne</p>
+
+      <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
         {specialPlans?.map((specialPlan, specialPlanIndex) => {
           return (
             <div
@@ -99,10 +103,10 @@ function Page() {
           );
         })}
         {showToast && (
-          <div className="absolute top-3 right-3 flex flex-row items-center gap-2 p-1 rounded-md border border-first/50  bg-fourth text-first text-sm">
+          <div className="absolute top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="stroke-current shrink-0 h-6 w-6"
+              className="stroke-current shrink-0 h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
             >

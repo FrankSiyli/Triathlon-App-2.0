@@ -1,17 +1,17 @@
 import { useState } from "react";
 
-export const useCurrentWeek = (numberOfPlanWeeks, toggleDay) => {
-  const [currentWeek, setCurrentWeek] = useState(1);
+export const useCurrentWeek = (homepagePlan, numberOfPlanWeeks, toggleDay) => {
+  const [currentWeek, setCurrentWeek] = useState(0);
 
   const handleBackClick = () => {
-    if (currentWeek > 1) {
+    if (homepagePlan && currentWeek > 0) {
       setCurrentWeek(currentWeek - 1);
       toggleDay(-1);
     }
   };
 
   const handleNextClick = () => {
-    if (currentWeek < numberOfPlanWeeks) {
+    if (homepagePlan && currentWeek + 1 < numberOfPlanWeeks) {
       setCurrentWeek(currentWeek + 1);
       toggleDay(-1);
     }
