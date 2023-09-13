@@ -13,17 +13,17 @@ function Page() {
   return (
     <>
       <BackButton href="/plans" />
-
-      <div className="flex flex-col items-center  mt-10 gap-5  max-w-xl mx-auto  ">
+      <p className=" mx-auto w-40 text-center -mt-10">Pläne suchen</p>
+      <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
         {kindOfPlansArray.map((kindOfPlan, kindOfPlanIndex) => (
           <Link
             href={kindOfPlan
               .toLowerCase()
               .replace(/[äöü]/g, (match) => characterMap[match] || match)}
-            className="flex flex-row justify-between border border-first/50 w-80 linear-background shadow-xl p-2 rounded-md mx-5 my-1 cursor-pointer"
+            className="flex justify-between border border-first/50 w-full max-w-xl linear-background  shadow-xl p-2 rounded-md mx-5 my-1 "
             key={kindOfPlanIndex}
           >
-            {kindOfPlan}
+            <div className="ml-5">{kindOfPlan}</div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

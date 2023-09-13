@@ -7,10 +7,12 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     try {
       const plans = await Plans.find();
-
       return response.status(200).json({ plans });
     } catch (error) {
-      return response.status(500).json({ message: "Server error" });
+      console.error("Error fetching plans:", error);
+      return response
+        .status(500)
+        .json({ message: "Server error", error: error.message });
     }
   } else {
     return response.status(405).json({ message: "Method not allowed" });

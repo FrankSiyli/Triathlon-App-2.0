@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import "../../../globals.css";
 import { savedHrMaxState } from "@/app/recoil/atoms/savedHrMaxState";
@@ -44,7 +44,7 @@ function HeartrateCalculator() {
     <>
       <div className="flex  max-w-xl  flex-col items-center  ">
         {showAlert && (
-          <div className="alert alert-info fixed inset-x-0 inset-y-3 mx-auto max-w-md h-10 bg-first  flex justify-center ">
+          <div className="fixed top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
             <span>Bitte trage deine HRmax ein (100-300)</span>
           </div>
         )}
