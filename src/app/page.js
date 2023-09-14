@@ -6,11 +6,14 @@ import BackGroundImage from "./components/BackGroundImage/BackGroundImage";
 import useFetchPlans from "./fetchFunctions/useFetchPlans";
 import useFetchSpecialPlans from "./fetchFunctions/useFetchSpecialPlans";
 import useFetchTriathlonPlans from "./fetchFunctions/useFetchTriathlonPlans";
+import useFetchRunPlans from "./fetchFunctions/useFetchRunPlans";
 
 export default function Home() {
   const { error, isLoading } = useFetchPlans();
   useFetchSpecialPlans();
   useFetchTriathlonPlans();
+  useFetchRunPlans();
+
   const router = useRouter();
 
   const navigateAfterLoading = () => {
