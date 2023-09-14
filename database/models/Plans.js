@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { plansSchema } from "../schemas/plansSchema";
+import { PlansSchema } from "../schemas/PlansSchema";
 
-const Plans = mongoose.models.Plans || mongoose.model("Plans", plansSchema);
+const Plans = mongoose.models.Plans || mongoose.model("Plans", PlansSchema);
 
 export { Plans };

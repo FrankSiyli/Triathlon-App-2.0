@@ -11,7 +11,7 @@ const exerciseSchema = new Schema({
   imageLink: { type: String },
 });
 
-const plansSchema = new Schema({
+const PlansSchema = new Schema({
   category: { type: String },
   name: { type: String },
   info: { type: String },
@@ -53,4 +53,4 @@ const plansSchema = new Schema({
   ],
 });
 
-export { plansSchema };
+export { PlansSchema };
