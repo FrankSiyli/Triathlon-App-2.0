@@ -14,8 +14,6 @@ import { useActivitiesByDay } from "./logicFunctions/useActivitiesByDay";
 import Activity from "./components/Activity";
 import PlanName from "./components/PlanName";
 import MobileHint from "./components/HintsAndAlerts/MobileHint";
-import Image from "next/image";
-import logo from "../../../../public/images/logoSmall.png";
 import { useRecoilValue } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 
@@ -84,14 +82,6 @@ function Page() {
                 ))}
             </div>
           ))}
-        <Image
-          priority
-          src={logo}
-          alt="logo"
-          className="mx-auto mt-10 w-24  "
-          width={100}
-          height={100}
-        />
       </div>
       <Footer />
     </>
