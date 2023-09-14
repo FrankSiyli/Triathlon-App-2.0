@@ -1,5 +1,5 @@
 "use client";
-import Topalert from "@/app/components/Alerts/Topalert";
+import Alert from "@/app/components/Alerts/Alert";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
@@ -127,10 +127,10 @@ function Page() {
             );
           })}
           {showLoadOnHomepageToast && (
-            <Topalert topAlertText="Auf Homepage geladen" />
+            <Alert alertText="Auf Homepage geladen" />
           )}
 
-          {showDeleteToast && <Topalert topAlertText="Plan wurde gelöscht" />}
+          {showDeleteToast && <Alert alertText="Plan wurde gelöscht" />}
         </div>
       )}
 

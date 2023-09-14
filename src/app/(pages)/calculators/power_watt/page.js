@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../../../globals.css";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
-import Topalert from "@/app/components/Alerts/Topalert";
+import Alert from "@/app/components/Alerts/Alert";
 
 const Page = () => {
   const [showAlert, setShowAlert] = useState(false);
@@ -65,7 +65,7 @@ const Page = () => {
         <div>
           <div className="max-w-xl mx-auto flex flex-col items-center justify-center">
             {showAlert && (
-              <Topalert topAlertText="Bitte trage deine FTP ein (50-500)" />
+              <Alert alertText="Bitte trage deine FTP ein (50-500)" />
             )}
             <label className="label mt-10 ">
               <span className="label-text-alt text-first text-xl">
