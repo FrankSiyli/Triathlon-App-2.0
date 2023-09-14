@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { showMenInputState } from "@/app/recoil/atoms/showMenInputState";
 import { showWomenInputState } from "@/app/recoil/atoms/showWomenInputState";
 import { useRecoilState } from "recoil";
-import Topalert from "@/app/components/Alerts/Topalert";
+import Alert from "@/app/components/Alerts/Alert";
+
 const MenCalculatorByAge = () => {
   const [showWomenInput, setShowWomenInput] =
     useRecoilState(showWomenInputState);
@@ -80,7 +81,7 @@ const MenCalculatorByAge = () => {
 
             <p className="icon-text m-1">HRmax = 214-(0.8 x Alter) </p>
             {menShowAlert && (
-              <Topalert topAlertText="Bitte trage dein Alter ein (0-100)" />
+              <Alert alertText="Bitte trage dein Alter ein (0-100)" />
             )}
             <button
               onClick={handleMenInputClick}

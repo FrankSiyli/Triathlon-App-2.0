@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { specialPlansFromMongoDbState } from "@/app/recoil/atoms/plans/specialPlansFromMongoDbState";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
-import Topalert from "@/app/components/Alerts/Topalert";
+import Alert from "@/app/components/Alerts/Alert";
 
 function Page() {
   const data = useRecoilValue(specialPlansFromMongoDbState);
@@ -103,7 +103,7 @@ function Page() {
             </div>
           );
         })}
-        {showToast && <Topalert topAlertText="Auf Homepage geladen" />}
+        {showToast && <Alert alertText="Auf Homepage geladen" />}
       </div>
 
       <NavBar />
