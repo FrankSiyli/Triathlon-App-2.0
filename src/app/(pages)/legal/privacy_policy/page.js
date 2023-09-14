@@ -13,6 +13,9 @@ function Page() {
           Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der
           EU-Datenschutzgrundverordnung (DSGVO), ist: Frank Siyli
         </p>
+        <p>
+          Einzig ausgeführter Google Analytics Parameter ist: Seitenaufrufe.
+        </p>
         <p>Ihre Betroffenenrechte</p>
         Unter den angegebenen Kontaktdaten unseres Datenschutzbeauftragten
         können Sie jederzeit folgende Rechte ausüben: Auskunft über Ihre bei uns
