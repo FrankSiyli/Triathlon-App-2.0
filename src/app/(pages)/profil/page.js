@@ -31,10 +31,10 @@ function Page() {
 
       <div className="w-11/12 max-w-xl mx-auto flex flex-col gap-2 justify-center content-center">
         <div className="border border-first/50 rounded-md text-center p-3 linear-background  mt-3">
-          Gib hier deinen
+          Gib deinen
           <span className=" text-xl"> Maximalpuls</span> und deine
           <span className=" text-xl"> 1000m Schwimmzeit</span> ein, um
-          persönliche Werte im Trainingsplan auf der Homepage zu erhalten.
+          persönliche Werte im Homepage-Trainingsplan zu erhalten.
         </div>
 
         <div className="relative max-w-xl mt-5">
