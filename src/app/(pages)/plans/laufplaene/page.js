@@ -7,8 +7,11 @@ import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
 import Alert from "@/app/components/Alerts/Alert";
 import { runPlansFromMongoDbState } from "@/app/recoil/atoms/plans/runPlansFromMongoDbState";
+import useFetchRunPlans from "@/app/fetchFunctions/useFetchRunPlans";
+import Loader from "../../../components/Loader/Loader";
 
 const Page = () => {
+  const { isLoading, error } = useFetchRunPlans();
   const data = useRecoilValue(runPlansFromMongoDbState);
   const runPlans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
@@ -38,6 +41,7 @@ const Page = () => {
     <>
       <BackButton href="/plans/searchplans" />
       <p className=" mx-auto w-40 text-center -mt-10">Laufpläne</p>
+      <Loader error={error} isLoading={isLoading} />
 
       <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
         {runPlans?.map((runPlan, runPlanIndex) => {

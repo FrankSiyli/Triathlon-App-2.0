@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
+mongoose.Promise = global.Promise;
 
 const exerciseSchema = new Schema({
   name: { type: String },
@@ -10,7 +11,7 @@ const exerciseSchema = new Schema({
   imageLink: { type: String },
 });
 
-const PlansSchema = new Schema({
+const plansSchema = new Schema({
   category: { type: String },
   name: { type: String },
   info: { type: String },
@@ -52,4 +53,4 @@ const PlansSchema = new Schema({
   ],
 });
 
-export { PlansSchema };
+export { plansSchema };

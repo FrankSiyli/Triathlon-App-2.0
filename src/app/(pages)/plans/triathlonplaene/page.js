@@ -7,8 +7,11 @@ import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
 import Alert from "@/app/components/Alerts/Alert";
 import { triathlonPlansFromMongoDbState } from "@/app/recoil/atoms/plans/triathlonPlansFromMongoDbState";
+import useFetchTriathlonPlans from "@/app/fetchFunctions/useFetchTriathlonPlans";
+import Loader from "../../../components/Loader/Loader";
 
 const Page = () => {
+  const { isLoading, error } = useFetchTriathlonPlans();
   const data = useRecoilValue(triathlonPlansFromMongoDbState);
   const triathlonPlans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
@@ -38,7 +41,7 @@ const Page = () => {
     <>
       <BackButton href="/plans/searchplans" />
       <p className=" mx-auto w-40 text-center -mt-10">Triathlonpläne</p>
-
+      <Loader error={error} isLoading={isLoading} />
       <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
         {triathlonPlans?.map((triathlonPlan, triathlonPlanIndex) => {
           return (
@@ -105,7 +108,6 @@ const Page = () => {
         })}
         {showToast && <Alert alertText="Auf Homepage geladen" />}
       </div>
-
       <NavBar />
     </>
   );
