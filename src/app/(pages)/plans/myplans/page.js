@@ -1,4 +1,5 @@
 "use client";
+import Alert from "@/app/components/Alerts/Alert";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
@@ -126,42 +127,10 @@ function Page() {
             );
           })}
           {showLoadOnHomepageToast && (
-            <div className="absolute top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-8 w-8"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>Auf Homepage geladen</span>
-            </div>
+            <Alert alertText="Auf Homepage geladen" />
           )}
 
-          {showDeleteToast && (
-            <div className="absolute top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-8 w-8"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <span>Plan wurde gelöscht</span>
-            </div>
-          )}
+          {showDeleteToast && <Alert alertText="Plan wurde gelöscht" />}
         </div>
       )}
 

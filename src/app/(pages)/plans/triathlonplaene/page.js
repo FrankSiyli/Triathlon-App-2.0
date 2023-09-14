@@ -6,6 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { specialPlansFromMongoDbState } from "@/app/recoil/atoms/plans/specialPlansFromMongoDbState";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
+import Alert from "@/app/components/Alerts/Alert";
 
 const Page = () => {
   const data = useRecoilValue(specialPlansFromMongoDbState);
@@ -102,24 +103,7 @@ const Page = () => {
             </div>
           );
         })}
-        {showToast && (
-          <div className="absolute top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="stroke-current shrink-0 h-8 w-8"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <span>Auf Homepage geladen</span>
-          </div>
-        )}
+        {showToast && <Alert alertText="Auf Homepage geladen" />}
       </div>
 
       <NavBar />
