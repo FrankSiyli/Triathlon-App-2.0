@@ -1,5 +1,4 @@
 "use client";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
 import Link from "next/link";
 import React from "react";
@@ -7,8 +6,7 @@ import React from "react";
 function Page() {
   return (
     <>
-      <BackButton href="/home" />
-      <p className=" mx-auto w-40 text-center -mt-10">Pläne</p>
+      <p className=" mx-auto w-40 text-center mt-5">Pläne</p>
 
       <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
         <Link

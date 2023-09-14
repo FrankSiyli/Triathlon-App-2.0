@@ -6,7 +6,7 @@ function Impressum() {
   const currentYear = date.getFullYear();
   return (
     <div>
-      <div className="mt-20  flex flex-row justify-center text-first gap-2 underline">
+      <div className="mt-10  flex flex-row justify-center text-first gap-2 underline">
         <Link className=" " href="/legal/impressum">
           Impressum
         </Link>
