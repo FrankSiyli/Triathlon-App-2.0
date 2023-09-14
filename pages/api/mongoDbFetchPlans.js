@@ -9,7 +9,7 @@ export default async function handler(request, response) {
       const plans = await Plans.find({ category: "example" });
       return response.status(200).json({ plans });
     } catch (error) {
-      console.error("Error fetching plans:", error);
+      console.error("Error fetching examplePlans:", error);
       return response
         .status(500)
         .json({ message: "Server error", error: error.message });
