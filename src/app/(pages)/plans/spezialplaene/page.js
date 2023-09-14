@@ -7,8 +7,11 @@ import { specialPlansFromMongoDbState } from "@/app/recoil/atoms/plans/specialPl
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
 import Alert from "@/app/components/Alerts/Alert";
+import useFetchSpecialPlans from "@/app/fetchFunctions/useFetchSpecialPlans";
+import Loader from "../../../components/Loader/Loader";
 
 function Page() {
+  const { isLoading, error } = useFetchSpecialPlans();
   const data = useRecoilValue(specialPlansFromMongoDbState);
   const specialPlans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
@@ -38,7 +41,7 @@ function Page() {
     <>
       <BackButton href="/plans/searchplans" />
       <p className=" mx-auto w-40 text-center -mt-10">Spezialpläne</p>
-
+      <Loader error={error} isLoading={isLoading} />
       <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
         {specialPlans?.map((specialPlan, specialPlanIndex) => {
           return (
@@ -105,7 +108,6 @@ function Page() {
         })}
         {showToast && <Alert alertText="Auf Homepage geladen" />}
       </div>
-
       <NavBar />
     </>
   );
