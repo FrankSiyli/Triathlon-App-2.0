@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import "../../../globals.css";
 import { savedHrMaxState } from "@/app/recoil/atoms/savedHrMaxState";
 import { heartrateInputFiredState } from "@/app/recoil/atoms/heartrateInputFiredState";
+import Topalert from "@/app/components/Alerts/Topalert";
 
 function HeartrateCalculator() {
   const [showAlert, setShowAlert] = useState(false);
@@ -44,9 +45,7 @@ function HeartrateCalculator() {
     <>
       <div className="flex  max-w-xl  flex-col items-center  ">
         {showAlert && (
-          <div className="fixed top-0 inset-x-0 flex flex-row mx-auto items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-fourth text-first">
-            <span>Bitte trage deine HRmax ein (100-300)</span>
-          </div>
+          <Topalert topAlertText="Bitte trage deine HRmax ein (100-300)" />
         )}
       </div>
       <svg
