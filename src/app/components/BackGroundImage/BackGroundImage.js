@@ -7,14 +7,14 @@ function BackGroundImage({ isLoading, error }) {
   return (
     <div>
       {" "}
-      <div className="fixed bottom-0 left-0 w-screen h-screen  flex   justify-center mx-auto  ">
+      <div className="fixed bottom-0 left-0  flex h-screen w-screen items-center  justify-center mx-auto  ">
         <Image
           src={logo}
           alt="hero-image"
-          className="w-80 object-contain "
+          className=" object-contain "
           priority
-          width={200}
-          height={200}
+          width={300}
+          height={300}
         />
       </div>
     </div>
