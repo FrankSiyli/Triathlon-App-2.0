@@ -15,10 +15,13 @@ import Activity from "./components/Activity";
 import PlanName from "./components/PlanName";
 import MobileHint from "./components/HintsAndAlerts/MobileHint";
 import { useRecoilValue } from "recoil";
+
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
+import NoDataPush from "@/app/components/NoDataPush/NoDataPush";
 
 function Page() {
   const data = useRecoilValue(homepagePlanState);
+
   const homepagePlan = data;
   const numberOfPlanWeeks = homepagePlan?.duration;
   const { openOverlay, toggleOverlay } = useOpenOverlay();
@@ -83,6 +86,7 @@ function Page() {
             </div>
           ))}
       </div>
+      <NoDataPush data={data} />
       <Footer />
     </>
   );
