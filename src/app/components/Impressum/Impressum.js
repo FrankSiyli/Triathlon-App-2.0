@@ -6,7 +6,7 @@ function Impressum() {
   const currentYear = date.getFullYear();
   return (
     <div>
-      <div className="mt-10  flex flex-row justify-center text-first gap-2 underline">
+      <div className="mt-10 flex flex-row justify-center text-first gap-2 underline">
         <Link className=" " href="/legal/impressum">
           Impressum
         </Link>
@@ -17,7 +17,7 @@ function Impressum() {
           Datenschutz
         </Link>
       </div>
-      <div className="mb-40 mt-5  flex  justify-center">
+      <div className="mb-40 mt-5 text-center flex  justify-center">
         © Siyli-endurance-coaching 2022-{currentYear}{" "}
       </div>
     </div>
