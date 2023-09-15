@@ -3,7 +3,7 @@ import React from "react";
 const Loader = ({ error, isLoading }) => {
   return (
     <>
-      <div className=" ">
+      <div>
         {error ? <p>failed to load</p> : null}
         {isLoading ? (
           <div className=" mt-20 flex flex-col text-center items-center">

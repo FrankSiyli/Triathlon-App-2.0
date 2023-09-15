@@ -6,10 +6,10 @@ export default async function handler(request, response) {
 
   if (request.method === "GET") {
     try {
-      const plans = await Plans.find({ category: "example" });
+      const plans = await Plans.find({ category: "homepage" });
       return response.status(200).json({ plans });
     } catch (error) {
-      console.error("Error fetching examplePlans:", error);
+      console.error("Error fetching homepagePlan:", error);
       return response
         .status(500)
         .json({ message: "Server error", error: error.message });
