@@ -48,26 +48,13 @@ function HeartrateCalculator() {
           <Alert alertText="Bitte trage deine HRmax ein (100-300)" />
         )}
       </div>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-6 h-6 absolute top-10 left-28"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M4.5 4.5l15 15m0 0V8.25m0 11.25H8.25"
-        />
-      </svg>
+
       <div className="border border-fourth mt-10 rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center linear-background">
         {!heartrateInputFired && (
           <>
             <p>Pulszonen-Berechnung</p>
             <label className="label">
-              <p className="label-text-alt text-first text-xl text-center">
+              <p className="label-text-alt text-first  text-center">
                 Dein Maximalpuls in bpm
               </p>
             </label>
