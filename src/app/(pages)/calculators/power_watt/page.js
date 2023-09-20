@@ -79,11 +79,11 @@ const Page = () => {
               value={calculatorInput}
               onChange={(e) => setCalculatorInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="input  border border-first/50 mb-3 w-full max-w-xs"
+              className="input  border border-transparent mb-3 w-full max-w-xs"
             />
 
             <button
-              className="btn btn-sm  mb-10 bg-third border border-first/50 text-first shadow-xl"
+              className="btn btn-sm  mb-10 bg-third border border-transparent text-first shadow-xl"
               onClick={calculateWattZones}
             >
               Berechnen
@@ -93,7 +93,7 @@ const Page = () => {
           <div className="overflow-x-auto flex justify-center">
             <table className="table table-xs table-pin-rows table-pin-cols m-1 max-w-xl  text-first text-center border border-first">
               <thead className="text-first">
-                <tr>
+                <tr className="bg-fourth">
                   <td>Zone</td>
                   <td>Power in Watt</td>
                 </tr>

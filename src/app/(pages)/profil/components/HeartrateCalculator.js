@@ -64,11 +64,11 @@ function HeartrateCalculator() {
               value={heartrateCalculatorInput}
               onChange={(e) => setHeartrateCalculatorInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="input  border border-first/50 w-full max-w-xs"
+              className="input  border border-transparent w-full max-w-xs"
             />
             <button
               onClick={handleHeartrateInputClick}
-              className="btn btn-sm m-3 bg-third border border-first/50 text-first shadow-xl"
+              className="btn btn-sm m-3 bg-third border border-transparent text-first shadow-xl"
             >
               speichern
             </button>
@@ -82,7 +82,7 @@ function HeartrateCalculator() {
             </div>
             <button
               onClick={handleChangeHrMaxClick}
-              className="btn btn-sm  m-2 bg-third border border-first text-first shadow-xl"
+              className="btn btn-sm  m-2 bg-third border border-transparent text-first shadow-xl"
             >
               ändern
             </button>
