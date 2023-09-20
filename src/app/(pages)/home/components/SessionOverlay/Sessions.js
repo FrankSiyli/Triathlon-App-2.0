@@ -18,16 +18,16 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
             <div key={activityIndex}>
               <div>
                 {/**----------------------------warmUpSection ------------------------------------*/}
-                <div className="relative border border-first/50  rounded-md mx-5 my-10">
-                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background shadow-xl">
-                    Warm Up
-                  </p>
-                  {sessionSections.warmUp.map((warmUpSection, warmUpIndex) => {
-                    return (
+                {sessionSections.warmUp[0].exercises[0].name === "" ? null : (
+                  <p className="text-center text-first p-2 ">Warm Up</p>
+                )}
+                <div className="mx-5">
+                  {sessionSections.warmUp.map((warmUpSection, warmUpIndex) =>
+                    warmUpSection.exercises[0].name === "" ? null : (
                       <div key={warmUpIndex}>
-                        <div className="relative flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-fourth ">
+                        <div className="relative rounded-md bg-fourth/10 flex flex-col p-1 mb-2 text-sm">
                           {warmUpSection.multiplier > 1 ? (
-                            <p className="absolute -top-7 left-4 mb-3 btn btn-outline text-first p-2  linear-background text-xl">
+                            <p className="absolute top-0 left-1 text-first text-xl">
                               {warmUpSection.multiplier} x{" "}
                             </p>
                           ) : null}
@@ -41,7 +41,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                     warmUpSection.multiplier > 1
                                       ? 10
                                       : 2
-                                  } mx-3`}
+                                  } `}
                                 >
                                   {warmUpExercise.distance > 0 ? (
                                     <div>
@@ -60,9 +60,41 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                 </div>
                                 <div>
                                   {warmUpExercise.name.trim() !== "" ? (
-                                    <p className="border border-first/50 text-sm rounded-md p-1 linear-background shadow-xl">
+                                    <button
+                                      className={` w-full text-sm rounded-md p-1 cursor-default ${
+                                        warmUpExercise.imageLink
+                                          ? "underline decoration-first decoration-2 underline-offset-4 cursor-pointer "
+                                          : ""
+                                      }`}
+                                      onClick={() => {
+                                        if (warmUpExercise.imageLink) {
+                                          if (
+                                            warmUpExerciseIndex ===
+                                            openInstructionImage
+                                          ) {
+                                            setOpenInstructionImage(null);
+                                          } else {
+                                            setOpenInstructionImage(
+                                              warmUpExerciseIndex
+                                            );
+                                          }
+                                        }
+                                      }}
+                                    >
                                       {warmUpExercise.name}
-                                    </p>
+                                    </button>
+                                  ) : null}
+                                  {warmUpExerciseIndex ===
+                                  openInstructionImage ? (
+                                    <div className="flex flex-col items-center bg-second m-3 rounded-md">
+                                      <Image
+                                        width={200}
+                                        height={200}
+                                        src={`/images/yoga_images/${warmUpExercise.imageLink}.png`}
+                                        alt="yoga pose"
+                                        className="my-5 "
+                                      />
+                                    </div>
                                   ) : null}
                                 </div>
                               </div>
@@ -70,20 +102,18 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                           )}
                         </div>
                       </div>
-                    );
-                  })}
-                </div>{" "}
+                    )
+                  )}
+                </div>
                 {/**----------------------------mainSection ------------------------------------*/}
-                <div className="relative border border-first/50  rounded-md mx-5 my-10">
-                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background shadow-xl">
-                    Hauptteil
-                  </p>
+                <p className="text-center text-first p-2 ">Hauptteil</p>
+                <div className="mx-5">
                   {sessionSections.main.map((mainSection, mainIndex) => {
                     return (
                       <div key={mainIndex}>
-                        <div className="relative flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-fourth ">
+                        <div className="relative rounded-md bg-fourth/10 flex flex-col p-1 mb-2 text-sm">
                           {mainSection.multiplier > 1 ? (
-                            <p className="absolute -top-3 left-4 btn btn-outline text-first p-2  linear-background text-xl">
+                            <p className="absolute top-0 left-1 text-first text-xl">
                               {mainSection.multiplier} x{" "}
                             </p>
                           ) : null}
@@ -97,7 +127,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                     mainSection.multiplier > 1
                                       ? 10
                                       : 2
-                                  } mx-3`}
+                                  } `}
                                 >
                                   {mainExercise.distance > 0 ? (
                                     <div>
@@ -117,7 +147,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                 <div>
                                   {mainExercise.name.trim() !== "" ? (
                                     <button
-                                      className={`border border-first/50 w-full text-sm rounded-md p-1 linear-background shadow-xl cursor-default ${
+                                      className={` w-full text-sm rounded-md p-1 cursor-default ${
                                         mainExercise.imageLink
                                           ? "underline decoration-first decoration-2 underline-offset-4 cursor-pointer "
                                           : ""
@@ -162,49 +192,96 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                   })}
                 </div>{" "}
                 {/**----------------------------coolDownSection ------------------------------------*/}
-                <div className="relative border border-first/50  rounded-md mx-5 mb-10">
-                  <p className="absolute -top-5 -left-4 btn btn-sm btn-outline text-first p-2  linear-background shadow-xl">
-                    Cool down
-                  </p>
+                {sessionSections.coolDown[0].exercises[0].name === "" ? null : (
+                  <p className="text-center text-first p-2">Cool Down</p>
+                )}
+                <div className="mx-5">
                   {sessionSections.coolDown.map(
-                    (coolDownSection, coolDownIndex) => (
-                      <div key={coolDownIndex}>
-                        <div className=" flex flex-col mx-3  mt-10 mb-3  p-1 rounded-md bg-fourth ">
-                          {coolDownSection.exercises.map(
-                            (coolDownExercise, coolDownExerciseIndex) => (
-                              <div key={coolDownExerciseIndex}>
-                                <div className="flex flex-row justify-between mt-5 mx-3">
-                                  {coolDownExercise.distance > 0 ? (
-                                    <p>{coolDownExercise.distance}m</p>
-                                  ) : coolDownExercise.duration > 0 ? (
+                    (coolDownSection, coolDownIndex) =>
+                      coolDownSection.exercises[0].name === "" ? null : (
+                        <div key={coolDownIndex}>
+                          <div className="relative rounded-md bg-fourth/10 flex flex-col p-1 mb-2 text-sm">
+                            {coolDownSection.multiplier > 1 ? (
+                              <p className="absolute top-0 left-1 text-first text-xl">
+                                {coolDownSection.multiplier} x{" "}
+                              </p>
+                            ) : null}
+
+                            {coolDownSection.exercises.map(
+                              (coolDownExercise, coolDownExerciseIndex) => (
+                                <div key={coolDownExerciseIndex}>
+                                  <div
+                                    className={`flex flex-row justify-between items-center mt-${
+                                      coolDownExerciseIndex === 0 &&
+                                      coolDownSection.multiplier > 1
+                                        ? 10
+                                        : 2
+                                    } `}
+                                  >
+                                    {coolDownExercise.distance > 0 ? (
+                                      <div>
+                                        <p>{coolDownExercise.distance}m</p>
+                                      </div>
+                                    ) : coolDownExercise.duration > 0 ? (
+                                      <p>
+                                        {formatTime(coolDownExercise.duration)}
+                                      </p>
+                                    ) : null}
                                     <p>
-                                      {formatTime(coolDownExercise.duration)}
+                                      {getZones(
+                                        coolDownExercise,
+                                        savedSwimTime,
+                                        savedHrMax
+                                      )}
                                     </p>
-                                  ) : null}
-                                  <p>
-                                    {getZones(
-                                      coolDownExercise,
-                                      savedSwimTime,
-                                      savedHrMax
-                                    )}
-                                  </p>
+                                  </div>
+                                  <div>
+                                    {coolDownExercise.name.trim() !== "" ? (
+                                      <button
+                                        className={` w-full text-sm rounded-md p-1 cursor-default ${
+                                          coolDownExercise.imageLink
+                                            ? "underline decoration-first decoration-2 underline-offset-4 cursor-pointer "
+                                            : ""
+                                        }`}
+                                        onClick={() => {
+                                          if (coolDownExercise.imageLink) {
+                                            if (
+                                              coolDownExerciseIndex ===
+                                              openInstructionImage
+                                            ) {
+                                              setOpenInstructionImage(null);
+                                            } else {
+                                              setOpenInstructionImage(
+                                                coolDownExerciseIndex
+                                              );
+                                            }
+                                          }
+                                        }}
+                                      >
+                                        {coolDownExercise.name}
+                                      </button>
+                                    ) : null}
+                                    {coolDownExerciseIndex ===
+                                    openInstructionImage ? (
+                                      <div className="flex flex-col items-center bg-second m-3 rounded-md">
+                                        <Image
+                                          width={200}
+                                          height={200}
+                                          src={`/images/yoga_images/${coolDownExercise.imageLink}.png`}
+                                          alt="yoga pose"
+                                          className="my-5 "
+                                        />
+                                      </div>
+                                    ) : null}
+                                  </div>
                                 </div>
-                                <div>
-                                  {coolDownExercise.name.trim() !== "" ? (
-                                    <p className="border border-first/50 text-sm rounded-md p-1 linear-background shadow-xl">
-                                      {coolDownExercise.name}
-                                    </p>
-                                  ) : null}
-                                </div>
-                              </div>
-                            )
-                          )}
-                          <br />
+                              )
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    )
+                      )
                   )}
-                </div>{" "}
+                </div>
               </div>
             </div>
           )

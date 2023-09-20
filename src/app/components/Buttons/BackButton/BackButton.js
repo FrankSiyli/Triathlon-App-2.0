@@ -7,7 +7,7 @@ function BackButton({ href }) {
       <div className="w-screen max-w-xl mx-auto">
         <Link
           href={href}
-          className="top-5 left-5 btn btn-sm  m-3 bg-third border border-first/50 text-first shadow-xl"
+          className="top-5 left-5 btn btn-sm  m-3 bg-third border border-transparent text-first shadow-xl"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

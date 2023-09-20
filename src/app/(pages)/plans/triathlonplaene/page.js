@@ -47,7 +47,7 @@ const Page = () => {
           return (
             <div
               key={triathlonPlanIndex}
-              className=" border border-first/50 w-full max-w-xl linear-background  shadow-xl p-2 rounded-md mx-5 my-1 "
+              className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
             >
               <div
                 onClick={() => handleInfoClick(triathlonPlanIndex)}
@@ -89,7 +89,7 @@ const Page = () => {
               {expandedPlanIndex === triathlonPlanIndex && (
                 <div className="mt-5 select-none ">
                   <hr />
-                  <div className="m-3 mx-auto border border-first/50 p-1 w-24 text-sm text-center linear-background rounded-md shadow-xl">
+                  <div className="m-3 mx-auto p-1 w-24 text-sm text-center">
                     Wochen: {triathlonPlan.duration}
                   </div>
                   <div className="font-light text-center">
@@ -97,7 +97,7 @@ const Page = () => {
                   </div>
                   <div
                     onClick={handleLoadPlanClick}
-                    className="btn btn-sm flex mx-auto w-20 m-5 border border-first/50 bg-third  text-first shadow-xl "
+                    className="btn btn-sm flex mx-auto w-20 m-5 border border-transparent bg-third  text-first shadow-xl "
                   >
                     Laden
                   </div>
@@ -106,7 +106,7 @@ const Page = () => {
             </div>
           );
         })}
-        {showToast && <Alert alertText="Auf Homepage geladen" />}
+        {showToast && <Alert alertText="Im Kalender geladen" />}
       </div>
       <NavBar />
     </>
