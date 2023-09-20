@@ -20,7 +20,7 @@ function Page() {
             href={kindOfPlan
               .toLowerCase()
               .replace(/[äöü]/g, (match) => characterMap[match] || match)}
-            className="flex justify-between border border-first/50 w-full max-w-xl linear-background  shadow-xl p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
             key={kindOfPlanIndex}
           >
             <div className="ml-5">{kindOfPlan}</div>

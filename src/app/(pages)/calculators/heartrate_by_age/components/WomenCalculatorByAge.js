@@ -43,7 +43,9 @@ const WomenCalculatorByAge = () => {
       <button
         onClick={handleWomenClick}
         className={`btn btn-sm bg-third border  ${
-          showWomenInput ? "border-first border-2" : "border-first/50"
+          showWomenInput
+            ? "border-first border-b-2 border-t-transparent border-r-transparent border-l-transparent"
+            : "border-transparent"
         } text-first shadow-xl ml-5 `}
       >
         Damen
@@ -59,7 +61,7 @@ const WomenCalculatorByAge = () => {
                 value={womenCalculatorInput}
                 onChange={(e) => setWomenCalculatorInput(e.target.value)}
                 onKeyDown={handleWomenKeyDown}
-                className="input  border border-first/50 "
+                className="input  border border-transparent "
               />
             </div>
 
@@ -69,12 +71,12 @@ const WomenCalculatorByAge = () => {
             )}
             <button
               onClick={handleWomenInputClick}
-              className="btn btn-sm m-3  bg-third w-32 mx-auto border border-first/50 text-first shadow-xl"
+              className="btn btn-sm m-3  bg-third w-32 mx-auto border border-transparent text-first shadow-xl"
             >
               Berechnen
             </button>
             {womenCalculatedHr && (
-              <div className="border border-first/50 linear-background text-center m-3 p-2 rounded-md">
+              <div className="text-center m-3 p-2">
                 Dein berechneter Maximalpuls: <p>{womenCalculatedHr} bpm</p>
               </div>
             )}

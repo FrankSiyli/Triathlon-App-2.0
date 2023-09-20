@@ -11,7 +11,7 @@ function Page() {
       <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
         <Link
           href="/plans/searchplans"
-          className="flex flex-row justify-between border border-first/50 w-full max-w-xl linear-background shadow-xl p-2 rounded-md mx-5 my-1 cursor-pointer"
+          className="flex flex-row justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@ function Page() {
         </Link>
         <Link
           href="/plans/myplans"
-          className="flex flex-row justify-between border border-first/50 w-full max-w-xl linear-background shadow-xl p-2 rounded-md mx-5 my-1 cursor-pointer"
+          className="flex flex-row justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
