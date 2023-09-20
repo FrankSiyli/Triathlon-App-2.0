@@ -79,7 +79,7 @@ function Page() {
             <input
               type="number"
               placeholder="z.B. 185"
-              className="input  border border-first/50 mb-3 w-full max-w-xs"
+              className="input  border border-transparent mb-3 w-full max-w-xs"
               value={calculatorInput}
               onChange={(e) => setCalculatorInput(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -87,7 +87,7 @@ function Page() {
 
             <button
               type="submit"
-              className="btn btn-sm  mb-10 bg-third border border-first/50 text-first shadow-xl"
+              className="btn btn-sm  mb-10 bg-third border border-transparent text-first shadow-xl"
               id="calculateBtn"
               onClick={calculatePercentages}
             >
@@ -95,9 +95,9 @@ function Page() {
             </button>
           </div>
           <div className="overflow-x-auto flex justify-center">
-            <table className="table table-xs table-pin-rows table-pin-cols m-1 max-w-xl   text-first text-center border border-first/50">
-              <thead className="text-first">
-                <tr>
+            <table className="table table-xs table-pin-rows table-pin-cols m-1 max-w-xl text-first text-center border border-first/50">
+              <thead className="text-first ">
+                <tr className="bg-fourth">
                   <td>Zone</td>
                   <td className="w-20">HR in %</td>
                   <td>Target HR bpm</td>

@@ -7,6 +7,8 @@ import Sessions from "./Sessions";
 import calculateTotalDistance from "../../logicFunctions/totalDistanceFunction";
 import calculateTotalDuration from "../../logicFunctions/totalDurationFunction";
 import { formatTime } from "@/app/helperFunctions/formatTime";
+import NavBar from "@/app/components/NavBar/NavBar";
+import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 
 const SessionOverlay = ({
   sessionSections,
@@ -37,8 +39,27 @@ const SessionOverlay = ({
     >
       {overlayView ? (
         <>
-          <div className="w-full h-auto text-left m-3">
-            <p className="underline underline-offset-2">{singleActivity[0]}</p>
+          <button
+            onClick={() => toggleOverlay(dayIndex, activityIndex)}
+            className="absolute top-5 left-5 btn btn-sm  bg-third border border-transparent text-first shadow-xl"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+              />
+            </svg>
+          </button>{" "}
+          <div className="w-full h-auto text-right p-1">
+            <p>{singleActivity[0]}</p>
             <p className="my-1">{singleActivity[1]}</p>
             {totalDistance > 0 ? <p>Distanz: {totalDistance}m</p> : null}
             {totalDistance > 0 && totalDuration > 0 ? <p>+</p> : null}
@@ -53,16 +74,16 @@ const SessionOverlay = ({
             dayIndex={dayIndex}
             activityIndex={activityIndex}
           />
-          <div className="flex flex-col  items-center gap-10">
+          <div className="flex flex-col  items-center">
             <button
-              className="btn btn-sm w-32 btn-outline text-first bg-third"
+              className="btn btn-sm w-32 btn-outline border border-transparent text-first bg-third m-5"
               onClick={handleViewClick}
             >
               Druckversion
             </button>
             <button
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
-              className="btn btn-circle btn-outline text-first mb-20 bg-third"
+              className="btn btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -95,21 +116,21 @@ const SessionOverlay = ({
           <div className="flex flex-col items-center gap-10">
             <div className="flex flex-row gap-3">
               <button
-                className="btn btn-sm w-32 btn-outline text-first bg-third"
+                className="btn btn-sm w-32 btn-outline border border-transparent text-first bg-third"
                 onClick={handleViewClick}
               >
                 zurück
               </button>
               <button
                 onClick={handlePrint}
-                className="btn btn-sm w-32 btn-outline text-first bg-third"
+                className="btn btn-sm w-32 btn-outline border border-transparent text-first bg-third"
               >
                 drucken
               </button>
             </div>
             <button
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
-              className="btn btn-circle btn-outline text-first mb-20 bg-third"
+              className="btn btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +150,8 @@ const SessionOverlay = ({
           </div>
         </>
       )}
-      <p>Viel Spaß beim Training 🙂</p>
+      <p className="mb-16">Viel Spaß beim Training 🙂</p>
+      <NavBar />
     </div>
   );
 };

@@ -59,7 +59,7 @@ function Page() {
             return (
               <div
                 key={myPlanIndex}
-                className=" border border-first/50 w-full max-w-xl linear-background  shadow-xl p-2 rounded-md mx-5 my-1 "
+                className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
               >
                 <div
                   onClick={() => handleInfoClick(myPlanIndex)}
@@ -101,7 +101,7 @@ function Page() {
                 {expandedPlanIndex === myPlanIndex && (
                   <div className="mt-5 select-none ">
                     <hr />
-                    <div className="m-3 mx-auto border border-first/50 p-1 w-24 text-sm text-center linear-background rounded-md shadow-xl">
+                    <div className="m-3 mx-auto p-1 w-24 text-sm text-center">
                       Wochen: {myPlan.duration}
                     </div>
                     <div className="font-light text-center">{myPlan.info}</div>
@@ -110,13 +110,13 @@ function Page() {
                         onClick={() => {
                           handleRemovePlanClick(expandedPlanIndex);
                         }}
-                        className="btn btn-sm flex  w-20 border border-first/50   text-first shadow-xl "
+                        className="btn btn-sm flex  w-20 border border-transparent   text-first shadow-xl "
                       >
                         Löschen
                       </div>
                       <div
                         onClick={handleLoadPlanClick}
-                        className="btn btn-sm flex  w-20  border border-first/50 bg-third  text-first shadow-xl "
+                        className="btn btn-sm flex  w-20  border border-transparent bg-third  text-first shadow-xl "
                       >
                         Laden
                       </div>
@@ -126,9 +126,7 @@ function Page() {
               </div>
             );
           })}
-          {showLoadOnHomepageToast && (
-            <Alert alertText="Auf Homepage geladen" />
-          )}
+          {showLoadOnHomepageToast && <Alert alertText="Im Kalender geladen" />}
 
           {showDeleteToast && <Alert alertText="Plan wurde gelöscht" />}
         </div>

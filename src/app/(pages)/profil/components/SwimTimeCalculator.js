@@ -64,7 +64,7 @@ function SwimTimeCalculator() {
 
             <button
               onClick={handleSwimTimeInputClick}
-              className="btn btn-sm m-3 bg-third border border-first/50 text-first shadow-xl"
+              className="btn btn-sm m-3 bg-third border border-transparent text-first shadow-xl"
             >
               speichern
             </button>
@@ -78,7 +78,7 @@ function SwimTimeCalculator() {
             </div>
             <button
               onClick={handleChangeSwimTimeClick}
-              className="btn btn-sm  m-2 bg-third border border-first text-first shadow-xl"
+              className="btn btn-sm  m-2 bg-third border border-transparent text-first shadow-xl"
             >
               ändern
             </button>
