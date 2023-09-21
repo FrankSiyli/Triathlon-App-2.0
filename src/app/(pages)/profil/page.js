@@ -38,17 +38,17 @@ function Page() {
           <span className="underline underline-offset-2">
             1000m Schwimmzeit{" "}
           </span>
-          ein, um persönliche Werte im Kalender-Trainingsplan zu erhalten.
+          ein, um persönliche Werte im Kalender zu erhalten.
         </div>
 
         <div className="relative max-w-xl mt-5">
           <button
             onClick={handleHrClick}
-            className={` btn btn-sm w-28 mx-auto  bg-third border ${
+            className={` btn btn-sm w-28 mx-auto  bg-third text-first shadow-xl  border ${
               showHrInput
                 ? "border-first border-b-2 border-t-transparent border-r-transparent border-l-transparent"
                 : "border-transparent"
-            }  text-first shadow-xl `}
+            }  `}
           >
             Maximalpuls
           </button>
