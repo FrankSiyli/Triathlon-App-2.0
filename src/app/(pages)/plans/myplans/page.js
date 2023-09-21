@@ -5,7 +5,7 @@ import NavBar from "@/app/components/NavBar/NavBar";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
 import React, { useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 
 function Page() {
   const [myPlans, setMyPlans] = useRecoilState(myPlansState);
@@ -110,13 +110,13 @@ function Page() {
                         onClick={() => {
                           handleRemovePlanClick(expandedPlanIndex);
                         }}
-                        className="btn btn-sm flex  w-20 border border-transparent   text-first shadow-xl "
+                        className="btn btn-sm btn-outline w-20 text-first shadow-xl "
                       >
                         Löschen
                       </div>
                       <div
                         onClick={handleLoadPlanClick}
-                        className="btn btn-sm flex  w-20  border border-transparent bg-third  text-first shadow-xl "
+                        className="btn btn-sm  w-20  border border-transparent bg-third  text-first shadow-xl "
                       >
                         Laden
                       </div>
