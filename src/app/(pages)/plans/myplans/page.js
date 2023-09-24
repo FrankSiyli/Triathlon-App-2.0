@@ -47,7 +47,7 @@ function Page() {
 
   return (
     <>
-      <BackButton href="/plans" />
+      <BackButton href="/profil" />
       <p className=" mx-auto w-40 text-center -mt-10">Meine Pläne</p>
       {myPlans.length === 0 ? (
         <div className="border border-first/50 rounded-md p-2 text-center mt-20 mx-5">

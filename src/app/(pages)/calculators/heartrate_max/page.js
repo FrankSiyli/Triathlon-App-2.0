@@ -48,7 +48,7 @@ function Page() {
 
   return (
     <>
-      <BackButton href="/profil" />
+      <BackButton href="/profil/infos" />
       <div className="min-h-screen mb-60">
         <div className="w-11/12 border border-first/50 linear-background max-w-xl mx-auto rounded-md p-4 m-1  text-center">
           <p>
