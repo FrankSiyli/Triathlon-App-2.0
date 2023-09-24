@@ -8,7 +8,7 @@ import NavBar from "@/app/components/NavBar/NavBar";
 function Page() {
   return (
     <>
-      <BackButton href="/profil" />
+      <BackButton href="/profil/infos" />
       <div className="min-h-screen mb-60">
         <div className="w-11/12 border border-first/50 linear-background rounded-md p-4 mb-5 mx-auto max-w-xl  text-center">
           <p>
