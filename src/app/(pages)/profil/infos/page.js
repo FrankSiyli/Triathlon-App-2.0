@@ -1,23 +1,20 @@
 "use client";
-import Footer from "@/app/components/NavBar/NavBar";
-import React from "react";
-import "../../globals.css";
-import Impressum from "@/app/components/Impressum/Impressum";
-import Image from "next/image";
-import logo from "../../../../public/images/logoSmall.png";
+import BackButton from "@/app/components/Buttons/BackButton/BackButton";
+import NavBar from "@/app/components/NavBar/NavBar";
 import Link from "next/link";
-
+import React from "react";
 function Page() {
   return (
     <>
-      <p className=" mx-auto w-40 text-center mt-5">Profil</p>
+      <BackButton href="/profil" />
+      <p className=" mx-auto w-40 text-center -mt-10">Informationen</p>
 
       <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
         <Link
-          href="/profil/zones"
           className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+          href="/calculators/heartrate_by_age"
         >
-          <div className="ml-5">Persönliche Kalenderwerte</div>
+          <div className="ml-5">Maximalpuls nach Alter</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -34,10 +31,10 @@ function Page() {
           </svg>
         </Link>
         <Link
-          href="/profil/infos"
           className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+          href="/calculators/heartrate_max"
         >
-          <div className="ml-5">Informationen</div>
+          <div className="ml-5">Puls Zonen</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -54,10 +51,10 @@ function Page() {
           </svg>
         </Link>
         <Link
-          href="/plans/myplans"
-          className="flex flex-row justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 cursor-pointer"
+          className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+          href="/calculators/power_watt"
         >
-          <div className="ml-5">Geladene Pläne</div>{" "}
+          <div className="ml-5">Watt Zonen</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -74,18 +71,7 @@ function Page() {
           </svg>
         </Link>
       </div>
-
-      <Image
-        priority
-        src={logo}
-        alt="logo"
-        className="mx-auto  w-40 mt-10 "
-        width={100}
-        height={100}
-      />
-      <Impressum />
-
-      <Footer />
+      <NavBar />
     </>
   );
 }

@@ -39,7 +39,7 @@ function Page() {
 
   return (
     <>
-      <BackButton href="/plans/searchplans" />
+      <BackButton href="/plans" />
       <p className=" mx-auto w-40 text-center -mt-10">Spezialpläne</p>
       <Loader error={error} isLoading={isLoading} />
       <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">

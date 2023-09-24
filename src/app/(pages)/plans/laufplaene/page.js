@@ -39,7 +39,7 @@ const Page = () => {
 
   return (
     <>
-      <BackButton href="/plans/searchplans" />
+      <BackButton href="/plans" />
       <p className=" mx-auto w-40 text-center -mt-10">Laufpläne</p>
       <Loader error={error} isLoading={isLoading} />
 
