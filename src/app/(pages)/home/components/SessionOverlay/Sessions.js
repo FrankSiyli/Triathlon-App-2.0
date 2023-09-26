@@ -61,40 +61,10 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                                 <div>
                                   {warmUpExercise.name.trim() !== "" ? (
                                     <button
-                                      className={` w-full text-sm rounded-md p-1 cursor-default ${
-                                        warmUpExercise.imageLink
-                                          ? "underline decoration-first decoration-2 underline-offset-4 cursor-pointer "
-                                          : ""
-                                      }`}
-                                      onClick={() => {
-                                        if (warmUpExercise.imageLink) {
-                                          if (
-                                            warmUpExerciseIndex ===
-                                            openInstructionImage
-                                          ) {
-                                            setOpenInstructionImage(null);
-                                          } else {
-                                            setOpenInstructionImage(
-                                              warmUpExerciseIndex
-                                            );
-                                          }
-                                        }
-                                      }}
+                                      className={` w-full text-sm rounded-md p-1 cursor-default `}
                                     >
                                       {warmUpExercise.name}
                                     </button>
-                                  ) : null}
-                                  {warmUpExerciseIndex ===
-                                  openInstructionImage ? (
-                                    <div className="flex flex-col items-center bg-second m-3 rounded-md">
-                                      <Image
-                                        width={200}
-                                        height={200}
-                                        src={`/images/yoga_images/${warmUpExercise.imageLink}.png`}
-                                        alt="yoga pose"
-                                        className="my-5 "
-                                      />
-                                    </div>
                                   ) : null}
                                 </div>
                               </div>
