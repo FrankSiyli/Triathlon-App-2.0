@@ -42,11 +42,11 @@ const WomenCalculatorByAge = () => {
     <>
       <button
         onClick={handleWomenClick}
-        className={`btn btn-sm bg-third border  ${
+        className={`btn btn-sm bg-third text-first shadow-xl ml-5 border  ${
           showWomenInput
             ? "border-first border-b-2 border-t-transparent border-r-transparent border-l-transparent"
             : "border-transparent"
-        } text-first shadow-xl ml-5 `}
+        }  `}
       >
         Damen
       </button>
