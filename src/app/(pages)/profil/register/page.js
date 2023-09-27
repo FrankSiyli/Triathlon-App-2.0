@@ -16,7 +16,7 @@ const Page = () => {
       return;
     }
     try {
-      /* const resUserExists = await fetch("/api/mongoDbUserExists", {
+      const resUserExists = await fetch("/api/mongoDbUserExists", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,9 +29,9 @@ const Page = () => {
       const { user } = await resUserExists.json();
 
       if (user) {
-        setError("user already exists");
+        setError("Konto existiert bereits");
         return;
-      } */
+      }
 
       const res = await fetch("/api/mongoDbRegisterUser", {
         method: "POST",
@@ -48,6 +48,7 @@ const Page = () => {
       if (res.ok) {
         const form = e.target;
         form.reset();
+        setError("Konto erfolgreich angelegt");
       } else {
         console.log("User registration failed");
       }
