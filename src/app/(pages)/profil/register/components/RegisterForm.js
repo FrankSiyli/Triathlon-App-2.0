@@ -93,7 +93,7 @@ export default function RegisterForm() {
           />
           <input
             className="input  border border-transparent "
-            type="mail"
+            type="email"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
