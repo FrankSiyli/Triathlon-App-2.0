@@ -1,13 +1,14 @@
 "use client";
 import React from "react";
-import { useSession } from "next-auth/react";
+import { useRecoilState } from "recoil";
+import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 
 const WelcomeText = () => {
-  const { data: session } = useSession();
+  const [userName, setUserName] = useRecoilState(userNameState);
 
   return (
     <>
-      <span>Willkommen {session?.user?.name}</span>
+      <span>Willkommen {userName}</span>
     </>
   );
 };

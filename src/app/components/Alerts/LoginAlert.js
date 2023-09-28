@@ -1,15 +1,19 @@
 "use client";
+import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import Link from "next/link";
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
 
-function LoginAlert({ session }) {
+function LoginAlert() {
   const [showLoginAlert, setShowLoginAlert] = useState(true);
+  const [userName, setUserName] = useRecoilState(userNameState);
+
   const handleAlertClick = () => {
     setShowLoginAlert(false);
   };
   return (
     <>
-      {!session && showLoginAlert && (
+      {userName === "" && showLoginAlert && (
         <div className="fixed mx-auto top-0 inset-x-0 flex flex-col text-center items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-alert text-first z-50">
           <span>Um deine Pläne und Werte zu speichern, melde dich an.</span>
           <Link
