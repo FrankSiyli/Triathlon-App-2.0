@@ -22,12 +22,15 @@ function Page() {
         password,
         redirect: false,
       });
+
       if (res.error) {
         setShowAlert(true);
         setError("Die Eingaben sind nicht korrekt.");
         return;
       }
-      router.replace("/profil");
+      if (res.ok) {
+        router.replace("/profil");
+      }
     } catch (error) {}
   };
   setTimeout(() => {
@@ -56,7 +59,7 @@ function Page() {
             placeholder="Passwort"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="btn btn-sm bg-third text-first shadow-xl m-2">
+          <button className="btn btn-sm bg-third text-first shadow-xl m-2 border-transparent">
             Anmelden
           </button>
           <Link
