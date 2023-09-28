@@ -8,11 +8,11 @@ import LoginAlert from "@/app/components/Alerts/LoginAlert";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import LoginButton from "./components/LoginButton";
-import MyPlansButton from "./components/myPlansButton";
-import AccountButton from "./components/accountButton";
 import PersonalZonesButton from "./components/PersonalZonesButton";
 import InformationsButton from "./components/InformationsButton";
 import WelcomeText from "./components/WelcomeText";
+import MyPlansButton from "./components/MyPlansButton";
+import AccountButton from "./components/AccountButton";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
