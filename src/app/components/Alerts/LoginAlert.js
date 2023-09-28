@@ -11,7 +11,7 @@ function LoginAlert({ session }) {
     <>
       {!session && showLoginAlert && (
         <div className="fixed mx-auto top-0 inset-x-0 flex flex-col text-center items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-alert text-first z-50">
-          <span>Um deine Pläne und Werte zu speichern melde dich an.</span>
+          <span>Um deine Pläne und Werte zu speichern, melde dich an.</span>
           <Link
             href="/profil/login"
             className="btn btn-sm  m-3 bg-third border border-transparent text-first shadow-xl "
@@ -34,7 +34,7 @@ function LoginAlert({ session }) {
           </Link>
 
           <button
-            className="btn btn-circle btn-outline border border-transparent text-first m-5 bg-third"
+            className="btn btn-circle btn-outline border border-transparent text-first m-5 bg-third shadow-xl"
             onClick={handleAlertClick}
           >
             <svg

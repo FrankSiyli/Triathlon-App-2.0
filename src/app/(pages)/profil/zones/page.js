@@ -56,11 +56,6 @@ function Page() {
           </button>
           {showSwimTimeInput && <SwimTimeCalculator />}
         </div>
-        <div className="w-11/12 border border-first/50 linear-background rounded-md p-4 mt-5 mb-20 mx-auto max-w-xl  text-center">
-          <p>
-            Zum speichern deiner Werte erstelle ein Konto oder melde dich an.
-          </p>
-        </div>
       </div>
       <NavBar />
     </>

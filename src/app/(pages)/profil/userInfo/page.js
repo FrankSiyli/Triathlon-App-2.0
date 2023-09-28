@@ -22,9 +22,9 @@ const Page = () => {
         >
           Abmelden
         </button>
-        <button className="btn btn-sm bg-fourth text-first shadow-xl m-10">
+        {/* <button className="btn btn-sm bg-fourth text-first shadow-xl m-10">
           Konto löschen
-        </button>
+        </button> */}
       </div>
       <NavBar />
     </>
