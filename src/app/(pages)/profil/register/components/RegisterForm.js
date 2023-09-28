@@ -3,6 +3,9 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import Alert from "@/app/components/Alerts/Alert";
+import { useRecoilState } from "recoil";
+import { userNameState } from "@/app/recoil/atoms/user/userNameState";
+import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
@@ -10,6 +13,8 @@ export default function RegisterForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  const [userName, setUserName] = useRecoilState(userNameState);
+  const [userEmail, setUserEmail] = useRecoilState(userEmailState);
 
   const router = useRouter();
   const handleSubmit = async (e) => {
@@ -51,20 +56,15 @@ export default function RegisterForm() {
       });
 
       if (res.ok) {
-        const form = e.target;
-        form.reset();
         const signInResponse = await signIn("credentials", {
+          name,
           email,
           password,
           redirect: false,
         });
+        setUserName(name);
+        setUserEmail(email);
         router.push("/profil");
-
-        if (!signInResponse.error) {
-          router.push("/profil");
-        } else {
-          setError("Anmeldung nach Registrierung fehlgeschlagen.");
-        }
       } else {
         console.log("User registration failed");
       }
@@ -103,7 +103,7 @@ export default function RegisterForm() {
             placeholder="Passwort"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="btn btn-sm bg-third text-first shadow-xl">
+          <button className="btn btn-sm bg-third text-first shadow-xl border-transparent">
             Konto erstellen
           </button>
         </form>
