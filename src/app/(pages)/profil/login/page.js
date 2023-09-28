@@ -56,7 +56,7 @@ function Page() {
             placeholder="Passwort"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="btn btn-sm bg-third text-first shadow-xl ">
+          <button className="btn btn-sm bg-third text-first shadow-xl m-2">
             Anmelden
           </button>
           <Link
