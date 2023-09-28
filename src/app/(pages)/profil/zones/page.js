@@ -29,13 +29,7 @@ function Page() {
 
       <div className="w-11/12 max-w-xl mt-10 mx-auto flex flex-col gap-2 justify-center content-center ">
         <div className="border border-first/50 rounded-md text-center p-3 linear-background ">
-          Gib deinen
-          <span className="underline underline-offset-2"> Maximalpuls</span> und
-          deine{" "}
-          <span className="underline underline-offset-2">
-            1000m Schwimmzeit{" "}
-          </span>
-          ein, um persönliche Werte im Kalender zu erhalten.
+          Gib deine Werte an, um persönliche Werte im Kalender zu erhalten.
         </div>
 
         <div className="relative max-w-xl mt-5">
