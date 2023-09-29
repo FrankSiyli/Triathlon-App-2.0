@@ -17,10 +17,9 @@ export default async function Page() {
 
   return (
     <>
-      {/*      <LoginAlert />
-       */}{" "}
       {!session ? (
         <>
+          <LoginAlert />
           <div className=" mx-auto w-40 text-center mt-5">Profil</div>
           <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
             <LoginButton />
