@@ -63,11 +63,10 @@ export default function RegisterForm() {
           name,
           email,
           password,
-          redirect: false,
+          callbackUrl: "/profil",
         });
         setUserName(name);
         setUserEmail(email);
-        router.push("/profil");
       } else {
         console.log("User registration failed");
       }
