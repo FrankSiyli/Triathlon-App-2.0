@@ -6,8 +6,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Alert from "@/app/components/Alerts/Alert";
-import { useRecoilState } from "recoil";
-import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import Loader from "@/app/components/Loader/Loader";
 
 function Page() {
