@@ -6,16 +6,21 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Alert from "@/app/components/Alerts/Alert";
+import { useRecoilState } from "recoil";
+import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 
 function Page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  const [userName, setUserName] = useRecoilState(userNameState);
 
   const router = useRouter();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const res = await signIn("credentials", {
         email,
@@ -29,7 +34,7 @@ function Page() {
         return;
       }
       if (res.ok) {
-        router.replace("/profil");
+        router.push("/profil");
       }
     } catch (error) {}
   };

@@ -1,4 +1,3 @@
-"use client";
 import Footer from "@/app/components/NavBar/NavBar";
 import React from "react";
 import "../../globals.css";
@@ -9,33 +8,29 @@ import LoginAlert from "@/app/components/Alerts/LoginAlert";
 import LoginButton from "./components/LoginButton";
 import PersonalZonesButton from "./components/PersonalZonesButton";
 import InformationsButton from "./components/InformationsButton";
-import WelcomeText from "./components/WelcomeText";
-import MyPlansButton from "./components/MyPlansButton";
-import AccountButton from "./components/AccountButton";
-import { useRecoilState } from "recoil";
-import { userNameState } from "@/app/recoil/atoms/user/userNameState";
+import IfUserIsLoggedInLogic from "./components/IfUserIsLoggedInLogic";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-export default function Page() {
-  const [userName, setUserName] = useRecoilState(userNameState);
+export default async function Page() {
+  const session = await getServerSession(authOptions);
 
   return (
     <>
       {/*      <LoginAlert />
        */}{" "}
-      {userName === "" ? (
-        <div className=" mx-auto w-40 text-center mt-5">Profil</div>
+      {!session ? (
+        <>
+          <div className=" mx-auto w-40 text-center mt-5">Profil</div>
+          <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
+            <LoginButton />
+            <PersonalZonesButton />
+            <InformationsButton />
+          </div>
+        </>
       ) : (
-        <div className=" mx-auto w-40 text-center mt-5">
-          <WelcomeText />
-        </div>
+        <IfUserIsLoggedInLogic />
       )}
-      <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
-        {userName === "" ? <LoginButton /> : null}
-        <PersonalZonesButton />
-        <InformationsButton />
-        {userName !== "" ? <MyPlansButton /> : null}
-        {userName !== "" ? <AccountButton /> : null}
-      </div>
       <Image
         priority
         src={logo}

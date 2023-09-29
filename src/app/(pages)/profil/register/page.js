@@ -12,7 +12,11 @@ export default async function Page() {
     <>
       <BackButton href="/profil" />
       {!session && <RegisterForm />}
-      {session && <div>Erfolgreich angemeldet.</div>}
+      {session && (
+        <div className=" w-full max-w-xl  text-center  p-2 mx-5 my-1 ">
+          Erfolgreich angemeldet.
+        </div>
+      )}
       <NavBar />
     </>
   );
