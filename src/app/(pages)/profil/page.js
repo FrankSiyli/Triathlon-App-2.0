@@ -29,7 +29,7 @@ export default async function Page() {
           </div>
         </>
       ) : (
-        <IfUserIsLoggedInLogic />
+        <IfUserIsLoggedInLogic session={session} />
       )}
       <Image
         priority

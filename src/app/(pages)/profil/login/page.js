@@ -25,7 +25,7 @@ function Page() {
       const res = await signIn("credentials", {
         email,
         password,
-        redirect: false,
+        callbackUrl: "/profil",
       });
 
       if (res.error) {
