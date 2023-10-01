@@ -19,29 +19,41 @@ function Page() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
 
+    setIsLoading(true);
+    if (!email || !password) {
+      setIsLoading(false);
+      setShowAlert(true);
+      setError("Bitte fülle alle Felder aus.");
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
+      return;
+    }
     try {
       const res = await signIn("credentials", {
         email,
         password,
         callbackUrl: "/profil",
       });
-
-      if (res.error) {
+      if (!res?.ok) {
+        setIsLoading(false);
         setShowAlert(true);
         setError("Die Eingaben sind nicht korrekt.");
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 3000);
         return;
       }
-      if (res.ok) {
-        router.push("/profil");
-      }
-    } catch (error) {}
-    setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      setShowAlert(true);
+      setError("Etwas ist schief gelaufen.");
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
+    }
   };
-  setTimeout(() => {
-    setShowAlert(false);
-  }, 2000);
 
   return (
     <>
