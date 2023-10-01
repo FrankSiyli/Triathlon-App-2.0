@@ -37,21 +37,21 @@ function Page() {
         callbackUrl: "/profil",
       });
       if (!res?.ok) {
-        setIsLoading(false);
         setShowAlert(true);
         setError("Die Eingaben sind nicht korrekt.");
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);
+        setIsLoading(false);
         return;
       }
     } catch (error) {
-      setIsLoading(false);
       setShowAlert(true);
       setError("Etwas ist schief gelaufen.");
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);
+      setIsLoading(false);
     }
   };
 
