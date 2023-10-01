@@ -25,6 +25,7 @@ export default function RegisterForm() {
     if (!name || !email || !password) {
       setShowAlert(true);
       setError("Bitte fülle alle Felder aus.");
+      setIsLoading(false);
       return;
     }
     try {
@@ -41,6 +42,7 @@ export default function RegisterForm() {
       const { user } = await resUserExists.json();
 
       if (user) {
+        setIsLoading(false);
         setShowAlert(true);
         setError("Konto existiert bereits");
         return;
@@ -71,7 +73,12 @@ export default function RegisterForm() {
         console.log("User registration failed");
       }
     } catch (error) {
-      console.error(error);
+      setIsLoading(false);
+      setShowAlert(true);
+      setError("Etwas ist schief gelaufen.");
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
     }
     setIsLoading(false);
   };
