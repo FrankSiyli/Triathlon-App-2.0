@@ -1,10 +1,9 @@
 import React from "react";
 
-const Loader = ({ error, isLoading }) => {
+const Loader = ({ isLoading }) => {
   return (
     <>
       <div>
-        {error ? <p>failed to load</p> : null}
         {isLoading ? (
           <div className=" mt-20 flex flex-col text-center items-center">
             <p>Life is good</p>
