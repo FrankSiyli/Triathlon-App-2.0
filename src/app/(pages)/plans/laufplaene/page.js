@@ -26,15 +26,9 @@ const Page = () => {
     }
   };
 
-  const handleLoadPlanClick = (event) => {
-    const expandedPlan = runPlans[expandedPlanIndex];
+  const handleLoadPlanClick = () => {
     setHomepagePlan(expandedPlan);
-    setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 2000);
-    setMyPlans((prevPlans) => [...prevPlans, expandedPlan]);
-    event.stopPropagation();
+    const expandedPlan = runPlans[expandedPlanIndex];
   };
 
   return (
