@@ -4,6 +4,7 @@ import React from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import LogoutButton from "./components/LogoutButton";
+import DeleteButton from "./DeleteButton";
 
 const Page = async () => {
   const session = await getServerSession(authOptions);
@@ -17,9 +18,7 @@ const Page = async () => {
         <span>Name: {session.user.name}</span>
         <span>Email: {session.user.email} </span>
         <LogoutButton />
-        {/* <button className="btn btn-sm bg-fourth text-first shadow-xl m-10">
-          Konto löschen
-        </button> */}
+        <DeleteButton />
       </div>
       <NavBar />
     </>
