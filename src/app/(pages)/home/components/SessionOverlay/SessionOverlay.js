@@ -83,11 +83,11 @@ const SessionOverlay = ({
             </button>
             <button
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
-              className="btn btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
+              className="btn btn-sm btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -130,11 +130,11 @@ const SessionOverlay = ({
             </div>
             <button
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
-              className="btn btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
+              className="btn btn-sm btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 "
+                className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
