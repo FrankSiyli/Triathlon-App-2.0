@@ -11,7 +11,7 @@ import Loader from "../../../components/Loader/Loader";
 import { getSession } from "next-auth/react";
 
 const Page = () => {
-  const { isLoading, error } = useFetchRunPlans();
+  const { isLoading } = useFetchRunPlans();
   const data = useRecoilValue(runPlansFromMongoDbState);
   const runPlans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
@@ -64,7 +64,7 @@ const Page = () => {
     <>
       <BackButton href="/plans" />
       <p className=" mx-auto w-40 text-center -mt-10">Laufpläne</p>
-      <Loader error={error} isLoading={isLoading} />
+      <Loader isLoading={isLoading} />
 
       <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
         {runPlans?.map((runPlan, runPlanIndex) => {
