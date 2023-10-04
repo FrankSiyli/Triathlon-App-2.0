@@ -5,10 +5,10 @@ import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { specialPlansFromMongoDbState } from "@/app/recoil/atoms/plans/specialPlansFromMongoDbState";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
-import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
 import Alert from "@/app/components/Alerts/Alert";
 import useFetchSpecialPlans from "@/app/fetchFunctions/useFetchSpecialPlans";
 import Loader from "../../../components/Loader/Loader";
+import { getSession } from "next-auth/react";
 
 function Page() {
   const { isLoading, error } = useFetchSpecialPlans();
@@ -16,8 +16,9 @@ function Page() {
   const specialPlans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
-  const [myPlans, setMyPlans] = useRecoilState(myPlansState);
   const [showToast, setShowToast] = useState(false);
+  const [session, setSession] = useState(null);
+
   const handleInfoClick = (index) => {
     if (index === expandedPlanIndex) {
       setExpandedPlanIndex(null);
@@ -26,15 +27,37 @@ function Page() {
     }
   };
 
-  const handleLoadPlanClick = (event) => {
+  const handleLoadPlanClick = async (event) => {
+    const session = await getSession();
     const expandedPlan = specialPlans[expandedPlanIndex];
+    const specialPlanId = specialPlans.id;
     setHomepagePlan(expandedPlan);
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
     }, 2000);
-    setMyPlans((prevPlans) => [...prevPlans, expandedPlan]);
     event.stopPropagation();
+
+    if (session) {
+      setSession(session);
+
+      try {
+        const userEmail = session.user.email;
+        const updateUser = await fetch("/api/mongoDbUpdateUser", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userEmail,
+            trainingPlans: expandedPlan,
+            id: specialPlanId,
+          }),
+        });
+      } catch (error) {
+        console.error("user update error laufplaene");
+      }
+    }
   };
 
   return (
@@ -106,7 +129,15 @@ function Page() {
             </div>
           );
         })}
-        {showToast && <Alert alertText="Im Kalender geladen" />}
+        {showToast && (
+          <Alert
+            alertText={
+              session
+                ? "Im Kalender und unter meine Pläne geladen"
+                : "Im Kalender geladen"
+            }
+          />
+        )}{" "}
       </div>
       <NavBar />
     </>
