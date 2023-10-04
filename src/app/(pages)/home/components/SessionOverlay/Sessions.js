@@ -25,7 +25,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                   {sessionSections.warmUp.map((warmUpSection, warmUpIndex) =>
                     warmUpSection.exercises[0].name === "" ? null : (
                       <div key={warmUpIndex}>
-                        <div className="relative rounded-md bg-fourth/10 flex flex-col p-1 mb-2 text-sm">
+                        <div className="relative rounded-md bg-fourth/5 flex flex-col p-1 mb-2 text-sm">
                           {warmUpSection.multiplier > 1 ? (
                             <p className="absolute top-0 left-1 text-first text-xl">
                               {warmUpSection.multiplier} x{" "}
@@ -81,7 +81,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                   {sessionSections.main.map((mainSection, mainIndex) => {
                     return (
                       <div key={mainIndex}>
-                        <div className="relative rounded-md bg-fourth/10 flex flex-col p-1 mb-2 text-sm">
+                        <div className="relative rounded-md bg-fourth/5 flex flex-col p-1 mb-2 text-sm">
                           {mainSection.multiplier > 1 ? (
                             <p className="absolute top-0 left-1 text-first text-xl">
                               {mainSection.multiplier} x{" "}
@@ -170,7 +170,7 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                     (coolDownSection, coolDownIndex) =>
                       coolDownSection.exercises[0].name === "" ? null : (
                         <div key={coolDownIndex}>
-                          <div className="relative rounded-md bg-fourth/10 flex flex-col p-1 mb-2 text-sm">
+                          <div className="relative rounded-md bg-fourth/5 flex flex-col p-1 mb-2 text-sm">
                             {coolDownSection.multiplier > 1 ? (
                               <p className="absolute top-0 left-1 text-first text-xl">
                                 {coolDownSection.multiplier} x{" "}
