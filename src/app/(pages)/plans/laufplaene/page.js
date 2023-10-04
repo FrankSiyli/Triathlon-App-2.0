@@ -4,11 +4,11 @@ import NavBar from "@/app/components/NavBar/NavBar";
 import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
-import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
 import Alert from "@/app/components/Alerts/Alert";
 import { runPlansFromMongoDbState } from "@/app/recoil/atoms/plans/runPlansFromMongoDbState";
 import useFetchRunPlans from "@/app/fetchFunctions/useFetchRunPlans";
 import Loader from "../../../components/Loader/Loader";
+import { getSession } from "next-auth/react";
 
 const Page = () => {
   const { isLoading, error } = useFetchRunPlans();
@@ -16,7 +16,6 @@ const Page = () => {
   const runPlans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
-  const [myPlans, setMyPlans] = useRecoilState(myPlansState);
   const [showToast, setShowToast] = useState(false);
   const handleInfoClick = (index) => {
     if (index === expandedPlanIndex) {
@@ -26,9 +25,33 @@ const Page = () => {
     }
   };
 
-  const handleLoadPlanClick = () => {
-    setHomepagePlan(expandedPlan);
+  const handleLoadPlanClick = async (event) => {
+    const session = await getSession();
     const expandedPlan = runPlans[expandedPlanIndex];
+    setHomepagePlan(expandedPlan);
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 2000);
+    event.stopPropagation();
+
+    if (session) {
+      try {
+        const userEmail = session.user.email;
+        const updateUser = await fetch("/api/mongoDbUpdateUser", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userEmail,
+            trainingPlans: expandedPlan,
+          }),
+        });
+      } catch (error) {
+        console.log("user error ");
+      }
+    }
   };
 
   return (

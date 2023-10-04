@@ -3,12 +3,10 @@ import Alert from "@/app/components/Alerts/Alert";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
-import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 
 function Page() {
-  const [myPlans, setMyPlans] = useRecoilState(myPlansState);
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showLoadOnHomepageToast, setShowLoadOnHomepageToast] = useState(false);
@@ -49,7 +47,7 @@ function Page() {
     <>
       <BackButton href="/profil" />
       <p className=" mx-auto w-40 text-center -mt-10">Meine Pläne</p>
-      {myPlans.length === 0 ? (
+      {0 === 0 ? (
         <div className="border border-first/50 rounded-md p-2 text-center mt-20 mx-5">
           Es wurde noch kein Plan geladen
         </div>

@@ -36,6 +36,7 @@ function Page() {
         password,
         callbackUrl: "/profil",
       });
+
       if (!res?.ok) {
         setShowAlert(true);
         setError("Die Eingaben sind nicht korrekt.");
