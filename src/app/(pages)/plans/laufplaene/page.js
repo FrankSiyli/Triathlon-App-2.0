@@ -43,7 +43,7 @@ const Page = () => {
 
       try {
         const userEmail = session.user.email;
-        const updateUser = await fetch("/api/mongoDbUpdateUser", {
+        const updateUser = await fetch("/api/mongoDbUpdateUserTrainingPlans", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

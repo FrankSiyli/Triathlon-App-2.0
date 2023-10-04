@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
 import logoBlack from "../../../../../../public/images/logoSmallBlack.png";
 import Image from "next/image";
-import { savedSwimTimeState } from "@/app/recoil/atoms/savedSwimTimeState";
+import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 import { useRecoilValue } from "recoil";
-import { savedHrMaxState } from "@/app/recoil/atoms/savedHrMaxState";
+import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 import getZones from "@/app/helperFunctions/getZones";
 import { formatTime } from "@/app/helperFunctions/formatTime";
 

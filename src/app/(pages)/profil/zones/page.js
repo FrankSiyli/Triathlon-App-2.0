@@ -5,8 +5,8 @@ import { showHrInputState } from "@/app/recoil/atoms/showHrInputState";
 import { showSwimTimeInputState } from "@/app/recoil/atoms/showSwimTimeInputState";
 import React from "react";
 import { useRecoilState } from "recoil";
-import HeartrateCalculator from "../components/HeartrateCalculator";
-import SwimTimeCalculator from "../components/SwimTimeCalculator";
+import HeartrateCalculator from "./components/HeartrateCalculator";
+import SwimTimeCalculator from "./components/SwimTimeCalculator";
 
 function Page() {
   const [showHrInput, setShowHrInput] = useRecoilState(showHrInputState);

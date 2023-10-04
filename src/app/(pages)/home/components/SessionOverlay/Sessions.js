@@ -1,7 +1,7 @@
 import { formatTime } from "@/app/helperFunctions/formatTime";
 import getZones from "@/app/helperFunctions/getZones";
-import { savedHrMaxState } from "@/app/recoil/atoms/savedHrMaxState";
-import { savedSwimTimeState } from "@/app/recoil/atoms/savedSwimTimeState";
+import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
+import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 import Image from "next/image";
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
@@ -9,7 +9,9 @@ import { useRecoilValue } from "recoil";
 const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
   const savedSwimTime = useRecoilValue(savedSwimTimeState);
   const savedHrMax = useRecoilValue(savedHrMaxState);
+  console.log("savedHrMax", savedHrMax);
   const [openInstructionImage, setOpenInstructionImage] = useState(null);
+
   return (
     <>
       {singleActivity[2].map(

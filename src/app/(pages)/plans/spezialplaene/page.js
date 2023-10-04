@@ -43,7 +43,7 @@ function Page() {
 
       try {
         const userEmail = session.user.email;
-        const updateUser = await fetch("/api/mongoDbUpdateUser", {
+        const updateUser = await fetch("/api/mongoDbUpdateUserTrainingPlans", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -55,7 +55,7 @@ function Page() {
           }),
         });
       } catch (error) {
-        console.error("user update error laufplaene");
+        console.error("user update error spezialplaene");
       }
     }
   };

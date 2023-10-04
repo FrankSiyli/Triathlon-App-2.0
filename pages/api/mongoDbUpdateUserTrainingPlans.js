@@ -15,10 +15,10 @@ export default async function handler(req, res) {
       if (!existingTrainingPlanIds.includes(id)) {
         user.trainingPlans.addToSet(trainingPlans);
       } else {
-        console.log("Training plan already exists for this user");
+        console.error("Training plan already exists for this user");
       }
       await user.save();
-      return res.status(201).json({ message: "User updated" });
+      return res.status(201).json();
     } catch (error) {
       return res
         .status(500)

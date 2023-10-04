@@ -48,7 +48,7 @@ function Page() {
     };
 
     fetchUserPlans();
-  }, []);
+  }, [setUserEmail]);
 
   return (
     <>
@@ -58,17 +58,21 @@ function Page() {
         <Loader isLoading={isLoading} />
       ) : (
         <>
-          <EmptyUserPlansArray userPlans={userPlans} />
-          <FetchedUserPlans
-            expandedPlanIndex={expandedPlanIndex}
-            setExpandedPlanIndex={setExpandedPlanIndex}
-            userPlans={userPlans}
-            setHomepagePlan={setHomepagePlan}
-            setShowLoadOnHomepageToast={setShowLoadOnHomepageToast}
-            userEmail={userEmail}
-            setUserPlans={setUserPlans}
-            setIsLoading={setIsLoading}
-          />
+          {!isLoading && userPlans.length === 0 && (
+            <EmptyUserPlansArray userPlans={userPlans} />
+          )}
+          {!isLoading && userPlans.length !== 0 && (
+            <FetchedUserPlans
+              expandedPlanIndex={expandedPlanIndex}
+              setExpandedPlanIndex={setExpandedPlanIndex}
+              userPlans={userPlans}
+              setHomepagePlan={setHomepagePlan}
+              setShowLoadOnHomepageToast={setShowLoadOnHomepageToast}
+              userEmail={userEmail}
+              setUserPlans={setUserPlans}
+              setIsLoading={setIsLoading}
+            />
+          )}
         </>
       )}
 
