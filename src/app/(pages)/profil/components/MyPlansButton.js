@@ -5,7 +5,7 @@ export default function MyPlansButton() {
   return (
     <>
       <Link
-        href="/plans/myplans"
+        href="/profil/myplans"
         className="flex flex-row justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 cursor-pointer"
       >
         <div className="ml-5">Meine Pläne</div>{" "}

@@ -8,7 +8,6 @@ import calculateTotalDistance from "../../logicFunctions/totalDistanceFunction";
 import calculateTotalDuration from "../../logicFunctions/totalDurationFunction";
 import { formatTime } from "@/app/helperFunctions/formatTime";
 import NavBar from "@/app/components/NavBar/NavBar";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 
 const SessionOverlay = ({
   sessionSections,

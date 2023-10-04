@@ -14,8 +14,75 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
+    trainingPlans: [
+      {
+        _id: Schema.Types.ObjectId,
+        category: String,
+        name: String,
+        info: String,
+        price: String,
+        duration: Number,
+        weeks: [
+          {
+            week: Number,
+            sessions: [
+              {
+                day: String,
+                activity: String,
+                description: String,
+                sessionParts: [
+                  {
+                    warmUp: [
+                      {
+                        multiplier: Number,
+                        exercises: [
+                          {
+                            name: String,
+                            distance: Number,
+                            duration: Number,
+                            zone: String,
+                            imageLink: String,
+                          },
+                        ],
+                      },
+                    ],
+                    main: [
+                      {
+                        multiplier: Number,
+                        exercises: [
+                          {
+                            name: String,
+                            distance: Number,
+                            duration: Number,
+                            zone: String,
+                            imageLink: String,
+                          },
+                        ],
+                      },
+                    ],
+                    coolDown: [
+                      {
+                        multiplier: Number,
+                        exercises: [
+                          {
+                            name: String,
+                            distance: Number,
+                            duration: Number,
+                            zone: String,
+                            imageLink: String,
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
-
   { timestamps: true }
 );
 

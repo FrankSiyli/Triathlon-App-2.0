@@ -4,11 +4,11 @@ import NavBar from "@/app/components/NavBar/NavBar";
 import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
-import { myPlansState } from "@/app/recoil/atoms/plans/myPlansState";
 import Alert from "@/app/components/Alerts/Alert";
 import { triathlonPlansFromMongoDbState } from "@/app/recoil/atoms/plans/triathlonPlansFromMongoDbState";
 import useFetchTriathlonPlans from "@/app/fetchFunctions/useFetchTriathlonPlans";
 import Loader from "../../../components/Loader/Loader";
+import { getSession } from "next-auth/react";
 
 const Page = () => {
   const { isLoading, error } = useFetchTriathlonPlans();
@@ -16,8 +16,9 @@ const Page = () => {
   const triathlonPlans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
-  const [myPlans, setMyPlans] = useRecoilState(myPlansState);
   const [showToast, setShowToast] = useState(false);
+  const [session, setSession] = useState(null);
+
   const handleInfoClick = (index) => {
     if (index === expandedPlanIndex) {
       setExpandedPlanIndex(null);
@@ -26,22 +27,44 @@ const Page = () => {
     }
   };
 
-  const handleLoadPlanClick = (event) => {
+  const handleLoadPlanClick = async (event) => {
+    const session = await getSession();
     const expandedPlan = triathlonPlans[expandedPlanIndex];
+    const triathlonPlanId = triathlonPlans.id;
     setHomepagePlan(expandedPlan);
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
     }, 2000);
-    setMyPlans((prevPlans) => [...prevPlans, expandedPlan]);
     event.stopPropagation();
+
+    if (session) {
+      setSession(session);
+
+      try {
+        const userEmail = session.user.email;
+        const updateUser = await fetch("/api/mongoDbUpdateUser", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userEmail,
+            trainingPlans: expandedPlan,
+            id: triathlonPlanId,
+          }),
+        });
+      } catch (error) {
+        console.error("user update error triathlonplaene");
+      }
+    }
   };
 
   return (
     <>
       <BackButton href="/plans" />
       <p className=" mx-auto w-40 text-center -mt-10">Triathlonpläne</p>
-      <Loader error={error} isLoading={isLoading} />
+      <Loader isLoading={isLoading} />
       <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
         {triathlonPlans?.map((triathlonPlan, triathlonPlanIndex) => {
           return (
@@ -106,7 +129,15 @@ const Page = () => {
             </div>
           );
         })}
-        {showToast && <Alert alertText="Im Kalender geladen" />}
+        {showToast && (
+          <Alert
+            alertText={
+              session
+                ? "Im Kalender und unter meine Pläne geladen"
+                : "Im Kalender geladen"
+            }
+          />
+        )}{" "}
       </div>
       <NavBar />
     </>
