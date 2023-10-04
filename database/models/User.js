@@ -16,6 +16,7 @@ const UserSchema = new Schema(
     },
     trainingPlans: [
       {
+        _id: Schema.Types.ObjectId,
         category: String,
         name: String,
         info: String,

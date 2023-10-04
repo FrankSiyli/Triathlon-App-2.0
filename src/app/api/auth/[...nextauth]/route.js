@@ -23,6 +23,7 @@ export const authOptions = {
           if (!passwordsMatch) {
             return null;
           }
+
           return user;
         } catch (error) {}
       },

@@ -1,12 +1,6 @@
 import React from "react";
 
-const Activity = ({
-  openDay,
-  dayIndex,
-  activity,
-  toggleOverlay,
-  sessionSections,
-}) => {
+const Activity = ({ openDay, dayIndex, activity, toggleOverlay }) => {
   return (
     <>
       <div className="flex flex-col mx-5 rounded-md ">
@@ -18,7 +12,7 @@ const Activity = ({
                 toggleOverlay(dayIndex, activityIndex);
               }}
             >
-              <div className="flex p-1 mx-2 my-1 justify-between bg-fourth/10 items-center font-light text-first rounded-md  shadow-md">
+              <div className="flex p-1 mx-2 my-1 justify-between bg-fourth/5 items-center font-light text-first rounded-md  shadow-md">
                 <div className="ml-2 text-left">
                   <p className="underline underline-offset-2 text-sm">
                     {singleActivity[0]}

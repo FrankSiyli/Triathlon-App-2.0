@@ -17,6 +17,8 @@ const Page = () => {
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showToast, setShowToast] = useState(false);
+  const [session, setSession] = useState(null);
+
   const handleInfoClick = (index) => {
     if (index === expandedPlanIndex) {
       setExpandedPlanIndex(null);
@@ -28,6 +30,7 @@ const Page = () => {
   const handleLoadPlanClick = async (event) => {
     const session = await getSession();
     const expandedPlan = runPlans[expandedPlanIndex];
+    const runPlanId = runPlans.id;
     setHomepagePlan(expandedPlan);
     setShowToast(true);
     setTimeout(() => {
@@ -36,6 +39,8 @@ const Page = () => {
     event.stopPropagation();
 
     if (session) {
+      setSession(session);
+
       try {
         const userEmail = session.user.email;
         const updateUser = await fetch("/api/mongoDbUpdateUser", {
@@ -46,10 +51,11 @@ const Page = () => {
           body: JSON.stringify({
             email: userEmail,
             trainingPlans: expandedPlan,
+            id: runPlanId,
           }),
         });
       } catch (error) {
-        console.log("user error ");
+        console.error("user update error laufplaene");
       }
     }
   };
@@ -122,7 +128,15 @@ const Page = () => {
             </div>
           );
         })}
-        {showToast && <Alert alertText="Im Kalender geladen" />}
+        {showToast && (
+          <Alert
+            alertText={
+              session
+                ? "Im Kalender und unter meine Pläne geladen"
+                : "Im Kalender geladen"
+            }
+          />
+        )}
       </div>
 
       <NavBar />

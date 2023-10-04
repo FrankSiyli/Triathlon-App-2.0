@@ -8,7 +8,6 @@ import calculateTotalDistance from "../../logicFunctions/totalDistanceFunction";
 import calculateTotalDuration from "../../logicFunctions/totalDurationFunction";
 import { formatTime } from "@/app/helperFunctions/formatTime";
 import NavBar from "@/app/components/NavBar/NavBar";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 
 const SessionOverlay = ({
   sessionSections,
@@ -83,7 +82,7 @@ const SessionOverlay = ({
             </button>
             <button
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
-              className="btn btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
+              className="btn btn-sm btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +129,7 @@ const SessionOverlay = ({
             </div>
             <button
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
-              className="btn btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
+              className="btn btn-sm btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

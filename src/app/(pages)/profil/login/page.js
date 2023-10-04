@@ -11,8 +11,8 @@ import Loader from "@/app/components/Loader/Loader";
 function Page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
