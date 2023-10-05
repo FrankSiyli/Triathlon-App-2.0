@@ -9,10 +9,11 @@ import LoginButton from "./components/LoginButton";
 import PersonalZonesButton from "./components/PersonalZonesButton";
 import InformationsButton from "./components/InformationsButton";
 import IfUserIsLoggedInLogic from "./components/IfUserIsLoggedInLogic";
-import { getSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default async function Page() {
-  const session = await getSession();
+  const session = await getServerSession(authOptions);
 
   return (
     <>

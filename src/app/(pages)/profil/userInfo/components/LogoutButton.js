@@ -16,9 +16,9 @@ const LogoutButton = () => {
 
   const handleLogoutClick = () => {
     setIsLoading(true);
+    const examplePlan = data.plans[0];
+    setHomepagePlan(examplePlan);
     setUserName("");
-    const plansArray = data.plans[0];
-    setHomepagePlan(plansArray);
     signOut({ callbackUrl: "/profil" });
     setIsLoading(false);
   };
@@ -32,10 +32,6 @@ const LogoutButton = () => {
           onClick={handleLogoutClick}
           className="btn btn-sm bg-third text-first shadow-xl m-5 border border-transparent"
         >
-          {isLoading ||
-            (!data && (
-              <span className="loading loading-ring loading-sm"></span>
-            ))}
           Abmelden
         </button>
       )}

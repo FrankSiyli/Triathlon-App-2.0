@@ -21,7 +21,6 @@ import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 import Loader from "@/app/components/Loader/Loader";
 import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
-import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 
 function Page() {
   const data = useRecoilValue(homepagePlanState);
@@ -33,7 +32,6 @@ function Page() {
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
   const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
-  const [userName, setUserName] = useRecoilState(userNameState);
   const { currentWeek, handleBackClick, handleNextClick } = useCurrentWeek(
     homepagePlan,
     numberOfPlanWeeks,
@@ -41,18 +39,15 @@ function Page() {
   );
   const currentWeekSessions = homepagePlan?.weeks?.[currentWeek]?.sessions;
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
-
   useEffect(() => {
     const loadUserValues = async () => {
       const session = await getSession();
       if (session) {
         setIsLoading(true);
-        const fetchedUserEmail = session.user.email;
-        setUserEmail(fetchedUserEmail);
-        setUserName(session.user.name);
+        setUserEmail(session.user.email);
         try {
           const heartRateResponse = await fetch(
-            `/api/mongoDbFetchUserHeartRate?email=${fetchedUserEmail}`,
+            `/api/mongoDbFetchUserHeartRate?email=${session.user.email}`,
             {
               method: "GET",
               headers: {
@@ -71,7 +66,7 @@ function Page() {
         }
         try {
           const swimTimeResponse = await fetch(
-            `/api/mongoDbFetchUserSwimTime?email=${fetchedUserEmail}`,
+            `/api/mongoDbFetchUserSwimTime?email=${session.user.email}`,
             {
               method: "GET",
               headers: {
@@ -89,12 +84,10 @@ function Page() {
           console.error("An error occurred:", error);
         }
         setIsLoading(false);
-      } else {
-        setUserName("");
       }
     };
     loadUserValues();
-  }, [setSavedHrMax, setSavedSwimTime, setUserEmail, setUserName]);
+  }, [setSavedHrMax, setSavedSwimTime, setUserEmail]);
 
   return (
     <>

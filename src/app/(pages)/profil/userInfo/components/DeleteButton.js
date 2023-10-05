@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import useSWR from "swr";
 import Alert from "@/app/components/Alerts/Alert";
@@ -13,7 +13,6 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 const DeleteButton = () => {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const { data } = useSWR("/api/mongoDbFetchHomepagePlan", fetcher);
-  const { data: session } = useSession();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -21,9 +20,9 @@ const DeleteButton = () => {
 
   const handleDeleteUserClick = async () => {
     setIsLoading(true);
-    const plansArray = data.plans[0];
-    setHomepagePlan(plansArray);
-    setUserName("");
+    const session = await getSession();
+    const examplePlan = data.plans[0];
+    setHomepagePlan(examplePlan);
     try {
       if (!session) {
         setIsLoading(false);
@@ -35,6 +34,7 @@ const DeleteButton = () => {
         return;
       }
 
+      setUserName("");
       const response = await fetch("/api/mongoDbDeleteUser", {
         method: "POST",
         headers: {
@@ -80,10 +80,6 @@ const DeleteButton = () => {
           onClick={handleDeleteUserClick}
           className="btn btn-sm border- border-transparent bg-fourth text-first shadow-xl m-10"
         >
-          {isLoading ||
-            (!data && (
-              <span className="loading loading-ring loading-sm"></span>
-            ))}
           Konto löschen
         </button>
       )}

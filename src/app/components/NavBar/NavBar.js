@@ -2,21 +2,15 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
-import { getSession } from "next-auth/react";
-import { useRecoilValue } from "recoil";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
+import { useRecoilState } from "recoil";
 
 function NavBar() {
-  const userName = useRecoilValue(userNameState);
   const [session, setSession] = useState("");
+  const [userName, setUserName] = useRecoilState(userNameState);
   const currentRoute = usePathname();
   const activeStyle = "border-t border-first";
   const nonActiveStyle = " border-t border-neutral-800";
-  const changeProfilButtonIfSession = async () => {
-    const session = await getSession();
-    setSession(session);
-  };
-  changeProfilButtonIfSession();
 
   return (
     <div>
@@ -93,7 +87,6 @@ function NavBar() {
               d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
             />
           </svg>
-
           {userName !== "" ? (
             <span className="btm-nav-label">{userName}</span>
           ) : (
