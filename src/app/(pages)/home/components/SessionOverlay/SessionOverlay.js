@@ -1,6 +1,6 @@
 "use client";
 import "../../../../globals.css";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import PrintSessions from "./PrintSessions";
 import { useReactToPrint } from "react-to-print";
 import Sessions from "./Sessions";
@@ -8,7 +8,6 @@ import calculateTotalDistance from "../../logicFunctions/totalDistanceFunction";
 import calculateTotalDuration from "../../logicFunctions/totalDurationFunction";
 import { formatTime } from "@/app/helperFunctions/formatTime";
 import NavBar from "@/app/components/NavBar/NavBar";
-import { getSession } from "next-auth/react";
 
 const SessionOverlay = ({
   sessionSections,
@@ -19,15 +18,6 @@ const SessionOverlay = ({
   toggleOverlay,
   initialOpen = false,
 }) => {
-  useEffect(() => {
-    const loadUserValues = async () => {
-      const session = await getSession();
-      console.log("session", session);
-    };
-
-    loadUserValues();
-  }, []);
-
   const [overlayView, setOverlayView] = useState(true);
   const handleViewClick = () => {
     setOverlayView(!overlayView);

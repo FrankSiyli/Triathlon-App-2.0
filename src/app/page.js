@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import logo from "../../public/images/logoSmall.png";
 import "./globals.css";
@@ -8,17 +8,17 @@ import useFetchHomepagePlan from "./fetchFunctions/useFetchHomepagePlan";
 
 export default function Home() {
   const { error, isLoading } = useFetchHomepagePlan();
-
   const router = useRouter();
-
-  const navigateAfterLoading = () => {
-    if (!isLoading) {
-      setTimeout(() => {
-        router.push("/home");
-      }, 1000);
-    }
-  };
-  navigateAfterLoading();
+  useEffect(() => {
+    const navigateAfterLoading = () => {
+      if (!isLoading) {
+        setTimeout(() => {
+          router.push("/home");
+        }, 1000);
+      }
+    };
+    navigateAfterLoading();
+  }, [isLoading, router]);
 
   return (
     <div className=" w-screen max-w-xl h-screen  flex flex-col justify-center items-center mx-auto text-center">

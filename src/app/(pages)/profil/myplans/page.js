@@ -18,10 +18,10 @@ function Page() {
   const [isLoading, setIsLoading] = useState(false);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [userPlans, setUserPlans] = useState([]);
+
   useEffect(() => {
     const fetchUserPlans = async () => {
       setIsLoading(true);
-
       const session = await getSession();
       const fetchedUserEmail = session?.user.email;
       setUserEmail(fetchedUserEmail);

@@ -20,9 +20,7 @@ function HeartrateCalculator() {
 
   const handleHeartrateInputClick = async () => {
     setIsLoading(true);
-
     const session = await getSession();
-
     if (
       heartrateCalculatorInput === "" ||
       heartrateCalculatorInput < 100 ||

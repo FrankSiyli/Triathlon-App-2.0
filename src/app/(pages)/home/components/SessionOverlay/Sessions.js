@@ -9,7 +9,6 @@ import { useRecoilValue } from "recoil";
 const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
   const savedSwimTime = useRecoilValue(savedSwimTimeState);
   const savedHrMax = useRecoilValue(savedHrMaxState);
-  console.log("savedHrMax", savedHrMax);
   const [openInstructionImage, setOpenInstructionImage] = useState(null);
 
   return (
