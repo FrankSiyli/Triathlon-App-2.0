@@ -18,10 +18,10 @@ function Page() {
   const [isLoading, setIsLoading] = useState(false);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [userPlans, setUserPlans] = useState([]);
+
   useEffect(() => {
     const fetchUserPlans = async () => {
       setIsLoading(true);
-
       const session = await getSession();
       const fetchedUserEmail = session?.user.email;
       setUserEmail(fetchedUserEmail);
@@ -48,7 +48,7 @@ function Page() {
     };
 
     fetchUserPlans();
-  }, []);
+  }, [setUserEmail]);
 
   return (
     <>
@@ -58,17 +58,21 @@ function Page() {
         <Loader isLoading={isLoading} />
       ) : (
         <>
-          <EmptyUserPlansArray userPlans={userPlans} />
-          <FetchedUserPlans
-            expandedPlanIndex={expandedPlanIndex}
-            setExpandedPlanIndex={setExpandedPlanIndex}
-            userPlans={userPlans}
-            setHomepagePlan={setHomepagePlan}
-            setShowLoadOnHomepageToast={setShowLoadOnHomepageToast}
-            userEmail={userEmail}
-            setUserPlans={setUserPlans}
-            setIsLoading={setIsLoading}
-          />
+          {!isLoading && userPlans.length === 0 && (
+            <EmptyUserPlansArray userPlans={userPlans} />
+          )}
+          {!isLoading && userPlans.length !== 0 && (
+            <FetchedUserPlans
+              expandedPlanIndex={expandedPlanIndex}
+              setExpandedPlanIndex={setExpandedPlanIndex}
+              userPlans={userPlans}
+              setHomepagePlan={setHomepagePlan}
+              setShowLoadOnHomepageToast={setShowLoadOnHomepageToast}
+              userEmail={userEmail}
+              setUserPlans={setUserPlans}
+              setIsLoading={setIsLoading}
+            />
+          )}
         </>
       )}
 

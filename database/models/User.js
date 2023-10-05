@@ -82,6 +82,14 @@ const UserSchema = new Schema(
         ],
       },
     ],
+    heartRate: {
+      type: Number,
+      default: 160,
+    },
+    swimTime: {
+      type: Number,
+      default: 1200,
+    },
   },
   { timestamps: true }
 );

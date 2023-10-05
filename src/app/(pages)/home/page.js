@@ -1,6 +1,5 @@
 "use client";
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "@/app/components/NavBar/NavBar";
 import "../../globals.css";
 import { v1 as uuidv1 } from "uuid";
@@ -14,18 +13,25 @@ import { useActivitiesByDay } from "./logicFunctions/useActivitiesByDay";
 import Activity from "./components/Activity";
 import PlanName from "./components/PlanName";
 import MobileHint from "./components/HintsAndAlerts/MobileHint";
-import { useRecoilValue } from "recoil";
-
+import { useRecoilState, useRecoilValue } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import NoDataPush from "@/app/components/NoDataPush/NoDataPush";
+import { getSession } from "next-auth/react";
+import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
+import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
+import Loader from "@/app/components/Loader/Loader";
+import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 
 function Page() {
   const data = useRecoilValue(homepagePlanState);
-
   const homepagePlan = data;
   const numberOfPlanWeeks = homepagePlan?.duration;
   const { openOverlay, toggleOverlay } = useOpenOverlay();
   const { openDay, toggleDay } = useOpenDay();
+  const [isLoading, setIsLoading] = useState(false);
+  const [userEmail, setUserEmail] = useRecoilState(userEmailState);
+  const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
+  const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
   const { currentWeek, handleBackClick, handleNextClick } = useCurrentWeek(
     homepagePlan,
     numberOfPlanWeeks,
@@ -33,6 +39,59 @@ function Page() {
   );
   const currentWeekSessions = homepagePlan?.weeks?.[currentWeek]?.sessions;
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
+
+  useEffect(() => {
+    const loadUserValues = async () => {
+      const session = await getSession();
+      if (session) {
+        setIsLoading(true);
+        const fetchedUserEmail = session?.user.email;
+        setUserEmail(fetchedUserEmail);
+        try {
+          const heartRateResponse = await fetch(
+            `/api/mongoDbFetchUserHeartRate?email=${fetchedUserEmail}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          if (heartRateResponse.ok) {
+            const fetchedHrMax = await heartRateResponse.json();
+            setSavedHrMax(fetchedHrMax);
+          } else {
+            console.error("Failed to fetch user hrmax");
+          }
+        } catch (error) {
+          console.error("An error occurred:", error);
+        }
+        try {
+          const swimTimeResponse = await fetch(
+            `/api/mongoDbFetchUserSwimTime?email=${fetchedUserEmail}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          if (swimTimeResponse.ok) {
+            const fetchedSwimTime = await swimTimeResponse.json();
+            setSavedSwimTime(fetchedSwimTime);
+          } else {
+            console.error("Failed to fetch user hrmax");
+          }
+        } catch (error) {
+          console.error("An error occurred:", error);
+        }
+        setIsLoading(false);
+      } else {
+        null;
+      }
+    };
+    loadUserValues();
+  }, [setSavedHrMax, setSavedSwimTime, setUserEmail]);
 
   return (
     <>
@@ -45,8 +104,10 @@ function Page() {
           handleBackClick={handleBackClick}
           handleNextClick={handleNextClick}
         />
-
-        {activitiesByDay &&
+        {isLoading ? (
+          <Loader isLoading={isLoading} />
+        ) : (
+          activitiesByDay &&
           activitiesByDay.map(([day, activity], dayIndex) => (
             <div key={uuidv1()}>
               <Day
@@ -63,8 +124,8 @@ function Page() {
                 toggleOverlay={toggleOverlay}
               />
             </div>
-          ))}
-
+          ))
+        )}
         {activitiesByDay &&
           activitiesByDay.map(([day, activity], dayIndex) => (
             <div key={dayIndex}>

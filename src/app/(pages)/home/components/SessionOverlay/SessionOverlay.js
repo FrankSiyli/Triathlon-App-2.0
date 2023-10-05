@@ -73,6 +73,7 @@ const SessionOverlay = ({
             dayIndex={dayIndex}
             activityIndex={activityIndex}
           />
+          <hr></hr>
           <div className="flex flex-col  items-center">
             <button
               className="btn btn-sm w-32 btn-outline border border-transparent text-first bg-third m-5"

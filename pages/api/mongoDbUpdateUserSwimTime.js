@@ -6,19 +6,15 @@ export default async function handler(req, res) {
 
   if (req.method === "POST") {
     try {
-      const { email, trainingPlans, id } = req.body;
+      const { email, newSwimTime } = req.body;
       const user = await User.findOne({ email });
       if (!user) {
         return res.status(404).json({ message: "User not found" });
-      }
-      const existingTrainingPlanIds = user.trainingPlans.map((plan) => plan.id);
-      if (!existingTrainingPlanIds.includes(id)) {
-        user.trainingPlans.addToSet(trainingPlans);
       } else {
-        console.log("Training plan already exists for this user");
+        user.swimTime = newSwimTime;
       }
       await user.save();
-      return res.status(201).json({ message: "User updated" });
+      return res.status(201).json();
     } catch (error) {
       return res
         .status(500)
