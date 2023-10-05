@@ -1,22 +1,29 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
-
-import Loader from "@/app/components/Loader/Loader";
+import useSWR from "swr";
 import Alert from "@/app/components/Alerts/Alert";
+import { useRecoilState } from "recoil";
+import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
+import { userNameState } from "@/app/recoil/atoms/user/userNameState";
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const DeleteButton = () => {
-  const router = useRouter();
+  const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
+  const { data } = useSWR("/api/mongoDbFetchHomepagePlan", fetcher);
   const { data: session } = useSession();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [userName, setUserName] = useRecoilState(userNameState);
 
   const handleDeleteUserClick = async () => {
     setIsLoading(true);
-
+    const plansArray = data.plans[0];
+    setHomepagePlan(plansArray);
+    setUserName("");
     try {
       if (!session) {
         setIsLoading(false);
@@ -66,12 +73,17 @@ const DeleteButton = () => {
   return (
     <>
       {isLoading ? (
-        <Loader error={error} isLoading={isLoading} />
+        <span className="loading loading-ring loading-lg m-10"></span>
       ) : (
         <button
+          disabled={!data}
           onClick={handleDeleteUserClick}
           className="btn btn-sm border- border-transparent bg-fourth text-first shadow-xl m-10"
         >
+          {isLoading ||
+            (!data && (
+              <span className="loading loading-ring loading-sm"></span>
+            ))}
           Konto löschen
         </button>
       )}

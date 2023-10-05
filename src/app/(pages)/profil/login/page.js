@@ -19,7 +19,6 @@ function Page() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setIsLoading(true);
     if (!email || !password) {
       setIsLoading(false);
