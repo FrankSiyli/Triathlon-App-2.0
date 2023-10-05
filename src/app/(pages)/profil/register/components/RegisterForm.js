@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import Alert from "@/app/components/Alerts/Alert";
 import { useRecoilState } from "recoil";
@@ -17,8 +17,44 @@ export default function RegisterForm() {
   const [userName, setUserName] = useRecoilState(userNameState);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordHints, setPasswordHints] = useState({
+    length: true,
+    specialChar: true,
+    upperCase: true,
+  });
 
   const router = useRouter();
+  const calculateHints = (password) => {
+    const newHints = {
+      length: true,
+      specialChar: true,
+      upperCase: true,
+    };
+
+    if (password.length >= 10) {
+      newHints.length = true;
+    } else {
+      newHints.length = false;
+    }
+    if (/(?=.*[A-Z])/.test(password)) {
+      newHints.upperCase = true;
+    } else {
+      newHints.upperCase = false;
+    }
+    if (/(?=.*[!@#$%^&?*])/.test(password)) {
+      newHints.specialChar = true;
+    } else {
+      newHints.specialChar = false;
+    }
+    return newHints;
+  };
+
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    setPasswordHints(calculateHints(newPassword));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -28,6 +64,21 @@ export default function RegisterForm() {
       setIsLoading(false);
       return;
     }
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&?*])(?=.{10,})/;
+    const isPasswordValid = passwordRegex.test(password);
+
+    if (!isPasswordValid) {
+      setShowAlert(true);
+      setError("Passwort erfüllt nicht die Anforderungen.");
+      setIsLoading(false);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
+
+      return;
+    }
+
     try {
       const resUserExists = await fetch("/api/mongoDbUserExists", {
         method: "POST",
@@ -82,9 +133,6 @@ export default function RegisterForm() {
     }
     setIsLoading(false);
   };
-  setTimeout(() => {
-    setShowAlert(false);
-  }, 2000);
 
   return (
     <>
@@ -110,13 +158,19 @@ export default function RegisterForm() {
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
+            <div className=" flex flex-col text-center text-alert">
+              {!passwordHints.length && <span>10 Zeichen</span>}
+              {!passwordHints.specialChar && <span>1 Sonderzeichen </span>}
+              {!passwordHints.upperCase && <span>1 Großbuchstabe </span>}
+            </div>
             <input
               className="input  border border-transparent "
               type="password"
               placeholder="Passwort"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
             />
-            <button className="btn btn-sm bg-third text-first shadow-xl border-transparent">
+
+            <button className="btn btn-sm bg-third mt-5 text-first shadow-xl border-transparent">
               Konto erstellen
             </button>
           </form>
