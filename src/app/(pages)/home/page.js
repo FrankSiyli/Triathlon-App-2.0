@@ -21,6 +21,7 @@ import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 import Loader from "@/app/components/Loader/Loader";
 import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
+import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 
 function Page() {
   const data = useRecoilValue(homepagePlanState);
@@ -29,6 +30,7 @@ function Page() {
   const { openOverlay, toggleOverlay } = useOpenOverlay();
   const { openDay, toggleDay } = useOpenDay();
   const [isLoading, setIsLoading] = useState(false);
+  const [userName, setUserName] = useRecoilState(userNameState);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
   const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
@@ -45,6 +47,7 @@ function Page() {
       if (session) {
         setIsLoading(true);
         setUserEmail(session.user.email);
+        setUserName(session.user.name);
         try {
           const heartRateResponse = await fetch(
             `/api/mongoDbFetchUserHeartRate?email=${session.user.email}`,
@@ -87,7 +90,7 @@ function Page() {
       }
     };
     loadUserValues();
-  }, [setSavedHrMax, setSavedSwimTime, setUserEmail]);
+  }, [setSavedHrMax, setSavedSwimTime, setUserEmail, setUserName]);
 
   return (
     <>
