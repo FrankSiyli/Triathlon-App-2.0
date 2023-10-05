@@ -1,4 +1,6 @@
+import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import React from "react";
+import { useRecoilState } from "recoil";
 
 const FetchedUserPlans = ({
   userPlans,
@@ -10,6 +12,9 @@ const FetchedUserPlans = ({
   setUserPlans,
   setIsLoading,
 }) => {
+  const [lastLoadedPlan, setLastLoadedPlan] = useRecoilState(
+    loggedInUserLastLoadedPlanState
+  );
   const handleInfoClick = (index) => {
     if (index === expandedPlanIndex) {
       setExpandedPlanIndex(null);
@@ -21,6 +26,7 @@ const FetchedUserPlans = ({
     const expandedPlan = userPlans[expandedPlanIndex];
     setHomepagePlan(expandedPlan);
     setShowLoadOnHomepageToast(true);
+    setLastLoadedPlan(expandedPlan);
     setTimeout(() => {
       setShowLoadOnHomepageToast(false);
     }, 2000);

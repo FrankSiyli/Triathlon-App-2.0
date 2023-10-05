@@ -9,6 +9,7 @@ import Alert from "@/app/components/Alerts/Alert";
 import useFetchSpecialPlans from "@/app/fetchFunctions/useFetchSpecialPlans";
 import Loader from "../../../components/Loader/Loader";
 import { getSession } from "next-auth/react";
+import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
 function Page() {
   const { isLoading, error } = useFetchSpecialPlans();
@@ -18,6 +19,9 @@ function Page() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showToast, setShowToast] = useState(false);
   const [session, setSession] = useState(null);
+  const [lastLoadedPlan, setLastLoadedPlan] = useRecoilState(
+    loggedInUserLastLoadedPlanState
+  );
 
   const handleInfoClick = (index) => {
     if (index === expandedPlanIndex) {
@@ -40,7 +44,7 @@ function Page() {
 
     if (session) {
       setSession(session);
-
+      setLastLoadedPlan(expandedPlan);
       try {
         const userEmail = session.user.email;
         const updateUser = await fetch("/api/mongoDbUpdateUserTrainingPlans", {

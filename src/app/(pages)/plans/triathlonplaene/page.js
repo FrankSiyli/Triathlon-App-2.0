@@ -9,6 +9,7 @@ import { triathlonPlansFromMongoDbState } from "@/app/recoil/atoms/plans/triathl
 import useFetchTriathlonPlans from "@/app/fetchFunctions/useFetchTriathlonPlans";
 import Loader from "../../../components/Loader/Loader";
 import { getSession } from "next-auth/react";
+import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
 const Page = () => {
   const { isLoading, error } = useFetchTriathlonPlans();
@@ -18,6 +19,9 @@ const Page = () => {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showToast, setShowToast] = useState(false);
   const [session, setSession] = useState(null);
+  const [lastLoadedPlan, setLastLoadedPlan] = useRecoilState(
+    loggedInUserLastLoadedPlanState
+  );
 
   const handleInfoClick = (index) => {
     if (index === expandedPlanIndex) {
@@ -40,7 +44,7 @@ const Page = () => {
 
     if (session) {
       setSession(session);
-
+      setLastLoadedPlan(expandedPlan);
       try {
         const userEmail = session.user.email;
         const updateUser = await fetch("/api/mongoDbUpdateUserTrainingPlans", {

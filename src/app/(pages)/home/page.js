@@ -22,10 +22,14 @@ import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 import Loader from "@/app/components/Loader/Loader";
 import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
+import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
 function Page() {
   const data = useRecoilValue(homepagePlanState);
-  const homepagePlan = data;
+  const [homepagePlan, setHomepagePlan] = useState(data);
+  const [lastLoadedPlan, setLastLoadedPlan] = useRecoilState(
+    loggedInUserLastLoadedPlanState
+  );
   const numberOfPlanWeeks = homepagePlan?.duration;
   const { openOverlay, toggleOverlay } = useOpenOverlay();
   const { openDay, toggleDay } = useOpenDay();
@@ -48,6 +52,7 @@ function Page() {
         setIsLoading(true);
         setUserEmail(session.user.email);
         setUserName(session.user.name);
+        setHomepagePlan(lastLoadedPlan);
         try {
           const heartRateResponse = await fetch(
             `/api/mongoDbFetchUserHeartRate?email=${session.user.email}`,
