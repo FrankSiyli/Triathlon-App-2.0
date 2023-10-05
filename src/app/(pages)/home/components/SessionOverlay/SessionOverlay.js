@@ -60,10 +60,60 @@ const SessionOverlay = ({
           <div className="w-full h-auto text-right p-1">
             <p>{singleActivity[0]}</p>
             <p className="my-1">{singleActivity[1]}</p>
-            {totalDistance > 0 ? <p>Distanz: {totalDistance}m</p> : null}
+            {totalDistance > 0 ? (
+              <div className="flex justify-end">
+                <div className="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-4 h-4 mr-1"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                    />
+                  </svg>
+                </div>
+                {totalDistance}m
+              </div>
+            ) : null}
             {totalDistance > 0 && totalDuration > 0 ? <p>+</p> : null}
             {totalDuration > 0 ? (
-              <p>Zeit: {formatTime(totalDuration)}</p>
+              <div className="flex justify-end items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-4 h-4 mr-1"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                {formatTime(totalDuration)}
+              </div>
             ) : null}
           </div>
           <hr></hr>

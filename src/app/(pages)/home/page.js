@@ -39,17 +39,15 @@ function Page() {
   );
   const currentWeekSessions = homepagePlan?.weeks?.[currentWeek]?.sessions;
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
-
   useEffect(() => {
     const loadUserValues = async () => {
       const session = await getSession();
       if (session) {
         setIsLoading(true);
-        const fetchedUserEmail = session?.user.email;
-        setUserEmail(fetchedUserEmail);
+        setUserEmail(session.user.email);
         try {
           const heartRateResponse = await fetch(
-            `/api/mongoDbFetchUserHeartRate?email=${fetchedUserEmail}`,
+            `/api/mongoDbFetchUserHeartRate?email=${session.user.email}`,
             {
               method: "GET",
               headers: {
@@ -68,7 +66,7 @@ function Page() {
         }
         try {
           const swimTimeResponse = await fetch(
-            `/api/mongoDbFetchUserSwimTime?email=${fetchedUserEmail}`,
+            `/api/mongoDbFetchUserSwimTime?email=${session.user.email}`,
             {
               method: "GET",
               headers: {
@@ -86,8 +84,6 @@ function Page() {
           console.error("An error occurred:", error);
         }
         setIsLoading(false);
-      } else {
-        null;
       }
     };
     loadUserValues();
