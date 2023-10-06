@@ -45,7 +45,7 @@ function Page() {
     (async () => {
       const session = await fetchSessionData();
       if (!session) {
-        if (!session && lastLoadedPlan !== "") {
+        if (!session && homepagePlan.length === 0 && lastLoadedPlan !== "") {
           setHomepagePlan(examplePlan);
         }
         if (homepagePlan.length === 0 || lastLoadedPlan === "") {

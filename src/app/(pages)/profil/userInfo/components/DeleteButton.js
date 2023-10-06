@@ -35,7 +35,7 @@ const DeleteButton = () => {
 
       setUserName("");
       setLastLoadedPlan("");
-      setHomepagePlan(examplePlan);
+      setHomepagePlan("");
       const response = await fetch("/api/mongoDbDeleteUser", {
         method: "POST",
         headers: {
