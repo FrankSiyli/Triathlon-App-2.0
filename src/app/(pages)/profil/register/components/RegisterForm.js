@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import Alert from "@/app/components/Alerts/Alert";
 import { useRecoilState } from "recoil";
@@ -18,9 +18,9 @@ export default function RegisterForm() {
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [isLoading, setIsLoading] = useState(false);
   const [passwordHints, setPasswordHints] = useState({
-    length: true,
-    specialChar: true,
-    upperCase: true,
+    length: false,
+    specialChar: false,
+    upperCase: false,
   });
 
   const router = useRouter();
@@ -158,17 +158,81 @@ export default function RegisterForm() {
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <div className=" flex flex-col text-center text-alert">
-              {!passwordHints.length && <span>10 Zeichen</span>}
-              {!passwordHints.specialChar && <span>1 Sonderzeichen </span>}
-              {!passwordHints.upperCase && <span>1 Großbuchstabe </span>}
-            </div>
+
             <input
               className="input  border border-transparent "
               type="password"
               placeholder="Passwort"
               onChange={handlePasswordChange}
             />
+            <div className=" flex flex-col text-center text-alert">
+              <div className="flex gap-2">
+                <span>10 Zeichen</span>
+                {passwordHints.length && (
+                  <span>
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.5 12.75l6 6 9-13.5"
+                      />
+                    </svg>
+                  </span>
+                )}
+              </div>
+              <div className="flex gap-2">
+                <span>1 Sonderzeichen </span>{" "}
+                {passwordHints.specialChar && (
+                  <span>
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.5 12.75l6 6 9-13.5"
+                      />
+                    </svg>
+                  </span>
+                )}
+              </div>
+              <div className="flex gap-2">
+                <span>1 Großbuchstabe </span>
+                {passwordHints.upperCase && (
+                  <span>
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.5 12.75l6 6 9-13.5"
+                      />
+                    </svg>
+                  </span>
+                )}
+              </div>
+            </div>
 
             <button className="btn btn-sm bg-third mt-5 text-first shadow-xl border-transparent">
               Konto erstellen

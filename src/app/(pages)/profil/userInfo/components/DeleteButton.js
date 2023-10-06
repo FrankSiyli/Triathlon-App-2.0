@@ -2,27 +2,26 @@
 import React, { useState } from "react";
 import { getSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
-import useSWR from "swr";
 import Alert from "@/app/components/Alerts/Alert";
 import { useRecoilState } from "recoil";
-import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
-
-const fetcher = (url) => fetch(url).then((res) => res.json());
+import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
+import { examplePlan } from "../../../../../../database/mockDb";
+import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 
 const DeleteButton = () => {
-  const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
-  const { data } = useSWR("/api/mongoDbFetchHomepagePlan", fetcher);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [userName, setUserName] = useRecoilState(userNameState);
+  const [lastLoadedPlan, setLastLoadedPlan] = useRecoilState(
+    loggedInUserLastLoadedPlanState
+  );
+  const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
 
   const handleDeleteUserClick = async () => {
     setIsLoading(true);
     const session = await getSession();
-    const examplePlan = data.plans[0];
-    setHomepagePlan(examplePlan);
     try {
       if (!session) {
         setIsLoading(false);
@@ -35,6 +34,8 @@ const DeleteButton = () => {
       }
 
       setUserName("");
+      setLastLoadedPlan("");
+      setHomepagePlan(examplePlan);
       const response = await fetch("/api/mongoDbDeleteUser", {
         method: "POST",
         headers: {
@@ -44,7 +45,7 @@ const DeleteButton = () => {
       });
 
       if (response.ok) {
-        signOut({ callbackUrl: "/profil" });
+        signOut({ callbackUrl: "/" });
         setIsLoading(false);
         setShowAlert(true);
         setError("Löschen erfolgreich.");
@@ -76,7 +77,6 @@ const DeleteButton = () => {
         <span className="loading loading-ring loading-lg m-10"></span>
       ) : (
         <button
-          disabled={!data}
           onClick={handleDeleteUserClick}
           className="btn btn-sm border- border-transparent bg-fourth text-first shadow-xl m-10"
         >

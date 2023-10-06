@@ -13,9 +13,8 @@ import { useActivitiesByDay } from "./logicFunctions/useActivitiesByDay";
 import Activity from "./components/Activity";
 import PlanName from "./components/PlanName";
 import MobileHint from "./components/HintsAndAlerts/MobileHint";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
-import NoDataPush from "@/app/components/NoDataPush/NoDataPush";
 import { getSession } from "next-auth/react";
 import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
@@ -23,36 +22,43 @@ import Loader from "@/app/components/Loader/Loader";
 import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
+import { examplePlan } from "../../../../database/mockDb";
 
 function Page() {
-  const data = useRecoilValue(homepagePlanState);
-  const [homepagePlan, setHomepagePlan] = useState(data);
-  const [lastLoadedPlan, setLastLoadedPlan] = useRecoilState(
-    loggedInUserLastLoadedPlanState
-  );
-  const numberOfPlanWeeks = homepagePlan?.duration;
-  const { openOverlay, toggleOverlay } = useOpenOverlay();
-  const { openDay, toggleDay } = useOpenDay();
+  const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [isLoading, setIsLoading] = useState(false);
   const [userName, setUserName] = useRecoilState(userNameState);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
   const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
-  const { currentWeek, handleBackClick, handleNextClick } = useCurrentWeek(
-    homepagePlan,
-    numberOfPlanWeeks,
-    toggleDay
+  const [lastLoadedPlan, setLastLoadedPlan] = useRecoilState(
+    loggedInUserLastLoadedPlanState
   );
-  const currentWeekSessions = homepagePlan?.weeks?.[currentWeek]?.sessions;
-  const activitiesByDay = useActivitiesByDay(currentWeekSessions);
+
   useEffect(() => {
-    const loadUserValues = async () => {
+    setIsLoading(true);
+    const fetchSessionData = async () => {
       const session = await getSession();
-      if (session) {
-        setIsLoading(true);
+      return session;
+    };
+
+    (async () => {
+      const session = await fetchSessionData();
+      if (!session) {
+        if (!session && lastLoadedPlan !== "") {
+          setHomepagePlan(examplePlan);
+        }
+        if (homepagePlan.length === 0 || lastLoadedPlan === "") {
+          setHomepagePlan(examplePlan);
+        }
+      } else {
         setUserEmail(session.user.email);
         setUserName(session.user.name);
-        setHomepagePlan(lastLoadedPlan);
+        if (lastLoadedPlan.length !== 0) {
+          setHomepagePlan(lastLoadedPlan);
+        } else {
+          setHomepagePlan(examplePlan);
+        }
         try {
           const heartRateResponse = await fetch(
             `/api/mongoDbFetchUserHeartRate?email=${session.user.email}`,
@@ -91,23 +97,46 @@ function Page() {
         } catch (error) {
           console.error("An error occurred:", error);
         }
-        setIsLoading(false);
       }
-    };
-    loadUserValues();
-  }, [setSavedHrMax, setSavedSwimTime, setUserEmail, setUserName]);
+      setIsLoading(false);
+    })();
+  }, [
+    setHomepagePlan,
+    lastLoadedPlan,
+    homepagePlan.length,
+    setUserEmail,
+    setUserName,
+    setSavedHrMax,
+    setSavedSwimTime,
+  ]);
+
+  const numberOfPlanWeeks = homepagePlan?.duration;
+  const { openOverlay, toggleOverlay } = useOpenOverlay();
+  const { openDay, toggleDay } = useOpenDay();
+
+  const { currentWeek, handleBackClick, handleNextClick } = useCurrentWeek(
+    homepagePlan,
+    numberOfPlanWeeks,
+    toggleDay
+  );
+  const currentWeekSessions = homepagePlan?.weeks?.[currentWeek]?.sessions;
+  const activitiesByDay = useActivitiesByDay(currentWeekSessions);
 
   return (
     <>
       <MobileHint />
       <div className="flex flex-col mx-auto max-w-xl relative h-auto  w-screen mb-20 ">
-        <PlanName homepagePlan={homepagePlan} />
-        <WeekScrollButtons
-          currentWeek={currentWeek}
-          numberOfPlanWeeks={numberOfPlanWeeks}
-          handleBackClick={handleBackClick}
-          handleNextClick={handleNextClick}
-        />
+        {isLoading ? null : (
+          <>
+            <PlanName homepagePlan={homepagePlan} />
+            <WeekScrollButtons
+              currentWeek={currentWeek}
+              numberOfPlanWeeks={numberOfPlanWeeks}
+              handleBackClick={handleBackClick}
+              handleNextClick={handleNextClick}
+            />
+          </>
+        )}
         {isLoading ? (
           <Loader isLoading={isLoading} />
         ) : (
@@ -151,7 +180,7 @@ function Page() {
             </div>
           ))}
       </div>
-      <NoDataPush data={data} />
+
       <Footer />
     </>
   );
