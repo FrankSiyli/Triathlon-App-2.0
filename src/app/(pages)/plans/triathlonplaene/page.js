@@ -118,7 +118,11 @@ const Page = () => {
                 <div className="mt-5 select-none ">
                   <hr />
                   <div className="m-3 mx-auto p-1 w-24 text-sm text-center">
-                    Wochen: {triathlonPlan.duration}
+                    <span> Wochen: {triathlonPlan.duration}</span>
+                    <div className="flex">
+                      <span> Preis: </span>
+                      <span className="ml-1"> {triathlonPlan.price}</span>
+                    </div>
                   </div>
                   <div className="font-light text-center">
                     {triathlonPlan.info}

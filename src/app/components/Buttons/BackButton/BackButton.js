@@ -7,7 +7,7 @@ function BackButton({ href }) {
       <div className="w-screen max-w-xl mx-auto">
         <Link
           href={href}
-          className="top-5 left-5 btn btn-sm  m-3 bg-third border border-transparent text-first shadow-xl"
+          className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ function BackButton({ href }) {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
             />
           </svg>
         </Link>
