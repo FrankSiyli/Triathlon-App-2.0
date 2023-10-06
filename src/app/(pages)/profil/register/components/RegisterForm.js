@@ -62,6 +62,9 @@ export default function RegisterForm() {
       setShowAlert(true);
       setError("Bitte fülle alle Felder aus.");
       setIsLoading(false);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
       return;
     }
 
@@ -74,8 +77,7 @@ export default function RegisterForm() {
       setIsLoading(false);
       setTimeout(() => {
         setShowAlert(false);
-      }, 2000);
-
+      }, 3000);
       return;
     }
 
@@ -96,6 +98,9 @@ export default function RegisterForm() {
         setIsLoading(false);
         setShowAlert(true);
         setError("Konto existiert bereits");
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 3000);
         return;
       }
 
@@ -120,8 +125,6 @@ export default function RegisterForm() {
         });
         setUserName(name);
         setUserEmail(email);
-      } else {
-        console.log("User registration failed");
       }
     } catch (error) {
       setIsLoading(false);
