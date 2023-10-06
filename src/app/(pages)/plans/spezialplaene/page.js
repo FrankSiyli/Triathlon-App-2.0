@@ -36,6 +36,7 @@ function Page() {
     const expandedPlan = specialPlans[expandedPlanIndex];
     const specialPlanId = specialPlans.id;
     setHomepagePlan(expandedPlan);
+    setLastLoadedPlan(expandedPlan);
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);

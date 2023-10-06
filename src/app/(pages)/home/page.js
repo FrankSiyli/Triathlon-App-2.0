@@ -44,21 +44,14 @@ function Page() {
 
     (async () => {
       const session = await fetchSessionData();
-      if (!session) {
-        if (!session && homepagePlan.length === 0 && lastLoadedPlan !== "") {
-          setHomepagePlan(examplePlan);
-        }
-        if (homepagePlan.length === 0 || lastLoadedPlan === "") {
-          setHomepagePlan(examplePlan);
-        }
-      } else {
+      setHomepagePlan(examplePlan);
+      if (lastLoadedPlan.length !== 0) {
+        setHomepagePlan(lastLoadedPlan);
+      }
+      if (session) {
+        console.log("session");
         setUserEmail(session.user.email);
         setUserName(session.user.name);
-        if (lastLoadedPlan.length !== 0) {
-          setHomepagePlan(lastLoadedPlan);
-        } else {
-          setHomepagePlan(examplePlan);
-        }
         try {
           const heartRateResponse = await fetch(
             `/api/mongoDbFetchUserHeartRate?email=${session.user.email}`,
@@ -103,7 +96,7 @@ function Page() {
   }, [
     setHomepagePlan,
     lastLoadedPlan,
-    homepagePlan.length,
+    homepagePlan,
     setUserEmail,
     setUserName,
     setSavedHrMax,

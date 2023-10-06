@@ -6,7 +6,6 @@ import Alert from "@/app/components/Alerts/Alert";
 import { useRecoilState } from "recoil";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
-import { examplePlan } from "../../../../../../database/mockDb";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 
 const DeleteButton = () => {
