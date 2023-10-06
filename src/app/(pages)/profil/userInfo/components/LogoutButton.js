@@ -4,16 +4,21 @@ import { signOut } from "next-auth/react";
 import { useRecoilState } from "recoil";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
+import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
 const LogoutButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [userName, setUserName] = useRecoilState(userNameState);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
+  const [lastLoadedPlan, setLastLoadedPlan] = useRecoilState(
+    loggedInUserLastLoadedPlanState
+  );
 
   const handleLogoutClick = () => {
     setIsLoading(true);
     setUserName("");
     setHomepagePlan("");
+    setLastLoadedPlan("");
     signOut({ callbackUrl: "/" });
     setIsLoading(false);
   };

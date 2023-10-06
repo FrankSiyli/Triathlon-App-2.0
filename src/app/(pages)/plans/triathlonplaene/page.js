@@ -36,6 +36,7 @@ const Page = () => {
     const expandedPlan = triathlonPlans[expandedPlanIndex];
     const triathlonPlanId = triathlonPlans.id;
     setHomepagePlan(expandedPlan);
+    setLastLoadedPlan(expandedPlan);
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
