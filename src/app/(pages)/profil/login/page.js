@@ -27,7 +27,6 @@ function Page() {
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);
-      return;
     }
     try {
       const res = await signIn("credentials", {
@@ -36,22 +35,18 @@ function Page() {
         callbackUrl: "/profil",
       });
 
-      if (!res?.ok) {
+      if (res.ok) {
+        setIsLoading(false);
+      } else {
         setShowAlert(true);
         setError("Die Eingaben sind nicht korrekt.");
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);
         setIsLoading(false);
-        return;
       }
     } catch (error) {
-      setShowAlert(true);
-      setError("Etwas ist schief gelaufen.");
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 3000);
-      setIsLoading(false);
+      console.error("login error");
     }
   };
 

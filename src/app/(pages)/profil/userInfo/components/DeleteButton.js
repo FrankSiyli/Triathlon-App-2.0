@@ -29,7 +29,6 @@ const DeleteButton = () => {
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);
-        return;
       }
 
       setUserName("");
@@ -60,12 +59,7 @@ const DeleteButton = () => {
         }, 3000);
       }
     } catch (error) {
-      setIsLoading(false);
-      setShowAlert(true);
-      setError("Etwas ist schief gelaufen.");
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 3000);
+      console.error("login error");
     }
     setIsLoading(false);
   };
