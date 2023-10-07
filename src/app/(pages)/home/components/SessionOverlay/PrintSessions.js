@@ -1,8 +1,8 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import logoBlack from "../../../../../../public/images/logoSmallBlack.png";
 import Image from "next/image";
-import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 import { useRecoilValue } from "recoil";
+import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 import getZones from "@/app/helperFunctions/getZones";
 import { formatTime } from "@/app/helperFunctions/formatTime";
@@ -21,6 +21,85 @@ const PrintSessions = forwardRef(
   ) => {
     const savedSwimTime = useRecoilValue(savedSwimTimeState);
     const savedHrMax = useRecoilValue(savedHrMaxState);
+
+    const [openWarmUpImage, setOpenWarmUpImage] = useState(null);
+    const [openMainImage, setOpenMainImage] = useState(null);
+    const [openCoolDownImage, setOpenCoolDownImage] = useState(null);
+
+    const renderSection = (
+      sectionData,
+      sectionType,
+      openImageState,
+      setOpenImageState
+    ) => {
+      if (sectionData[0].exercises[0].name === "") {
+        return null;
+      }
+
+      return (
+        <div>
+          <p className="underline">{sectionType}</p>
+          {sectionData.map((section, sectionIndex) => (
+            <div key={sectionIndex}>
+              <div className="border">
+                {section.multiplier > 1 ? (
+                  <p className="flex justify-start mx-3">
+                    {section.multiplier} x{" "}
+                  </p>
+                ) : null}
+
+                {section.exercises.map((exercise, exerciseIndex) => (
+                  <div
+                    key={exerciseIndex}
+                    className="flex flex-row justify-between mx-3"
+                  >
+                    <div className="flex flex-row justify-between gap-3">
+                      {exercise.distance > 0 ? (
+                        <p>{exercise.distance}m</p>
+                      ) : exercise.duration > 0 ? (
+                        <p>{formatTime(exercise.duration)}</p>
+                      ) : null}
+                      <p>{getZones(exercise, savedSwimTime, savedHrMax)}</p>
+                    </div>
+                    <div className="w-1/2 text-right">
+                      {exercise.name.trim() !== "" ? (
+                        <p>{exercise.name}</p>
+                      ) : null}
+                      {exercise.imageLink && (
+                        <button
+                          className={`text-right text-sm rounded-md p-1 cursor-default underline decoration-first decoration-2 underline-offset-4 cursor-pointer `}
+                          onClick={() => {
+                            setOpenImageState(
+                              exerciseIndex === openImageState
+                                ? null
+                                : exerciseIndex
+                            );
+                          }}
+                        >
+                          {exercise.name}
+                        </button>
+                      )}
+                      {exerciseIndex === openImageState && (
+                        <div className="flex flex-col items-center bg-second m-3 rounded-md">
+                          <Image
+                            width={200}
+                            height={200}
+                            src={`/images/yoga_images/${exercise.imageLink}.png`}
+                            alt="yoga pose"
+                            className="my-5"
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    };
+
     return (
       <>
         <div ref={ref}>
@@ -29,7 +108,7 @@ const PrintSessions = forwardRef(
               (sessionSections, sectionIndex) =>
                 openOverlay.includes(dayIndex * 1000 + activityIndex) && (
                   <div key={activityIndex}>
-                    <div className=" print-page  p-1 m-3 mx-auto min-h-screen">
+                    <div className="print-page p-1 m-3 mx-auto min-h-screen">
                       <div className="flex flex-row justify-between">
                         <Image
                           src={logoBlack}
@@ -38,7 +117,7 @@ const PrintSessions = forwardRef(
                           width={80}
                           height={80}
                         />
-                        <div className="text-right mr-3 ">
+                        <div className="text-right mr-3">
                           <p className="underline underline-offset-2">
                             {singleActivity[0]}
                           </p>
@@ -54,159 +133,26 @@ const PrintSessions = forwardRef(
                           ) : null}
                         </div>
                       </div>
-                      {/**----------------------------warmUpSection ------------------------------------*/}
 
-                      {sessionSections.warmUp[0].exercises[0].name ===
-                      "" ? null : (
-                        <p className="underline">Warm Up</p>
+                      {renderSection(
+                        sessionSections.warmUp,
+                        "Warm Up",
+                        openWarmUpImage,
+                        setOpenWarmUpImage
                       )}
 
-                      {sessionSections.warmUp.map(
-                        (warmUpSection, warmUpIndex) =>
-                          warmUpSection.exercises[0].name === "" ? null : (
-                            <div key={warmUpIndex}>
-                              <div className="border">
-                                {warmUpSection.multiplier > 1 ? (
-                                  <p className="flex justify-start mx-3">
-                                    {warmUpSection.multiplier} x{" "}
-                                  </p>
-                                ) : null}
-
-                                {warmUpSection.exercises.map(
-                                  (warmUpExercise, warmUpExerciseIndex) => (
-                                    <div
-                                      key={warmUpExerciseIndex}
-                                      className="flex flex-row justify-between mx-3"
-                                    >
-                                      <div className="flex flex-row justify-between gap-3">
-                                        {warmUpExercise.distance > 0 ? (
-                                          <p>{warmUpExercise.distance}m</p>
-                                        ) : warmUpExercise.duration > 0 ? (
-                                          <p>
-                                            {formatTime(
-                                              warmUpExercise.duration
-                                            )}
-                                          </p>
-                                        ) : null}
-                                        <p>
-                                          {getZones(
-                                            warmUpExercise,
-                                            savedSwimTime,
-                                            savedHrMax
-                                          )}
-                                        </p>
-                                      </div>
-                                      <div>
-                                        {warmUpExercise.name.trim() !== "" ? (
-                                          <p>{warmUpExercise.name}</p>
-                                        ) : null}
-                                      </div>
-                                    </div>
-                                  )
-                                )}
-                              </div>
-                            </div>
-                          )
+                      {renderSection(
+                        sessionSections.main,
+                        "Hauptteil",
+                        openMainImage,
+                        setOpenMainImage
                       )}
 
-                      {/**----------------------------mainSection ------------------------------------*/}
-                      <p className="underline">Hauptteil</p>
-                      {sessionSections.main.map((mainSection, mainIndex) => {
-                        return (
-                          <div key={mainIndex}>
-                            <div className="border">
-                              {mainSection.multiplier > 1 ? (
-                                <p className="flex justify-start mx-3">
-                                  {mainSection.multiplier} x{" "}
-                                </p>
-                              ) : null}
-
-                              {mainSection.exercises.map(
-                                (mainExercise, mainExerciseIndex) => (
-                                  <div
-                                    key={mainExerciseIndex}
-                                    className="flex flex-row justify-between mx-3"
-                                  >
-                                    <div className="flex flex-row justify-between gap-3">
-                                      {mainExercise.distance > 0 ? (
-                                        <p>{mainExercise.distance}m</p>
-                                      ) : mainExercise.duration > 0 ? (
-                                        <p>
-                                          {formatTime(mainExercise.duration)}
-                                        </p>
-                                      ) : null}
-                                      <p>
-                                        {getZones(
-                                          mainExercise,
-                                          savedSwimTime,
-                                          savedHrMax
-                                        )}
-                                      </p>
-                                    </div>
-                                    <div>
-                                      {mainExercise.name.trim() !== "" ? (
-                                        <p>{mainExercise.name}</p>
-                                      ) : null}
-                                    </div>
-                                  </div>
-                                )
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
-                      {/**----------------------------coolDownSection ------------------------------------*/}
-                      {sessionSections.coolDown[0].exercises[0].name ===
-                      "" ? null : (
-                        <p className="underline">Cool Down</p>
-                      )}
-
-                      {sessionSections.coolDown.map(
-                        (coolDownSection, coolDownIndex) =>
-                          coolDownSection.exercises[0].name === "" ? null : (
-                            <div key={coolDownIndex}>
-                              <div className="border">
-                                {coolDownSection.multiplier > 1 ? (
-                                  <p className="flex justify-start mx-3">
-                                    {coolDownSection.multiplier} x{" "}
-                                  </p>
-                                ) : null}
-
-                                {coolDownSection.exercises.map(
-                                  (coolDownExercise, coolDownExerciseIndex) => (
-                                    <div
-                                      key={coolDownExerciseIndex}
-                                      className="flex flex-row justify-between mx-3"
-                                    >
-                                      <div className="flex flex-row justify-between gap-3">
-                                        {coolDownExercise.distance > 0 ? (
-                                          <p>{coolDownExercise.distance}m</p>
-                                        ) : coolDownExercise.duration > 0 ? (
-                                          <p>
-                                            {formatTime(
-                                              coolDownExercise.duration
-                                            )}
-                                          </p>
-                                        ) : null}
-                                        <p>
-                                          {getZones(
-                                            coolDownExercise,
-                                            savedSwimTime,
-                                            savedHrMax
-                                          )}
-                                        </p>
-                                      </div>
-                                      <div>
-                                        {coolDownExercise.name.trim() !== "" ? (
-                                          <p>{coolDownExercise.name}</p>
-                                        ) : null}
-                                      </div>
-                                    </div>
-                                  )
-                                )}
-                              </div>
-                            </div>
-                          )
+                      {renderSection(
+                        sessionSections.coolDown,
+                        "Cool Down",
+                        openCoolDownImage,
+                        setOpenCoolDownImage
                       )}
                     </div>
                   </div>
