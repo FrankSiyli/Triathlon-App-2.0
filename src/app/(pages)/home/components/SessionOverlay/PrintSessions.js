@@ -116,8 +116,8 @@ const PrintSessions = forwardRef(
                           src={logoBlack}
                           alt="logo"
                           className="mt-1 ml-1 w-auto"
-                          width={80}
-                          height={80}
+                          width={60}
+                          height={60}
                         />
                         <div className="text-right mr-3">
                           <p className="underline underline-offset-2">
