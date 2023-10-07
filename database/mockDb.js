@@ -2009,47 +2009,50 @@ export const examplePlan = {
           day: "Sonntag",
           activity: "Sonstiges",
           description: "Self-Feedback",
-          sessionParts: {
-            warmUp: [
-              {
-                multiplier: 1,
-                exercises: [
-                  {
-                    name: "",
-                    distance: 0,
-                    duration: 0,
-                    zone: "",
-                  },
-                ],
-              },
-            ],
-            main: [
-              {
-                multiplier: 1,
-                exercises: [
-                  {
-                    name: "Wie war die sportliche Woche für dich? \n \n Stresslevel eins bis zehn durch den Trainingsplan. \n \n Stresslevel eins bis zehn durch deinen Job. \n \n Stresslevel eins bis zehn durch dein Privatleben. \n \n Stresslevel eins bis zehn gesamt. \n \n Durchschnittliche Schlafstunden? \n \n Über oder unterfordert? \n \n Schmerzen? \n \n Probleme bei der Durchführung einer Einheit? \n \n Ausgepowert und müde oder voller Energie? \n \n Langweilig oder interessant? \n \n Fragen zu Techniken? \n \n Hat deine Ernährung zum Trainingsvolumen und zur Intensität gepasst? \n \n Wenn dein Gesamtstresslevel bei sechs oder sieben liegt reflektiere bitte genau ob dir eine intensive Einheit jetzt gut tut oder ob es sich besser anfühlt sie durch eine weniger intensive Einheit zu ersetzen. \n \n Liegt dein Gesamtstresslevel bei acht oder höher solltest du schlafen, essen und die Füße hoch legen.",
-                    distance: 0,
-                    duration: 0,
-                    zone: "",
-                  },
-                ],
-              },
-            ],
-            coolDown: [
-              {
-                multiplier: 1,
-                exercises: [
-                  {
-                    name: "",
-                    distance: 0,
-                    duration: 0,
-                    zone: "",
-                  },
-                ],
-              },
-            ],
-          },
+
+          sessionParts: [
+            {
+              warmUp: [
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "",
+                      distance: 0,
+                      duration: 0,
+                      zone: "",
+                    },
+                  ],
+                },
+              ],
+              main: [
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "Wie war die sportliche Woche für dich? \n \n Stresslevel eins bis zehn durch den Trainingsplan. \n \n Stresslevel eins bis zehn durch deinen Job. \n \n Stresslevel eins bis zehn durch dein Privatleben. \n \n Stresslevel eins bis zehn gesamt. \n \n Durchschnittliche Schlafstunden? \n \n Über oder unterfordert? \n \n Schmerzen? \n \n Probleme bei der Durchführung einer Einheit? \n \n Ausgepowert und müde oder voller Energie? \n \n Langweilig oder interessant? \n \n Fragen zu Techniken? \n \n Hat deine Ernährung zum Trainingsvolumen und zur Intensität gepasst? \n \n Wenn dein Gesamtstresslevel bei sechs oder sieben liegt reflektiere bitte genau ob dir eine intensive Einheit jetzt gut tut oder ob es sich besser anfühlt sie durch eine weniger intensive Einheit zu ersetzen. \n \n Liegt dein Gesamtstresslevel bei acht oder höher solltest du schlafen, essen und die Füße hoch legen.",
+                      distance: 0,
+                      duration: 0,
+                      zone: "",
+                    },
+                  ],
+                },
+              ],
+              coolDown: [
+                {
+                  multiplier: 1,
+                  exercises: [
+                    {
+                      name: "",
+                      distance: 0,
+                      duration: 0,
+                      zone: "",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
         },
       ],
     },
