@@ -8,6 +8,7 @@ import calculateTotalDistance from "../../logicFunctions/totalDistanceFunction";
 import calculateTotalDuration from "../../logicFunctions/totalDurationFunction";
 import { formatTime } from "@/app/helperFunctions/formatTime";
 import NavBar from "@/app/components/NavBar/NavBar";
+import Link from "next/link";
 
 const SessionOverlay = ({
   sessionSections,
@@ -19,6 +20,7 @@ const SessionOverlay = ({
   initialOpen = false,
 }) => {
   const [overlayView, setOverlayView] = useState(true);
+
   const handleViewClick = () => {
     setOverlayView(!overlayView);
   };
@@ -127,12 +129,13 @@ const SessionOverlay = ({
           />
           <hr></hr>
           <div className="flex flex-col  items-center">
-            <button
+            <Link
+              href="#first-section"
               className="btn btn-sm w-32 btn-outline border border-transparent text-first bg-third m-5"
               onClick={handleViewClick}
             >
               Druckversion
-            </button>
+            </Link>
             <button
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
               className="btn btn-sm btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
@@ -158,6 +161,7 @@ const SessionOverlay = ({
         <>
           <div className="flex">
             <button
+              id="first-section"
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
               className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
             >
@@ -192,7 +196,7 @@ const SessionOverlay = ({
                 className="btn btn-sm w-32 btn-outline border border-transparent text-first bg-third"
                 onClick={handleViewClick}
               >
-                zurück
+                Farbversion
               </button>
               <button
                 onClick={handlePrint}
