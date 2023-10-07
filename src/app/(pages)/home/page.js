@@ -37,19 +37,19 @@ function Page() {
 
   useEffect(() => {
     setIsLoading(true);
-    const fetchSessionData = async () => {
-      const session = await getSession();
-      return session;
-    };
-
     (async () => {
-      const session = await fetchSessionData();
-      setHomepagePlan(examplePlan);
-      if (lastLoadedPlan.length !== 0) {
-        setHomepagePlan(lastLoadedPlan);
-      }
-      if (session) {
-        console.log("session");
+      const session = await getSession();
+      if (!session) {
+        setHomepagePlan(examplePlan);
+        if (lastLoadedPlan.length !== 0) {
+          setHomepagePlan(lastLoadedPlan);
+        }
+        setIsLoading(false);
+      } else {
+        setHomepagePlan(examplePlan);
+        if (lastLoadedPlan.length !== 0) {
+          setHomepagePlan(lastLoadedPlan);
+        }
         setUserEmail(session.user.email);
         setUserName(session.user.name);
         try {
@@ -119,59 +119,59 @@ function Page() {
     <>
       <MobileHint />
       <div className="flex flex-col mx-auto max-w-xl relative h-auto  w-screen mb-20 ">
-        {isLoading ? null : (
-          <>
-            <PlanName homepagePlan={homepagePlan} />
-            <WeekScrollButtons
-              currentWeek={currentWeek}
-              numberOfPlanWeeks={numberOfPlanWeeks}
-              handleBackClick={handleBackClick}
-              handleNextClick={handleNextClick}
-            />
-          </>
-        )}
-        {isLoading ? (
+        {/*   {isLoading ? (
           <Loader isLoading={isLoading} />
-        ) : (
-          activitiesByDay &&
-          activitiesByDay.map(([day, activity], dayIndex) => (
-            <div key={uuidv1()}>
-              <Day
-                day={day}
-                toggleDay={toggleDay}
-                dayIndex={dayIndex}
-                openDay={openDay}
-              />
+        ) : ( */}
+        <>
+          <PlanName homepagePlan={homepagePlan} />
+          <WeekScrollButtons
+            currentWeek={currentWeek}
+            numberOfPlanWeeks={numberOfPlanWeeks}
+            handleBackClick={handleBackClick}
+            handleNextClick={handleNextClick}
+          />
 
-              <Activity
-                openDay={openDay}
-                dayIndex={dayIndex}
-                activity={activity}
-                toggleOverlay={toggleOverlay}
-              />
-            </div>
-          ))
-        )}
-        {activitiesByDay &&
-          activitiesByDay.map(([day, activity], dayIndex) => (
-            <div key={dayIndex}>
-              {openDay === dayIndex &&
-                activity.map((singleActivity, activityIndex) => (
-                  <SessionOverlay
-                    key={activityIndex}
-                    singleActivity={singleActivity}
-                    dayIndex={dayIndex}
-                    activityIndex={activityIndex}
-                    openOverlay={openOverlay}
-                    toggleOverlay={toggleOverlay}
-                    homepagePlan={homepagePlan}
-                    initialOpen={openOverlay.includes(
-                      dayIndex * 1000 + activityIndex
-                    )}
-                  />
-                ))}
-            </div>
-          ))}
+          {activitiesByDay &&
+            activitiesByDay.map(([day, activity], dayIndex) => (
+              <div key={uuidv1()}>
+                <Day
+                  day={day}
+                  toggleDay={toggleDay}
+                  dayIndex={dayIndex}
+                  openDay={openDay}
+                />
+
+                <Activity
+                  openDay={openDay}
+                  dayIndex={dayIndex}
+                  activity={activity}
+                  toggleOverlay={toggleOverlay}
+                />
+              </div>
+            ))}
+
+          {activitiesByDay &&
+            activitiesByDay.map(([day, activity], dayIndex) => (
+              <div key={dayIndex}>
+                {openDay === dayIndex &&
+                  activity.map((singleActivity, activityIndex) => (
+                    <SessionOverlay
+                      key={activityIndex}
+                      singleActivity={singleActivity}
+                      dayIndex={dayIndex}
+                      activityIndex={activityIndex}
+                      openOverlay={openOverlay}
+                      toggleOverlay={toggleOverlay}
+                      homepagePlan={homepagePlan}
+                      initialOpen={openOverlay.includes(
+                        dayIndex * 1000 + activityIndex
+                      )}
+                    />
+                  ))}
+              </div>
+            ))}
+        </>
+        {/* )} */}
       </div>
 
       <Footer />
