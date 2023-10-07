@@ -32,7 +32,10 @@ const PrintSessions = forwardRef(
       openImageState,
       setOpenImageState
     ) => {
-      if (sectionData[0].exercises[0].name === "") {
+      if (
+        sectionType !== "Hauptteil" &&
+        sectionData[0].exercises[0].name === ""
+      ) {
         return null;
       }
 
@@ -62,12 +65,9 @@ const PrintSessions = forwardRef(
                       <p>{getZones(exercise, savedSwimTime, savedHrMax)}</p>
                     </div>
                     <div className="w-1/2 text-right">
-                      {exercise.name.trim() !== "" ? (
-                        <p>{exercise.name}</p>
-                      ) : null}
-                      {exercise.imageLink && (
+                      {exercise.imageLink ? (
                         <button
-                          className={`text-right text-sm rounded-md p-1 cursor-default underline decoration-first decoration-2 underline-offset-4 cursor-pointer `}
+                          className={`text-right text-sm rounded-md p-1 cursor-default underline cursor-pointer `}
                           onClick={() => {
                             setOpenImageState(
                               exerciseIndex === openImageState
@@ -78,6 +78,8 @@ const PrintSessions = forwardRef(
                         >
                           {exercise.name}
                         </button>
+                      ) : (
+                        <span>{exercise.name}</span>
                       )}
                       {exerciseIndex === openImageState && (
                         <div className="flex flex-col items-center bg-second m-3 rounded-md">

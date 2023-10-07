@@ -20,10 +20,12 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
     openImageState,
     setOpenImageState
   ) => {
-    if (sectionData[0].exercises[0].name === "") {
+    if (
+      sectionType !== "Hauptteil" &&
+      sectionData[0].exercises[0].name === ""
+    ) {
       return null;
     }
-
     return (
       <div>
         <p className="text-center text-first p-2 ">{sectionType}</p>
