@@ -38,45 +38,67 @@ const SessionOverlay = ({
     >
       {overlayView ? (
         <>
-          <button
-            onClick={() => toggleOverlay(dayIndex, activityIndex)}
-            className="absolute top-5 left-5 btn btn-sm  bg-third border border-transparent text-first shadow-xl"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
+          <div className="flex">
+            <button
+              onClick={() => toggleOverlay(dayIndex, activityIndex)}
+              className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-              />
-            </svg>
-          </button>{" "}
-          <div className="w-full h-auto text-right p-1">
-            <p>{singleActivity[0]}</p>
-            <p className="my-1">{singleActivity[1]}</p>
-            {totalDistance > 0 ? (
-              <div className="flex justify-end">
-                <div className="flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-4 h-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
-                    />
-                  </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 19.5L8.25 12l7.5-7.5"
+                />
+              </svg>
+            </button>{" "}
+            <div className="w-full h-auto text-right p-1">
+              <p>{singleActivity[0]}</p>
+              <p className="my-1">{singleActivity[1]}</p>
+              {totalDistance > 0 ? (
+                <div className="flex justify-end">
+                  <div className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+                      />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4 mr-1"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                      />
+                    </svg>
+                  </div>
+                  {totalDistance}m
+                </div>
+              ) : null}
+              {totalDistance > 0 && totalDuration > 0 ? <p>+</p> : null}
+              {totalDuration > 0 ? (
+                <div className="flex justify-end items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -88,33 +110,13 @@ const SessionOverlay = ({
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                      d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
+                  {formatTime(totalDuration)}
                 </div>
-                {totalDistance}m
-              </div>
-            ) : null}
-            {totalDistance > 0 && totalDuration > 0 ? <p>+</p> : null}
-            {totalDuration > 0 ? (
-              <div className="flex justify-end items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-4 h-4 mr-1"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                {formatTime(totalDuration)}
-              </div>
-            ) : null}
+              ) : null}
+            </div>
           </div>
           <hr></hr>
           <Sessions

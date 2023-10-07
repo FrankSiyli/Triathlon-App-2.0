@@ -1,12 +1,12 @@
 export const examplePlan = {
   _id: {
-    $oid: "64ee182e7935a2bce476e099",
+    $oid: "65032df9b40a7618bc329963",
   },
-  id: "64ee182e7935a2bce476e099",
+  id: "65032df9b40a7618bc329963",
   category: "homepage",
   name: "Beispielplan",
   info: "Dieser Plan hilft dir...",
-  price: "free",
+  price: "kostenlos",
   duration: 2,
   weeks: [
     {

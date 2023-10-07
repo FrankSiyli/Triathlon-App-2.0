@@ -1,37 +1,25 @@
-const calculateTotalDuration = (singleActivity) => {
+const calculateSectionDuration = (sections) => {
   let totalDuration = 0;
 
-  singleActivity[2].forEach((sessionSections) => {
-    sessionSections.main.forEach((mainSection) => {
-      mainSection.exercises.forEach((mainExercise) => {
-        if (mainExercise.duration > 0) {
-          totalDuration += mainExercise.duration * mainSection.multiplier;
-        }
-      });
+  sections?.forEach((section) => {
+    section.exercises.forEach((exercise) => {
+      if (exercise.duration > 0) {
+        totalDuration += exercise.duration * section.multiplier;
+      }
     });
   });
 
-  singleActivity[2].forEach((sessionSections) => {
-    sessionSections.warmUp.forEach((warmUpSection) => {
-      warmUpSection.exercises.forEach((warmUpExercise) => {
-        if (warmUpExercise.duration > 0) {
-          totalDuration += warmUpExercise.duration * warmUpSection.multiplier;
-        }
-      });
-    });
-  });
+  return totalDuration;
+};
 
-  singleActivity[2].forEach((sessionSections) => {
-    sessionSections.coolDown.forEach((coolDownSection) => {
-      coolDownSection.exercises.forEach((coolDownExercise) => {
-        if (coolDownExercise.duration > 0) {
-          totalDuration +=
-            coolDownExercise.duration * coolDownSection.multiplier;
-        }
-      });
-    });
-  });
+const calculateTotalDuration = (singleActivity) => {
+  const sessionSections = singleActivity[2];
 
+  const warmUpDuration = calculateSectionDuration(sessionSections.warmUp);
+  const mainDuration = calculateSectionDuration(sessionSections.main);
+  const coolDownDuration = calculateSectionDuration(sessionSections.coolDown);
+
+  const totalDuration = warmUpDuration + mainDuration + coolDownDuration;
   return totalDuration;
 };
 
