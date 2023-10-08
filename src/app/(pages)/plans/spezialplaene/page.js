@@ -2,18 +2,21 @@
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
 import React, { useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { specialPlansFromMongoDbState } from "@/app/recoil/atoms/plans/specialPlansFromMongoDbState";
+import { useRecoilState } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import Alert from "@/app/components/Alerts/Alert";
-import useFetchSpecialPlans from "@/app/fetchFunctions/useFetchSpecialPlans";
 import Loader from "../../../components/Loader/Loader";
+import useSWR from "swr";
 import { getSession } from "next-auth/react";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
 function Page() {
-  const { isLoading, error } = useFetchSpecialPlans();
-  const data = useRecoilValue(specialPlansFromMongoDbState);
+  const { data, error, isLoading } = useSWR(
+    "/api/mongoDbFetchSpecialPlans",
+    fetcher
+  );
   const specialPlans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);

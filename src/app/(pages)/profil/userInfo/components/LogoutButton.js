@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
+import { examplePlan } from "../../../../../../database/mockDb";
 
 const LogoutButton = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +19,7 @@ const LogoutButton = () => {
     setIsLoading(true);
     setUserName("");
     setHomepagePlan("");
-    setLastLoadedPlan("");
+    setLastLoadedPlan(examplePlan);
     signOut({ callbackUrl: "/" });
     setIsLoading(false);
   };
