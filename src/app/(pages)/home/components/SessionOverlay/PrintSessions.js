@@ -115,7 +115,7 @@ const PrintSessions = forwardRef(
                         <Image
                           src={logoBlack}
                           alt="logo"
-                          className="mt-1 ml-1 w-auto"
+                          className="mt-1 ml-1 object-contain"
                           width={60}
                           height={60}
                         />

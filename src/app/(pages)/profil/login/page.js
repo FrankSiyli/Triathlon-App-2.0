@@ -27,6 +27,7 @@ function Page() {
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);
+      return;
     }
     try {
       const res = await signIn("credentials", {
@@ -37,16 +38,24 @@ function Page() {
 
       if (res.ok) {
         setIsLoading(false);
+        return;
       } else {
+        setIsLoading(false);
         setShowAlert(true);
         setError("Die Eingaben sind nicht korrekt.");
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);
-        setIsLoading(false);
+        return;
       }
     } catch (error) {
-      console.error("login error");
+      setIsLoading(false);
+      setShowAlert(true);
+      setError("Die Eingaben sind nicht korrekt.");
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
+      return;
     }
   };
 
@@ -56,7 +65,7 @@ function Page() {
       <p className=" mx-auto w-40 text-center -mt-10">Login</p>
 
       {isLoading ? (
-        <Loader error={error} isLoading={isLoading} />
+        <Loader isLoading={isLoading} />
       ) : (
         <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
           <form
