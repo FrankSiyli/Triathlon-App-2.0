@@ -163,7 +163,7 @@ const SessionOverlay = ({
             <button
               id="first-section"
               onClick={() => toggleOverlay(dayIndex, activityIndex)}
-              className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
+              className="focus:outline-none top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
