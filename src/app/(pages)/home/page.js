@@ -18,11 +18,11 @@ import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import { getSession } from "next-auth/react";
 import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
-import Loader from "@/app/components/Loader/Loader";
 import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import { examplePlan } from "../../../../database/mockDb";
+import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState";
 
 function Page() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
@@ -31,9 +31,10 @@ function Page() {
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
   const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
-  const [lastLoadedPlan, setLastLoadedPlan] = useRecoilState(
-    loggedInUserLastLoadedPlanState
-  );
+  const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
+    useRecoilState(loggedInUserLastLoadedPlanState);
+  const [lastLoadedPlan, setLastLoadedPlan] =
+    useRecoilState(lastLoadedPlanState);
 
   useEffect(() => {
     setIsLoading(true);
@@ -47,8 +48,8 @@ function Page() {
         setIsLoading(false);
       } else {
         setHomepagePlan(examplePlan);
-        if (lastLoadedPlan.length !== 0) {
-          setHomepagePlan(lastLoadedPlan);
+        if (loggedInUserLastLoadedPlan.length !== 0) {
+          setHomepagePlan(loggedInUserLastLoadedPlan);
         }
         setUserEmail(session.user.email);
         setUserName(session.user.name);
@@ -101,6 +102,7 @@ function Page() {
     setUserName,
     setSavedHrMax,
     setSavedSwimTime,
+    loggedInUserLastLoadedPlan,
   ]);
 
   const numberOfPlanWeeks = homepagePlan?.duration;

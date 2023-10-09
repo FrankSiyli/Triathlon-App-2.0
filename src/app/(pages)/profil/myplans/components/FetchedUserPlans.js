@@ -12,9 +12,8 @@ const FetchedUserPlans = ({
   setUserPlans,
   setIsLoading,
 }) => {
-  const [lastLoadedPlan, setLastLoadedPlan] = useRecoilState(
-    loggedInUserLastLoadedPlanState
-  );
+  const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
+    useRecoilState(loggedInUserLastLoadedPlanState);
   const handleInfoClick = (index) => {
     if (index === expandedPlanIndex) {
       setExpandedPlanIndex(null);
@@ -26,7 +25,7 @@ const FetchedUserPlans = ({
     const expandedPlan = userPlans[expandedPlanIndex];
     setHomepagePlan(expandedPlan);
     setShowLoadOnHomepageToast(true);
-    setLastLoadedPlan(expandedPlan);
+    setLoggedInUserLastLoadedPlan(expandedPlan);
     setTimeout(() => {
       setShowLoadOnHomepageToast(false);
     }, 2000);
