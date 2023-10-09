@@ -1,9 +1,9 @@
 "use client";
 import "../../../../globals.css";
 import React, { useState, useRef } from "react";
-import PrintSessions from "./PrintSessions";
+import PrintSessions from "./components/PrintSessions";
 import { useReactToPrint } from "react-to-print";
-import Sessions from "./Sessions";
+import Sessions from "./components/Sessions";
 import calculateTotalDistance from "../../logicFunctions/totalDistanceFunction";
 import calculateTotalDuration from "../../logicFunctions/totalDurationFunction";
 import { formatTime } from "@/app/helperFunctions/formatTime";

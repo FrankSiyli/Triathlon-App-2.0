@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from "react";
-import logoBlack from "../../../../../../public/images/logoSmallBlack.png";
+import logoBlack from "../../../../../../../public/images/logoSmallBlack.png";
 import Image from "next/image";
 import { useRecoilValue } from "recoil";
 import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
@@ -64,10 +64,17 @@ const PrintSessions = forwardRef(
                       ) : null}
                       <p>{getZones(exercise, savedSwimTime, savedHrMax)}</p>
                     </div>
-                    <div className="w-1/2 text-right">
+                    <div
+                      className={`${
+                        exercise.duration === 0 && exercise.distance === 0
+                          ? "w-full "
+                          : "w-1/2 text-right"
+                      }`}
+                    >
+                      {" "}
                       {exercise.imageLink ? (
                         <button
-                          className={`text-right text-sm rounded-md p-1 underline cursor-pointer `}
+                          className={` text-sm rounded-md p-1 underline cursor-pointer `}
                           onClick={() => {
                             setOpenImageState(
                               exerciseIndex === openImageState
@@ -79,7 +86,16 @@ const PrintSessions = forwardRef(
                           {exercise.name}
                         </button>
                       ) : (
-                        <span>{exercise.name}</span>
+                        <p
+                          className={`${
+                            exercise.duration === 0 && exercise.distance === 0
+                              ? ""
+                              : "text-right"
+                          }`}
+                        >
+                          {" "}
+                          {exercise.name}
+                        </p>
                       )}
                       {exerciseIndex === openImageState && (
                         <div className="flex flex-col items-center bg-second m-3 rounded-md">

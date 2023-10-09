@@ -54,10 +54,16 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                     ) : null}
                     <p>{getZones(exercise, savedSwimTime, savedHrMax)}</p>
                   </div>
-                  <div className="w-1/2 text-right">
+                  <div
+                    className={`${
+                      exercise.duration === 0 && exercise.distance === 0
+                        ? "w-full "
+                        : "w-1/2 text-right"
+                    }`}
+                  >
                     {exercise.name.trim() !== "" && (
                       <button
-                        className={`text-right text-sm rounded-md p-1 cursor-default ${
+                        className={` text-sm rounded-md p-1 cursor-default ${
                           exercise.imageLink
                             ? "underline decoration-first decoration-2 underline-offset-4 cursor-pointer "
                             : ""
@@ -72,7 +78,16 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                           }
                         }}
                       >
-                        {exercise.name}
+                        <p
+                          className={`${
+                            exercise.duration === 0 && exercise.distance === 0
+                              ? ""
+                              : "text-right"
+                          }`}
+                        >
+                          {" "}
+                          {exercise.name}
+                        </p>
                       </button>
                     )}
                     {exerciseIndex === openImageState && (
