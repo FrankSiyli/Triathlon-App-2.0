@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Siyli endurance coaching",
-  description: "Triathlon App",
+  description: "Trainingsplan App",
 };
 
 export default function RootLayout({ children }) {
