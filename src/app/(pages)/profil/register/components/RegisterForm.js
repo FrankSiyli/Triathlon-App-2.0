@@ -7,6 +7,8 @@ import { useRecoilState } from "recoil";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 import Loader from "@/app/components/Loader/Loader";
+import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState";
+import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
@@ -17,6 +19,8 @@ export default function RegisterForm() {
   const [userName, setUserName] = useRecoilState(userNameState);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [isLoading, setIsLoading] = useState(false);
+  const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
+    useRecoilState(loggedInUserLastLoadedPlanState);
   const [passwordHints, setPasswordHints] = useState({
     length: false,
     specialChar: false,
@@ -125,6 +129,7 @@ export default function RegisterForm() {
         });
         setUserName(name);
         setUserEmail(email);
+        setLoggedInUserLastLoadedPlan("");
       }
     } catch (error) {
       setIsLoading(false);
