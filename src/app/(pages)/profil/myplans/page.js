@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import EmptyUserPlansArray from "./components/EmptyUserPlansArray";
 import FetchedUserPlans from "./components/FetchedUserPlans";
+import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
 function Page() {
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
@@ -18,6 +19,8 @@ function Page() {
   const [isLoading, setIsLoading] = useState(false);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [userPlans, setUserPlans] = useState([]);
+  const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
+    useRecoilState(loggedInUserLastLoadedPlanState);
 
   useEffect(() => {
     const fetchUserPlans = async () => {

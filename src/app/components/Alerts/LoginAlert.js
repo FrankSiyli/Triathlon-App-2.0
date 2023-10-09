@@ -16,7 +16,10 @@ function LoginAlert() {
     <>
       {userName === "" && (
         <>
-          <button className="absolute top-2 left-2 " onClick={handleAlertClick}>
+          <button
+            className="absolute top-2 left-2 active: outline-none"
+            onClick={handleAlertClick}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
