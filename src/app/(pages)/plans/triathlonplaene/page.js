@@ -134,7 +134,7 @@ const Page = () => {
                   </div>
                   <div
                     onClick={handleLoadPlanClick}
-                    className="btn btn-sm flex mx-auto w-20 m-5 border border-transparent bg-third  text-first shadow-xl "
+                    className="btn btn-sm flex mx-auto w-20 m-5 mb-20 border border-transparent bg-third  text-first shadow-xl "
                   >
                     Laden
                   </div>
