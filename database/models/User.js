@@ -90,10 +90,6 @@ const UserSchema = new Schema(
       type: Number,
       default: 1200,
     },
-    active: {
-      type: Boolean,
-      default: false,
-    },
   },
   { timestamps: true }
 );

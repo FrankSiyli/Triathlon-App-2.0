@@ -13,9 +13,6 @@ export default async function handler(req, res) {
         name,
         email,
         password: hashedPassword,
-        /*  trainingPlans,
-        heartRate,
-        swimTime, */
       });
 
       return res.status(201).json({ message: "User registered" });
