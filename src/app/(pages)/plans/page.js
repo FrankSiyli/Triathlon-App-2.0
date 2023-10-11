@@ -44,6 +44,11 @@ function Page() {
   );
 }
 
-const kindOfPlansArray = ["Triathlonpläne", "Laufpläne", "Spezialpläne"];
+const kindOfPlansArray = [
+  "Triathlonpläne",
+  "Laufpläne",
+  "Schwimmpläne",
+  "Spezialpläne",
+];
 
 export default Page;

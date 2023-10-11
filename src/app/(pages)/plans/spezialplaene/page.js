@@ -75,84 +75,92 @@ function Page() {
       <BackButton href="/plans" />
       <p className=" mx-auto w-40 text-center -mt-10">Spezialpläne</p>
       <Loader error={error} isLoading={isLoading} />
-      <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
-        {specialPlans?.map((specialPlan, specialPlanIndex) => {
-          return (
-            <div
-              key={specialPlanIndex}
-              className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
-            >
+      {!isLoading && specialPlans.length === 0 && (
+        <div className="border border-first/50 rounded-md p-2 text-center mt-20 mx-5">
+          Es wurde noch kein Plan erstellt
+        </div>
+      )}
+
+      {!isLoading && specialPlans.length !== 0 && (
+        <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
+          {specialPlans?.map((specialPlan, specialPlanIndex) => {
+            return (
               <div
-                onClick={() => handleInfoClick(specialPlanIndex)}
-                className=" flex flex-row justify-between cursor-pointer"
+                key={specialPlanIndex}
+                className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
               >
-                <div className="ml-5">{specialPlan.name}</div>
-                {expandedPlanIndex === specialPlanIndex ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6 mr-2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4.5 15.75l7.5-7.5 7.5 7.5"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6 mr-2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                    />
-                  </svg>
-                )}
-              </div>
-              {expandedPlanIndex === specialPlanIndex && (
-                <div className="mt-5 select-none ">
-                  <hr />
-                  <div className="m-3 mx-auto p-1 w-24 text-sm text-center">
-                    <span> Wochen: {specialPlan.duration}</span>
-                    <div className="flex">
-                      <span> Preis: </span>
-                      <span className="ml-1"> {specialPlan.price}</span>
+                <div
+                  onClick={() => handleInfoClick(specialPlanIndex)}
+                  className=" flex flex-row justify-between cursor-pointer"
+                >
+                  <div className="ml-5">{specialPlan.name}</div>
+                  {expandedPlanIndex === specialPlanIndex ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 mr-2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.5 15.75l7.5-7.5 7.5 7.5"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 mr-2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  )}
+                </div>
+                {expandedPlanIndex === specialPlanIndex && (
+                  <div className="mt-5 select-none ">
+                    <hr />
+                    <div className="m-3 mx-auto p-1 w-24 text-sm text-center">
+                      <span> Wochen: {specialPlan.duration}</span>
+                      <div className="flex">
+                        <span> Preis: </span>
+                        <span className="ml-1"> {specialPlan.price}</span>
+                      </div>
+                    </div>
+                    <div className="font-light text-center">
+                      {specialPlan.info}
+                    </div>
+                    <div
+                      onClick={handleLoadPlanClick}
+                      className="btn btn-sm flex mx-auto w-20 m-5 mb-20 border border-transparent bg-third  text-first shadow-xl "
+                    >
+                      Laden
                     </div>
                   </div>
-                  <div className="font-light text-center">
-                    {specialPlan.info}
-                  </div>
-                  <div
-                    onClick={handleLoadPlanClick}
-                    className="btn btn-sm flex mx-auto w-20 m-5 mb-20 border border-transparent bg-third  text-first shadow-xl "
-                  >
-                    Laden
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-        {showToast && (
-          <Alert
-            alertText={
-              session
-                ? "Im Kalender und unter meine Pläne geladen"
-                : "Im Kalender geladen"
-            }
-          />
-        )}{" "}
-      </div>
+                )}
+              </div>
+            );
+          })}
+          {showToast && (
+            <Alert
+              alertText={
+                session
+                  ? "Im Kalender und unter meine Pläne geladen"
+                  : "Im Kalender geladen"
+              }
+            />
+          )}{" "}
+        </div>
+      )}
       <NavBar />
     </>
   );
