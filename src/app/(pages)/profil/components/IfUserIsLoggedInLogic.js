@@ -7,6 +7,8 @@ import PersonalZonesButton from "./PersonalZonesButton";
 import InformationsButton from "./InformationsButton";
 import { useRecoilState } from "recoil";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
+import WishYouWhatButton from "./WishYouWhatButton";
+import TrainingpeaksButton from "./TrainingpeaksButton";
 
 function IfUserIsLoggedInLogic({ session }) {
   const [userName, setUserName] = useRecoilState(userNameState);
@@ -25,6 +27,8 @@ function IfUserIsLoggedInLogic({ session }) {
         <InformationsButton />
         <MyPlansButton />
         <AccountButton />
+        <WishYouWhatButton />
+        <TrainingpeaksButton />
       </div>
     </>
   );
