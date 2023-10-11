@@ -8,7 +8,6 @@ import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 import { getSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import EmptyUserPlansArray from "./components/EmptyUserPlansArray";
 import FetchedUserPlans from "./components/FetchedUserPlans";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
@@ -62,7 +61,9 @@ function Page() {
       ) : (
         <>
           {!isLoading && userPlans.length === 0 && (
-            <EmptyUserPlansArray userPlans={userPlans} />
+            <div className="border border-first/50 rounded-md p-2 text-center mt-20 mx-5">
+              Es wurde noch kein Plan geladen
+            </div>
           )}
           {!isLoading && userPlans.length !== 0 && (
             <FetchedUserPlans
