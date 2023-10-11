@@ -131,10 +131,6 @@ function Page() {
                     <hr />
                     <div className="m-3 mx-auto p-1 w-24 text-sm text-center">
                       <span> Wochen: {specialPlan.duration}</span>
-                      <div className="flex">
-                        <span> Preis: </span>
-                        <span className="ml-1"> {specialPlan.price}</span>
-                      </div>
                     </div>
                     <div className="font-light text-center">
                       {specialPlan.info}

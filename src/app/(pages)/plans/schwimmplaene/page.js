@@ -122,10 +122,6 @@ const Page = () => {
                   <hr />
                   <div className="m-3 mx-auto p-1 w-24 text-sm text-center">
                     <span> Wochen: {swimPlan.duration}</span>
-                    <div className="flex">
-                      <span> Preis: </span>
-                      <span className="ml-1"> {swimPlan.price}</span>
-                    </div>
                   </div>
                   <div className="font-light text-center">{swimPlan.info}</div>
                   <div
