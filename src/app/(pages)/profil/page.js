@@ -56,6 +56,18 @@ export default async function Page() {
         >
           Trainingpeaks
         </Link>
+        <p>
+          Du wünscht dir ein neues Feature , oder einen neuen Trainingsplan in
+          der App?
+        </p>
+        <p>Dann entscheide mit was als nächstes kommt.</p>
+        <Link
+          target="_blank"
+          href=""
+          className="btn btn-sm flex w-40 mx-auto m-5  border border-transparent bg-third  text-first shadow-xl "
+        >
+          Coming soon
+        </Link>
       </div>
 
       <Impressum />
