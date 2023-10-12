@@ -13,59 +13,56 @@ const UserValues = () => {
   const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
   const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
 
-  const loadUserValues = async () => {
-    const session = await getSession();
-    if (session) {
-      setIsLoading(true);
-      const fetchedUserEmail = session?.user.email;
-      setUserEmail(fetchedUserEmail);
-      try {
-        const heartRateResponse = await fetch(
-          `/api/mongoDbFetchUserHeartRate?email=${fetchedUserEmail}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        if (heartRateResponse.ok) {
-          const fetchedHrMax = await heartRateResponse.json();
-          setSavedHrMax(fetchedHrMax);
-        } else {
-          console.error("Failed to fetch user hrmax");
-        }
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
-      try {
-        const swimTimeResponse = await fetch(
-          `/api/mongoDbFetchUserSwimTime?email=${fetchedUserEmail}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        if (swimTimeResponse.ok) {
-          const fetchedSwimTime = await swimTimeResponse.json();
-          setSavedSwimTime(fetchedSwimTime);
-        } else {
-          console.error("Failed to fetch user hrmax");
-        }
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
-      setIsLoading(false);
-    } else {
-      null;
-    }
-  };
-
   useEffect(() => {
-    loadUserValues();
-  }, []);
+    const fetchData = async () => {
+      const session = await getSession();
+      if (session) {
+        setIsLoading(true);
+        const fetchedUserEmail = session?.user.email;
+        setUserEmail(fetchedUserEmail);
+        try {
+          const heartRateResponse = await fetch(
+            `/api/mongoDbFetchUserHeartRate?email=${fetchedUserEmail}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          if (heartRateResponse.ok) {
+            const fetchedHrMax = await heartRateResponse.json();
+            setSavedHrMax(fetchedHrMax);
+          } else {
+            console.error("Failed to fetch user hrmax");
+          }
+        } catch (error) {
+          console.error("An error occurred:", error);
+        }
+        try {
+          const swimTimeResponse = await fetch(
+            `/api/mongoDbFetchUserSwimTime?email=${fetchedUserEmail}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          if (swimTimeResponse.ok) {
+            const fetchedSwimTime = await swimTimeResponse.json();
+            setSavedSwimTime(fetchedSwimTime);
+          } else {
+            console.error("Failed to fetch user swim time");
+          }
+        } catch (error) {
+          console.error("An error occurred:", error);
+        }
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, [setSavedSwimTime, setSavedHrMax, setUserEmail]);
 
   return (
     <>

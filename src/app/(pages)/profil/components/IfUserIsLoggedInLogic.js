@@ -5,18 +5,10 @@ import MyPlansButton from "./MyPlansButton";
 import AccountButton from "./AccountButton";
 import PersonalZonesButton from "./PersonalZonesButton";
 import InformationsButton from "./InformationsButton";
-import { useRecoilState } from "recoil";
-import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import WishYouWhatButton from "./WishYouWhatButton";
 import TrainingpeaksButton from "./TrainingpeaksButton";
 
 function IfUserIsLoggedInLogic({ session }) {
-  const [userName, setUserName] = useRecoilState(userNameState);
-
-  useEffect(() => {
-    setUserName(session.user.name);
-  }, [setUserName, session.user.name]);
-
   return (
     <>
       <div className=" mx-auto w-40 text-center mt-5">
