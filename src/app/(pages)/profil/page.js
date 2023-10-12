@@ -1,5 +1,6 @@
+"use client";
 import Footer from "@/app/components/NavBar/NavBar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../globals.css";
 import Impressum from "@/app/components/Impressum/Impressum";
 import Image from "next/image";
@@ -11,13 +12,21 @@ import InformationsButton from "./components/InformationsButton";
 import IfUserIsLoggedInLogic from "./components/IfUserIsLoggedInLogic";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import Link from "next/link";
 import WishYouWhatButton from "./components/WishYouWhatButton";
 import TrainingpeaksButton from "./components/TrainingpeaksButton";
+import { useSession } from "next-auth/react";
 
-export default async function Page() {
-  const session = await getServerSession(authOptions);
+export default function Page() {
+  /* const [session, setSession] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      const session = await useSession(autOptions);
+      setSession(session);
+    };
+    fetchData();
+  }, []); */
 
+  const { data: session } = useSession();
   return (
     <>
       {!session ? (

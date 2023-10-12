@@ -1,0 +1,8 @@
+{
+  "appId": "com.Siyli.app",
+  "appName": "Siyli-endurance",
+  "webDir": "out",
+  "server": {
+    "androidScheme": "https"
+  }
+}
