@@ -4,14 +4,12 @@ import { getSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
-import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
-import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 
 const UserValues = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
-  const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
-  const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
+  const [savedSwimTime, setSavedSwimTime] = useState(0);
+  const [savedHrMax, setSavedHrMax] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
