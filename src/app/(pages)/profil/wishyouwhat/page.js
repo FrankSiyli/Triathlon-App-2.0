@@ -38,8 +38,7 @@ const Page = () => {
       return;
     }
     if (!userPost) {
-      handleAlert("Bitte fülle alle Felder aus.");
-      return;
+      return handleAlert("Bitte fülle alle Felder aus.");
     }
     setIsLoading(true);
     try {

@@ -20,7 +20,6 @@ function HeartrateCalculator() {
 
   const handleHeartrateInputClick = async () => {
     setIsLoading(true);
-    const session = await getSession();
     if (
       heartrateCalculatorInput === "" ||
       heartrateCalculatorInput < 100 ||
@@ -36,6 +35,7 @@ function HeartrateCalculator() {
       setSavedHrMax(heartrateCalculatorInput);
       setHeartrateCalculatorInput("");
     }
+    const session = await getSession();
 
     if (session) {
       setSession(session);
