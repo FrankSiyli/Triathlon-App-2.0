@@ -23,9 +23,6 @@ const UserValues = () => {
             `/api/mongoDbFetchUserHeartRate?email=${fetchedUserEmail}`,
             {
               method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-              },
             }
           );
           if (heartRateResponse.ok) {
