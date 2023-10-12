@@ -7,7 +7,6 @@ import { useRecoilState } from "recoil";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 import Loader from "@/app/components/Loader/Loader";
-import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
 export default function RegisterForm() {
