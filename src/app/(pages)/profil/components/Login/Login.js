@@ -1,14 +1,11 @@
 "use client";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
-import NavBar from "@/app/components/NavBar/NavBar";
-import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Alert from "@/app/components/Alerts/Alert";
 import Loader from "@/app/components/Loader/Loader";
 
-function Login() {
+function Login({ setShowProfil, setShowLogin, setShowRegisterForm }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showAlert, setShowAlert] = useState(false);
@@ -33,7 +30,6 @@ function Login() {
       const res = await signIn("credentials", {
         email,
         password,
-        callbackUrl: "/profil",
       });
 
       if (res.ok) {
@@ -59,9 +55,36 @@ function Login() {
     }
   };
 
+  const handleBackClick = () => {
+    setShowProfil(true), setShowLogin(false);
+  };
+  const handleRegisterClick = () => {
+    setShowRegisterForm(true), setShowLogin(false);
+  };
+
   return (
     <>
-      <BackButton href="/profil" />
+      <div className="w-screen max-w-xl mx-auto">
+        <button
+          className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
+          onClick={handleBackClick}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
       <p className=" mx-auto w-40 text-center -mt-10">Login</p>
 
       {isLoading ? (
@@ -87,17 +110,16 @@ function Login() {
             <button className="btn btn-sm bg-third text-first shadow-xl m-2 border-transparent">
               Anmelden
             </button>
-            <Link
-              href={"/profil/register"}
+            <button
+              onClick={handleRegisterClick}
               className="underline underline-offset-2"
             >
               Konto erstellen
-            </Link>
+            </button>
           </form>
           {error && showAlert && <Alert alertText={error} />}
         </div>
       )}
-      <NavBar />
     </>
   );
 }

@@ -1,5 +1,4 @@
 "use client";
-import Footer from "@/app/components/NavBar/NavBar";
 import React from "react";
 import "../../../globals.css";
 import Impressum from "@/app/components/Impressum/Impressum";
@@ -45,7 +44,6 @@ export default function Profil() {
       />
 
       <Impressum />
-      <Footer />
     </>
   );
 }

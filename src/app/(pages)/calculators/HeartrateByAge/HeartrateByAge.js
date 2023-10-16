@@ -1,14 +1,36 @@
 import React from "react";
 import "../../../globals.css";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import MenCalculatorByAge from "./components/MenCalculatorByAge";
 import WomenCalculatorByAge from "./components/WomenCalculatorByAge";
-import NavBar from "@/app/components/NavBar/NavBar";
 
-function Page() {
+function HeartrateByAge({ setShowProfil }) {
+  const handleBackClick = () => {
+    setShowProfil(true);
+  };
+
   return (
     <>
-      <BackButton href="/profil/infos" />
+      <div className="w-screen max-w-xl mx-auto">
+        <button
+          className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
+          onClick={handleBackClick}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
       <div className="min-h-screen mb-60">
         <div className="w-11/12 border border-first/50 linear-background rounded-md p-4 mb-5 mx-auto max-w-xl  text-center">
           <p>
@@ -41,9 +63,8 @@ function Page() {
           </div>
         </div>
       </div>
-      <NavBar />
     </>
   );
 }
 
-export default Page;
+export default HeartrateByAge;

@@ -22,8 +22,8 @@ import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import { examplePlan } from "../../../../database/mockDb";
 import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState";
-import Profil from "../profil/components/Profil";
 import PlansView from "../plans/PlansView";
+import ProfilView from "../profil/ProfilView";
 
 function Page() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
@@ -176,7 +176,7 @@ function Page() {
           </>
         </div>
         <div className="flex flex-col overflow-y-auto max-h-screen ">
-          <Profil />
+          <ProfilView />
         </div>
       </div>
 

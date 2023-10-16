@@ -8,257 +8,166 @@ import WishYouWhat from "./components/WishYouWhat/WishYouWhat";
 import Trainingpeaks from "./components/Trainingpeaks/Trainingpeaks";
 import MyPlans from "./components/MyPlans/MyPlans";
 import UserInfo from "./components/UserInfo/UserInfo";
+import Impressum from "@/app/components/Impressum/Impressum";
+import Image from "next/image";
+import logo from "../../../../public/images/logoSmall.png";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
+import HeartrateByAge from "../calculators/HeartrateByAge/HeartrateByAge";
+import HeartrateMax from "../calculators/HeartrateMax/HeartrateMax";
+import PowerWatt from "../calculators/PowerWatt/PowerWatt";
 
 function ProfilView() {
-  const [showProfil, setShowProfil] = useState(true);
+  const [activeComponent, setActiveComponent] = useState("profil");
   const [showLogin, setShowLogin] = useState(false);
-  const [showZones, setShowZones] = useState(false);
-  const [showInfos, setShowInfos] = useState(false);
-  const [showWishYouWhat, setShowWishYouWhat] = useState(false);
-  const [showTrainingpeaks, setShowTrainingpeaks] = useState(false);
-  const [showMyPlans, setShowMyPlans] = useState(false);
-  const [showUserInfo, setShowUserInfo] = useState(false);
-
   const { data: session } = useSession();
 
-  const handleLoginClick = () => {
-    setShowLogin(true);
-    setShowZones(false);
-    setShowInfos(false);
-    setShowWishYouWhat(false);
-    setShowTrainingpeaks(false);
-    setShowMyPlans(false);
-    setShowUserInfo(false);
-    setShowProfil(false);
-  };
-
-  const handleZonesClick = () => {
-    setShowZones(true);
-    setShowInfos(false);
-    setShowWishYouWhat(false);
-    setShowTrainingpeaks(false);
-    setShowMyPlans(false);
-    setShowUserInfo(false);
-    setShowProfil(false);
-  };
-
-  const handleInfosClick = () => {
-    setShowZones(false);
-    setShowInfos(true);
-    setShowWishYouWhat(false);
-    setShowTrainingpeaks(false);
-    setShowMyPlans(false);
-    setShowUserInfo(false);
-    setShowProfil(false);
-  };
-
-  const handleWishYouWhatClick = () => {
-    setShowZones(false);
-    setShowInfos(false);
-    setShowWishYouWhat(true);
-    setShowTrainingpeaks(false);
-    setShowMyPlans(false);
-    setShowUserInfo(false);
-    setShowProfil(false);
-  };
-
-  const handleTrainingpeaksClick = () => {
-    setShowZones(false);
-    setShowInfos(false);
-    setShowWishYouWhat(false);
-    setShowTrainingpeaks(true);
-    setShowMyPlans(false);
-    setShowUserInfo(false);
-    setShowProfil(false);
-  };
-
-  const handleMyPlansClick = () => {
-    setShowZones(false);
-    setShowInfos(false);
-    setShowWishYouWhat(false);
-    setShowTrainingpeaks(false);
-    setShowMyPlans(true);
-    setShowUserInfo(false);
-    setShowProfil(false);
-  };
-
-  const handleUserInfoClick = () => {
-    setShowZones(false);
-    setShowInfos(false);
-    setShowWishYouWhat(false);
-    setShowTrainingpeaks(false);
-    setShowMyPlans(false);
-    setShowUserInfo(true);
-    setShowProfil(false);
+  const handleComponentChange = (component) => {
+    setActiveComponent(component);
+    setShowLogin(false);
   };
 
   return (
-    <>
-      <div className=" mx-auto w-40 text-center mt-5">
-        {session ? (
-          <span>Willkommen {session?.user.name}</span>
-        ) : (
-          <span>Willkommen</span>
-        )}
-      </div>
+    <div className=" flex flex-col items-center  mt-5 gap-1  max-w-xl w-screen ">
+      {activeComponent === "profil" && (
+        <>
+          <div className=" mx-auto w-40 text-center mt-5">
+            <span>Willkommen {session?.user.name}</span>
+          </div>
+          {!session && (
+            <button
+              onClick={() => handleComponentChange("login")}
+              className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+            >
+              Anmelden
+            </button>
+          )}
 
-      {showProfil && (
-        <div className=" flex flex-col items-center  mt-5 gap-1  max-w-xl w-screen ">
           <button
-            onClick={handleLoginClick}
+            onClick={() => handleComponentChange("zones")}
             className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
           >
-            <div className="ml-5"> Login</div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 mr-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            Persönliche Kalenderwerte
           </button>
+
           <button
-            onClick={handleZonesClick}
+            onClick={() => handleComponentChange("infos")}
             className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
           >
-            <div className="ml-5"> Zones</div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 mr-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            Informationen
           </button>
+
           <button
-            onClick={handleInfosClick}
+            onClick={() => handleComponentChange("wishYouWhat")}
             className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
           >
-            <div className="ml-5"> Infos</div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 mr-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            Wünsch dir was
           </button>
+
           <button
-            onClick={handleWishYouWhatClick}
+            onClick={() => handleComponentChange("trainingpeaks")}
             className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
           >
-            <div className="ml-5"> WishYouWhat</div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 mr-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            Trainingpeaks
           </button>
+
+          {session && (
+            <button
+              onClick={() => handleComponentChange("myPlans")}
+              className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+            >
+              Meine Pläne
+            </button>
+          )}
+
+          {session && (
+            <button
+              onClick={() => handleComponentChange("userInfo")}
+              className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+            >
+              Konto
+            </button>
+          )}
+
           <button
-            onClick={handleTrainingpeaksClick}
+            onClick={() => handleComponentChange("heartrateByAge")}
             className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
           >
-            <div className="ml-5"> Trainingpeaks</div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 mr-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            Maximalpuls nach Alter
           </button>
           <button
-            onClick={handleMyPlansClick}
+            onClick={() => handleComponentChange("heartrateMax")}
             className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
           >
-            <div className="ml-5"> MyPlans</div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 mr-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            Pulszonen
           </button>
           <button
-            onClick={handleUserInfoClick}
+            onClick={() => handleComponentChange("powerWatt")}
             className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
           >
-            <div className="ml-5"> UserInfo</div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 mr-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            Wattzonen
           </button>
-        </div>
+        </>
+      )}
+      {activeComponent === "heartrateByAge" && (
+        <HeartrateByAge setShowProfil={() => handleComponentChange("profil")} />
+      )}
+      {activeComponent === "heartrateMax" && (
+        <HeartrateMax setShowProfil={() => handleComponentChange("profil")} />
+      )}
+      {activeComponent === "powerWatt" && (
+        <PowerWatt setShowProfil={() => handleComponentChange("profil")} />
       )}
 
-      {!session && showLogin && <Login setShowProfil={setShowProfil} />}
-      {session && showZones && <Zones setShowProfil={setShowProfil} />}
-      {session && showInfos && <Infos setShowProfil={setShowProfil} />}
-      {session && showWishYouWhat && (
-        <WishYouWhat setShowProfil={setShowProfil} />
+      {activeComponent === "login" && (
+        <Login
+          setShowLogin={setShowLogin}
+          setShowProfil={() => handleComponentChange("profil")}
+          setShowRegisterForm={() => handleComponentChange("registerForm")}
+        />
       )}
-      {session && showTrainingpeaks && (
-        <Trainingpeaks setShowProfil={setShowProfil} />
+
+      {activeComponent === "zones" && (
+        <Zones setShowProfil={() => handleComponentChange("profil")} />
       )}
-      {!session && showMyPlans && <MyPlans setShowProfil={setShowProfil} />}
-      {!session && showUserInfo && <UserInfo setShowProfil={setShowProfil} />}
-    </>
+
+      {activeComponent === "infos" && (
+        <Infos setShowProfil={() => handleComponentChange("profil")} />
+      )}
+
+      {activeComponent === "wishYouWhat" && (
+        <WishYouWhat setShowProfil={() => handleComponentChange("profil")} />
+      )}
+
+      {activeComponent === "trainingpeaks" && (
+        <Trainingpeaks setShowProfil={() => handleComponentChange("profil")} />
+      )}
+
+      {activeComponent === "myPlans" && (
+        <MyPlans setShowProfil={() => handleComponentChange("profil")} />
+      )}
+
+      {activeComponent === "userInfo" && (
+        <UserInfo setShowProfil={() => handleComponentChange("profil")} />
+      )}
+
+      {activeComponent === "registerForm" && (
+        <RegisterForm
+          setShowProfil={() => handleComponentChange("profil")}
+          setShowRegisterForm={setShowLogin}
+        />
+      )}
+
+      <Image
+        priority
+        src={logo}
+        alt="logo"
+        className="mx-auto w-40 mt-40"
+        width={100}
+        height={100}
+      />
+
+      <Impressum />
+    </div>
   );
 }
 

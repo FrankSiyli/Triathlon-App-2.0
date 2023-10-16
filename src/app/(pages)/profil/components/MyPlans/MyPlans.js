@@ -11,7 +11,7 @@ import { useRecoilState } from "recoil";
 import FetchedUserPlans from "./components/FetchedUserPlans";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
-function MyPlans() {
+function MyPlans({ setShowMyPlans, setShowProfil }) {
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showLoadOnHomepageToast, setShowLoadOnHomepageToast] = useState(false);
@@ -52,9 +52,33 @@ function MyPlans() {
     fetchUserPlans();
   }, [setUserEmail]);
 
+  const handleBackClick = () => {
+    setShowProfil(true), setShowMyPlans(false);
+  };
+
   return (
     <>
-      <BackButton href="/profil" />
+      <div className="w-screen max-w-xl mx-auto">
+        <button
+          className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
+          onClick={handleBackClick}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
       <p className=" mx-auto w-40 text-center -mt-10">Meine Pläne</p>
       {isLoading ? (
         <Loader isLoading={isLoading} />

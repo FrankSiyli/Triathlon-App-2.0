@@ -1,5 +1,4 @@
 "use client";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import { showHrInputState } from "@/app/recoil/atoms/showHrInputState";
 import { showSwimTimeInputState } from "@/app/recoil/atoms/showSwimTimeInputState";
 import React from "react";
@@ -7,7 +6,7 @@ import { useRecoilState } from "recoil";
 import HeartrateCalculator from "./components/HeartrateCalculator";
 import SwimTimeCalculator from "./components/SwimTimeCalculator";
 
-function Zones() {
+function Zones({ setShowZones, setShowProfil }) {
   const [showHrInput, setShowHrInput] = useRecoilState(showHrInputState);
   const [showSwimTimeInput, setShowSwimTimeInput] = useRecoilState(
     showSwimTimeInputState
@@ -21,9 +20,33 @@ function Zones() {
     setShowSwimTimeInput(!showSwimTimeInput);
     setShowHrInput(false);
   };
+  const handleBackClick = () => {
+    setShowProfil(true), setShowZones(false);
+  };
+
   return (
     <>
-      <BackButton href="/profil" />
+      <div className="w-screen max-w-xl mx-auto">
+        <button
+          className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
+          onClick={handleBackClick}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
       <p className=" mx-auto w-40 text-center -mt-10">Kalenderwerte</p>
 
       <div className="w-11/12 max-w-xl mt-10 mx-auto flex flex-col gap-2 justify-center content-center ">

@@ -43,7 +43,7 @@ const DeleteButton = () => {
       });
 
       if (response.ok) {
-        signOut({ callbackUrl: "/" });
+        signOut();
         setIsLoading(false);
         setShowAlert(true);
         setError("Löschen erfolgreich.");
