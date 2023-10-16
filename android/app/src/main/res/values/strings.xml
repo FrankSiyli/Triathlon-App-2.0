@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Siyli-endurance</string>
-    <string name="title_activity_main">Siyli-endurance</string>
-    <string name="package_name">com.Siyli.app</string>
-    <string name="custom_url_scheme">com.Siyli.app</string>
-</resources>

@@ -1,8 +1,0 @@
-{
-  "appId": "com.Siyli.app",
-  "appName": "Siyli",
-  "webDir": "out",
-  "server": {
-    "androidScheme": "https"
-  }
-}
