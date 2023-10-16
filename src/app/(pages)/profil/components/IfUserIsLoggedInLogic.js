@@ -1,26 +1,25 @@
 "use client";
 import React from "react";
-import WelcomeText from "./WelcomeText";
-import MyPlansButton from "./MyPlansButton";
-import AccountButton from "./AccountButton";
-import PersonalZonesButton from "./PersonalZonesButton";
-import InformationsButton from "./InformationsButton";
-import WishYouWhatButton from "./WishYouWhatButton";
-import TrainingpeaksButton from "./TrainingpeaksButton";
+import Zones from "./Zones/Zones";
+import Infos from "./Infos/Infos";
+import MyPlans from "./MyPlans/MyPlans";
+import UserInfo from "./UserInfo/UserInfo";
+import WishYouWhat from "./WishYouWhat/WishYouWhat";
+import Trainingpeaks from "./Trainingpeaks/Trainingpeaks";
 
 function IfUserIsLoggedInLogic({ session }) {
   return (
     <>
       <div className=" mx-auto w-40 text-center mt-5">
-        <WelcomeText userName={session?.user.name} />
+        <span>Willkommen {session?.user.name}</span>
       </div>
       <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
-        <PersonalZonesButton />
-        <InformationsButton />
-        <MyPlansButton />
-        <AccountButton />
-        <WishYouWhatButton />
-        <TrainingpeaksButton />
+        <Zones />
+        <Infos />
+        <MyPlans />
+        <UserInfo />
+        <WishYouWhat />
+        <Trainingpeaks />
       </div>
     </>
   );

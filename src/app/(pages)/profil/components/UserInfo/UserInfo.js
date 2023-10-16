@@ -9,7 +9,7 @@ import { useRecoilState } from "recoil";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 
-const Page = () => {
+const UserInfo = () => {
   const [userName, setUserName] = useRecoilState(userNameState);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   return (
@@ -28,4 +28,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default UserInfo;

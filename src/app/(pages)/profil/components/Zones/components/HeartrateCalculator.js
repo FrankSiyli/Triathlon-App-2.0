@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import "../../../../globals.css";
-import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
+/* import "../../../../globals.css";
+ */import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 import { heartrateInputFiredState } from "@/app/recoil/atoms/heartrateInputFiredState";
 import Alert from "@/app/components/Alerts/Alert";
 import { getSession } from "next-auth/react";

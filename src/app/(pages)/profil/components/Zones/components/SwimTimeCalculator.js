@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { formatTime } from "@/app/helperFunctions/formatTime";
-import "../../../../globals.css";
-import { useRecoilState } from "recoil";
+/* import "../../../../globals.css";
+ */ import { useRecoilState } from "recoil";
 import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 import { swimTimeInputFiredState } from "@/app/recoil/atoms/swimTimeInputFiredState";
 import { getSession } from "next-auth/react";

@@ -6,13 +6,13 @@ import Impressum from "@/app/components/Impressum/Impressum";
 import Image from "next/image";
 import logo from "../../../../../public/images/logoSmall.png";
 import LoginAlert from "@/app/components/Alerts/LoginAlert";
-import LoginButton from "./LoginButton";
-import PersonalZonesButton from "./PersonalZonesButton";
-import InformationsButton from "./InformationsButton";
 import IfUserIsLoggedInLogic from "./IfUserIsLoggedInLogic";
-import WishYouWhatButton from "./WishYouWhatButton";
-import TrainingpeaksButton from "./TrainingpeaksButton";
 import { useSession } from "next-auth/react";
+import Login from "./Login/Login";
+import Zones from "./Zones/Zones";
+import Infos from "./Infos/Infos";
+import WishYouWhat from "./WishYouWhat/WishYouWhat";
+import Trainingpeaks from "./Trainingpeaks/Trainingpeaks";
 
 export default function Profil() {
   const { data: session } = useSession();
@@ -25,11 +25,11 @@ export default function Profil() {
             <div className=" mx-auto w-40 text-center mt-5">Profil</div>
           </div>
           <div className="flex flex-col items-center  mt-10 gap-1  max-w-xl w-screen mx-5 ">
-            <LoginButton />
-            <PersonalZonesButton />
-            <InformationsButton />
-            <WishYouWhatButton />
-            <TrainingpeaksButton />
+            <Login />
+            <Zones />
+            <Infos />
+            <WishYouWhat />
+            <Trainingpeaks />
           </div>
         </>
       ) : (

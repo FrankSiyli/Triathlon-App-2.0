@@ -1,6 +1,5 @@
 "use client";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
-import NavBar from "@/app/components/NavBar/NavBar";
 import { showHrInputState } from "@/app/recoil/atoms/showHrInputState";
 import { showSwimTimeInputState } from "@/app/recoil/atoms/showSwimTimeInputState";
 import React from "react";
@@ -8,7 +7,7 @@ import { useRecoilState } from "recoil";
 import HeartrateCalculator from "./components/HeartrateCalculator";
 import SwimTimeCalculator from "./components/SwimTimeCalculator";
 
-function Page() {
+function Zones() {
   const [showHrInput, setShowHrInput] = useRecoilState(showHrInputState);
   const [showSwimTimeInput, setShowSwimTimeInput] = useRecoilState(
     showSwimTimeInputState
@@ -57,9 +56,8 @@ function Page() {
           {showSwimTimeInput && <SwimTimeCalculator />}
         </div>
       </div>
-      <NavBar />
     </>
   );
 }
 
-export default Page;
+export default Zones;

@@ -3,7 +3,7 @@ import NavBar from "@/app/components/NavBar/NavBar";
 import Link from "next/link";
 import React from "react";
 
-const Page = () => {
+const Trainingpeaks = () => {
   return (
     <>
       <BackButton href="/profil" />
@@ -32,4 +32,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Trainingpeaks;

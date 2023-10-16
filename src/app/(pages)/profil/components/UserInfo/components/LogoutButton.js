@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
-import { examplePlan } from "../../../../../../database/mockDb";
+import { examplePlan } from "../../../../../../../database/mockDb";
 import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState";
 
 const LogoutButton = () => {

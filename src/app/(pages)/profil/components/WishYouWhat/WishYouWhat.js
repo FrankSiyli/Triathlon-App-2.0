@@ -9,7 +9,7 @@ import useSWR, { mutate } from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const Page = () => {
+const WishYouWhat = () => {
   const { data, isLoading: fetchingPosts } = useSWR(
     "/api/mongoDbFetchPosts",
     fetcher
@@ -191,4 +191,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default WishYouWhat;

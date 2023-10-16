@@ -8,7 +8,7 @@ import { signIn } from "next-auth/react";
 import Alert from "@/app/components/Alerts/Alert";
 import Loader from "@/app/components/Loader/Loader";
 
-function Page() {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showAlert, setShowAlert] = useState(false);
@@ -102,4 +102,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default Login;

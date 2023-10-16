@@ -11,7 +11,7 @@ import { useRecoilState } from "recoil";
 import FetchedUserPlans from "./components/FetchedUserPlans";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
-function Page() {
+function MyPlans() {
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showLoadOnHomepageToast, setShowLoadOnHomepageToast] = useState(false);
@@ -86,4 +86,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default MyPlans;

@@ -3,7 +3,8 @@ import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import NavBar from "@/app/components/NavBar/NavBar";
 import Link from "next/link";
 import React from "react";
-function Page() {
+
+function Infos() {
   return (
     <>
       <BackButton href="/profil" />
@@ -76,4 +77,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default Infos;
