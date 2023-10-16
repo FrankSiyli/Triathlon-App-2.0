@@ -1,60 +1,12 @@
 "use client";
-import Footer from "@/app/components/NavBar/NavBar";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../../globals.css";
-import Impressum from "@/app/components/Impressum/Impressum";
-import Image from "next/image";
-import logo from "../../../../public/images/logoSmall.png";
-import LoginAlert from "@/app/components/Alerts/LoginAlert";
-import LoginButton from "./components/LoginButton";
-import PersonalZonesButton from "./components/PersonalZonesButton";
-import InformationsButton from "./components/InformationsButton";
-import IfUserIsLoggedInLogic from "./components/IfUserIsLoggedInLogic";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import WishYouWhatButton from "./components/WishYouWhatButton";
-import TrainingpeaksButton from "./components/TrainingpeaksButton";
-import { useSession } from "next-auth/react";
+import Profil from "./components/Profil";
 
 export default function Page() {
-  /* const [session, setSession] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      const session = await useSession(autOptions);
-      setSession(session);
-    };
-    fetchData();
-  }, []); */
-
-  const { data: session } = useSession();
   return (
     <>
-      {!session ? (
-        <>
-          <LoginAlert />
-          <div className=" mx-auto w-40 text-center mt-5">Profil</div>
-          <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
-            <LoginButton />
-            <PersonalZonesButton />
-            <InformationsButton />
-            <WishYouWhatButton />
-            <TrainingpeaksButton />
-          </div>
-        </>
-      ) : (
-        <IfUserIsLoggedInLogic session={session} />
-      )}
-      <Image
-        priority
-        src={logo}
-        alt="logo"
-        className="mx-auto  w-40 mt-10 "
-        width={100}
-        height={100}
-      />
-
-      <Impressum />
-      <Footer />
+      <Profil />
     </>
   );
 }

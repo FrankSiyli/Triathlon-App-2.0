@@ -1,6 +1,5 @@
 "use client";
 import BackButton from "@/app/components/Buttons/BackButton/BackButton";
-import NavBar from "@/app/components/NavBar/NavBar";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
@@ -13,7 +12,7 @@ import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const Page = () => {
+const TriathlonPlans = ({ setShowPlans, setShowTriathlonPlans }) => {
   const { data, error, isLoading } = useSWR(
     "/api/mongoDbFetchTriathlonPlans",
     fetcher
@@ -69,13 +68,37 @@ const Page = () => {
       }
     }
   };
+  const handleBackClick = () => {
+    setShowPlans(true), setShowTriathlonPlans(false);
+  };
 
   return (
     <>
-      <BackButton href="/plans" />
+      <div className="w-screen max-w-xl mx-auto">
+        <button
+          className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
+          onClick={handleBackClick}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
+
       <p className=" mx-auto w-40 text-center -mt-10">Triathlonpläne</p>
       <Loader isLoading={isLoading} />
-      <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
+      <div className=" flex flex-col items-center  mt-10 gap-2  max-w-xl mx-5 ">
         {triathlonPlans?.map((triathlonPlan, triathlonPlanIndex) => {
           return (
             <div
@@ -120,9 +143,9 @@ const Page = () => {
                 )}
               </div>
               {expandedPlanIndex === triathlonPlanIndex && (
-                <div className="mt-5 select-none ">
+                <div className="mt-5 select-none max-w-xl">
                   <hr />
-                  <div className="m-3 mx-auto p-1 w-24 text-sm text-center">
+                  <div className="m-3  text-sm text-center">
                     <span> Wochen: {triathlonPlan.duration}</span>
                   </div>
                   <div className="font-light text-center">
@@ -149,9 +172,8 @@ const Page = () => {
           />
         )}{" "}
       </div>
-      <NavBar />
     </>
   );
 };
 
-export default Page;
+export default TriathlonPlans;

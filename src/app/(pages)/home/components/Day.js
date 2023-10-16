@@ -2,7 +2,7 @@ const Day = ({ day, toggleDay, dayIndex, openDay }) => {
   return (
     <div
       onClick={() => toggleDay(dayIndex)}
-      className="flex flex-row justify-between shadow-md  p-2 rounded-md mx-5 my-1 cursor-pointer"
+      className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
     >
       <div key={dayIndex} className="ml-5 ">
         {day}

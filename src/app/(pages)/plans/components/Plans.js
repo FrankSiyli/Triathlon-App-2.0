@@ -1,23 +1,11 @@
-"use client";
-import NavBar from "@/app/components/NavBar/NavBar";
-import Link from "next/link";
 import React from "react";
 
-function Page() {
-  const characterMap = {
-    ä: "ae",
-    ö: "oe",
-    ü: "ue",
-  };
+function Plans() {
   return (
     <>
-      <p className=" mx-auto w-40 text-center mt-5">Pläne</p>
-      <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
+      <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl w-screen mx-5 ">
         {kindOfPlansArray.map((kindOfPlan, kindOfPlanIndex) => (
-          <Link
-            href={`/plans/${kindOfPlan
-              .toLowerCase()
-              .replace(/[äöü]/g, (match) => characterMap[match] || match)}`}
+          <button
             className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
             key={kindOfPlanIndex}
           >
@@ -36,10 +24,9 @@ function Page() {
                 d="M8.25 4.5l7.5 7.5-7.5 7.5"
               />
             </svg>
-          </Link>
+          </button>
         ))}
       </div>
-      <NavBar />
     </>
   );
 }
@@ -51,4 +38,4 @@ const kindOfPlansArray = [
   "Spezialpläne",
 ];
 
-export default Page;
+export default Plans;

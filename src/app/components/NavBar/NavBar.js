@@ -14,7 +14,7 @@ function NavBar() {
 
   return (
     <div>
-      <div className="btm-nav max-w-xl mx-auto h-12 icon-text linear-background  z-40">
+      <div className="btm-nav lg:hidden mx-auto h-12 icon-text linear-background  z-40">
         <Link
           href="/home"
           className={

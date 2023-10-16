@@ -1,6 +1,4 @@
 "use client";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
-import NavBar from "@/app/components/NavBar/NavBar";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
@@ -13,7 +11,7 @@ import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const Page = () => {
+const SwimPlans = ({ setShowPlans, setShowSwimPlans }) => {
   const { data, isLoading } = useSWR("/api/mongoDbFetchSwimPlans", fetcher);
   const swimPlans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
@@ -67,9 +65,33 @@ const Page = () => {
     }
   };
 
+  const handleBackClick = () => {
+    setShowPlans(true), setShowSwimPlans(false);
+  };
+
   return (
     <>
-      <BackButton href="/plans" />
+      <div className="w-screen max-w-xl mx-auto">
+        <button
+          className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
+          onClick={handleBackClick}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
       <p className=" mx-auto w-40 text-center -mt-10">Schwimmpläne</p>
       <Loader isLoading={isLoading} />
 
@@ -145,10 +167,8 @@ const Page = () => {
           />
         )}
       </div>
-
-      <NavBar />
     </>
   );
 };
 
-export default Page;
+export default SwimPlans;
