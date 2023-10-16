@@ -1,10 +1,3 @@
-## My goal is the App Store, so mobile only
-
-
-<hr/>
-<br/>
-<br/>
-<br/>
 
 
 
