@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import RecoilRootWrapper from "./RecoilRootWrapper";
 import Script from "next/script";
 import { AuthProvider } from "./Providers";
-import NonSSRWrapper from "./components/NonSSRWrapper/NonSSRWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,11 +15,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NonSSRWrapper>
-          <RecoilRootWrapper>
-            <AuthProvider>{children}</AuthProvider>
-          </RecoilRootWrapper>
-        </NonSSRWrapper>
+        <RecoilRootWrapper>
+          <AuthProvider>{children}</AuthProvider>
+        </RecoilRootWrapper>
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-T77L3PH7V5"
