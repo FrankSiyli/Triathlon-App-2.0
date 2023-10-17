@@ -3,9 +3,15 @@ import React from "react";
 function Alert({ alertText }) {
   return (
     <>
-      <div className="fixed mx-auto top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-alert text-first z-50">
-        <span>{alertText}</span>
+      <div className="toast toast-bottom toast-right z-50 ">
+        <div className="alert alert-info">
+          <span>{alertText}</span>
+        </div>
       </div>
+
+      {/* <div className="fixed mx-auto top-0 inset-x-0 flex flex-row items-center justify-center gap-3 max-w-xl  p-2 rounded-md border border-first/50  bg-alert text-first z-50">
+        <span>{alertText}</span>
+      </div> */}
     </>
   );
 }
