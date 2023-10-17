@@ -1,25 +1,42 @@
 "use client";
-import Link from "next/link";
-import React, { useState } from "react";
-import { usePathname } from "next/navigation";
+import React from "react";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { useRecoilState } from "recoil";
 
-function NavBar() {
-  const [session, setSession] = useState("");
+function NavBar({
+  setShowCalendar,
+  setShowPlans,
+  setShowProfil,
+  showCalendar,
+  showPlans,
+  showProfil,
+}) {
   const [userName, setUserName] = useRecoilState(userNameState);
-  const currentRoute = usePathname();
   const activeStyle = "border-t border-first";
   const nonActiveStyle = " border-t border-neutral-800";
 
+  const handleCalendarClick = () => {
+    setShowCalendar(true);
+    setShowPlans(false);
+    setShowProfil(false);
+  };
+  const handlePlansClick = () => {
+    setShowCalendar(false);
+    setShowPlans(true);
+    setShowProfil(false);
+  };
+  const handleProfilClick = () => {
+    setShowCalendar(false);
+    setShowPlans(false);
+    setShowProfil(true);
+  };
+
   return (
     <div>
-      <div className="btm-nav max-w-xl mx-auto h-12 icon-text linear-background  z-40">
-        <Link
-          href="/home"
-          className={
-            currentRoute.startsWith("/home") ? activeStyle : nonActiveStyle
-          }
+      <div className="btm-nav lg:hidden mx-auto h-12 icon-text linear-background  z-40">
+        <button
+          onClick={handleCalendarClick}
+          className={showCalendar ? activeStyle : nonActiveStyle}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -36,12 +53,10 @@ function NavBar() {
             />
           </svg>
           <span className="btm-nav-label">Kalender</span>
-        </Link>
-        <Link
-          href="/plans"
-          className={
-            currentRoute.startsWith("/plans") ? activeStyle : nonActiveStyle
-          }
+        </button>
+        <button
+          onClick={handlePlansClick}
+          className={showPlans ? activeStyle : nonActiveStyle}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -58,15 +73,10 @@ function NavBar() {
             />
           </svg>
           <span className="btm-nav-label">Pläne</span>
-        </Link>
-        <Link
-          href="/profil"
-          className={
-            currentRoute.startsWith("/profil") ||
-            currentRoute.startsWith("/calculators")
-              ? activeStyle
-              : nonActiveStyle
-          }
+        </button>
+        <button
+          onClick={handleProfilClick}
+          className={showProfil ? activeStyle : nonActiveStyle}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +102,7 @@ function NavBar() {
           ) : (
             <span className="btm-nav-label">Profil</span>
           )}
-        </Link>
+        </button>
       </div>
     </div>
   );

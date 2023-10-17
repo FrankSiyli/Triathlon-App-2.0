@@ -6,7 +6,7 @@ const WeekScrollButtons = ({
   handleBackClick,
   handleNextClick,
 }) => (
-  <div className="flex justify-between mb-5 items-center  mx-10">
+  <div className="flex justify-between  mb-5 items-center  mx-10">
     <button
       onClick={handleBackClick}
       className="btn btn-sm btn-outline  border border-transparent w-12 flex justify-center items-center bg-third text-first shadow-xl"

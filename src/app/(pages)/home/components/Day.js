@@ -2,7 +2,7 @@ const Day = ({ day, toggleDay, dayIndex, openDay }) => {
   return (
     <div
       onClick={() => toggleDay(dayIndex)}
-      className="flex flex-row justify-between shadow-md  p-2 rounded-md mx-5 my-1 cursor-pointer"
+      className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md  my-1 "
     >
       <div key={dayIndex} className="ml-5 ">
         {day}
@@ -14,7 +14,7 @@ const Day = ({ day, toggleDay, dayIndex, openDay }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 mr-2"
+          className="w-6 h-6 mr-5"
         >
           <path
             strokeLinecap="round"
@@ -29,7 +29,7 @@ const Day = ({ day, toggleDay, dayIndex, openDay }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 mr-2"
+          className="w-6 h-6 mr-5"
         >
           <path
             strokeLinecap="round"
