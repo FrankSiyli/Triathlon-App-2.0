@@ -9,6 +9,7 @@ import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { useRecoilState } from "recoil";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
+import { examplePlan } from "../../../../../../database/mockDb";
 
 function Login({ setShowProfil, setShowRegisterForm }) {
   const [email, setEmail] = useState("");
@@ -47,7 +48,12 @@ function Login({ setShowProfil, setShowRegisterForm }) {
         const session = await getSession();
         setUserName(session.user.name);
         setUserEmail(session.user.email);
-        setHomepagePlan(loggedInUserLastLoadedPlan);
+        setHomepagePlan(
+          loggedInUserLastLoadedPlan.length !== 0
+            ? loggedInUserLastLoadedPlan
+            : examplePlan
+        );
+
         setIsLoading(false);
         setShowProfil();
         return;
