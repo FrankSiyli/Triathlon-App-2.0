@@ -15,6 +15,7 @@ import RegisterForm from "./components/RegisterForm/RegisterForm";
 import HeartrateByAge from "../calculators/HeartrateByAge/HeartrateByAge";
 import HeartrateMax from "../calculators/HeartrateMax/HeartrateMax";
 import PowerWatt from "../calculators/PowerWatt/PowerWatt";
+import LoginAlert from "@/app/components/Alerts/LoginAlert";
 
 function ProfilView() {
   const [activeComponent, setActiveComponent] = useState("profil");
@@ -30,6 +31,7 @@ function ProfilView() {
     <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full   overflow-y-auto max-h-screen ">
       {activeComponent === "profil" && (
         <>
+          <LoginAlert />
           <div className="mx-auto w-40 text-center mt-5 mb-10">
             <span>Willkommen {session?.user.name}</span>
           </div>
