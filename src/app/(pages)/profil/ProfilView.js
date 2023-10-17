@@ -27,16 +27,16 @@ function ProfilView() {
   };
 
   return (
-    <div className=" flex flex-col items-center  gap-1  max-w-xl w-screen ">
+    <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full   overflow-y-auto max-h-screen ">
       {activeComponent === "profil" && (
         <>
-          <div className=" mx-auto w-40 text-center mt-5 mb-10">
+          <div className="mx-auto w-40 text-center mt-5 mb-10">
             <span>Willkommen {session?.user.name}</span>
           </div>
           {!session && (
             <button
               onClick={() => handleComponentChange("login")}
-              className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+              className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
             >
               <div className="ml-5">Anmelden</div>
               <svg
@@ -58,7 +58,7 @@ function ProfilView() {
 
           <button
             onClick={() => handleComponentChange("zones")}
-            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
           >
             <div className="ml-5">Persönliche Kalenderwerte</div>
             <svg
@@ -79,7 +79,7 @@ function ProfilView() {
 
           <button
             onClick={() => handleComponentChange("infos")}
-            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
           >
             <div className="ml-5">Informationen</div>
             <svg
@@ -100,7 +100,7 @@ function ProfilView() {
 
           <button
             onClick={() => handleComponentChange("wishYouWhat")}
-            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
           >
             <div className="ml-5">Wünsch dir was</div>
             <svg
@@ -121,7 +121,7 @@ function ProfilView() {
 
           <button
             onClick={() => handleComponentChange("trainingpeaks")}
-            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
           >
             <div className="ml-5">Trainingpeaks</div>
             <svg
@@ -143,7 +143,7 @@ function ProfilView() {
           {session && (
             <button
               onClick={() => handleComponentChange("myPlans")}
-              className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+              className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
             >
               <div className="ml-5">Meine Pläne</div>
               <svg
@@ -166,7 +166,7 @@ function ProfilView() {
           {session && (
             <button
               onClick={() => handleComponentChange("userInfo")}
-              className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+              className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
             >
               <div className="ml-5">Konto</div>
               <svg

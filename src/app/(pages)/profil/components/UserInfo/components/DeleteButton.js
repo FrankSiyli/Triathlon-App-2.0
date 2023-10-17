@@ -45,6 +45,7 @@ const DeleteButton = () => {
       if (response.ok) {
         signOut();
         setIsLoading(false);
+        setShowProfil();
         setShowAlert(true);
         setError("Löschen erfolgreich.");
         setTimeout(() => {

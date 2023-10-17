@@ -15,15 +15,15 @@ function PlansView() {
   return (
     <>
       {activeComponent === "plans" && (
-        <div className=" mx-auto w-40 text-center mt-5 mb-10">
+        <div className=" mx-auto  text-center mt-5 mb-10">
           <span>Pläne</span>
         </div>
       )}
 
       {activeComponent === "plans" && (
-        <div className=" flex flex-col items-center  mt-5 gap-1  max-w-xl w-screen ">
+        <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full  mb-20 overflow-y-auto max-h-screen ">
           <button
-            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md  my-1 "
             onClick={() => handlePlanTypeClick("triathlonPlans")}
           >
             <div className="ml-5"> Triathlonpläne</div>
@@ -43,7 +43,7 @@ function PlansView() {
             </svg>
           </button>
           <button
-            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md  my-1 "
             onClick={() => handlePlanTypeClick("runPlans")}
           >
             <div className="ml-5"> Laufpläne</div>
@@ -63,7 +63,7 @@ function PlansView() {
             </svg>
           </button>
           <button
-            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md  my-1 "
             onClick={() => handlePlanTypeClick("swimPlans")}
           >
             <div className="ml-5"> Schwimmpläne</div>
@@ -83,7 +83,7 @@ function PlansView() {
             </svg>
           </button>
           <button
-            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md  my-1 "
             onClick={() => handlePlanTypeClick("specialPlans")}
           >
             <div className="ml-5"> Spezialpläne</div>

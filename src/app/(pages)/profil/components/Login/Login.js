@@ -1,9 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import Alert from "@/app/components/Alerts/Alert";
 import Loader from "@/app/components/Loader/Loader";
+import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
+import { userNameState } from "@/app/recoil/atoms/user/userNameState";
+import { useRecoilState } from "recoil";
+import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
+import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 
 function Login({ setShowProfil, setShowRegisterForm }) {
   const [email, setEmail] = useState("");
@@ -11,6 +16,11 @@ function Login({ setShowProfil, setShowRegisterForm }) {
   const [showAlert, setShowAlert] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [userName, setUserName] = useRecoilState(userNameState);
+  const [userEmail, setUserEmail] = useRecoilState(userEmailState);
+  const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
+    useRecoilState(loggedInUserLastLoadedPlanState);
+  const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
 
   const router = useRouter();
 
@@ -30,27 +40,38 @@ function Login({ setShowProfil, setShowRegisterForm }) {
       const res = await signIn("credentials", {
         email,
         password,
+        redirect: false,
       });
 
       if (res.ok) {
+        const session = await getSession();
+        setUserName(session.user.name);
+        setUserEmail(session.user.email);
+        setHomepagePlan(loggedInUserLastLoadedPlan);
         setIsLoading(false);
+        setShowProfil();
         return;
       } else {
         setIsLoading(false);
+        setTimeout(() => {
+          setShowAlert(true);
+          setError("Die Eingaben sind nicht korrekt.");
+          setTimeout(() => {
+            setShowAlert(false);
+          }, 3000);
+        }, 2000);
+
+        return;
+      }
+    } catch (error) {
+      setIsLoading(false);
+      setTimeout(() => {
         setShowAlert(true);
         setError("Die Eingaben sind nicht korrekt.");
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);
-        return;
-      }
-    } catch (error) {
-      setIsLoading(false);
-      setShowAlert(true);
-      setError("Die Eingaben sind nicht korrekt.");
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 3000);
+      }, 2000);
       return;
     }
   };
