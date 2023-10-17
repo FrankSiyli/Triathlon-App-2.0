@@ -39,12 +39,6 @@ function LoginAlert() {
           {showLoginAlert && (
             <div className="fixed mx-auto top-0 inset-x-0 flex flex-col text-center items-center justify-center gap-3 max-w-xl p-2 rounded-md border border-first/50 bg-alert text-first z-50">
               <span>Um deine Pläne und Werte zu speichern, melde dich an.</span>
-              {/* <Link
-                href="/profil/login"
-                className="btn btn-sm m-3 bg-third border border-first text-first shadow-xl"
-              >
-                <div>Anmelden</div>
-              </Link> */}
 
               <button
                 className="btn btn-sm btn-circle btn-outline border border-first text-first m-1 bg-third shadow-xl"
