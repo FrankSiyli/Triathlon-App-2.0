@@ -1,6 +1,4 @@
 "use client";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
-import NavBar from "@/app/components/NavBar/NavBar";
 import React from "react";
 import LogoutButton from "./components/LogoutButton";
 import DeleteButton from "./components/DeleteButton";
@@ -9,11 +7,11 @@ import { useRecoilState } from "recoil";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 
-const UserInfo = ({ setShowUserInfo, setShowProfil }) => {
+const UserInfo = ({ setShowProfil }) => {
   const [userName, setUserName] = useRecoilState(userNameState);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const handleBackClick = () => {
-    setShowProfil(true), setShowUserInfo(false);
+    setShowProfil();
   };
 
   return (
@@ -47,7 +45,6 @@ const UserInfo = ({ setShowUserInfo, setShowProfil }) => {
         <LogoutButton />
         <DeleteButton />
       </div>
-      <NavBar />
     </>
   );
 };

@@ -1,10 +1,9 @@
-import NavBar from "@/app/components/NavBar/NavBar";
 import Link from "next/link";
 import React from "react";
 
-const Trainingpeaks = ({ setShowTrainingpeaks, setShowProfil }) => {
+const Trainingpeaks = ({ setShowProfil }) => {
   const handleBackClick = () => {
-    setShowProfil(true), setShowTrainingpeaks(false);
+    setShowProfil();
   };
 
   return (
@@ -49,8 +48,6 @@ const Trainingpeaks = ({ setShowTrainingpeaks, setShowProfil }) => {
           Trainingpeaks
         </Link>
       </div>
-
-      <NavBar />
     </>
   );
 };

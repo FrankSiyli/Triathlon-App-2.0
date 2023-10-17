@@ -1,8 +1,6 @@
 "use client";
 import Alert from "@/app/components/Alerts/Alert";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import Loader from "@/app/components/Loader/Loader";
-import NavBar from "@/app/components/NavBar/NavBar";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 import { getSession } from "next-auth/react";
@@ -11,7 +9,7 @@ import { useRecoilState } from "recoil";
 import FetchedUserPlans from "./components/FetchedUserPlans";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
-function MyPlans({ setShowMyPlans, setShowProfil }) {
+function MyPlans({ setShowProfil }) {
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showLoadOnHomepageToast, setShowLoadOnHomepageToast] = useState(false);
@@ -53,7 +51,7 @@ function MyPlans({ setShowMyPlans, setShowProfil }) {
   }, [setUserEmail]);
 
   const handleBackClick = () => {
-    setShowProfil(true), setShowMyPlans(false);
+    setShowProfil();
   };
 
   return (
@@ -105,7 +103,6 @@ function MyPlans({ setShowMyPlans, setShowProfil }) {
       )}
 
       {showLoadOnHomepageToast && <Alert alertText="Im Kalender geladen" />}
-      <NavBar />
     </>
   );
 }

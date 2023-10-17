@@ -1,15 +1,13 @@
 "use client";
 import Alert from "@/app/components/Alerts/Alert";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import Loader from "@/app/components/Loader/Loader";
-import NavBar from "@/app/components/NavBar/NavBar";
 import { getSession } from "next-auth/react";
 import React, { useState } from "react";
 import useSWR, { mutate } from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const WishYouWhat = ({ setShowWishYouWhat, setShowProfil }) => {
+const WishYouWhat = ({ setShowProfil }) => {
   const { data, isLoading: fetchingPosts } = useSWR(
     "/api/mongoDbFetchPosts",
     fetcher
@@ -116,7 +114,7 @@ const WishYouWhat = ({ setShowWishYouWhat, setShowProfil }) => {
   };
 
   const handleBackClick = () => {
-    setShowProfil(true), setShowWishYouWhat(false);
+    setShowProfil();
   };
 
   return (
@@ -210,7 +208,6 @@ const WishYouWhat = ({ setShowWishYouWhat, setShowProfil }) => {
             ))}
       </div>
       {error && showAlert && <Alert alertText={error} />}
-      <NavBar />
     </>
   );
 };

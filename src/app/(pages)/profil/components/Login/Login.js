@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 import Alert from "@/app/components/Alerts/Alert";
 import Loader from "@/app/components/Loader/Loader";
 
-function Login({ setShowProfil, setShowLogin, setShowRegisterForm }) {
+function Login({ setShowProfil, setShowRegisterForm }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showAlert, setShowAlert] = useState(false);
@@ -56,10 +56,10 @@ function Login({ setShowProfil, setShowLogin, setShowRegisterForm }) {
   };
 
   const handleBackClick = () => {
-    setShowProfil(true), setShowLogin(false);
+    setShowProfil();
   };
   const handleRegisterClick = () => {
-    setShowRegisterForm(true), setShowLogin(false);
+    setShowRegisterForm();
   };
 
   return (

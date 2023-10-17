@@ -124,7 +124,7 @@ function Page() {
         <div className="flex flex-col overflow-y-auto max-h-screen ">
           <PlansView />
         </div>
-        <div className="flex flex-col mx-auto max-w-xl relative h-auto  w-screen mb-20 overflow-y-auto max-h-screen ">
+        <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full mb-20 overflow-y-auto max-h-screen ">
           <>
             <PlanName homepagePlan={homepagePlan} />
             <WeekScrollButtons

@@ -6,7 +6,7 @@ import { useRecoilState } from "recoil";
 import HeartrateCalculator from "./components/HeartrateCalculator";
 import SwimTimeCalculator from "./components/SwimTimeCalculator";
 
-function Zones({ setShowZones, setShowProfil }) {
+function Zones({ setShowProfil }) {
   const [showHrInput, setShowHrInput] = useRecoilState(showHrInputState);
   const [showSwimTimeInput, setShowSwimTimeInput] = useRecoilState(
     showSwimTimeInputState
@@ -21,7 +21,7 @@ function Zones({ setShowZones, setShowProfil }) {
     setShowHrInput(false);
   };
   const handleBackClick = () => {
-    setShowProfil(true), setShowZones(false);
+    setShowProfil();
   };
 
   return (

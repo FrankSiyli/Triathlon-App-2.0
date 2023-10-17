@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import "../../../globals.css";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import Alert from "@/app/components/Alerts/Alert";
 
-const PowerWatt = () => {
+const PowerWatt = ({ setShowInfos }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [calculatorInput, setCalculatorInput] = useState("");
   const [tgOutput1, setTgOutput1] = useState("");
@@ -45,9 +44,33 @@ const PowerWatt = () => {
     }
   };
 
+  const handleBackClick = () => {
+    setShowInfos();
+  };
+
   return (
     <>
-      <BackButton href="/profil/infos" />
+      <div className="w-screen max-w-xl mx-auto">
+        <button
+          className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
+          onClick={handleBackClick}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
       <div className="min-h-screen mb-60">
         <div className="w-11/12 border border-first/50 linear-background rounded-md p-4 max-w-xl mx-auto mb-5   text-center">
           <p>

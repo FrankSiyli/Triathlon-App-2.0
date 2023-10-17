@@ -3,7 +3,7 @@ import React from "react";
 const Activity = ({ openDay, dayIndex, activity, toggleOverlay }) => {
   return (
     <>
-      <div className="flex flex-col mx-5 rounded-md ">
+      <div className="flex flex-col w-full max-w-xl  rounded-md ">
         {openDay === dayIndex &&
           activity.map((singleActivity, activityIndex) => (
             <button
@@ -25,7 +25,7 @@ const Activity = ({ openDay, dayIndex, activity, toggleOverlay }) => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-5 h-5"
+                  className="w-5 h-5 mr-5"
                 >
                   <path
                     strokeLinecap="round"

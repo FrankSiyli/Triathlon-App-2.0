@@ -12,7 +12,7 @@ import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const TriathlonPlans = ({ setShowPlans, setShowTriathlonPlans }) => {
+const TriathlonPlans = ({ setShowPlans }) => {
   const { data, error, isLoading } = useSWR(
     "/api/mongoDbFetchTriathlonPlans",
     fetcher
@@ -69,7 +69,7 @@ const TriathlonPlans = ({ setShowPlans, setShowTriathlonPlans }) => {
     }
   };
   const handleBackClick = () => {
-    setShowPlans(true), setShowTriathlonPlans(false);
+    setShowPlans();
   };
 
   return (

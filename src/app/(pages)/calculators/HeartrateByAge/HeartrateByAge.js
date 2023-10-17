@@ -3,9 +3,9 @@ import "../../../globals.css";
 import MenCalculatorByAge from "./components/MenCalculatorByAge";
 import WomenCalculatorByAge from "./components/WomenCalculatorByAge";
 
-function HeartrateByAge({ setShowProfil }) {
+function HeartrateByAge({ setShowInfos }) {
   const handleBackClick = () => {
-    setShowProfil(true);
+    setShowInfos();
   };
 
   return (

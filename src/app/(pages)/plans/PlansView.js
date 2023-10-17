@@ -15,7 +15,7 @@ function PlansView() {
   return (
     <>
       {activeComponent === "plans" && (
-        <div className=" mx-auto w-40 text-center mt-5">
+        <div className=" mx-auto w-40 text-center mt-5 mb-10">
           <span>Pläne</span>
         </div>
       )}

@@ -11,7 +11,7 @@ import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-function SpecialPlans({ setShowPlans, setShowSpecialPlans }) {
+function SpecialPlans({ setShowPlans }) {
   const { data, error, isLoading } = useSWR(
     "/api/mongoDbFetchSpecialPlans",
     fetcher
@@ -69,7 +69,7 @@ function SpecialPlans({ setShowPlans, setShowSpecialPlans }) {
   };
 
   const handleBackClick = () => {
-    setShowPlans(true), setShowSpecialPlans(false);
+    setShowPlans();
   };
 
   return (
