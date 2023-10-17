@@ -35,19 +35,19 @@ export default function Home() {
 
   useEffect(() => {
     setIsLoading(true);
-    if (typeof window !== "undefined") {
+    if (isClient) {
       const fetchData = async () => {
         const session = await getSession();
         if (!session) {
-          if (lastLoadedPlan) {
+          if (lastLoadedPlan.length !== 0) {
             setHomepagePlan(lastLoadedPlan);
           } else {
             setHomepagePlan(examplePlan);
           }
         } else {
-          if (loggedInUserLastLoadedPlan) {
+          if (loggedInUserLastLoadedPlan.length !== 0) {
             setHomepagePlan(loggedInUserLastLoadedPlan);
-          } else if (lastLoadedPlan) {
+          } else if (lastLoadedPlan.length !== 0) {
             setHomepagePlan(lastLoadedPlan);
           } else {
             setHomepagePlan(examplePlan);
@@ -97,9 +97,11 @@ export default function Home() {
     setSavedHrMax,
     setSavedSwimTime,
     setUserEmail,
+    isClient,
   ]);
+
   return (
-    <div className="">
+    <div>
       {isLoading && (
         <div className="flex flex-col justify-center items-center w-screen h-screen">
           <Image

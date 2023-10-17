@@ -8,6 +8,8 @@ import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 import Loader from "@/app/components/Loader/Loader";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
+import { examplePlan } from "../../../../../../database/mockDb";
+import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 
 export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
   const [name, setName] = useState("");
@@ -18,6 +20,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
   const [userName, setUserName] = useRecoilState(userNameState);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [isLoading, setIsLoading] = useState(false);
+  const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
     useRecoilState(loggedInUserLastLoadedPlanState);
   const [passwordHints, setPasswordHints] = useState({
@@ -127,7 +130,11 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
         });
         setUserName(name);
         setUserEmail(email);
-        setLoggedInUserLastLoadedPlan("");
+        if (loggedInUserLastLoadedPlan.length !== 0) {
+          setHomepagePlan(loggedInUserLastLoadedPlan);
+        } else {
+          setHomepagePlan(examplePlan);
+        }
       }
     } catch (error) {
       setIsLoading(false);
