@@ -111,7 +111,7 @@ const FetchedUserPlans = ({
                     Wochen: {myPlan.duration}
                   </div>
                   <div className="font-light text-center">{myPlan.info}</div>
-                  <div className="flex justify-between mt-20">
+                  <div className="flex justify-between mt-20 mb-20">
                     <div
                       onClick={() =>
                         handleRemovePlanClick(myPlan._id, userEmail)
