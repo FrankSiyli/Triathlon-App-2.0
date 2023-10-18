@@ -1,5 +1,4 @@
 "use client";
-import BackButton from "@/app/components/Buttons/BackButton/BackButton";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
@@ -21,7 +20,9 @@ const TriathlonPlans = ({ setShowPlans }) => {
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showToast, setShowToast] = useState(false);
-  const [session, setSession] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [, setIsLoading] = useState(false);
+
   const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
     useRecoilState(loggedInUserLastLoadedPlanState);
   const [lastLoadedPlan, setLastLoadedPlan] =
@@ -36,6 +37,7 @@ const TriathlonPlans = ({ setShowPlans }) => {
   };
 
   const handleLoadPlanClick = async (event) => {
+    setIsLoading(true);
     const session = await getSession();
     const expandedPlan = triathlonPlans[expandedPlanIndex];
     const triathlonPlanId = triathlonPlans.id;
@@ -48,8 +50,7 @@ const TriathlonPlans = ({ setShowPlans }) => {
     event.stopPropagation();
 
     if (session) {
-      setSession(session);
-      setLoggedInUserLastLoadedPlan(expandedPlan);
+      setIsLoggedIn(true);
       try {
         const userEmail = session.user.email;
         const updateUser = await fetch("/api/mongoDbUpdateUserTrainingPlans", {
@@ -63,10 +64,14 @@ const TriathlonPlans = ({ setShowPlans }) => {
             id: triathlonPlanId,
           }),
         });
+        if (updateUser) {
+          setLoggedInUserLastLoadedPlan(expandedPlan);
+        }
       } catch (error) {
         console.error("user update error triathlonplaene");
       }
     }
+    setIsLoading(false);
   };
   const handleBackClick = () => {
     setShowPlans();
@@ -96,14 +101,14 @@ const TriathlonPlans = ({ setShowPlans }) => {
         </button>
       </div>
 
-      <p className=" mx-auto w-40 text-center -mt-10">Triathlonpläne</p>
+      <p className=" mx-auto  text-center -mt-10">Triathlonpläne</p>
       <Loader isLoading={isLoading} />
       <div className=" flex flex-col items-center  mt-10 gap-2  max-w-xl mx-5 ">
         {triathlonPlans?.map((triathlonPlan, triathlonPlanIndex) => {
           return (
             <div
               key={triathlonPlanIndex}
-              className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
+              className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 last:mb-20 "
             >
               <div
                 onClick={() => handleInfoClick(triathlonPlanIndex)}
@@ -165,7 +170,7 @@ const TriathlonPlans = ({ setShowPlans }) => {
         {showToast && (
           <Alert
             alertText={
-              session
+              isLoggedIn
                 ? "Im Kalender und unter meine Pläne geladen"
                 : "Im Kalender geladen"
             }

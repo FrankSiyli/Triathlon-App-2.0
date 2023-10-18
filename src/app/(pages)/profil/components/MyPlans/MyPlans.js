@@ -35,7 +35,7 @@ function MyPlans({ setShowProfil }) {
             },
           }
         );
-        if (response.ok) {
+        if (response) {
           const plansData = await response.json();
           setUserPlans(plansData);
         } else {
@@ -48,7 +48,7 @@ function MyPlans({ setShowProfil }) {
     };
 
     fetchUserPlans();
-  }, [setUserEmail]);
+  }, [setUserEmail, loggedInUserLastLoadedPlan]);
 
   const handleBackClick = () => {
     setShowProfil();
@@ -80,26 +80,21 @@ function MyPlans({ setShowProfil }) {
       <p className=" mx-auto w-40 text-center -mt-10">Meine Pläne</p>
       {isLoading ? (
         <Loader isLoading={isLoading} />
+      ) : userPlans.length === 0 ? (
+        <div className="border border-first/50 rounded-md p-2 text-center mt-20 mx-5">
+          Es wurde noch kein Plan geladen
+        </div>
       ) : (
-        <>
-          {!isLoading && userPlans.length === 0 && (
-            <div className="border border-first/50 rounded-md p-2 text-center mt-20 mx-5">
-              Es wurde noch kein Plan geladen
-            </div>
-          )}
-          {!isLoading && userPlans.length !== 0 && (
-            <FetchedUserPlans
-              expandedPlanIndex={expandedPlanIndex}
-              setExpandedPlanIndex={setExpandedPlanIndex}
-              userPlans={userPlans}
-              setHomepagePlan={setHomepagePlan}
-              setShowLoadOnHomepageToast={setShowLoadOnHomepageToast}
-              userEmail={userEmail}
-              setUserPlans={setUserPlans}
-              setIsLoading={setIsLoading}
-            />
-          )}
-        </>
+        <FetchedUserPlans
+          expandedPlanIndex={expandedPlanIndex}
+          setExpandedPlanIndex={setExpandedPlanIndex}
+          userPlans={userPlans}
+          setHomepagePlan={setHomepagePlan}
+          setShowLoadOnHomepageToast={setShowLoadOnHomepageToast}
+          userEmail={userEmail}
+          setUserPlans={setUserPlans}
+          setIsLoading={setIsLoading}
+        />
       )}
 
       {showLoadOnHomepageToast && <Alert alertText="Im Kalender geladen" />}

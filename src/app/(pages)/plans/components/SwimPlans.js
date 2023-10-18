@@ -17,7 +17,8 @@ const SwimPlans = ({ setShowPlans }) => {
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showToast, setShowToast] = useState(false);
-  const [session, setSession] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [, setIsLoading] = useState(false);
   const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
     useRecoilState(loggedInUserLastLoadedPlanState);
   const [lastLoadedPlan, setLastLoadedPlan] =
@@ -32,6 +33,7 @@ const SwimPlans = ({ setShowPlans }) => {
   };
 
   const handleLoadPlanClick = async (event) => {
+    setIsLoading(true);
     const session = await getSession();
     const expandedPlan = swimPlans[expandedPlanIndex];
     const swimPlanId = swimPlans.id;
@@ -44,8 +46,7 @@ const SwimPlans = ({ setShowPlans }) => {
     event.stopPropagation();
 
     if (session) {
-      setSession(session);
-      setLoggedInUserLastLoadedPlan(expandedPlan);
+      setIsLoggedIn(true);
       try {
         const userEmail = session.user.email;
         const updateUser = await fetch("/api/mongoDbUpdateUserTrainingPlans", {
@@ -59,10 +60,14 @@ const SwimPlans = ({ setShowPlans }) => {
             id: swimPlanId,
           }),
         });
+        if (updateUser) {
+          setLoggedInUserLastLoadedPlan(expandedPlan);
+        }
       } catch (error) {
         console.error("user update error laufplaene");
       }
     }
+    setIsLoading(false);
   };
 
   const handleBackClick = () => {
@@ -92,15 +97,14 @@ const SwimPlans = ({ setShowPlans }) => {
           </svg>
         </button>
       </div>
-      <p className=" mx-auto w-40 text-center -mt-10">Schwimmpläne</p>
+      <p className=" mx-auto text-center -mt-10">Schwimmpläne</p>
       <Loader isLoading={isLoading} />
-
-      <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
+      <div className=" flex flex-col items-center  mt-10 gap-2  max-w-xl mx-5 ">
         {swimPlans?.map((swimPlan, swimPlanIndex) => {
           return (
             <div
               key={swimPlanIndex}
-              className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
+              className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 last:mb-20 "
             >
               <div
                 onClick={() => handleInfoClick(swimPlanIndex)}
@@ -160,7 +164,7 @@ const SwimPlans = ({ setShowPlans }) => {
         {showToast && (
           <Alert
             alertText={
-              session
+              isLoggedIn
                 ? "Im Kalender und unter meine Pläne geladen"
                 : "Im Kalender geladen"
             }
