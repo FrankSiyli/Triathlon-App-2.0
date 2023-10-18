@@ -8,7 +8,6 @@ import WishYouWhat from "./components/WishYouWhat/WishYouWhat";
 import Trainingpeaks from "./components/Trainingpeaks/Trainingpeaks";
 import MyPlans from "./components/MyPlans/MyPlans";
 import UserInfo from "./components/UserInfo/UserInfo";
-import Impressum from "@/app/components/Impressum/Impressum";
 import Image from "next/image";
 import logo from "../../../../public/images/logoSmall.png";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
@@ -16,6 +15,9 @@ import HeartrateByAge from "../calculators/HeartrateByAge/HeartrateByAge";
 import HeartrateMax from "../calculators/HeartrateMax/HeartrateMax";
 import PowerWatt from "../calculators/PowerWatt/PowerWatt";
 import LoginAlert from "@/app/components/Alerts/LoginAlert";
+import Agb from "./components/legal/Agb";
+import PrivacyPolicy from "./components/legal/PrivacyPolicy";
+import Impressum from "./components/legal/Impressum";
 
 function ProfilView() {
   const [activeComponent, setActiveComponent] = useState("profil");
@@ -27,18 +29,21 @@ function ProfilView() {
     setShowLogin(false);
   };
 
+  const date = new Date();
+  const currentYear = date.getFullYear();
+
   return (
-    <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full   overflow-y-auto max-h-screen ">
+    <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full overflow-y-auto max-h-screen ">
       {activeComponent === "profil" && (
         <>
           <LoginAlert />
-          <div className="mx-auto w-40 text-center mt-5 mb-10">
+          <div className="mx-auto  text-center mt-5 mb-10">
             <span>Willkommen {session?.user.name}</span>
           </div>
           {!session && (
             <button
               onClick={() => handleComponentChange("login")}
-              className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
+              className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md my-1 "
             >
               <div className="ml-5">Anmelden</div>
               <svg
@@ -60,7 +65,7 @@ function ProfilView() {
 
           <button
             onClick={() => handleComponentChange("zones")}
-            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
           >
             <div className="ml-5">Persönliche Kalenderwerte</div>
             <svg
@@ -81,7 +86,7 @@ function ProfilView() {
 
           <button
             onClick={() => handleComponentChange("infos")}
-            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
           >
             <div className="ml-5">Informationen</div>
             <svg
@@ -102,7 +107,7 @@ function ProfilView() {
 
           <button
             onClick={() => handleComponentChange("wishYouWhat")}
-            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
           >
             <div className="ml-5">Wünsch dir was</div>
             <svg
@@ -123,7 +128,7 @@ function ProfilView() {
 
           <button
             onClick={() => handleComponentChange("trainingpeaks")}
-            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
           >
             <div className="ml-5">Trainingpeaks</div>
             <svg
@@ -145,7 +150,7 @@ function ProfilView() {
           {session && (
             <button
               onClick={() => handleComponentChange("myPlans")}
-              className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
+              className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md my-1 "
             >
               <div className="ml-5">Meine Pläne</div>
               <svg
@@ -168,7 +173,7 @@ function ProfilView() {
           {session && (
             <button
               onClick={() => handleComponentChange("userInfo")}
-              className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
+              className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
             >
               <div className="ml-5">Konto</div>
               <svg
@@ -198,18 +203,15 @@ function ProfilView() {
       {activeComponent === "powerWatt" && (
         <PowerWatt setShowInfos={() => handleComponentChange("infos")} />
       )}
-
       {activeComponent === "login" && (
         <Login
           setShowProfil={() => handleComponentChange("profil")}
           setShowRegisterForm={() => handleComponentChange("registerForm")}
         />
       )}
-
       {activeComponent === "zones" && (
         <Zones setShowProfil={() => handleComponentChange("profil")} />
       )}
-
       {activeComponent === "infos" && (
         <Infos
           setShowProfil={() => handleComponentChange("profil")}
@@ -218,40 +220,108 @@ function ProfilView() {
           setShowPowerWatt={() => handleComponentChange("powerWatt")}
         />
       )}
-
       {activeComponent === "wishYouWhat" && (
         <WishYouWhat setShowProfil={() => handleComponentChange("profil")} />
       )}
-
       {activeComponent === "trainingpeaks" && (
         <Trainingpeaks setShowProfil={() => handleComponentChange("profil")} />
       )}
-
       {activeComponent === "myPlans" && (
         <MyPlans setShowProfil={() => handleComponentChange("profil")} />
       )}
-
       {activeComponent === "userInfo" && (
         <UserInfo setShowProfil={() => handleComponentChange("profil")} />
       )}
-
       {activeComponent === "registerForm" && (
         <RegisterForm
           setShowProfil={() => handleComponentChange("profil")}
           setShowRegisterForm={setShowLogin}
         />
       )}
-
-      <Image
-        priority
-        src={logo}
-        alt="logo"
-        className="mx-auto w-40 mt-40"
-        width={100}
-        height={100}
-      />
-
-      <Impressum />
+      {activeComponent === "agb" && (
+        <Agb setShowProfil={() => handleComponentChange("profil")} />
+      )}
+      {activeComponent === "impressum" && (
+        <Impressum setShowProfil={() => handleComponentChange("profil")} />
+      )}
+      {activeComponent === "privacyPolicy" && (
+        <PrivacyPolicy setShowProfil={() => handleComponentChange("profil")} />
+      )}
+      {activeComponent === "profil" && (
+        <>
+          <Image
+            priority
+            src={logo}
+            alt="logo"
+            className="mx-auto w-40 my-40"
+            width={100}
+            height={100}
+          />
+          <button
+            onClick={() => handleComponentChange("impressum")}
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
+          >
+            <div className="ml-5">Impressum</div>
+            <svg
+              xmlns="http://w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5 mr-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
+          <button
+            onClick={() => handleComponentChange("agb")}
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
+          >
+            <div className="ml-5">AGB</div>
+            <svg
+              xmlns="http://w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5 mr-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
+          <button
+            onClick={() => handleComponentChange("privacyPolicy")}
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
+          >
+            <div className="ml-5">Datenschutz</div>
+            <svg
+              xmlns="http://w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5 mr-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
+          <div className="mb-40 mt-5 text-center flex  justify-center">
+            © Siyli-endurance-coaching 2022-{currentYear}{" "}
+          </div>{" "}
+        </>
+      )}
     </div>
   );
 }

@@ -61,7 +61,7 @@ const SessionOverlay = ({
                     d="M15.75 19.5L8.25 12l7.5-7.5"
                   />
                 </svg>
-              </button>{" "}
+              </button>
               <div className="w-full h-auto text-right p-1">
                 <p>{singleActivity[0]}</p>
                 <p className="my-1">{singleActivity[1]}</p>
@@ -131,13 +131,12 @@ const SessionOverlay = ({
             />
             <hr></hr>
             <div className="flex flex-col  items-center">
-              <Link
-                href="#first-section"
+              <button
                 className="btn btn-sm w-32 btn-outline border border-transparent text-first bg-third m-5"
                 onClick={handleViewClick}
               >
                 Druckversion
-              </Link>
+              </button>
               <button
                 onClick={() => toggleOverlay(dayIndex, activityIndex)}
                 className="btn btn-sm btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
@@ -163,7 +162,6 @@ const SessionOverlay = ({
           <>
             <div className="flex">
               <button
-                id="first-section"
                 onClick={() => toggleOverlay(dayIndex, activityIndex)}
                 className="focus:outline-none top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
               >
