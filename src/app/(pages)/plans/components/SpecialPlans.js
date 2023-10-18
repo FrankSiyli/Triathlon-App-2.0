@@ -20,7 +20,8 @@ function SpecialPlans({ setShowPlans }) {
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showToast, setShowToast] = useState(false);
-  const [session, setSession] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [, setIsLoading] = useState(false);
   const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
     useRecoilState(loggedInUserLastLoadedPlanState);
   const [lastLoadedPlan, setLastLoadedPlan] =
@@ -35,6 +36,7 @@ function SpecialPlans({ setShowPlans }) {
   };
 
   const handleLoadPlanClick = async (event) => {
+    setIsLoading(true);
     const session = await getSession();
     const expandedPlan = specialPlans[expandedPlanIndex];
     const specialPlanId = specialPlans.id;
@@ -47,8 +49,7 @@ function SpecialPlans({ setShowPlans }) {
     event.stopPropagation();
 
     if (session) {
-      setSession(session);
-      setLoggedInUserLastLoadedPlan(expandedPlan);
+      setIsLoggedIn(true);
       try {
         const userEmail = session.user.email;
         const updateUser = await fetch("/api/mongoDbUpdateUserTrainingPlans", {
@@ -62,10 +63,14 @@ function SpecialPlans({ setShowPlans }) {
             id: specialPlanId,
           }),
         });
+        if (updateUser) {
+          setLoggedInUserLastLoadedPlan(expandedPlan);
+        }
       } catch (error) {
         console.error("user update error spezialplaene");
       }
     }
+    setIsLoading(false);
   };
 
   const handleBackClick = () => {
@@ -95,7 +100,7 @@ function SpecialPlans({ setShowPlans }) {
           </svg>
         </button>
       </div>
-      <p className=" mx-auto w-40 text-center -mt-10">Spezialpläne</p>
+      <p className=" mx-auto text-center -mt-10">Spezialpläne</p>
       <Loader error={error} isLoading={isLoading} />
       {!isLoading && specialPlans.length === 0 && (
         <div className="border border-first/50 rounded-md p-2 text-center mt-20 mx-5">
@@ -104,12 +109,12 @@ function SpecialPlans({ setShowPlans }) {
       )}
 
       {!isLoading && specialPlans.length !== 0 && (
-        <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
+        <div className=" flex flex-col items-center mt-10 gap-2  max-w-xl mx-5 ">
           {specialPlans?.map((specialPlan, specialPlanIndex) => {
             return (
               <div
                 key={specialPlanIndex}
-                className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
+                className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 last:mb-20 "
               >
                 <div
                   onClick={() => handleInfoClick(specialPlanIndex)}
@@ -171,7 +176,7 @@ function SpecialPlans({ setShowPlans }) {
           {showToast && (
             <Alert
               alertText={
-                session
+                isLoggedIn
                   ? "Im Kalender und unter meine Pläne geladen"
                   : "Im Kalender geladen"
               }

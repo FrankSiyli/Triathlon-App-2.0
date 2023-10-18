@@ -60,12 +60,12 @@ const FetchedUserPlans = ({
 
   return (
     <>
-      <div className=" flex flex-col items-center  mt-10 mb-20 gap-1  max-w-xl mx-5 ">
+      <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
         {userPlans?.map((myPlan, myPlanIndex) => {
           return (
             <div
               key={myPlanIndex}
-              className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 "
+              className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 last:mb-20"
             >
               <div
                 onClick={() => handleInfoClick(myPlanIndex)}

@@ -16,12 +16,11 @@
 }
 
 html {
-  overflow: hidden;
+  _overflow: hidden;
   width: 100vw;
 }
 
 body {
-  -max-width: 36rem;
   height: 100%;
   width: 100%;
   position: fixed;
