@@ -16,9 +16,8 @@
 }
 
 body {
-  overscroll-behavior: contain;
+  overscroll-behavior: none;
   min-height: 100vh;
-  _width: 100%;
   position: fixed;
   display: flex;
   margin-left: auto;
