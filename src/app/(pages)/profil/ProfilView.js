@@ -18,6 +18,7 @@ import LoginAlert from "@/app/components/Alerts/LoginAlert";
 import Agb from "./components/legal/Agb";
 import PrivacyPolicy from "./components/legal/PrivacyPolicy";
 import Impressum from "./components/legal/Impressum";
+import Link from "next/link";
 
 function ProfilView() {
   const [activeComponent, setActiveComponent] = useState("profil");
@@ -253,10 +254,18 @@ function ProfilView() {
             priority
             src={logo}
             alt="logo"
-            className="mx-auto w-40 my-40"
+            className="mx-auto w-40 mt-20"
             width={100}
             height={100}
           />
+          <Link
+            target="_blank"
+            href="https://www.instagram.com/thesiyliapp?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr"
+            className="relative flex text-center justify-center items-center m-10 border border-first w-8 h-8 rounded-md cursor-pointer shadow-sm"
+          >
+            <span className="absolute top-1 right-1 border border-first rounded-full w-1 h-1 shadow-xl bounce-point "></span>
+            <span className="border border-first rounded-full w-4 h-4  shadow-xl"></span>
+          </Link>
           <button
             onClick={() => handleComponentChange("impressum")}
             className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
