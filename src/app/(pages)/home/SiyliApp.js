@@ -1,8 +1,6 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import NavBar from "@/app/components/NavBar/NavBar";
-import "../../globals.css";
 import { v1 as uuidv1 } from "uuid";
 import WeekScrollButtons from "./components/WeekScrollButtons";
 import Day from "./components/Day";

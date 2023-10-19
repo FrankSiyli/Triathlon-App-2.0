@@ -1,5 +1,4 @@
 import React from "react";
-import "../../../globals.css";
 import MenCalculatorByAge from "./components/MenCalculatorByAge";
 import WomenCalculatorByAge from "./components/WomenCalculatorByAge";
 
