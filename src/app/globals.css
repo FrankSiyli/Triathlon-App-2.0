@@ -88,6 +88,30 @@ body {
   );
 }
 
+.bounce-point {
+  animation-name: bounce;
+  animation-duration: 4s;
+  animation-iteration-count: 3;
+}
+@keyframes bounce {
+  from {
+    scale: 100%;
+  }
+  49% {
+    scale: 100%;
+  }
+  50% {
+    scale: 300%;
+  }
+  51% {
+    scale: 100%;
+  }
+
+  to {
+    scale: 100%;
+  }
+}
+
 /*----------------tables----------------------*/
 
 input[type="number"] {
