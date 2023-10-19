@@ -34,7 +34,7 @@ const LogoutButton = ({ setShowProfil }) => {
       setIsLoading(false);
       setTimeout(() => {
         setShowAlert(true);
-        setError("Etwas ist schief gelaufen.");
+        setError("Etwas ist schief gelaufen");
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);

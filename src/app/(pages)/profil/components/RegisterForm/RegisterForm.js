@@ -66,7 +66,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
     setIsLoading(true);
     if (!name || !email || !password) {
       setShowAlert(true);
-      setError("Bitte fülle alle Felder aus.");
+      setError("Bitte fülle alle Felder aus");
       setIsLoading(false);
       setTimeout(() => {
         setShowAlert(false);
@@ -79,7 +79,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
 
     if (!isPasswordValid) {
       setShowAlert(true);
-      setError("Passwort erfüllt nicht die Anforderungen.");
+      setError("Passwort erfüllt nicht die Anforderungen");
       setIsLoading(false);
       setTimeout(() => {
         setShowAlert(false);
@@ -139,7 +139,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
     } catch (error) {
       setIsLoading(false);
       setShowAlert(true);
-      setError("Etwas ist schief gelaufen.");
+      setError("Etwas ist schief gelaufen");
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);
