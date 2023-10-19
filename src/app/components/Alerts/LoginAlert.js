@@ -1,6 +1,5 @@
 "use client";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
-import Link from "next/link";
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 
@@ -41,12 +40,12 @@ function LoginAlert() {
 
           {showLoginAlert && (
             <div className="toast toast-top toast-center z-50 ">
-              <div className="alert alert-info">
-                <span>
+              <div className="alert alert-info text-center">
+                <p>
                   Um deine Pläne und Kalenderwerte
                   <br />
-                  zu speichern, melde dich an.
-                </span>
+                  zu speichern, melde dich an
+                </p>
               </div>
             </div>
           )}

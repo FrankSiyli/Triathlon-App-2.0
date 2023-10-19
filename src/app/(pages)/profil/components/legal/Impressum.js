@@ -29,7 +29,7 @@ function Impressum({ setShowProfil }) {
         </button>
       </div>
 
-      <div className="flex min-h-screen max-w-xl flex-col mx-auto p-4 text-center">
+      <div className="flex min-h-screen flex-col p-4 text-center">
         <p>Frank Siyli</p>
         <p>Siyli endurance coaching</p>
         <p>Vogt Groth Weg 45a</p>
