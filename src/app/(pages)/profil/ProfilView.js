@@ -33,7 +33,7 @@ function ProfilView() {
   const currentYear = date.getFullYear();
 
   return (
-    <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full overflow-y-auto max-h-screen ">
+    <div className="flex flex-col items-center mt-10 gap-2 max-w-xl mx-5">
       {activeComponent === "profil" && (
         <>
           <LoginAlert />
@@ -317,7 +317,7 @@ function ProfilView() {
               />
             </svg>
           </button>
-          <div className="mb-40 mt-5 text-center flex  justify-center">
+          <div className="my-5 text-center flex  justify-center">
             © Siyli-endurance-coaching 2022-{currentYear}{" "}
           </div>{" "}
         </>

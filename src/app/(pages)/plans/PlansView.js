@@ -18,7 +18,7 @@ function PlansView() {
       )}
 
       {activeComponent === "plans" && (
-        <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full  mb-20 overflow-y-auto max-h-screen ">
+        <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full  overflow-y-auto max-h-screen ">
           <button
             className="flex justify-between w-full max-w-xl  shadow-md p-2 rounded-md  my-1 "
             onClick={() => handlePlanTypeClick("triathlonPlans")}

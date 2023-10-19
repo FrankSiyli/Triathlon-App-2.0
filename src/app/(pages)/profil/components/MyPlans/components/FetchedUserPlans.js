@@ -65,7 +65,7 @@ const FetchedUserPlans = ({
           return (
             <div
               key={myPlanIndex}
-              className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 last:mb-20"
+              className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1"
             >
               <div
                 onClick={() => handleInfoClick(myPlanIndex)}
@@ -111,7 +111,7 @@ const FetchedUserPlans = ({
                     Wochen: {myPlan.duration}
                   </div>
                   <div className="font-light text-center">{myPlan.info}</div>
-                  <div className="flex justify-between mt-20 mb-20">
+                  <div className="flex justify-between m-5">
                     <div
                       onClick={() =>
                         handleRemovePlanClick(myPlan._id, userEmail)
