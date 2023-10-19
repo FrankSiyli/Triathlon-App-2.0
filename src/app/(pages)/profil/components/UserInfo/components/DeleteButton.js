@@ -25,7 +25,7 @@ const DeleteButton = () => {
       if (!session) {
         setIsLoading(false);
         setShowAlert(true);
-        setError("Etwas ist schief gelaufen.");
+        setError("Etwas ist schief gelaufen");
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);
@@ -45,16 +45,16 @@ const DeleteButton = () => {
       if (response.ok) {
         signOut();
         setIsLoading(false);
-        setShowProfil();
         setShowAlert(true);
-        setError("Löschen erfolgreich.");
+        setError("Löschen erfolgreich");
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);
+        setShowProfil();
       } else {
         setIsLoading(false);
         setShowAlert(true);
-        setError("Etwas ist schief gelaufen.");
+        setError("Etwas ist schief gelaufen");
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);

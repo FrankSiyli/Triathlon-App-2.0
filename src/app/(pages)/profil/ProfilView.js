@@ -33,7 +33,7 @@ function ProfilView() {
   const currentYear = date.getFullYear();
 
   return (
-    <div className="flex flex-col items-center mt-10 gap-2 max-w-xl mx-5">
+    <div className="flex flex-col items-center mt-10 gap-2 max-w-xl">
       {activeComponent === "profil" && (
         <>
           <LoginAlert />

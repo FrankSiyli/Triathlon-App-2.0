@@ -119,12 +119,12 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
       )}
 
       {!isLoading && plans?.length !== 0 && (
-        <div className="flex flex-col items-center mt-10 gap-2 max-w-xl mx-5">
+        <div className="flex flex-col items-center mt-10 gap-2 max-w-xl">
           {plans?.map((plan, planIndex) => {
             return (
               <div
                 key={planIndex}
-                className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1"
+                className="w-full max-w-xl shadow-md p-2 rounded-md my-1"
               >
                 <div
                   onClick={() => handleInfoClick(planIndex)}

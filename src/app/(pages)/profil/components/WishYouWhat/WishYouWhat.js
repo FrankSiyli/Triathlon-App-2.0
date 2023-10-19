@@ -32,11 +32,11 @@ const WishYouWhat = ({ setShowProfil }) => {
     e.preventDefault();
     const session = await getSession();
     if (!session) {
-      handleAlert("Bitte melde dich an.");
+      handleAlert("Bitte melde dich an");
       return;
     }
     if (!userPost) {
-      return handleAlert("Bitte fülle alle Felder aus.");
+      return handleAlert("Bitte fülle alle Felder aus");
     }
     setIsLoading(true);
     try {
@@ -59,7 +59,7 @@ const WishYouWhat = ({ setShowProfil }) => {
         setIsLoading(false);
       }
     } catch (error) {
-      handleAlert("Etwas ist schief gelaufen.");
+      handleAlert("Etwas ist schief gelaufen");
     }
     setIsLoading(false);
   };
@@ -67,10 +67,10 @@ const WishYouWhat = ({ setShowProfil }) => {
   const handleLikePost = async (postId, postAuthor) => {
     const session = await getSession();
     if (!session) {
-      return handleAlert("Bitte melde dich an.");
+      return handleAlert("Bitte melde dich an");
     }
     if (likedPosts.has(postId)) {
-      return handleAlert("Bereits 1x gewählt.");
+      return handleAlert("Bereits 1x gewählt");
     }
     if (postAuthor === session.user.name) {
       return handleAlert("😅");

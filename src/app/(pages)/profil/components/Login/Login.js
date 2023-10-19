@@ -31,7 +31,7 @@ function Login({ setShowProfil, setShowRegisterForm }) {
     if (!email || !password) {
       setIsLoading(false);
       setShowAlert(true);
-      setError("Bitte fülle alle Felder aus.");
+      setError("Bitte fülle alle Felder aus");
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);
@@ -61,7 +61,7 @@ function Login({ setShowProfil, setShowRegisterForm }) {
         setIsLoading(false);
         setTimeout(() => {
           setShowAlert(true);
-          setError("Die Eingaben sind nicht korrekt.");
+          setError("Die Eingaben sind nicht korrekt");
           setTimeout(() => {
             setShowAlert(false);
           }, 3000);
@@ -73,7 +73,7 @@ function Login({ setShowProfil, setShowRegisterForm }) {
       setIsLoading(false);
       setTimeout(() => {
         setShowAlert(true);
-        setError("Die Eingaben sind nicht korrekt.");
+        setError("Die Eingaben sind nicht korrekt");
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);
