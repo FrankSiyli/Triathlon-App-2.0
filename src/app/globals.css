@@ -15,8 +15,11 @@
   box-sizing: border-box;
 }
 
-body {
+html {
   overscroll-behavior: none;
+}
+
+body {
   min-height: 100vh;
   position: fixed;
   display: flex;
