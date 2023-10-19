@@ -26,7 +26,7 @@ function Zones({ setShowProfil }) {
 
   return (
     <>
-      <div className="w-screen max-w-xl mx-auto">
+      <div className="w-full max-w-xl mx-auto">
         <button
           className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
           onClick={handleBackClick}
