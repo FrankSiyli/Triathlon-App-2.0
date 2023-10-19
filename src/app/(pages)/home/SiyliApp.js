@@ -58,13 +58,14 @@ function SiyliApp() {
     <div className="sm:grid sm:grid-cols-1 md:grid md:grid-cols-1 lg:grid lg:grid-cols-3 gap-5">
       <>
         {showPlans && (
-          <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full mb-20 overflow-y-auto max-h-screen ">
+          <div className="flex flex-col mx-auto max-w-xl relative w-full  overflow-y-auto max-h-screen ">
             <PlansView />
+            <span className="mb-12"></span>
           </div>
         )}
 
         {homepagePlan && showCalendar && (
-          <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full overflow-y-auto max-h-screen ">
+          <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen ">
             <div className="mx-auto mb-5 mt-3  text-first text-sm p-1 text-center">
               {homepagePlan?.name}
             </div>
@@ -114,12 +115,14 @@ function SiyliApp() {
                     ))}
                 </div>
               ))}
+            <span className="mb-12"></span>
           </div>
         )}
 
         {showProfil && (
-          <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full mb-20 overflow-y-auto max-h-screen ">
+          <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen ">
             <ProfilView />
+            <span className="mb-12"></span>
           </div>
         )}
       </>

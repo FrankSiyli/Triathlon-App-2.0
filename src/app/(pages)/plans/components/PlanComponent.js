@@ -32,18 +32,11 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
     const expandedPlan = plans[expandedPlanIndex];
     const planId = expandedPlan.id;
     setHomepagePlan(expandedPlan);
-    setShowToast(true);
-    setMessage(
-      isLoggedIn
-        ? "Im Kalender und unter meine Pläne geladen"
-        : "Im Kalender geladen"
-    );
-    setTimeout(() => setShowToast(false), 2000);
+
     event.stopPropagation();
 
     if (session) {
       setIsLoggedIn(true);
-      setLoggedInUserLastLoadedPlan(expandedPlan);
       try {
         const userEmail = session.user.email;
         const updateUser = await fetch("/api/mongoDbUpdateUserTrainingPlans", {
@@ -61,14 +54,26 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
           if (updateUser.status === 200) {
             const responseJson = await updateUser.json();
             const serverMessage = responseJson.message;
+            setShowToast(true);
             setMessage(serverMessage);
+            setTimeout(() => setShowToast(false), 2000);
           }
+          setLoggedInUserLastLoadedPlan(expandedPlan);
         }
       } catch (error) {
         console.error("user update error");
       }
     }
     setIsLoading(false);
+    setTimeout(() => {
+      setShowToast(true);
+      setMessage(
+        session
+          ? "Im Kalender und unter meine Pläne geladen"
+          : "Im Kalender geladen"
+      );
+      setTimeout(() => setShowToast(false), 2000);
+    }, 1000);
   };
 
   const handleBackClick = () => {
@@ -100,7 +105,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
       </div>
       <p className="mx-auto text-center -mt-10">{title}</p>
       <Loader error={error} isLoading={isLoading} />
-      {!isLoading && plans.length === 0 && (
+      {!isLoading && plans?.length === 0 && (
         <div className="border border-first/50 rounded-md p-2 text-center mt-20 mx-5">
           Es wurde noch kein Plan erstellt
         </div>
@@ -112,7 +117,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
             return (
               <div
                 key={planIndex}
-                className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 last:mb-20"
+                className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1"
               >
                 <div
                   onClick={() => handleInfoClick(planIndex)}
@@ -160,7 +165,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
                     <div className="font-light text-center">{plan.info}</div>
                     <div
                       onClick={handleLoadPlanClick}
-                      className="btn btn-sm flex mx-auto w-20 m-5 mb-20 border border-transparent bg-third text-first shadow-xl"
+                      className="btn btn-sm flex mx-auto w-20 m-5 border border-transparent bg-third text-first shadow-xl"
                     >
                       Laden
                     </div>
