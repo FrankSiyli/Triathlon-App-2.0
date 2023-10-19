@@ -186,7 +186,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
             <input
               className="input  border border-transparent "
               type="string"
-              placeholder="Name"
+              placeholder="Benutzername"
               onChange={(e) => setName(e.target.value)}
             />
             <input

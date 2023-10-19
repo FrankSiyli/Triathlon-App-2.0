@@ -30,7 +30,7 @@ function PrivacyPolicy({ setShowProfil }) {
         </button>
       </div>
 
-      <div className="flex min-h-screen max-w-xl flex-col mx-auto p-4 text-center">
+      <div className="flex min-h-screen  flex-col  p-4 text-center">
         <p>Datenschutzerklärung</p>
         <p>
           Verantwortlicher im Sinne der Datenschutzgesetze, insbesondere der
@@ -58,7 +58,7 @@ function PrivacyPolicy({ setShowProfil }) {
         der Aufsichtsbehörden (für den nichtöffentlichen Bereich) mit Anschrift
         finden Sie unter:{" "}
         <Link href="https://www.bfdi.bund.de/DE/Service/Anschriften/Laender/Laender-node.html">
-          https://www.bfdi.bund.de/DE/Service/Anschriften/Laender/Laender-node.html.
+          www.bfdi.bund.de
         </Link>
         <p>Kontaktformular</p>
         Art und Zweck der Verarbeitung: Die von Ihnen eingegebenen Daten werden
