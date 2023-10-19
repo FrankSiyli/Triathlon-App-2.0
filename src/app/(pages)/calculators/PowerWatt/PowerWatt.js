@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import "../../../globals.css";
 import Alert from "@/app/components/Alerts/Alert";
 
 const PowerWatt = ({ setShowInfos }) => {

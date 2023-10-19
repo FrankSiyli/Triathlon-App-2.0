@@ -1,5 +1,4 @@
 "use client";
-import "../../../../globals.css";
 import React, { useState, useRef } from "react";
 import PrintSessions from "./components/PrintSessions";
 import { useReactToPrint } from "react-to-print";
