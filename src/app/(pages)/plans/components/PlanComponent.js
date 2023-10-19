@@ -11,14 +11,18 @@ import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedI
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
-  const { data, error, isLoading } = useSWR(apiEndpoint, fetcher);
+  const {
+    data,
+    error,
+    isLoading: isLoadingPlan,
+  } = useSWR(apiEndpoint, fetcher);
   const plans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showToast, setShowToast] = useState(false);
   const [message, setMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
     useRecoilState(loggedInUserLastLoadedPlanState);
 
@@ -104,7 +108,10 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
         </button>
       </div>
       <p className="mx-auto text-center -mt-10">{title}</p>
-      <Loader error={error} isLoading={isLoading} />
+      {isLoading || isLoadingPlan ? (
+        <Loader error={error} isLoading={isLoading} />
+      ) : null}
+
       {!isLoading && plans?.length === 0 && (
         <div className="border border-first/50 rounded-md p-2 text-center mt-20 mx-5">
           Es wurde noch kein Plan erstellt
