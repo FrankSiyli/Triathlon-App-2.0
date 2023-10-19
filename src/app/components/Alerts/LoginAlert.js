@@ -40,7 +40,7 @@ function LoginAlert() {
           </button>
 
           {showLoginAlert && (
-            <div className="toast toast-middle toast-right z-50 ">
+            <div className="toast toast-top toast-center z-50 ">
               <div className="alert alert-info">
                 <span>
                   Um deine Pläne und Kalenderwerte
