@@ -1,9 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import RunPlans from "./components/RunPlans";
-import SpecialPlans from "./components/SpecialPlans";
-import SwimPlans from "./components/SwimPlans";
-import TriathlonPlans from "./components/TriathlonPlans";
+import PlanComponent from "./components/PlanComponent";
 
 function PlansView() {
   const [activeComponent, setActiveComponent] = useState("plans");
@@ -106,16 +103,32 @@ function PlansView() {
       )}
 
       {activeComponent === "runPlans" && (
-        <RunPlans setShowPlans={() => handlePlanTypeClick("plans")} />
+        <PlanComponent
+          title="Laufpläne"
+          apiEndpoint="/api/mongoDbFetchRunPlans"
+          setShowPlans={() => handlePlanTypeClick("plans")}
+        />
       )}
       {activeComponent === "specialPlans" && (
-        <SpecialPlans setShowPlans={() => handlePlanTypeClick("plans")} />
+        <PlanComponent
+          title="Spezialpläne"
+          apiEndpoint="/api/mongoDbFetchSpecialPlans"
+          setShowPlans={() => handlePlanTypeClick("plans")}
+        />
       )}
       {activeComponent === "swimPlans" && (
-        <SwimPlans setShowPlans={() => handlePlanTypeClick("plans")} />
+        <PlanComponent
+          title="Schwimmpläne"
+          apiEndpoint="/api/mongoDbFetchSwimPlans"
+          setShowPlans={() => handlePlanTypeClick("plans")}
+        />
       )}
       {activeComponent === "triathlonPlans" && (
-        <TriathlonPlans setShowPlans={() => handlePlanTypeClick("plans")} />
+        <PlanComponent
+          title="Triathlonpläne"
+          apiEndpoint="/api/mongoDbFetchTriathlonPlans"
+          setShowPlans={() => handlePlanTypeClick("plans")}
+        />
       )}
     </>
   );

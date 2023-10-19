@@ -11,12 +11,9 @@ import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-function SpecialPlans({ setShowPlans }) {
-  const { data, error, isLoading } = useSWR(
-    "/api/mongoDbFetchSpecialPlans",
-    fetcher
-  );
-  const specialPlans = data?.plans;
+const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
+  const { data, error, isLoading } = useSWR(apiEndpoint, fetcher);
+  const plans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showToast, setShowToast] = useState(false);
@@ -28,24 +25,18 @@ function SpecialPlans({ setShowPlans }) {
     useRecoilState(lastLoadedPlanState);
 
   const handleInfoClick = (index) => {
-    if (index === expandedPlanIndex) {
-      setExpandedPlanIndex(null);
-    } else {
-      setExpandedPlanIndex(index);
-    }
+    setExpandedPlanIndex(index === expandedPlanIndex ? null : index);
   };
 
   const handleLoadPlanClick = async (event) => {
     setIsLoading(true);
     const session = await getSession();
-    const expandedPlan = specialPlans[expandedPlanIndex];
-    const specialPlanId = specialPlans.id;
+    const expandedPlan = plans[expandedPlanIndex];
+    const planId = plans.id;
     setHomepagePlan(expandedPlan);
     setLastLoadedPlan(expandedPlan);
     setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 2000);
+    setTimeout(() => setShowToast(false), 2000);
     event.stopPropagation();
 
     if (session) {
@@ -60,14 +51,14 @@ function SpecialPlans({ setShowPlans }) {
           body: JSON.stringify({
             email: userEmail,
             trainingPlans: expandedPlan,
-            id: specialPlanId,
+            id: planId,
           }),
         });
         if (updateUser) {
           setLoggedInUserLastLoadedPlan(expandedPlan);
         }
       } catch (error) {
-        console.error("user update error spezialplaene");
+        console.error("user update error");
       }
     }
     setIsLoading(false);
@@ -100,28 +91,28 @@ function SpecialPlans({ setShowPlans }) {
           </svg>
         </button>
       </div>
-      <p className=" mx-auto text-center -mt-10">Spezialpläne</p>
+      <p className="mx-auto text-center -mt-10">{title}</p>
       <Loader error={error} isLoading={isLoading} />
-      {!isLoading && specialPlans.length === 0 && (
+      {!isLoading && plans.length === 0 && (
         <div className="border border-first/50 rounded-md p-2 text-center mt-20 mx-5">
           Es wurde noch kein Plan erstellt
         </div>
       )}
 
-      {!isLoading && specialPlans.length !== 0 && (
-        <div className=" flex flex-col items-center mt-10 gap-2  max-w-xl mx-5 ">
-          {specialPlans?.map((specialPlan, specialPlanIndex) => {
+      {!isLoading && plans.length !== 0 && (
+        <div className="flex flex-col items-center mt-10 gap-2 max-w-xl mx-5">
+          {plans?.map((plan, planIndex) => {
             return (
               <div
-                key={specialPlanIndex}
-                className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 last:mb-20 "
+                key={planIndex}
+                className="w-full max-w-xl shadow-md p-2 rounded-md mx-5 my-1 last:mb-20"
               >
                 <div
-                  onClick={() => handleInfoClick(specialPlanIndex)}
-                  className=" flex flex-row justify-between cursor-pointer"
+                  onClick={() => handleInfoClick(planIndex)}
+                  className="flex flex-row justify-between cursor-pointer"
                 >
-                  <div className="ml-5">{specialPlan.name}</div>
-                  {expandedPlanIndex === specialPlanIndex ? (
+                  <div className="ml-5">{plan.name}</div>
+                  {expandedPlanIndex === planIndex ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -153,18 +144,16 @@ function SpecialPlans({ setShowPlans }) {
                     </svg>
                   )}
                 </div>
-                {expandedPlanIndex === specialPlanIndex && (
-                  <div className="mt-5 select-none ">
+                {expandedPlanIndex === planIndex && (
+                  <div className="mt-5 select-none">
                     <hr />
                     <div className="m-3 mx-auto p-1 w-24 text-sm text-center">
-                      <span> Wochen: {specialPlan.duration}</span>
+                      <span> Wochen: {plan.duration}</span>
                     </div>
-                    <div className="font-light text-center">
-                      {specialPlan.info}
-                    </div>
+                    <div className="font-light text-center">{plan.info}</div>
                     <div
                       onClick={handleLoadPlanClick}
-                      className="btn btn-sm flex mx-auto w-20 m-5 mb-20 border border-transparent bg-third  text-first shadow-xl "
+                      className="btn btn-sm flex mx-auto w-20 m-5 mb-20 border border-transparent bg-third text-first shadow-xl"
                     >
                       Laden
                     </div>
@@ -181,11 +170,11 @@ function SpecialPlans({ setShowPlans }) {
                   : "Im Kalender geladen"
               }
             />
-          )}{" "}
+          )}
         </div>
       )}
     </>
   );
-}
+};
 
-export default SpecialPlans;
+export default PlanComponent;
