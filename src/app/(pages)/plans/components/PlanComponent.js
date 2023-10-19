@@ -109,7 +109,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
       </div>
       <p className="mx-auto text-center -mt-10">{title}</p>
       {isLoading || isLoadingPlan ? (
-        <Loader error={error} isLoading={isLoading} />
+        <Loader error={error} isLoading={isLoading || isLoadingPlan} />
       ) : null}
 
       {!isLoading && plans?.length === 0 && (
@@ -118,7 +118,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
         </div>
       )}
 
-      {!isLoading && plans.length !== 0 && (
+      {!isLoading && plans?.length !== 0 && (
         <div className="flex flex-col items-center mt-10 gap-2 max-w-xl mx-5">
           {plans?.map((plan, planIndex) => {
             return (
