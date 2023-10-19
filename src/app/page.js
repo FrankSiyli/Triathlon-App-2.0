@@ -11,7 +11,6 @@ import { userEmailState } from "./recoil/atoms/user/userEmailState";
 import { userNameState } from "./recoil/atoms/user/userNameState";
 import { useRecoilState } from "recoil";
 import { loggedInUserLastLoadedPlanState } from "./recoil/atoms/user/loggedInUserLastLoadedPlanState";
-import { lastLoadedPlanState } from "./recoil/atoms/user/lastLoadedPlanState";
 import { getSession } from "next-auth/react";
 import { examplePlan } from "../../database/mockDb";
 
@@ -24,8 +23,6 @@ export default function Home() {
   const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
   const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
     useRecoilState(loggedInUserLastLoadedPlanState);
-  const [lastLoadedPlan, setLastLoadedPlan] =
-    useRecoilState(lastLoadedPlanState);
 
   const [isClient, setIsClient] = useState(false);
 
@@ -39,17 +36,13 @@ export default function Home() {
       const fetchData = async () => {
         const session = await getSession();
         if (!session) {
-          if (lastLoadedPlan.length !== 0) {
-            setHomepagePlan(lastLoadedPlan);
-          } else {
-            setHomepagePlan(examplePlan);
-          }
+          setHomepagePlan(examplePlan);
         } else {
           if (loggedInUserLastLoadedPlan.length !== 0) {
             setHomepagePlan(loggedInUserLastLoadedPlan);
-          } else if (lastLoadedPlan.length !== 0) {
+          } /*  else if (lastLoadedPlan.length !== 0) {
             setHomepagePlan(lastLoadedPlan);
-          } else {
+          } */ else {
             setHomepagePlan(examplePlan);
           }
 
@@ -91,7 +84,7 @@ export default function Home() {
     }
   }, [
     setHomepagePlan,
-    lastLoadedPlan,
+
     loggedInUserLastLoadedPlan,
     setUserName,
     setSavedHrMax,

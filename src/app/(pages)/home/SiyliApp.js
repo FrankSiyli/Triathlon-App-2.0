@@ -65,7 +65,7 @@ function SiyliApp() {
 
         {homepagePlan && showCalendar && (
           <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full overflow-y-auto max-h-screen ">
-            <div className="mx-auto mb-5 mt-3  text-first text-sm p-1 ">
+            <div className="mx-auto mb-5 mt-3  text-first text-sm p-1 text-center">
               {homepagePlan?.name}
             </div>
             <WeekScrollButtons

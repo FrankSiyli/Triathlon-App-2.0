@@ -14,11 +14,13 @@ export default async function handler(req, res) {
       const existingTrainingPlanIds = user.trainingPlans.map((plan) => plan.id);
       if (!existingTrainingPlanIds.includes(id)) {
         user.trainingPlans.addToSet(trainingPlans);
+        await user.save();
+        return res.status(201).json();
       } else {
-        console.error("Training plan already exists for this user");
+        return res
+          .status(200)
+          .json({ message: "Plan wurde bereits gespeichert." });
       }
-      await user.save();
-      return res.status(201).json();
     } catch (error) {
       return res
         .status(500)

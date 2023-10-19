@@ -7,7 +7,6 @@ import Loader from "../../../components/Loader/Loader";
 import useSWR from "swr";
 import { getSession } from "next-auth/react";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
-import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -17,12 +16,11 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showToast, setShowToast] = useState(false);
+  const [message, setMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [, setIsLoading] = useState(false);
   const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
     useRecoilState(loggedInUserLastLoadedPlanState);
-  const [lastLoadedPlan, setLastLoadedPlan] =
-    useRecoilState(lastLoadedPlanState);
 
   const handleInfoClick = (index) => {
     setExpandedPlanIndex(index === expandedPlanIndex ? null : index);
@@ -32,15 +30,20 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
     setIsLoading(true);
     const session = await getSession();
     const expandedPlan = plans[expandedPlanIndex];
-    const planId = plans.id;
+    const planId = expandedPlan.id;
     setHomepagePlan(expandedPlan);
-    setLastLoadedPlan(expandedPlan);
     setShowToast(true);
+    setMessage(
+      isLoggedIn
+        ? "Im Kalender und unter meine Pläne geladen"
+        : "Im Kalender geladen"
+    );
     setTimeout(() => setShowToast(false), 2000);
     event.stopPropagation();
 
     if (session) {
       setIsLoggedIn(true);
+      setLoggedInUserLastLoadedPlan(expandedPlan);
       try {
         const userEmail = session.user.email;
         const updateUser = await fetch("/api/mongoDbUpdateUserTrainingPlans", {
@@ -54,8 +57,12 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
             id: planId,
           }),
         });
-        if (updateUser) {
-          setLoggedInUserLastLoadedPlan(expandedPlan);
+        if (updateUser.ok) {
+          if (updateUser.status === 200) {
+            const responseJson = await updateUser.json();
+            const serverMessage = responseJson.message;
+            setMessage(serverMessage);
+          }
         }
       } catch (error) {
         console.error("user update error");
@@ -162,15 +169,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
               </div>
             );
           })}
-          {showToast && (
-            <Alert
-              alertText={
-                isLoggedIn
-                  ? "Im Kalender und unter meine Pläne geladen"
-                  : "Im Kalender geladen"
-              }
-            />
-          )}
+          {showToast && <Alert alertText={message} />}
         </div>
       )}
     </>
