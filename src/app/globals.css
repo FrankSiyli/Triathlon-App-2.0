@@ -35,7 +35,7 @@ body {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   color: #f5f4f5;
-  background-image: #1d2732;
+  background-color: #1d2732;
   white-space: pre-line;
   vertical-align: bottom;
 }
@@ -66,7 +66,7 @@ body {
 }
 
 .linear-background {
-  background-image: #1d2732;
+  background-color: #1d2732;
 }
 
 .bounce-point {
