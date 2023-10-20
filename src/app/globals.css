@@ -96,7 +96,7 @@ body {
 .custom-toast {
   animation: slideInOut 4s linear 0s 1 normal forwards,
     fadeOut 4s linear 0s 1 normal forwards;
-  background-color: #00a3b1;
+  background-color: #f5f4f5;
   z-index: 50;
   position: fixed;
   top: 5vh;
@@ -106,10 +106,10 @@ body {
   text-align: center;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  border-left-width: 1px;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-color: #f5f4f5;
+  border-left-width: 5px;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  border-color: #00a3b1;
   color: #1d2732;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -217,7 +217,7 @@ tr {
 /*----------------session overlay----------------------*/
 
 .overlay-background {
-  background-color: #1d2732;
+  background-color: #1d232a;
 }
 .dark-overlay {
   position: fixed;

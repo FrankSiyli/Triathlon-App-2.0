@@ -12,8 +12,8 @@ function NavBar({
   showProfil,
 }) {
   const [userName, setUserName] = useRecoilState(userNameState);
-  const activeStyle = " border-t-2 border-first";
-  const nonActiveStyle = "border-t border-first";
+  const activeStyle = " border-t border-alert";
+  const nonActiveStyle = "border-t border-first border-opacity-20";
 
   const handleCalendarClick = () => {
     setShowCalendar(true);

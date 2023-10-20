@@ -28,10 +28,10 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
     }
     return (
       <div>
-        <p className="text-center text-first p-2 ">{sectionType}</p>
+        <p className="text-center text-alert p-2 ">{sectionType}</p>
         {sectionData.map((section, sectionIndex) => (
           <div key={sectionIndex}>
-            <div className="relative bg-fourth/5 p-1 mb-4 text-sm">
+            <div className="relative ml-1 border-l border-first p-1 my-2 text-sm">
               {section.multiplier > 1 && (
                 <p className="absolute top-0 left-2 text-first text-xl">
                   {section.multiplier} x{" "}
