@@ -35,17 +35,7 @@ body {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   color: #f5f4f5;
-  background-image: linear-gradient(
-    to right bottom,
-    #1d2732,
-    #232f3c,
-    #293746,
-    #2f3f50,
-    #2f3f50,
-    #293746,
-    #232f3c,
-    #1d2732
-  );
+  background-image: #1d2732;
   white-space: pre-line;
   vertical-align: bottom;
 }
@@ -76,17 +66,7 @@ body {
 }
 
 .linear-background {
-  background-image: linear-gradient(
-    to right bottom,
-    #1d2732,
-    #232f3c,
-    #293746,
-    #2f3f50,
-    #2f3f50,
-    #293746,
-    #232f3c,
-    #1d2732
-  );
+  background-image: #1d2732;
 }
 
 .bounce-point {
@@ -225,17 +205,7 @@ tr {
 /*----------------session overlay----------------------*/
 
 .overlay-background {
-  background-image: linear-gradient(
-    to right bottom,
-    #1d2732,
-    #232f3c,
-    #293746,
-    #2f3f50,
-    #2f3f50,
-    #293746,
-    #232f3c,
-    #1d2732
-  );
+  background-color: #1d2732;
 }
 .dark-overlay {
   position: fixed;
