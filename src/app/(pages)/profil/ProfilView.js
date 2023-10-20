@@ -19,6 +19,7 @@ import Agb from "./components/legal/Agb";
 import PrivacyPolicy from "./components/legal/PrivacyPolicy";
 import Impressum from "./components/legal/Impressum";
 import Link from "next/link";
+import trainingpeaksLogo from "../../../../public/images/trainingpeaks_logo_2.png";
 
 function ProfilView() {
   const [activeComponent, setActiveComponent] = useState("profil");
@@ -129,9 +130,15 @@ function ProfilView() {
 
           <button
             onClick={() => handleComponentChange("trainingpeaks")}
-            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1"
           >
-            <div className="ml-5">Trainingpeaks</div>
+            <div className="ml-5  bg-first rounded-md">
+              <Image
+                alt="trainingpeaks"
+                className="w-auto h-7 "
+                src={trainingpeaksLogo}
+              />
+            </div>
             <svg
               xmlns="http://w3.org/2000/svg"
               fill="none"
