@@ -113,6 +113,67 @@ body {
   }
 }
 
+.custom-toast {
+  animation: slideInOut 4s linear 0s 1 normal forwards,
+    fadeOut 4s linear 0s 1 normal forwards;
+  background-color: #00a3b1;
+  z-index: 50;
+  position: fixed;
+  top: 5vh;
+  right: 0px;
+  height: auto;
+  padding: 0.5rem;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-left-width: 5px;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-color: #f5f4f5;
+  color: #1d2732;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideInOut {
+  0% {
+    transform: translateX(500px);
+  }
+  10% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  60% {
+    transform: translateX(100px);
+  }
+  70% {
+    transform: translateX(200px);
+  }
+  80% {
+    transform: translateX(300px);
+  }
+  90% {
+    transform: translateX(400px);
+  }
+  100% {
+    transform: translateX(500px);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 /*----------------tables----------------------*/
 
 input[type="number"] {
