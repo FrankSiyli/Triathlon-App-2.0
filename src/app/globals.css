@@ -157,35 +157,29 @@ body {
 /*----------------tables----------------------*/
 
 input[type="number"] {
-  border: 1px #00a3b1 solid;
-  background-color: #00a2b148;
+  background-color: #35558287;
   text-align: center;
 }
 
 input[type="text"] {
-  border: 1px #00a3b1 solid;
-  background-color: #00a2b148;
+  background-color: #35558287;
   text-align: center;
 }
 
 input[type="time"] {
-  border: 1px #00a3b1 solid;
-  background-color: #00a2b148;
+  background-color: #35558287;
   text-align: center;
 }
 input[type="string"] {
-  border: 1px #00a3b1 solid;
-  background-color: #00a2b148;
+  background-color: #35558287;
   text-align: center;
 }
 input[type="email"] {
-  border: 1px #00a3b1 solid;
-  background-color: #00a2b148;
+  background-color: #35558287;
   text-align: center;
 }
 input[type="password"] {
-  border: 1px #00a3b1 solid;
-  background-color: #00a2b148;
+  background-color: #35558287;
   text-align: center;
 }
 
