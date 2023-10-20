@@ -31,22 +31,20 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
         <p className="text-center text-first p-2 ">{sectionType}</p>
         {sectionData.map((section, sectionIndex) => (
           <div key={sectionIndex}>
-            <div className="relative rounded-md bg-fourth/5 p-1 mb-2 text-sm">
+            <div className="relative bg-fourth/5 p-1 mb-4 text-sm">
               {section.multiplier > 1 && (
-                <p className="absolute top-0 left-1 text-first text-xl">
+                <p className="absolute top-0 left-2 text-first text-xl">
                   {section.multiplier} x{" "}
                 </p>
               )}
               {section.exercises.map((exercise, exerciseIndex) => (
                 <div
                   key={exerciseIndex}
-                  className={`flex flex-row justify-between ${
-                    exerciseIndex === 0 && section.multiplier > 1
-                      ? "mt-10"
-                      : "mt-2"
+                  className={`flex flex-row justify-between mb-2  ${
+                    exerciseIndex === 0 && section.multiplier > 1 ? "mt-10" : ""
                   }`}
                 >
-                  <div className="flex gap-3">
+                  <div className="flex gap-2 ml-2">
                     {exercise.distance > 0 ? (
                       <p>{exercise.distance}m</p>
                     ) : exercise.duration > 0 ? (
@@ -55,15 +53,15 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                     <p>{getZones(exercise, savedSwimTime, savedHrMax)}</p>
                   </div>
                   <div
-                    className={`${
+                    className={`mx-3 ${
                       exercise.duration === 0 && exercise.distance === 0
-                        ? "w-full "
+                        ? "w-full"
                         : "w-1/2 text-right"
                     }`}
                   >
                     {exercise.name.trim() !== "" && (
                       <button
-                        className={` text-sm rounded-md p-1 cursor-default ${
+                        className={` text-sm rounded-md mr-1 cursor-default ${
                           exercise.imageLink
                             ? "underline decoration-first decoration-2 underline-offset-4 cursor-pointer "
                             : ""
@@ -85,7 +83,6 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                               : "text-right"
                           }`}
                         >
-                          {" "}
                           {exercise.name}
                         </p>
                       </button>

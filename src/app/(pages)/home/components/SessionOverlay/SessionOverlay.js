@@ -7,7 +7,6 @@ import calculateTotalDistance from "../../logicFunctions/totalDistanceFunction";
 import calculateTotalDuration from "../../logicFunctions/totalDurationFunction";
 import { formatTime } from "@/app/helperFunctions/formatTime";
 import NavBar from "@/app/components/NavBar/NavBar";
-import Link from "next/link";
 
 const SessionOverlay = ({
   sessionSections,
@@ -61,11 +60,11 @@ const SessionOverlay = ({
                   />
                 </svg>
               </button>
-              <div className="w-full h-auto text-right p-1">
+              <div className="w-full h-auto text-right p-1 mr-1">
                 <p>{singleActivity[0]}</p>
                 <p className="my-1">{singleActivity[1]}</p>
                 {totalDistance > 0 ? (
-                  <div className="flex justify-end">
+                  <div className="flex justify-end mt-5 -mb-2">
                     <div className="flex items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -99,9 +98,11 @@ const SessionOverlay = ({
                     {totalDistance}m
                   </div>
                 ) : null}
-                {totalDistance > 0 && totalDuration > 0 ? <p>+</p> : null}
+                {totalDistance > 0 && totalDuration > 0 ? (
+                  <span className="mr-5">+</span>
+                ) : null}
                 {totalDuration > 0 ? (
-                  <div className="flex justify-end items-center">
+                  <div className="flex justify-end items-center -mt-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

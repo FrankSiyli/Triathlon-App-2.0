@@ -74,7 +74,7 @@ const PrintSessions = forwardRef(
                       {" "}
                       {exercise.imageLink ? (
                         <button
-                          className={` text-sm rounded-md p-1 underline cursor-pointer `}
+                          className={` text-sm rounded-md  underline cursor-pointer `}
                           onClick={() => {
                             setOpenImageState(
                               exerciseIndex === openImageState
