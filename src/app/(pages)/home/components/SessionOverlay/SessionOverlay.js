@@ -122,14 +122,14 @@ const SessionOverlay = ({
                 ) : null}
               </div>
             </div>
-            <hr></hr>
+            <hr className="m-3 opacity-20 "></hr>
             <Sessions
               singleActivity={singleActivity}
               openOverlay={openOverlay}
               dayIndex={dayIndex}
               activityIndex={activityIndex}
             />
-            <hr></hr>
+            <hr className="m-3 opacity-20 "></hr>
             <div className="flex flex-col  items-center">
               <button
                 className="btn btn-sm w-32 btn-outline border border-transparent text-first bg-third m-5"
