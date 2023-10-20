@@ -157,17 +157,29 @@ body {
 /*----------------tables----------------------*/
 
 input[type="number"] {
-  background-color: var(--second);
+  border: 1px #00a3b1 solid;
   text-align: center;
 }
 
 input[type="text"] {
-  background-color: transparent;
+  border: 1px #00a3b1 solid;
   text-align: center;
 }
 
 input[type="time"] {
-  background-color: var(--second);
+  border: 1px #00a3b1 solid;
+  text-align: center;
+}
+input[type="string"] {
+  border: 1px #00a3b1 solid;
+  text-align: center;
+}
+input[type="email"] {
+  border: 1px #00a3b1 solid;
+  text-align: center;
+}
+input[type="password"] {
+  border: 1px #00a3b1 solid;
   text-align: center;
 }
 
