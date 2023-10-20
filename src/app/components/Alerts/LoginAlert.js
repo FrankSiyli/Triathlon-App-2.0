@@ -39,14 +39,12 @@ function LoginAlert() {
           </button>
 
           {showLoginAlert && (
-            <div className="toast toast-top toast-center z-50 ">
-              <div className="alert alert-info text-center">
-                <p>
-                  Um deine Pläne und Kalenderwerte
-                  <br />
-                  zu speichern, melde dich an
-                </p>
-              </div>
+            <div className="custom-toast">
+              <p>
+                Um deine Pläne und Kalenderwerte
+                <br />
+                zu speichern, melde dich an
+              </p>
             </div>
           )}
         </>
