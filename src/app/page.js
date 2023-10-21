@@ -13,10 +13,13 @@ import { useRecoilState } from "recoil";
 import { loggedInUserLastLoadedPlanState } from "./recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import { getSession } from "next-auth/react";
 import { examplePlan } from "../../database/mockDb";
+import { hasCookie, setCookie } from "cookies-next";
+import PrivacyPolicy from "./(pages)/profil/components/legal/PrivacyPolicy";
 
 export default function Home() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [isLoading, setIsLoading] = useState(false);
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [userName, setUserName] = useRecoilState(userNameState);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
@@ -35,14 +38,10 @@ export default function Home() {
     if (isClient) {
       const fetchData = async () => {
         const session = await getSession();
-        if (!session) {
-          setHomepagePlan(examplePlan);
-        } else {
+        if (session) {
           if (loggedInUserLastLoadedPlan.length !== 0) {
             setHomepagePlan(loggedInUserLastLoadedPlan);
-          } /*  else if (lastLoadedPlan.length !== 0) {
-            setHomepagePlan(lastLoadedPlan);
-          } */ else {
+          } else {
             setHomepagePlan(examplePlan);
           }
 
@@ -76,6 +75,8 @@ export default function Home() {
           } catch (error) {
             console.error("An error occurred:", error);
           }
+        } else {
+          setHomepagePlan(examplePlan);
         }
 
         setIsLoading(false);
@@ -93,6 +94,48 @@ export default function Home() {
     isClient,
   ]);
 
+  const handlePolicyClick = () => {
+    setShowPrivacyPolicy(true);
+  };
+  const handleBackClick = () => {
+    setShowPrivacyPolicy(false);
+  };
+
+  const CookieConsent = (props) => {
+    const [showConsent, setShowConsent] = useState(true);
+
+    useEffect(() => {
+      setShowConsent(hasCookie("localConsent"));
+    }, []);
+
+    const acceptCookie = () => {
+      setShowConsent(true);
+      setCookie("localConsent", "true", {});
+    };
+
+    if (showConsent) {
+      return null;
+    }
+    return (
+      <div className=" fixed mx-auto z-50 bottom-0 left-0 right-0 flex flex-col gap-3 items-center bg-background/95 px-2 py-2 border border-alert rounded-md max-w-2xl">
+        <button
+          className="btn btn-sm btn-outline text-alert  py-2 px-6"
+          onClick={() => acceptCookie()}
+        >
+          ok
+        </button>
+        <p className="text-center">
+          Diese Website verwendet Cookies, um die Benutzererfahrung zu
+          verbessern. Durch die Nutzung unserer Website stimmen Sie allen
+          Cookies gemäß unserer Einwilligung zu.
+        </p>
+        <span onClick={handlePolicyClick} className="underline">
+          Datenschutz
+        </span>
+      </div>
+    );
+  };
+
   return (
     <div>
       {isLoading && (
@@ -108,7 +151,21 @@ export default function Home() {
           <span className="loading loading-ring loading-sm"></span>
         </div>
       )}
-      {isClient && <SiyliApp />}
+      {!showPrivacyPolicy && isClient && <SiyliApp />}
+      {showPrivacyPolicy && isClient && (
+        <div className="mx-10 overflow-y-auto max-h-screen ">
+          <button className="fixed top-0 left-0 z-50 h-16 w-full bg-background">
+            <span
+              onClick={handleBackClick}
+              className="underline text-alert flex justify-start m-3"
+            >
+              zurück
+            </span>
+          </button>
+          <PrivacyPolicy />
+        </div>
+      )}
+      {!showPrivacyPolicy && <CookieConsent />}
     </div>
   );
 }
