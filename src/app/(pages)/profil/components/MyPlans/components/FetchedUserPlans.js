@@ -7,7 +7,7 @@ const FetchedUserPlans = ({
   expandedPlanIndex,
   setExpandedPlanIndex,
   setHomepagePlan,
-  setShowLoadOnHomepageToast,
+  setShowAlert,
   userEmail,
   setUserPlans,
   setIsLoading,
@@ -24,11 +24,8 @@ const FetchedUserPlans = ({
   const handleLoadPlanClick = () => {
     const expandedPlan = userPlans[expandedPlanIndex];
     setHomepagePlan(expandedPlan);
-    setShowLoadOnHomepageToast(true);
+    setShowAlert(true);
     setLoggedInUserLastLoadedPlan(expandedPlan);
-    setTimeout(() => {
-      setShowLoadOnHomepageToast(false);
-    }, 2000);
   };
 
   const handleRemovePlanClick = async (planId, userEmail) => {

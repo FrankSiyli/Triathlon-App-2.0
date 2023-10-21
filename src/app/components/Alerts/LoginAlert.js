@@ -11,7 +11,7 @@ function LoginAlert() {
     setShowLoginAlert(true);
     setTimeout(() => {
       setShowLoginAlert(false);
-    }, 3000);
+    }, 5000);
   };
 
   return (

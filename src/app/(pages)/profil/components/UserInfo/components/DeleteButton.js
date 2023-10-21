@@ -26,9 +26,6 @@ const DeleteButton = () => {
         setIsLoading(false);
         setShowAlert(true);
         setError("Etwas ist schief gelaufen");
-        setTimeout(() => {
-          setShowAlert(false);
-        }, 3000);
       }
 
       setUserName("");
@@ -47,17 +44,12 @@ const DeleteButton = () => {
         setIsLoading(false);
         setShowAlert(true);
         setError("Löschen erfolgreich");
-        setTimeout(() => {
-          setShowAlert(false);
-        }, 3000);
+
         setShowProfil();
       } else {
         setIsLoading(false);
         setShowAlert(true);
         setError("Etwas ist schief gelaufen");
-        setTimeout(() => {
-          setShowAlert(false);
-        }, 3000);
       }
     } catch (error) {
       console.error("login error");
@@ -77,7 +69,9 @@ const DeleteButton = () => {
           Konto löschen
         </button>
       )}
-      {error && showAlert && <Alert alertText={error} />}
+      {error && showAlert && (
+        <Alert alertText={error} setShowAlert={setShowAlert} />
+      )}
     </>
   );
 };

@@ -10,7 +10,7 @@ const MenCalculatorByAge = () => {
     useRecoilState(showWomenInputState);
   const [showMenInput, setShowMenInput] = useRecoilState(showMenInputState);
 
-  const [menShowAlert, setMenShowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [menCalculatorInput, setMenCalculatorInput] = useState("");
   const [menCalculatedHr, setMenCalculatedHr] = useState("");
 
@@ -20,10 +20,7 @@ const MenCalculatorByAge = () => {
       menCalculatorInput < 0 ||
       menCalculatorInput > 100
     ) {
-      setMenShowAlert(true);
-      setTimeout(() => {
-        setMenShowAlert(false);
-      }, 2000);
+      setShowAlert(true);
     } else {
       setMenCalculatedHr(Math.round(214 - 0.8 * menCalculatorInput));
       setMenCalculatorInput("");
@@ -69,8 +66,11 @@ const MenCalculatorByAge = () => {
             </div>
 
             <p className="icon-text m-1">HRmax = 214-(0.8 x Alter) </p>
-            {menShowAlert && (
-              <Alert alertText="Bitte trage dein Alter ein (0-100)" />
+            {showAlert && (
+              <Alert
+                alertText="Bitte trage dein Alter ein (0-100)"
+                setShowAlert={setShowAlert}
+              />
             )}
             <button
               onClick={handleMenInputClick}
