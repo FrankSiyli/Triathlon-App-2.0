@@ -129,7 +129,7 @@ export default function Home() {
           verbessern. Durch die Nutzung unserer Website stimmen Sie allen
           Cookies gemäß unserer Einwilligung zu.
         </p>
-        <span onClick={handlePolicyClick} className="underline">
+        <span onClick={handlePolicyClick} className="underline cursor-pointer">
           Datenschutz
         </span>
       </div>
