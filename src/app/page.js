@@ -117,7 +117,7 @@ export default function Home() {
       return null;
     }
     return (
-      <div className=" fixed mx-auto z-50 bottom-0 left-0 right-0 flex flex-col gap-3 items-center bg-background/95 px-2 py-2 border border-alert rounded-md max-w-2xl">
+      <div className=" fixed mx-auto z-50 bottom-0 left-0 right-0 flex flex-col gap-3 items-center bg-background/95 px-2 py-2 border border-alert rounded-md text-sm max-w-2xl">
         <button
           className="btn btn-sm btn-outline text-alert  py-2 px-6"
           onClick={() => acceptCookie()}
