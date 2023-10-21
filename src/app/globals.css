@@ -16,7 +16,7 @@
 }
 
 html {
-  overscroll-behavior: auto;
+  overscroll-behavior: none;
 }
 
 body {
