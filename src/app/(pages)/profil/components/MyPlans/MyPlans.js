@@ -12,7 +12,7 @@ import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedI
 function MyPlans({ setShowProfil }) {
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
-  const [showLoadOnHomepageToast, setShowLoadOnHomepageToast] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [userPlans, setUserPlans] = useState([]);
@@ -90,14 +90,16 @@ function MyPlans({ setShowProfil }) {
           setExpandedPlanIndex={setExpandedPlanIndex}
           userPlans={userPlans}
           setHomepagePlan={setHomepagePlan}
-          setShowLoadOnHomepageToast={setShowLoadOnHomepageToast}
+          setShowAlert={setShowAlert}
           userEmail={userEmail}
           setUserPlans={setUserPlans}
           setIsLoading={setIsLoading}
         />
       )}
 
-      {showLoadOnHomepageToast && <Alert alertText="Im Kalender geladen" />}
+      {showAlert && (
+        <Alert alertText="Im Kalender geladen" setShowAlert={setShowAlert} />
+      )}
     </>
   );
 }

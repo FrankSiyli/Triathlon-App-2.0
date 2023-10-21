@@ -19,7 +19,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
   const plans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
-  const [showToast, setShowToast] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [message, setMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -58,9 +58,8 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
           if (updateUser.status === 200) {
             const responseJson = await updateUser.json();
             const serverMessage = responseJson.message;
-            setShowToast(true);
+            setShowAlert(true);
             setMessage(serverMessage);
-            setTimeout(() => setShowToast(false), 2000);
           }
           setLoggedInUserLastLoadedPlan(expandedPlan);
         }
@@ -70,13 +69,12 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
     }
     setIsLoading(false);
     setTimeout(() => {
-      setShowToast(true);
+      setShowAlert(true);
       setMessage(
         session
           ? "Im Kalender und unter meine Pläne geladen"
           : "Im Kalender geladen"
       );
-      setTimeout(() => setShowToast(false), 2000);
     }, 1000);
   };
 
@@ -181,7 +179,9 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
               </div>
             );
           })}
-          {showToast && <Alert alertText={message} />}
+          {showAlert && (
+            <Alert alertText={message} setShowAlert={setShowAlert} />
+          )}
         </div>
       )}
     </>

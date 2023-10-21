@@ -68,9 +68,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
       setShowAlert(true);
       setError("Bitte fülle alle Felder aus");
       setIsLoading(false);
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 3000);
+
       return;
     }
 
@@ -81,9 +79,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
       setShowAlert(true);
       setError("Passwort erfüllt nicht die Anforderungen");
       setIsLoading(false);
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 3000);
+
       return;
     }
 
@@ -104,9 +100,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
         setIsLoading(false);
         setShowAlert(true);
         setError("Konto existiert bereits");
-        setTimeout(() => {
-          setShowAlert(false);
-        }, 3000);
+
         return;
       }
 
@@ -140,9 +134,6 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
       setIsLoading(false);
       setShowAlert(true);
       setError("Etwas ist schief gelaufen");
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 3000);
     }
     setIsLoading(false);
   };
@@ -275,7 +266,9 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
               Konto erstellen
             </button>
           </form>
-          {error && showAlert && <Alert alertText={error} />}
+          {error && showAlert && (
+            <Alert alertText={error} setShowAlert={setShowAlert} />
+          )}
         </div>
       )}
     </>

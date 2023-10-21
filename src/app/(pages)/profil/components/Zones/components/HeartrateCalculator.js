@@ -26,9 +26,6 @@ function HeartrateCalculator() {
     ) {
       setIsLoading(false);
       setShowAlert(true);
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 2000);
     } else {
       setHeartrateInputFired(true);
       setSavedHrMax(heartrateCalculatorInput);
@@ -72,7 +69,10 @@ function HeartrateCalculator() {
     <>
       <div className="flex  max-w-xl  flex-col items-center  ">
         {showAlert && (
-          <Alert alertText="Bitte trage deine HRmax ein (100-300)" />
+          <Alert
+            alertText="Bitte trage deine HRmax ein (100-300)"
+            setShowAlert={setShowAlert}
+          />
         )}
       </div>
       {isLoading ? (

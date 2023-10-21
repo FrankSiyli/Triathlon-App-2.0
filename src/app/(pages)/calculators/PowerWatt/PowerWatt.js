@@ -22,9 +22,6 @@ const PowerWatt = ({ setShowInfos }) => {
       calculatorInput > 500
     ) {
       setShowAlert(true);
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 2000);
     } else {
       setTgOutput1(`${Math.round(b1 * 50)} - ${Math.round(b1 * 60)}`);
       setTgOutput2(`${Math.round(b1 * 60)} - ${Math.round(b1 * 70)}`);
@@ -86,7 +83,10 @@ const PowerWatt = ({ setShowInfos }) => {
         <div>
           <div className="max-w-xl mx-auto flex flex-col items-center justify-center">
             {showAlert && (
-              <Alert alertText="Bitte trage deine FTP ein (50-500)" />
+              <Alert
+                alertText="Bitte trage deine FTP ein (50-500)"
+                setShowAlert={setShowAlert}
+              />
             )}
             <label className="label mt-10 ">
               <span className="label-text-alt text-first text-xl">

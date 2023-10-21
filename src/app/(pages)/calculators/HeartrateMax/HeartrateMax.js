@@ -22,9 +22,6 @@ function HeartrateMax({ setShowInfos }) {
       calculatorInput > 300
     ) {
       setShowAlert(true);
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 2000);
     } else {
       setTgOutput1(`${Math.round(b * 50)} - ${Math.round(b * 60)}`);
       setTgOutput2(`${Math.round(b * 60)} - ${Math.round(b * 75)}`);
@@ -89,7 +86,10 @@ function HeartrateMax({ setShowInfos }) {
         <div>
           <div className="max-w-xl mx-auto flex flex-col justify-center items-center ">
             {showAlert && (
-              <Alert alertText="Bitte trage deine HRmax ein (100-300)" />
+              <Alert
+                alertText="Bitte trage deine HRmax ein (100-300)"
+                setShowAlert={setShowAlert}
+              />
             )}
             <label className="label mt-10 ">
               <span className="label-text-alt text-first text-xl">

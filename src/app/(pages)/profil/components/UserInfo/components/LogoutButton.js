@@ -35,10 +35,7 @@ const LogoutButton = ({ setShowProfil }) => {
       setTimeout(() => {
         setShowAlert(true);
         setError("Etwas ist schief gelaufen");
-        setTimeout(() => {
-          setShowAlert(false);
-        }, 3000);
-      }, 2000);
+      }, 1000);
       return;
     }
   };
@@ -54,7 +51,9 @@ const LogoutButton = ({ setShowProfil }) => {
           Abmelden
         </button>
       )}
-      {error && showAlert && <Alert alertText={error} />}
+      {error && showAlert && (
+        <Alert alertText={error} setShowAlert={setShowAlert} />
+      )}
     </>
   );
 };

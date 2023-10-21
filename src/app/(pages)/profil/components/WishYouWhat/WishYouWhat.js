@@ -108,9 +108,6 @@ const WishYouWhat = ({ setShowProfil }) => {
   const handleAlert = (errorMessage) => {
     setShowAlert(true);
     setError(errorMessage);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 3000);
   };
 
   const handleBackClick = () => {
@@ -207,7 +204,9 @@ const WishYouWhat = ({ setShowProfil }) => {
               </div>
             ))}
       </div>
-      {error && showAlert && <Alert alertText={error} />}
+      {error && showAlert && (
+        <Alert alertText={error} setShowAlert={setShowAlert} />
+      )}
     </>
   );
 };
