@@ -14,6 +14,7 @@ import { useRecoilState } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import PlansView from "../plans/PlansView";
 import ProfilView from "../profil/ProfilView";
+import LoginAlert from "@/app/components/Alerts/LoginAlert";
 
 function SiyliApp() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
@@ -63,58 +64,62 @@ function SiyliApp() {
         )}
 
         {homepagePlan && showCalendar && (
-          <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen ">
-            <div className="mx-auto mb-5 mt-3  text-first text-sm p-1 text-center">
-              {homepagePlan?.name}
+          <>
+            {/*             <LoginAlert />
+             */}{" "}
+            <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen ">
+              <div className="mx-auto mb-5 mt-3  text-first text-sm p-1 text-center">
+                {homepagePlan?.name}
+              </div>
+              <WeekScrollButtons
+                currentWeek={currentWeek}
+                numberOfPlanWeeks={numberOfPlanWeeks}
+                handleBackClick={handleBackClick}
+                handleNextClick={handleNextClick}
+              />
+
+              {activitiesByDay &&
+                activitiesByDay.map(([day, activity], dayIndex) => (
+                  <div key={uuidv1()}>
+                    <Day
+                      day={day}
+                      toggleDay={toggleDay}
+                      dayIndex={dayIndex}
+                      openDay={openDay}
+                    />
+
+                    <Activity
+                      openDay={openDay}
+                      dayIndex={dayIndex}
+                      activity={activity}
+                      toggleOverlay={toggleOverlay}
+                    />
+                  </div>
+                ))}
+
+              {activitiesByDay &&
+                activitiesByDay.map(([day, activity], dayIndex) => (
+                  <div key={dayIndex}>
+                    {openDay === dayIndex &&
+                      activity.map((singleActivity, activityIndex) => (
+                        <SessionOverlay
+                          key={activityIndex}
+                          singleActivity={singleActivity}
+                          dayIndex={dayIndex}
+                          activityIndex={activityIndex}
+                          openOverlay={openOverlay}
+                          toggleOverlay={toggleOverlay}
+                          homepagePlan={homepagePlan}
+                          initialOpen={openOverlay.includes(
+                            dayIndex * 1000 + activityIndex
+                          )}
+                        />
+                      ))}
+                  </div>
+                ))}
+              <span className="mb-40"></span>
             </div>
-            <WeekScrollButtons
-              currentWeek={currentWeek}
-              numberOfPlanWeeks={numberOfPlanWeeks}
-              handleBackClick={handleBackClick}
-              handleNextClick={handleNextClick}
-            />
-
-            {activitiesByDay &&
-              activitiesByDay.map(([day, activity], dayIndex) => (
-                <div key={uuidv1()}>
-                  <Day
-                    day={day}
-                    toggleDay={toggleDay}
-                    dayIndex={dayIndex}
-                    openDay={openDay}
-                  />
-
-                  <Activity
-                    openDay={openDay}
-                    dayIndex={dayIndex}
-                    activity={activity}
-                    toggleOverlay={toggleOverlay}
-                  />
-                </div>
-              ))}
-
-            {activitiesByDay &&
-              activitiesByDay.map(([day, activity], dayIndex) => (
-                <div key={dayIndex}>
-                  {openDay === dayIndex &&
-                    activity.map((singleActivity, activityIndex) => (
-                      <SessionOverlay
-                        key={activityIndex}
-                        singleActivity={singleActivity}
-                        dayIndex={dayIndex}
-                        activityIndex={activityIndex}
-                        openOverlay={openOverlay}
-                        toggleOverlay={toggleOverlay}
-                        homepagePlan={homepagePlan}
-                        initialOpen={openOverlay.includes(
-                          dayIndex * 1000 + activityIndex
-                        )}
-                      />
-                    ))}
-                </div>
-              ))}
-            <span className="mb-40"></span>
-          </div>
+          </>
         )}
 
         {showProfil && (

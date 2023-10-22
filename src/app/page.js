@@ -117,21 +117,29 @@ export default function Home() {
       return null;
     }
     return (
-      <div className=" fixed mx-auto z-50 bottom-0 left-0 right-0 flex flex-col gap-3 items-center bg-background/95 px-2 py-2 border border-alert rounded-md text-sm max-w-2xl">
+      <div className=" fixed mx-auto z-50 bottom-0 left-0 right-0 flex flex-col gap-3 items-center bg-background/95 px-2 py-2 border border-alert rounded-md max-w-2xl">
+        <p className="text-alert">Einfach trainieren mit der Siyli App</p>
+        <p className="text-alert">
+          Finde deinen Trainingsplan und erreich deine Fitnessziele 🚀
+        </p>
+        <span className="text-first w-full border border-first mt-3"></span>
+        <p className="text-center text-sm">
+          Diese Website verwendet Cookies, um die Benutzererfahrung zu
+          verbessern. Durch die Nutzung unserer Website stimmen Sie allen
+          Cookies gemäß unserer Einwilligung zu.
+        </p>
+        <span
+          onClick={handlePolicyClick}
+          className="underline cursor-pointer text-sm"
+        >
+          Datenschutzbestimmungen
+        </span>
         <button
           className="btn btn-sm btn-outline text-alert  py-2 px-6"
           onClick={() => acceptCookie()}
         >
           ok
         </button>
-        <p className="text-center">
-          Diese Website verwendet Cookies, um die Benutzererfahrung zu
-          verbessern. Durch die Nutzung unserer Website stimmen Sie allen
-          Cookies gemäß unserer Einwilligung zu.
-        </p>
-        <span onClick={handlePolicyClick} className="underline cursor-pointer">
-          Datenschutz
-        </span>
       </div>
     );
   };
