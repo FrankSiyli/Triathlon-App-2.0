@@ -169,7 +169,7 @@ export default function Home() {
       )}
       {!showPrivacyPolicy && isClient && <SiyliApp />}
       {showPrivacyPolicy && isClient && (
-        <div className="mx-5 overflow-y-auto max-h-screen ">
+        <div className="mx-5 overflow-y-auto max-h-screen">
           <button className="fixed top-0 left-0 z-50 h-16 w-full bg-background">
             <span
               onClick={handleBackClick}
