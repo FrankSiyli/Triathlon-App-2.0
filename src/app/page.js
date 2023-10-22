@@ -117,25 +117,33 @@ export default function Home() {
       return null;
     }
     return (
-      <div className=" fixed mx-auto z-50 bottom-0 left-0 right-0 flex flex-col gap-3 items-center bg-background/95 px-2 py-2 border border-alert rounded-md max-w-2xl">
-        <p className="text-alert">Einfach trainieren mit der Siyli App</p>
+      <div className=" fixed mx-auto z-50 bottom-0 left-0 right-0 flex flex-col gap-3 items-center text-center bg-background px-2 py-2 border border-alert rounded-md max-w-2xl">
+        <p className="text-alert mt-5">Einfach trainieren mit der Siyli-App</p>
         <p className="text-alert">
-          Finde deinen Trainingsplan und erreich deine Fitnessziele 🚀
+          Finde deinen Trainingsplan und erreiche deine Ziele 🚀
         </p>
-        <span className="text-first w-full border border-first mt-3"></span>
+        <Image
+          priority
+          src={logo}
+          alt="logo"
+          className="mx-auto w-32 m-5"
+          width={100}
+          height={100}
+        />{" "}
         <p className="text-center text-sm">
-          Diese Website verwendet Cookies, um die Benutzererfahrung zu
-          verbessern. Durch die Nutzung unserer Website stimmen Sie allen
-          Cookies gemäß unserer Einwilligung zu.
+          Diese Website verwendet Cookies. Wenn Sie fortfahren, gehen wir davon
+          aus, dass Sie damit einverstanden sind. Weitere Informationen finden
+          Sie in unserer
+          <span
+            onClick={handlePolicyClick}
+            className="underline cursor-pointer text-sm ml-1"
+          >
+            Datenschutzrichtlinie
+          </span>
+          .
         </p>
-        <span
-          onClick={handlePolicyClick}
-          className="underline cursor-pointer text-sm"
-        >
-          Datenschutzbestimmungen
-        </span>
         <button
-          className="btn btn-sm btn-outline text-alert  py-2 px-6"
+          className="btn btn-sm btn-outline text-alert m-3 py-2 px-6"
           onClick={() => acceptCookie()}
         >
           ok
@@ -161,11 +169,11 @@ export default function Home() {
       )}
       {!showPrivacyPolicy && isClient && <SiyliApp />}
       {showPrivacyPolicy && isClient && (
-        <div className="mx-10 overflow-y-auto max-h-screen ">
+        <div className="mx-5 overflow-y-auto max-h-screen ">
           <button className="fixed top-0 left-0 z-50 h-16 w-full bg-background">
             <span
               onClick={handleBackClick}
-              className="underline text-alert flex justify-start m-3"
+              className="underline text-alert flex justify-start m-3 ml-5"
             >
               zurück
             </span>
