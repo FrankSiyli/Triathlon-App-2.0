@@ -14,7 +14,6 @@ import RegisterForm from "./components/RegisterForm/RegisterForm";
 import HeartrateByAge from "../calculators/HeartrateByAge/HeartrateByAge";
 import HeartrateMax from "../calculators/HeartrateMax/HeartrateMax";
 import PowerWatt from "../calculators/PowerWatt/PowerWatt";
-import LoginAlert from "@/app/components/Alerts/LoginAlert";
 import Agb from "./components/legal/Agb";
 import PrivacyPolicy from "./components/legal/PrivacyPolicy";
 import Impressum from "./components/legal/Impressum";
@@ -38,7 +37,6 @@ function ProfilView() {
     <div className="flex flex-col items-center gap-2 max-w-xl">
       {activeComponent === "profil" && (
         <>
-          <LoginAlert />
           <div className="mx-auto  text-center mt-5 mb-10">
             <span>Willkommen {session?.user.name}</span>
           </div>
