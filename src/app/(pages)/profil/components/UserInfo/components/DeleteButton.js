@@ -44,8 +44,9 @@ const DeleteButton = () => {
         setIsLoading(false);
         setShowAlert(true);
         setError("Löschen erfolgreich");
-
-        setShowProfil();
+        setTimeout(() => {
+          setShowProfil();
+        }, 2500);
       } else {
         setIsLoading(false);
         setShowAlert(true);
