@@ -131,9 +131,9 @@ export default function Home() {
           height={100}
         />{" "}
         <p className="text-center text-sm">
-          Diese Website verwendet Cookies. Wenn Sie fortfahren, gehen wir davon
-          aus, dass Sie damit einverstanden sind. Weitere Informationen finden
-          Sie in unserer
+          Diese Website verwendet Cookies. Wenn du fortfährst, gehen wir davon
+          aus, dass du damit einverstanden bist. Weitere Informationen findest
+          du in unserer
           <span
             onClick={handlePolicyClick}
             className="underline cursor-pointer text-sm ml-1"
