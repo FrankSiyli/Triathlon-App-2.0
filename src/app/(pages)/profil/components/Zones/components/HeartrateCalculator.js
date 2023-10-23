@@ -78,7 +78,7 @@ function HeartrateCalculator() {
       {isLoading ? (
         <Loader isLoading={isLoading} />
       ) : (
-        <div className="border border-fourth mt-10 rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center linear-background">
+        <div className="mt-10 rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center linear-background">
           {!heartrateInputFired && (
             <>
               <p>Pulszonen-Berechnung</p>
