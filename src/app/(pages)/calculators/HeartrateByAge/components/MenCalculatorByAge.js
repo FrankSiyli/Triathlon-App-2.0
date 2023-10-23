@@ -28,39 +28,38 @@ const MenCalculatorByAge = () => {
 
   return (
     <>
-      <div className="mt-10 flex justify-center">
-        <div className="flex flex-col justify-center text-center ">
-          <div>
-            <input
-              type="number"
-              maxLength={3}
-              placeholder="Dein Alter z.B. 35"
-              value={menCalculatorInput}
-              onChange={(e) => setMenCalculatorInput(e.target.value)}
-              onKeyDown={handleMenKeyDown}
-              className="input  border border-transparent "
-            />
-          </div>
-
-          <p className="icon-text m-1">HRmax = 214-(0.8 x Alter) </p>
-          {showAlert && (
-            <Alert
-              alertText="Bitte trage dein Alter ein (0-100)"
-              setShowAlert={setShowAlert}
-            />
-          )}
-          <button
-            onClick={handleMenInputClick}
-            className="btn btn-sm m-3 bg-third w-32 mx-auto border border-transparent text-first shadow-xl"
-          >
-            Berechnen
-          </button>
-          {menCalculatedHr && (
-            <div className="text-center m-3 p-2">
-              Dein berechneter Maximalpuls: <p>{menCalculatedHr} bpm</p>
-            </div>
-          )}
+      <div className="flex flex-col justify-center text-center ">
+        <p className="m-2">Herren</p>
+        <div>
+          <input
+            type="number"
+            maxLength={3}
+            placeholder="Dein Alter z.B. 35"
+            value={menCalculatorInput}
+            onChange={(e) => setMenCalculatorInput(e.target.value)}
+            onKeyDown={handleMenKeyDown}
+            className="input  border border-transparent "
+          />
         </div>
+
+        <p className="icon-text m-1">HRmax = 214-(0.8 x Alter) </p>
+        {showAlert && (
+          <Alert
+            alertText="Bitte trage dein Alter ein (0-100)"
+            setShowAlert={setShowAlert}
+          />
+        )}
+        <button
+          onClick={handleMenInputClick}
+          className="btn btn-sm m-3 bg-third w-32 mx-auto border border-transparent text-first shadow-xl"
+        >
+          Berechnen
+        </button>
+        {menCalculatedHr && (
+          <div className="text-center m-3 p-2">
+            Dein berechneter Maximalpuls: <p>{menCalculatedHr} bpm</p>
+          </div>
+        )}
       </div>
     </>
   );
