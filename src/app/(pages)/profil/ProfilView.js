@@ -265,7 +265,7 @@ function ProfilView() {
           />
           <Link
             target="_blank"
-            href="https://www.instagram.com/thesiyliapp?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr"
+            href="https://www.instagram.com/siyli_app.de?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr"
             className="relative flex text-center justify-center items-center m-10 border border-first w-8 h-8 rounded-md cursor-pointer shadow-sm"
           >
             <span className="absolute top-1 right-1 border border-first rounded-full w-1 h-1 shadow-xl bounce-point "></span>
