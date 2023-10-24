@@ -15,10 +15,12 @@ import { getSession } from "next-auth/react";
 import { examplePlan } from "../../database/mockDb";
 import { hasCookie, setCookie } from "cookies-next";
 import PrivacyPolicy from "./(pages)/profil/components/legal/PrivacyPolicy";
+import LoginAlert from "./components/Alerts/LoginAlert";
 
 export default function Home() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [isLoading, setIsLoading] = useState(false);
+  const [showLoginAlert, setShowLoginAlert] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [userName, setUserName] = useRecoilState(userNameState);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
@@ -111,6 +113,9 @@ export default function Home() {
     const acceptCookie = () => {
       setShowConsent(true);
       setCookie("localConsent", "true", {});
+      setTimeout(() => {
+        setShowLoginAlert(true);
+      }, 1000);
     };
 
     if (showConsent) {
@@ -182,6 +187,7 @@ export default function Home() {
         </div>
       )}
       {!showPrivacyPolicy && <CookieConsent />}
+      {showLoginAlert && <LoginAlert setShowLoginAlert={setShowLoginAlert} />}
     </div>
   );
 }
