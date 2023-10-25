@@ -16,7 +16,7 @@ const PlansSchema = new Schema({
   category: { type: String },
   name: { type: String },
   info: { type: String },
-  price: { type: String },
+  wishFrom: { type: String },
   duration: { type: Number },
   weeks: [
     {

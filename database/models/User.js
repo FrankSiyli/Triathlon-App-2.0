@@ -20,7 +20,7 @@ const UserSchema = new Schema(
         category: String,
         name: String,
         info: String,
-        price: String,
+        wishFrom: String,
         duration: Number,
         weeks: [
           {
