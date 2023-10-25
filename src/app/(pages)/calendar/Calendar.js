@@ -15,7 +15,7 @@ import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import PlansView from "../plans/PlansView";
 import ProfilView from "../profil/ProfilView";
 
-function SiyliApp() {
+function Calendar() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showCalendar, setShowCalendar] = useState(true);
   const [showPlans, setShowPlans] = useState(false);
@@ -139,4 +139,4 @@ function SiyliApp() {
   );
 }
 
-export default SiyliApp;
+export default Calendar;
