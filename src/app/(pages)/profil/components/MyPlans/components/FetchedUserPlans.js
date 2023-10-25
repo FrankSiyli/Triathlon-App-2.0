@@ -57,7 +57,7 @@ const FetchedUserPlans = ({
 
   return (
     <>
-      <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
+      <div className=" flex flex-col items-center  mt-10 gap-1 w-full max-w-xl mx-5 ">
         {userPlans?.map((myPlan, myPlanIndex) => {
           return (
             <div
