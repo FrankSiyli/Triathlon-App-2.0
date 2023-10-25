@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import logo from "../../public/images/logoSmall.png";
 import "./globals.css";
 import Image from "next/image";
-import SiyliApp from "./(pages)/home/SiyliApp";
 import { homepagePlanState } from "./recoil/atoms/plans/homepagePlanState";
 import { savedSwimTimeState } from "./recoil/atoms/user/savedSwimTimeState";
 import { savedHrMaxState } from "./recoil/atoms/user/savedHrMaxState";
@@ -16,6 +15,7 @@ import { examplePlan } from "../../database/mockDb";
 import { hasCookie, setCookie } from "cookies-next";
 import PrivacyPolicy from "./(pages)/profil/components/legal/PrivacyPolicy";
 import LoginAlert from "./components/Alerts/LoginAlert";
+import Calendar from "./(pages)/calendar/Calendar";
 
 export default function Home() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
@@ -172,7 +172,7 @@ export default function Home() {
           <span className="loading loading-ring loading-sm"></span>
         </div>
       )}
-      {!showPrivacyPolicy && isClient && <SiyliApp />}
+      {!showPrivacyPolicy && isClient && <Calendar />}
       {showPrivacyPolicy && isClient && (
         <div className="mx-5 overflow-y-auto max-h-screen">
           <button className="fixed top-0 left-0 z-50 h-16 w-full bg-background">
