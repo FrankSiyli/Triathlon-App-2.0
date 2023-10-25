@@ -164,13 +164,12 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
                 {expandedPlanIndex === planIndex && (
                   <div className="mt-5 select-none">
                     <hr />
-                    <div className="m-3 mx-auto p-1 flex flex-col text-center">
-                      <span className="underline decoration-alert underline-offset-2 ">
+                    <div className="w-full my-7 p-1 flex flex-col text-center">
+                      <span className=" p-1 border-l border-r border-alert">
                         Wochen: {plan.duration}
                       </span>
                       {plan.wishFrom !== "" && (
-                        <span className="underline decoration-alert underline-offset-2 ">
-                          {" "}
+                        <span className=" p-1 border-l border-r border-alert">
                           Wunsch von: {plan.wishFrom}
                         </span>
                       )}
