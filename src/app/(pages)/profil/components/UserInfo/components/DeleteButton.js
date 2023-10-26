@@ -8,7 +8,7 @@ import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 
-const DeleteButton = () => {
+const DeleteButton = ({ setShowProfil }) => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -31,7 +31,7 @@ const DeleteButton = () => {
       setUserName("");
       setLastLoadedPlan("");
       setHomepagePlan("");
-      const response = await fetch("/api/mongoDbDeleteUser", {
+      const response = await fetch("/api/user/deleteUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

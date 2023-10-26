@@ -9,7 +9,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const WishYouWhat = ({ setShowProfil }) => {
   const { data, isLoading: fetchingPosts } = useSWR(
-    "/api/mongoDbFetchPosts",
+    "/api/wishListPosts/fetchWishListPosts",
     fetcher
   );
   const fetchedPosts = data?.posts;
@@ -55,7 +55,7 @@ const WishYouWhat = ({ setShowProfil }) => {
 
       if (res.ok) {
         setUserPost("");
-        mutate("/api/mongoDbFetchPosts");
+        mutate("/api/wishListPosts/fetchWishListPosts");
         setIsLoading(false);
       }
     } catch (error) {
@@ -77,7 +77,7 @@ const WishYouWhat = ({ setShowProfil }) => {
     }
     setLoadingLikes({ ...loadingLikes, [postId]: true });
     try {
-      const response = await fetch("/api/mongoDbSendPost", {
+      const response = await fetch("/api/wishListPosts/sendWishListPost", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const WishYouWhat = ({ setShowProfil }) => {
 
       if (response.ok) {
         likedPosts.add(postId);
-        mutate("/api/mongoDbFetchPosts");
+        mutate("/api/wishListPosts/fetchWishListPosts");
       }
     } catch (error) {
       console.error("An error occurred", error);

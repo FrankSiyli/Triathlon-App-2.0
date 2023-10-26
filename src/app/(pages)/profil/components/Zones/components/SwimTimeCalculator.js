@@ -25,7 +25,7 @@ function SwimTimeCalculator() {
       setSession(session);
       try {
         const userEmail = session.user.email;
-        const updateUser = await fetch("/api/mongoDbUpdateUserSwimTime", {
+        const updateUser = await fetch("/api/user/updateUserSwimTime", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -1,5 +1,5 @@
-import dbConnect from "../../database/dbConnect";
-import { Plans } from "../../database/models/Plans";
+import dbConnect from "../../../database/dbConnect";
+import { Plans } from "../../../database/models/Plans";
 
 export default async function handler(request, response) {
   await dbConnect();

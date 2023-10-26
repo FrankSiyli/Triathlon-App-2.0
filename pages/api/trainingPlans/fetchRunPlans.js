@@ -1,15 +1,15 @@
-import dbConnect from "../../database/dbConnect";
-import { Plans } from "../../database/models/Plans";
+import dbConnect from "../../../database/dbConnect";
+import { Plans } from "../../../database/models/Plans";
 
 export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
     try {
-      const plans = await Plans.find({ category: "homepage" });
+      const plans = await Plans.find({ category: "run" });
       return response.status(200).json({ plans });
     } catch (error) {
-      console.error("Error fetching homepagePlan:", error);
+      console.error("Error fetching runPlans:", error);
       return response
         .status(500)
         .json({ message: "Server error", error: error.message });

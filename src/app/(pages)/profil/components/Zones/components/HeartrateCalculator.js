@@ -37,7 +37,7 @@ function HeartrateCalculator() {
       setSession(session);
       try {
         const userEmail = session.user.email;
-        const updateUser = await fetch("/api/mongoDbUpdateUserHeartRate", {
+        const updateUser = await fetch("/api/user/updateUserHeartRate", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

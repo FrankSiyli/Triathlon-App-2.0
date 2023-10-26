@@ -33,7 +33,7 @@ const FetchedUserPlans = ({
 
     try {
       const response = await fetch(
-        `/api/mongoDbDeleteUserPlan?planId=${planId}&email=${userEmail}`,
+        `/api/user/deleteUserPlan?planId=${planId}&email=${userEmail}`,
         {
           method: "DELETE",
           headers: {

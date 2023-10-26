@@ -27,7 +27,7 @@ function MyPlans({ setShowProfil }) {
       setUserEmail(fetchedUserEmail);
       try {
         const response = await fetch(
-          `/api/mongoDbFetchUserPlans?email=${fetchedUserEmail}`,
+          `/api/user/fetchUserPlans?email=${fetchedUserEmail}`,
           {
             method: "GET",
             headers: {
