@@ -36,7 +36,7 @@ const Trainingpeaks = ({ setShowProfil }) => {
       <div className="w-11/12 border border-first/50 linear-background rounded-md p-4 my-20 mx-auto max-w-xl text-center">
         <p>
           Falls dir ein Trainingsplan gefällt und du die Einheiten zum
-          trainieren auf dein Device laden möchtest, sind alle Pläne bei
+          Trainieren auf dein Device laden möchtest, sind alle Pläne bei
           Trainingpeaks erhältlich.{" "}
         </p>
         <br />
