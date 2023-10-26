@@ -43,7 +43,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
       setIsLoggedIn(true);
       try {
         const userEmail = session.user.email;
-        const updateUser = await fetch("/api/mongoDbUpdateUserTrainingPlans", {
+        const updateUser = await fetch("/api/user/updateUserTrainingPlans", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

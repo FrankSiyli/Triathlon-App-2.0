@@ -30,7 +30,7 @@ const UserInfo = ({ setShowProfil }) => {
         setUserEmail(fetchedUserEmail);
         try {
           const heartRateResponse = await fetch(
-            `/api/mongoDbFetchUserHeartRate?email=${fetchedUserEmail}`,
+            `/api/user/fetchUserHeartRate?email=${fetchedUserEmail}`,
             {
               method: "GET",
             }
@@ -46,7 +46,7 @@ const UserInfo = ({ setShowProfil }) => {
         }
         try {
           const swimTimeResponse = await fetch(
-            `/api/mongoDbFetchUserSwimTime?email=${fetchedUserEmail}`,
+            `/api/user/fetchUserSwimTime?email=${fetchedUserEmail}`,
             {
               method: "GET",
               headers: {

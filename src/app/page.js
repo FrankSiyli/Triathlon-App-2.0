@@ -66,12 +66,12 @@ export default function Home() {
             };
 
             fetchUserData(
-              `/api/mongoDbFetchUserHeartRate?email=${session.user.email}`,
+              `/api/user/fetchUserHeartRate?email=${session.user.email}`,
               setSavedHrMax
             );
 
             fetchUserData(
-              `/api/mongoDbFetchUserSwimTime?email=${session.user.email}`,
+              `/api/user/fetchUserSwimTime?email=${session.user.email}`,
               setSavedSwimTime
             );
           } catch (error) {

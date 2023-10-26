@@ -4,7 +4,6 @@ import { signOut } from "next-auth/react";
 import { useRecoilState } from "recoil";
 import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
-import { examplePlan } from "../../../../../../../database/mockDb";
 import { lastLoadedPlanState } from "@/app/recoil/atoms/user/lastLoadedPlanState";
 import Alert from "@/app/components/Alerts/Alert";
 

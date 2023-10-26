@@ -84,7 +84,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
     }
 
     try {
-      const resUserExists = await fetch("/api/mongoDbUserExists", {
+      const resUserExists = await fetch("/api/user/checkIfUserExists", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -104,7 +104,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
         return;
       }
 
-      const res = await fetch("/api/mongoDbRegisterUser", {
+      const res = await fetch("/api/user/registerUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

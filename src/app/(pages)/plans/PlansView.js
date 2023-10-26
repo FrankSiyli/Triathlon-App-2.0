@@ -105,28 +105,28 @@ function PlansView() {
       {activeComponent === "runPlans" && (
         <PlanComponent
           title="Laufpläne"
-          apiEndpoint="/api/mongoDbFetchRunPlans"
+          apiEndpoint="/api/trainingPlans/fetchRunPlans"
           setShowPlans={() => handlePlanTypeClick("plans")}
         />
       )}
       {activeComponent === "specialPlans" && (
         <PlanComponent
           title="Spezialpläne"
-          apiEndpoint="/api/mongoDbFetchSpecialPlans"
+          apiEndpoint="/api/trainingPlans/fetchSpecialPlans"
           setShowPlans={() => handlePlanTypeClick("plans")}
         />
       )}
       {activeComponent === "swimPlans" && (
         <PlanComponent
           title="Schwimmpläne"
-          apiEndpoint="/api/mongoDbFetchSwimPlans"
+          apiEndpoint="/api/trainingPlans/fetchSwimPlans"
           setShowPlans={() => handlePlanTypeClick("plans")}
         />
       )}
       {activeComponent === "triathlonPlans" && (
         <PlanComponent
           title="Triathlonpläne"
-          apiEndpoint="/api/mongoDbFetchTriathlonPlans"
+          apiEndpoint="/api/trainingPlans/fetchTriathlonPlans"
           setShowPlans={() => handlePlanTypeClick("plans")}
         />
       )}

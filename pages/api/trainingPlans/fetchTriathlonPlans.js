@@ -1,15 +1,15 @@
-import dbConnect from "../../database/dbConnect";
-import Post from "../../database/models/Post";
+import dbConnect from "../../../database/dbConnect";
+import { Plans } from "../../../database/models/Plans";
 
 export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
     try {
-      const posts = await Post.find();
-      return response.status(200).json({ posts });
+      const plans = await Plans.find({ category: "triathlon" });
+      return response.status(200).json({ plans });
     } catch (error) {
-      console.error("Error fetching posts:", error);
+      console.error("Error fetching triathlonPlans:", error);
       return response
         .status(500)
         .json({ message: "Server error", error: error.message });
