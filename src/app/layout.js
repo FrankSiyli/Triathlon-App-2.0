@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Siyli endurance coaching",
+  url: "siyli-app.de",
   description: "Trainingsplan App",
 };
 

@@ -95,7 +95,7 @@ body {
 }
 
 .custom-toast {
-  animation: slideInOut 3s linear 0s 1 forwards;
+  animation: slideInOut 4s linear 0s 1 forwards;
   background-color: #f5f4f5;
   z-index: 50;
   position: fixed;
@@ -104,14 +104,31 @@ body {
   height: auto;
   padding: 0.5rem;
   text-align: center;
-  border-top-left-radius: 5px;
+  border-left-width: 4px;
   border-bottom-left-radius: 5px;
-  border-left-width: 5px;
-  border-top-width: 2px;
-  border-bottom-width: 2px;
+  border-top-left-radius: 5px;
   border-color: #00a3b1;
   color: #1d2732;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.custom-toast::before {
+  animation: slideOut 3s linear 0s 1 forwards;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 2px;
+  background-color: #00a3b1;
+}
+
+@keyframes slideOut {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0%;
+  }
 }
 
 @keyframes slideInOut {
