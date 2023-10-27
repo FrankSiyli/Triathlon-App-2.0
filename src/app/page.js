@@ -14,13 +14,13 @@ import { getSession } from "next-auth/react";
 import { examplePlan } from "../../database/mockDb";
 import { hasCookie, setCookie } from "cookies-next";
 import PrivacyPolicy from "./(pages)/profil/components/legal/PrivacyPolicy";
-import LoginAlert from "./components/Alerts/LoginAlert";
 import Calendar from "./(pages)/calendar/Calendar";
+import Alert from "./components/Alerts/Alert";
 
 export default function Home() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [isLoading, setIsLoading] = useState(false);
-  const [showLoginAlert, setShowLoginAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [userName, setUserName] = useRecoilState(userNameState);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
@@ -87,7 +87,6 @@ export default function Home() {
     }
   }, [
     setHomepagePlan,
-
     loggedInUserLastLoadedPlan,
     setUserName,
     setSavedHrMax,
@@ -114,7 +113,7 @@ export default function Home() {
       setShowConsent(true);
       setCookie("localConsent", "true", {});
       setTimeout(() => {
-        setShowLoginAlert(true);
+        setShowAlert(true);
       }, 1000);
     };
 
@@ -187,7 +186,12 @@ export default function Home() {
         </div>
       )}
       {!showPrivacyPolicy && <CookieConsent />}
-      {showLoginAlert && <LoginAlert setShowLoginAlert={setShowLoginAlert} />}
+      {showAlert && (
+        <Alert
+          alertText="Um deine Pläne und Kalenderwerte zu speichern, melde dich an"
+          setShowAlert={setShowAlert}
+        />
+      )}
     </div>
   );
 }
