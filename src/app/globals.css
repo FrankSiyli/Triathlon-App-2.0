@@ -117,14 +117,14 @@ body {
 
 @keyframes slideOut {
   0% {
-    transform: translateX(0px);
+    transform: translateX(0vw);
   }
-  10% {
-    transform: translateX(0px);
+  70% {
+    transform: translateX(0vw);
   }
 
   100% {
-    transform: translateX(400px);
+    transform: translateX(100vw);
   }
 }
 
