@@ -165,6 +165,7 @@ const WishYouWhat = ({ setShowProfil }) => {
           >
             Senden
           </button>
+          {/** bike */}
         </div>
 
         <Loader isLoading={isLoading || fetchingPosts} />
