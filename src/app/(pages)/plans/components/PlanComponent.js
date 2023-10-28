@@ -126,8 +126,11 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
               >
                 <div
                   onClick={() => handleInfoClick(planIndex)}
-                  className="flex flex-row justify-between cursor-pointer"
+                  className="relative flex flex-row justify-between cursor-pointer"
                 >
+                  <div className="absolute -top-2 -left-1 text-alert text-sm">
+                    <span> {plan.duration}</span>
+                  </div>
                   <div className="ml-5">{plan.name}</div>
                   {expandedPlanIndex === planIndex ? (
                     <svg
