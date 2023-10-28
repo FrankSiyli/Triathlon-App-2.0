@@ -7,9 +7,9 @@ import { AuthProvider } from "./Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Siyli endurance coaching",
+  title: "siyli-app.de",
   url: "siyli-app.de",
-  description: "Trainingsplan App",
+  description: "Trainingsplan-app für Ausdauersport",
 };
 
 export default function RootLayout({ children }) {
