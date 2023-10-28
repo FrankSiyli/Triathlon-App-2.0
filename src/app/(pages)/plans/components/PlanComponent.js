@@ -18,6 +18,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
   } = useSWR(apiEndpoint, fetcher);
   const plans = data?.plans;
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);
+  const [expandedPlan, setExpandedPlan] = useState(null);
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showAlert, setShowAlert] = useState(false);
   const [message, setMessage] = useState("");
@@ -26,15 +27,17 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
   const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
     useRecoilState(loggedInUserLastLoadedPlanState);
 
-  const handleInfoClick = (index) => {
-    setExpandedPlanIndex(index === expandedPlanIndex ? null : index);
+  const handleInfoClick = (plan) => {
+    setExpandedPlanIndex((prevExpandedPlan) =>
+      prevExpandedPlan === plan._id ? null : plan._id
+    );
+    setExpandedPlan(plan);
   };
 
   const handleLoadPlanClick = async (event) => {
     setIsLoading(true);
     const session = await getSession();
-    const expandedPlan = plans[expandedPlanIndex];
-    const planId = expandedPlan.id;
+    const planId = expandedPlanIndex;
     setHomepagePlan(expandedPlan);
 
     event.stopPropagation();
@@ -118,21 +121,21 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
 
       {!isLoading && plans?.length !== 0 && (
         <div className="flex flex-col items-center mt-10 gap-2 max-w-xl">
-          {plans?.map((plan, planIndex) => {
+          {plans?.map((plan) => {
             return (
               <div
-                key={planIndex}
+                key={plan._id}
                 className="w-full max-w-xl shadow-md p-2 rounded-md my-1"
               >
                 <div
-                  onClick={() => handleInfoClick(planIndex)}
+                  onClick={() => handleInfoClick(plan)}
                   className="relative flex flex-row justify-between cursor-pointer"
                 >
                   <div className="absolute -top-2 -left-1 text-alert text-sm">
                     <span> {plan.duration}</span>
                   </div>
                   <div className="ml-5">{plan.name}</div>
-                  {expandedPlanIndex === planIndex ? (
+                  {expandedPlanIndex === plan._id ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -164,7 +167,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
                     </svg>
                   )}
                 </div>
-                {expandedPlanIndex === planIndex && (
+                {expandedPlanIndex === plan._id && (
                   <div className="mt-5 select-none">
                     <hr />
                     <div className="w-full my-7 p-1 flex flex-col text-center">
