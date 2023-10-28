@@ -171,6 +171,7 @@ export default function Home() {
           <span className="loading loading-ring loading-sm"></span>
         </div>
       )}
+
       {!showPrivacyPolicy && isClient && <Calendar />}
       {showPrivacyPolicy && isClient && (
         <div className="mx-5 overflow-y-auto max-h-screen">
