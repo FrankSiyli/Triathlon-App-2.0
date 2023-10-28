@@ -12,7 +12,7 @@ const exerciseSchema = new Schema({
 });
 
 const PlansSchema = new Schema({
-  id: { type: String },
+  _id: { type: String },
   category: { type: String },
   name: { type: String },
   info: { type: String },
