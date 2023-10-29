@@ -132,7 +132,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
                   className="relative flex flex-row justify-between cursor-pointer"
                 >
                   <div className="absolute -top-2 -left-1 text-alert text-sm">
-                    <span> {plan.duration}</span>
+                    <span className="icon-text"> {plan.duration}w</span>
                   </div>
                   <div className="ml-5">{plan.name}</div>
                   {expandedPlanIndex === plan._id ? (
