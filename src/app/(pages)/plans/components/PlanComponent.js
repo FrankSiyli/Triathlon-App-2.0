@@ -87,7 +87,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
 
   return (
     <>
-      <div className="w-screen max-w-xl mx-auto">
+      <div className="w-full max-w-xl mx-auto">
         <button
           className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
           onClick={handleBackClick}
@@ -120,7 +120,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
       )}
 
       {!isLoading && plans?.length !== 0 && (
-        <div className="flex flex-col items-center mt-10 gap-2 max-w-xl">
+        <div className="flex flex-col items-center mt-10 gap-2 w-full max-w-xl">
           {plans?.map((plan) => {
             return (
               <div
