@@ -2,11 +2,11 @@ import React from "react";
 
 const updates = [
   {
-    name: "einen Triathlonplan hinzugefügt",
+    name: "einen Einsteiger*innen-Triathlonplan hinzugefügt",
     date: "30.10.23",
   },
   {
-    name: "zwei Schwimmpläne hinzugefügt",
+    name: "zwei Aufbau-Schwimmpläne hinzugefügt",
     date: "28.10.23",
   },
   {
