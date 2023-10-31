@@ -26,6 +26,7 @@ const PlansSchema = new Schema({
           day: { type: String },
           activity: { type: String },
           description: { type: String },
+          isDone: { type: Boolean, default: false },
           sessionParts: [
             {
               warmUp: [
