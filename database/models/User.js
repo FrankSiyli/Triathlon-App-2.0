@@ -30,6 +30,7 @@ const UserSchema = new Schema(
                 day: String,
                 activity: String,
                 description: String,
+                isDone: Boolean,
                 sessionParts: [
                   {
                     warmUp: [

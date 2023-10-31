@@ -8,7 +8,9 @@
   --third: #007ca687;
   --fourth: #00a3b187;
   --alert: #00a3b1;
+  --background: #07f53b;
   --background: #1d2732;
+  --green: #07f53b;
 }
 
 * ::-webkit-scrollbar {
@@ -64,10 +66,6 @@ body {
 
 .icon-text {
   font-size: 0.6rem;
-}
-
-.linear-background {
-  background-color: #1d2732;
 }
 
 .bounce-point {

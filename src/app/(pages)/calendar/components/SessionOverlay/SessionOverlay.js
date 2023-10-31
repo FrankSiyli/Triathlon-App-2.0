@@ -7,6 +7,10 @@ import calculateTotalDistance from "../../logicFunctions/totalDistanceFunction";
 import calculateTotalDuration from "../../logicFunctions/totalDurationFunction";
 import { formatTime } from "@/app/helperFunctions/formatTime";
 import NavBar from "@/app/components/NavBar/NavBar";
+import { getSession } from "next-auth/react";
+import { useRecoilState } from "recoil";
+import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
+import Alert from "@/app/components/Alerts/Alert";
 
 const SessionOverlay = ({
   sessionSections,
@@ -15,9 +19,15 @@ const SessionOverlay = ({
   activityIndex,
   openOverlay,
   toggleOverlay,
+  homepagePlan,
+  currentWeek,
   initialOpen = false,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [overlayView, setOverlayView] = useState(true);
+  const [, setHomepagePlan] = useRecoilState(homepagePlanState);
+  const [showAlert, setShowAlert] = useState(false);
+  const [error, setError] = useState("");
 
   const handleViewClick = () => {
     setOverlayView(!overlayView);
@@ -30,6 +40,46 @@ const SessionOverlay = ({
   const totalDistance = calculateTotalDistance(singleActivity, sessionSections);
   const totalDuration = calculateTotalDuration(singleActivity, sessionSections);
 
+  const handleIsDoneClick = async () => {
+    const session = await getSession();
+    const planId = homepagePlan._id;
+
+    if (!session) {
+      setShowAlert(true);
+      setError("Bitte melde dich an");
+      return;
+    }
+    if (session) {
+      try {
+        const userEmail = session.user.email;
+        const updateUserSessionIsDone = await fetch(
+          "/api/user/updateUserTrainingPlanMadeSessions",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+
+            body: JSON.stringify({
+              email: userEmail,
+              planId: planId,
+              week: currentWeek,
+              session: singleActivity[4],
+            }),
+          }
+        );
+        if (updateUserSessionIsDone.ok) {
+          const { updatedPlan } = await updateUserSessionIsDone.json();
+          setHomepagePlan(updatedPlan);
+        }
+      } catch (error) {
+        console.error("User update error:", error);
+      }
+    }
+    /*     setIsLoading(false);
+     */
+  };
+
   return (
     <div>
       {initialOpen && <div className="dark-overlay"></div>}
@@ -41,25 +91,63 @@ const SessionOverlay = ({
         {overlayView ? (
           <div className="z-20">
             <div className="flex">
-              <button
-                onClick={() => toggleOverlay(dayIndex, activityIndex)}
-                className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
+              <div>
+                <button
+                  onClick={() => toggleOverlay(dayIndex, activityIndex)}
+                  className=" btn btn-ghost btn-sm  m-3 border border-transparent text-first "
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 19.5L8.25 12l7.5-7.5"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 19.5L8.25 12l7.5-7.5"
+                    />
+                  </svg>
+                </button>
+                <button
+                  onClick={handleIsDoneClick}
+                  className=" btn btn-ghost btn-sm  border border-transparent text-first "
+                >
+                  {singleActivity[3] === true ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-alert"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-alert"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.5 12.75l6 6 9-13.5"
+                      />
+                    </svg>
+                  )}
+                </button>
+              </div>
               <div className="w-full h-auto text-right p-1 mr-1">
                 <p>{singleActivity[0]}</p>
                 <p className="my-1">{singleActivity[1]}</p>
@@ -122,7 +210,11 @@ const SessionOverlay = ({
                 ) : null}
               </div>
             </div>
-            <hr className="m-3 opacity-20 "></hr>
+            <hr
+              className={`m-3 ${
+                singleActivity[3] === true ? " text-green " : "opacity-20"
+              }`}
+            ></hr>
             <Sessions
               singleActivity={singleActivity}
               openOverlay={openOverlay}
@@ -228,6 +320,9 @@ const SessionOverlay = ({
           </>
         )}
         <p className="mb-16">Viel Spaß beim Training 🙂</p>
+        {error && showAlert && (
+          <Alert alertText={error} setShowAlert={setShowAlert} />
+        )}
         <NavBar />
       </div>
     </div>

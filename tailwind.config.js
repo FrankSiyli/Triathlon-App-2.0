@@ -15,6 +15,7 @@ module.exports = {
       fourth: "#00A3B187",
       alert: "#00A3B1",
       background: "#1d2732",
+      green: "#07f53b",
     },
   },
   plugins: [require("daisyui")],

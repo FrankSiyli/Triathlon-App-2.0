@@ -41,7 +41,7 @@ function Calendar() {
   }, []);
 
   const numberOfPlanWeeks = homepagePlan?.duration;
-  const { openOverlay, toggleOverlay } = useOpenOverlay();
+  const { openOverlay, toggleOverlay, activityIndex } = useOpenOverlay();
   const { openDay, toggleDay } = useOpenDay();
 
   const { currentWeek, handleBackClick, handleNextClick } = useCurrentWeek(
@@ -49,9 +49,9 @@ function Calendar() {
     numberOfPlanWeeks,
     toggleDay
   );
+
   const currentWeekSessions = homepagePlan?.weeks?.[currentWeek]?.sessions;
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
-
   return (
     <div className="sm:grid sm:grid-cols-1 md:grid md:grid-cols-1 lg:grid lg:grid-cols-3 gap-5">
       <>
@@ -107,6 +107,9 @@ function Calendar() {
                           openOverlay={openOverlay}
                           toggleOverlay={toggleOverlay}
                           homepagePlan={homepagePlan}
+                          currentWeek={currentWeek}
+                          openDay={openDay}
+                          activitiesByDay={activitiesByDay}
                           initialOpen={openOverlay.includes(
                             dayIndex * 1000 + activityIndex
                           )}

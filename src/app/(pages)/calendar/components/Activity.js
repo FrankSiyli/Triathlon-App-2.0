@@ -12,7 +12,11 @@ const Activity = ({ openDay, dayIndex, activity, toggleOverlay }) => {
                 toggleOverlay(dayIndex, activityIndex);
               }}
             >
-              <div className=" flex p-1 mx-2 my-1 justify-between bg-fourth/5 items-center font-light text-first rounded-md  shadow-md">
+              <div
+                className={`relative flex p-1 mx-2 my-1 justify-between bg-fourth/5 items-center font-light text-first rounded-md shadow-md ${
+                  singleActivity[3] === true ? " border-l-2 border-green" : null
+                }`}
+              >
                 <div className="ml-2 text-left">
                   <p className="underline underline-offset-2 text-sm ">
                     {singleActivity[0]}
