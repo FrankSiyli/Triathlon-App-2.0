@@ -13,6 +13,7 @@ function Alert({ alertText, setShowAlert }) {
           <div className="absolute bottom-0 left-0 w-3 h-3 rounded-full border-2 border-alert">
             <span className="absolute left-1 top-0 h-2 w-0 border border-alert animate-spin"></span>
             <span className="absolute left-0 top-1 h-0 w-2 border border-alert animate-spin"></span>
+            {/** frame */}
             <span className="absolute left-1 top-0 h-0 w-3 border border-alert -rotate-45 "></span>
             <span className="absolute left-1 top-1 h-0 w-3.5 border border-alert "></span>
             <span className="absolute left-2 bottom-2 h-0 w-3.5 border border-alert rotate-90"></span>

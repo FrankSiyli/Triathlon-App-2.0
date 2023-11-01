@@ -8,7 +8,6 @@
   --third: #007ca687;
   --fourth: #00a3b187;
   --alert: #00a3b1;
-  --background: #07f53b;
   --background: #1d2732;
   --green: #07f53b;
 }
@@ -94,7 +93,7 @@ body {
 
 .custom-toast {
   animation: slideInOut 4s linear 0s 1 forwards;
-  background-color: #f5f4f5;
+  background-color: #00a2b1;
   z-index: 50;
   position: fixed;
   top: 5vh;
@@ -102,11 +101,13 @@ body {
   height: auto;
   padding: 0.5rem;
   text-align: center;
-  border-left-width: 4px;
+  border-left-width: 2px;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
-  border-color: #00a3b1;
-  color: #1d2732;
+  border-color: #f5f4f5;
+  color: #f5f4f5;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 .custom-bike {
