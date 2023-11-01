@@ -1,5 +1,5 @@
-import dbConnect from "../../database/dbConnect";
-import Post from "../../database/models/Post";
+import dbConnect from "../../../database/dbConnect";
+import Post from "../../../database/models/Post";
 
 export default async function handler(req, res) {
   await dbConnect();
