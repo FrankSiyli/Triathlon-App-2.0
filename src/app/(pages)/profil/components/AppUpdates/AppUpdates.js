@@ -2,6 +2,10 @@ import React from "react";
 
 const updates = [
   {
+    name: "Einheiten können als absolviert markiert und gespeichert werden",
+    date: "1.11.23",
+  },
+  {
     name: "einen Einsteiger*innen-Triathlonplan hinzugefügt",
     date: "30.10.23",
   },
