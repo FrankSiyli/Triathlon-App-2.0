@@ -39,9 +39,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
     const session = await getSession();
     const planId = expandedPlanIndex;
     setHomepagePlan(expandedPlan);
-
     event.stopPropagation();
-
     if (session) {
       setIsLoggedIn(true);
       try {
@@ -122,10 +120,6 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
       {!isLoading && plans?.length !== 0 && (
         <div className="flex flex-col items-center mt-10 gap-2 w-full max-w-xl">
           {plans?.map((plan) => {
-            /*    {
-              console.log("plancomponent plans", plans[0]._id);
-              console.log("plancomponent plan", plan);
-            } */
             return (
               <div
                 key={plan._id}

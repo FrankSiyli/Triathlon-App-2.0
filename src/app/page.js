@@ -41,14 +41,32 @@ export default function Home() {
       const fetchData = async () => {
         const session = await getSession();
         if (session) {
+          setUserEmail(session.user.email);
+          setUserName(session.user.name);
+          const fetchedUserEmail = session?.user.email;
           if (loggedInUserLastLoadedPlan.length !== 0) {
-            setHomepagePlan(loggedInUserLastLoadedPlan);
+            try {
+              const response = await fetch(
+                `/api/user/fetchFirstUserPlan?email=${fetchedUserEmail}`,
+                {
+                  method: "GET",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              );
+              if (response) {
+                const firstPlanData = await response.json();
+                setHomepagePlan(firstPlanData);
+              } else {
+                console.error("Failed to fetch user plans");
+              }
+            } catch (error) {
+              console.error("An error occurred:", error);
+            }
           } else {
             setHomepagePlan(examplePlan);
           }
-
-          setUserEmail(session.user.email);
-          setUserName(session.user.name);
 
           try {
             const fetchUserData = async (url, setStateFunction) => {

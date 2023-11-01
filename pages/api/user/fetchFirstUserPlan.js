@@ -4,23 +4,15 @@ import User from "../../../database/models/User";
 export default async function handler(req, res) {
   await dbConnect();
 
-  if (req.method === "POST") {
+  if (req.method === "GET") {
     try {
-      const { email, trainingPlans, id } = req.body;
+      const { email } = req.query;
       const user = await User.findOne({ email });
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
-      const existingTrainingPlanIds = user.trainingPlans.map((plan) => plan.id);
-      if (!existingTrainingPlanIds.includes(id)) {
-        user.trainingPlans.unshift(trainingPlans);
-        await user.save();
-        return res.status(201).json();
-      } else {
-        return res
-          .status(200)
-          .json({ message: "Plan wurde bereits gespeichert" });
-      }
+
+      return res.status(200).json(user.trainingPlans[0]);
     } catch (error) {
       return res
         .status(500)
