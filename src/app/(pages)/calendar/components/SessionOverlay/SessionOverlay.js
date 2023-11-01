@@ -54,7 +54,7 @@ const SessionOverlay = ({
     if (session) {
       if (loggedInUserLastLoadedPlan.length === 0) {
         setShowAlert(true);
-        setError("Bitte wähle ein neuen Plan");
+        setError("Bitte wähle einen neuen Plan");
         return;
       }
       setIsLoading(true);
