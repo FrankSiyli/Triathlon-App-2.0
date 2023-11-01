@@ -11,6 +11,7 @@ import { getSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import Alert from "@/app/components/Alerts/Alert";
+import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 
 const SessionOverlay = ({
   sessionSections,
@@ -23,17 +24,8 @@ const SessionOverlay = ({
   currentWeek,
   initialOpen = false,
 }) => {
-  useEffect(() => {
-    const checkSession = async () => {
-      const session = await getSession();
-      if (session) {
-        setActiveSession(true);
-      }
-    };
-    checkSession();
-  }, []);
-
-  const [activeSession, setActiveSession] = useState(false);
+  const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
+    useRecoilState(loggedInUserLastLoadedPlanState);
   const [isLoading, setIsLoading] = useState(false);
   const [overlayView, setOverlayView] = useState(true);
   const [, setHomepagePlan] = useRecoilState(homepagePlanState);
@@ -60,6 +52,11 @@ const SessionOverlay = ({
       return;
     }
     if (session) {
+      if (loggedInUserLastLoadedPlan.length === 0) {
+        setShowAlert(true);
+        setError("Bitte wähle ein neuen Plan");
+        return;
+      }
       setIsLoading(true);
       try {
         const userEmail = session.user.email;
