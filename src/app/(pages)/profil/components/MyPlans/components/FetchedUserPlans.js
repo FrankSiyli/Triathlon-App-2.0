@@ -23,7 +23,9 @@ const FetchedUserPlans = ({
     }
   };
   const expandedPlan = userPlans[expandedPlanIndex];
+
   const handleLoadPlanClick = async () => {
+    setIsLoading(true);
     try {
       const updateUser = await fetch(
         "/api/user/setExpandedPlanToFirstPosition",
@@ -44,6 +46,7 @@ const FetchedUserPlans = ({
     setHomepagePlan(expandedPlan);
     setShowAlert(true);
     setLoggedInUserLastLoadedPlan(expandedPlan);
+    setIsLoading(false);
   };
 
   const handleRemovePlanClick = async (planId, userEmail) => {

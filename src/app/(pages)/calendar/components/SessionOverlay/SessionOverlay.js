@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PrintSessions from "./components/PrintSessions";
 import { useReactToPrint } from "react-to-print";
 import Sessions from "./components/Sessions";
@@ -23,6 +23,17 @@ const SessionOverlay = ({
   currentWeek,
   initialOpen = false,
 }) => {
+  useEffect(() => {
+    const checkSession = async () => {
+      const session = await getSession();
+      if (session) {
+        setActiveSession(true);
+      }
+    };
+    checkSession();
+  }, []);
+
+  const [activeSession, setActiveSession] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [overlayView, setOverlayView] = useState(true);
   const [, setHomepagePlan] = useRecoilState(homepagePlanState);
@@ -114,47 +125,48 @@ const SessionOverlay = ({
                     />
                   </svg>
                 </button>
-
-                <button
-                  onClick={handleIsDoneClick}
-                  className=" btn btn-ghost btn-sm  border border-transparent text-first "
-                >
-                  {isLoading && (
-                    <span className="loading loading-ring loading-xs"></span>
-                  )}
-                  {!isLoading && singleActivity[3] === false && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6 text-alert"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M4.5 12.75l6 6 9-13.5"
-                      />
-                    </svg>
-                  )}
-                  {!isLoading && singleActivity[3] === true && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6 text-alert"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  )}
-                </button>
+                {activeSession && (
+                  <button
+                    onClick={handleIsDoneClick}
+                    className=" btn btn-ghost btn-sm  border border-transparent text-first "
+                  >
+                    {isLoading && (
+                      <span className="loading loading-ring loading-xs"></span>
+                    )}
+                    {!isLoading && singleActivity[3] === false && (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6 text-alert"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M4.5 12.75l6 6 9-13.5"
+                        />
+                      </svg>
+                    )}
+                    {!isLoading && singleActivity[3] === true && (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6 text-alert"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    )}
+                  </button>
+                )}
               </div>
               <div className="w-full h-auto text-right p-1 mr-1">
                 <p>{singleActivity[0]}</p>
