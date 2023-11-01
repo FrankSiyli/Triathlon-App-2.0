@@ -41,9 +41,9 @@ const SessionOverlay = ({
   const totalDuration = calculateTotalDuration(singleActivity, sessionSections);
 
   const handleIsDoneClick = async () => {
+    setIsLoading(true);
     const session = await getSession();
     const planId = homepagePlan._id;
-
     if (!session) {
       setShowAlert(true);
       setError("Bitte melde dich an");
@@ -76,8 +76,7 @@ const SessionOverlay = ({
         console.error("User update error:", error);
       }
     }
-    /*     setIsLoading(false);
-     */
+    setIsLoading(false);
   };
 
   return (
@@ -90,7 +89,11 @@ const SessionOverlay = ({
       >
         {overlayView ? (
           <div className="z-20">
-            <div className="flex">
+            <div
+              className={`flex ${
+                singleActivity[3] === true ? "border-t border-green " : null
+              }`}
+            >
               <div>
                 <button
                   onClick={() => toggleOverlay(dayIndex, activityIndex)}
@@ -115,22 +118,10 @@ const SessionOverlay = ({
                   onClick={handleIsDoneClick}
                   className=" btn btn-ghost btn-sm  border border-transparent text-first "
                 >
-                  {singleActivity[3] === true ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6 text-alert"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  ) : (
+                  {isLoading && (
+                    <span className="loading loading-ring loading-xs"></span>
+                  )}
+                  {!isLoading && singleActivity[3] === false && (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -143,6 +134,22 @@ const SessionOverlay = ({
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         d="M4.5 12.75l6 6 9-13.5"
+                      />
+                    </svg>
+                  )}
+                  {!isLoading && singleActivity[3] === true && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-alert"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
                   )}
@@ -210,11 +217,7 @@ const SessionOverlay = ({
                 ) : null}
               </div>
             </div>
-            <hr
-              className={`m-3 ${
-                singleActivity[3] === true ? " text-green " : "opacity-20"
-              }`}
-            ></hr>
+            <hr className="m-3 opacity-20 "></hr>
             <Sessions
               singleActivity={singleActivity}
               openOverlay={openOverlay}
