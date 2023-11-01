@@ -6,8 +6,8 @@ export default async function handler(request, response) {
 
   if (request.method === "GET") {
     try {
-      const plans = await Plans.find({ category: "homepage" });
-      return response.status(200).json({ plans });
+      const homepagePlan = await Plans.find({ category: "homepage" });
+      return response.status(200).json({ homepagePlan });
     } catch (error) {
       console.error("Error fetching homepagePlan:", error);
       return response
