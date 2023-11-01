@@ -52,7 +52,6 @@ const SessionOverlay = ({
   const totalDuration = calculateTotalDuration(singleActivity, sessionSections);
 
   const handleIsDoneClick = async () => {
-    setIsLoading(true);
     const session = await getSession();
     const planId = homepagePlan._id;
     if (!session) {
@@ -61,6 +60,7 @@ const SessionOverlay = ({
       return;
     }
     if (session) {
+      setIsLoading(true);
       try {
         const userEmail = session.user.email;
         const updateUserSessionIsDone = await fetch(
@@ -102,7 +102,9 @@ const SessionOverlay = ({
           <div className="z-20">
             <div
               className={`flex ${
-                singleActivity[3] === true ? "border-t border-green " : null
+                singleActivity[3] === true
+                  ? "border-l border-r border-green"
+                  : null
               }`}
             >
               <div>
@@ -125,48 +127,47 @@ const SessionOverlay = ({
                     />
                   </svg>
                 </button>
-                {activeSession && (
-                  <button
-                    onClick={handleIsDoneClick}
-                    className=" btn btn-ghost btn-sm  border border-transparent text-first "
-                  >
-                    {isLoading && (
-                      <span className="loading loading-ring loading-xs"></span>
-                    )}
-                    {!isLoading && singleActivity[3] === false && (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6 text-alert"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
-                    )}
-                    {!isLoading && singleActivity[3] === true && (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6 text-alert"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    )}
-                  </button>
-                )}
+
+                <button
+                  onClick={handleIsDoneClick}
+                  className=" btn btn-ghost btn-sm  border border-transparent text-first "
+                >
+                  {isLoading && (
+                    <span className="loading loading-ring loading-xs"></span>
+                  )}
+                  {!isLoading && !singleActivity[3] && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-alert"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.5 12.75l6 6 9-13.5"
+                      />
+                    </svg>
+                  )}
+                  {!isLoading && singleActivity[3] && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 text-alert"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  )}
+                </button>
               </div>
               <div className="w-full h-auto text-right p-1 mr-1">
                 <p>{singleActivity[0]}</p>
