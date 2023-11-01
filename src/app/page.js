@@ -15,12 +15,10 @@ import { examplePlan } from "../../database/mockDb";
 import { hasCookie, setCookie } from "cookies-next";
 import PrivacyPolicy from "./(pages)/profil/components/legal/PrivacyPolicy";
 import Calendar from "./(pages)/calendar/Calendar";
-import Alert from "./components/Alerts/Alert";
 
 export default function Home() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [isLoading, setIsLoading] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [userName, setUserName] = useRecoilState(userNameState);
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
@@ -130,9 +128,6 @@ export default function Home() {
     const acceptCookie = () => {
       setShowConsent(true);
       setCookie("localConsent", "true", {});
-      setTimeout(() => {
-        setShowAlert(true);
-      }, 1000);
     };
 
     if (showConsent) {
@@ -143,6 +138,9 @@ export default function Home() {
         <p className="text-alert mt-5">Einfach trainieren mit der Siyli-App</p>
         <p className="text-alert">
           Finde deinen Trainingsplan und erreiche deine Ziele 🚀
+        </p>
+        <p className="text-alert text-sm mt-5">
+          Um deine Pläne und Kalenderwerte zu speichern, melde dich an{" "}
         </p>
         <Image
           priority
@@ -205,12 +203,6 @@ export default function Home() {
         </div>
       )}
       {!showPrivacyPolicy && <CookieConsent />}
-      {showAlert && (
-        <Alert
-          alertText="Um deine Pläne und Kalenderwerte zu speichern, melde dich an"
-          setShowAlert={setShowAlert}
-        />
-      )}
     </div>
   );
 }
