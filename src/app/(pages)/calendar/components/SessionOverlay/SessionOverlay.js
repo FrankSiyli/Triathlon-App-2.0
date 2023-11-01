@@ -114,6 +114,7 @@ const SessionOverlay = ({
                     />
                   </svg>
                 </button>
+
                 <button
                   onClick={handleIsDoneClick}
                   className=" btn btn-ghost btn-sm  border border-transparent text-first "

@@ -1,3 +1,4 @@
+"use client";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import React from "react";
 import { useRecoilState } from "recoil";
@@ -21,8 +22,25 @@ const FetchedUserPlans = ({
       setExpandedPlanIndex(index);
     }
   };
-  const handleLoadPlanClick = () => {
-    const expandedPlan = userPlans[expandedPlanIndex];
+  const expandedPlan = userPlans[expandedPlanIndex];
+  const handleLoadPlanClick = async () => {
+    try {
+      const updateUser = await fetch(
+        "/api/user/setExpandedPlanToFirstPosition",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userEmail,
+            expandedTrainingPlan: expandedPlan,
+          }),
+        }
+      );
+    } catch (error) {
+      console.error("user update error");
+    }
     setHomepagePlan(expandedPlan);
     setShowAlert(true);
     setLoggedInUserLastLoadedPlan(expandedPlan);

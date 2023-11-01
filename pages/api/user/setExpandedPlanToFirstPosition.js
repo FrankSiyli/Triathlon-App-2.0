@@ -6,20 +6,21 @@ export default async function handler(req, res) {
 
   if (req.method === "POST") {
     try {
-      const { email, trainingPlans, id } = req.body;
+      const { email, expandedTrainingPlan } = req.body;
       const user = await User.findOne({ email });
+      const planId = expandedTrainingPlan._id;
       if (!user) {
         return res.status(404).json({ message: "User not found" });
-      }
-      const existingTrainingPlanIds = user.trainingPlans.map((plan) => plan.id);
-      if (!existingTrainingPlanIds.includes(id)) {
-        user.trainingPlans.unshift(trainingPlans);
+      } else {
+        user.trainingPlans.unshift(expandedTrainingPlan);
+        const updatedTrainingPlans = user.trainingPlans.filter(
+          (plan) => plan._id.toString() !== planId.toString()
+        );
+        user.trainingPlans = updatedTrainingPlans;
+        user.trainingPlans.unshift(expandedTrainingPlan);
+
         await user.save();
         return res.status(201).json();
-      } else {
-        return res
-          .status(200)
-          .json({ message: "Plan wurde bereits gespeichert" });
       }
     } catch (error) {
       return res
