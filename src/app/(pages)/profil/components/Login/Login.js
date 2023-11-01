@@ -45,12 +45,28 @@ function Login({ setShowProfil, setShowRegisterForm }) {
         const session = await getSession();
         setUserName(session.user.name);
         setUserEmail(session.user.email);
-        setHomepagePlan(
-          loggedInUserLastLoadedPlan.length !== 0
-            ? loggedInUserLastLoadedPlan
-            : examplePlan
-        );
-
+        const fetchedUserEmail = session?.user.email;
+        if (session) {
+          try {
+            const response = await fetch(
+              `/api/user/fetchFirstUserPlan?email=${fetchedUserEmail}`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            if (response) {
+              const firstPlanData = await response.json();
+              setHomepagePlan(firstPlanData);
+            } else {
+              console.error("Failed to fetch user plans");
+            }
+          } catch (error) {
+            console.error("An error occurred:", error);
+          }
+        }
         setIsLoading(false);
         setShowProfil();
         return;
