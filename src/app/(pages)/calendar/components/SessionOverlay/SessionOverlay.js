@@ -171,18 +171,21 @@ const SessionOverlay = ({
                     </svg>
                   )}
                 </button>
-                <button
-                  onClick={handleWattClick}
-                  className="justify-center text-sm m-3 flex border border-alert rounded-md"
-                >
-                  <span className={`${wattIsActive ? "text-alert" : null}`}>
-                    W
-                  </span>
-                  -
-                  <span className={`${!wattIsActive ? "text-alert" : null}`}>
-                    Hr
-                  </span>
-                </button>
+
+                {singleActivity[0] === "Rad" ? (
+                  <button
+                    onClick={handleWattClick}
+                    className="justify-center text-sm m-3 flex border border-alert rounded-md"
+                  >
+                    <span className={`${wattIsActive ? "text-alert" : null}`}>
+                      W
+                    </span>
+                    -
+                    <span className={`${!wattIsActive ? "text-alert" : null}`}>
+                      Hr
+                    </span>
+                  </button>
+                ) : null}
               </div>
               <div className="w-full h-auto text-right p-1 mr-1">
                 <p>{singleActivity[0]}</p>
