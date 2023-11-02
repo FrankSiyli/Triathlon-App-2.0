@@ -14,7 +14,7 @@ const buttonValueArray = [
     click: "handleHrClick",
   },
   {
-    name: "FTP",
+    name: "FunctionalTresholdPower",
     click: "handleWattClick",
   },
   {
