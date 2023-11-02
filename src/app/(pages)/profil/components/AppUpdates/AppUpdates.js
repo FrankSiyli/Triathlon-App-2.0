@@ -2,6 +2,10 @@ import React from "react";
 
 const updates = [
   {
+    name: "Tage werden grün markiert wenn alle Tageseinheiten absolviert wurden",
+    date: "2.11.23",
+  },
+  {
     name: "Einheiten können als absolviert markiert und gespeichert werden",
     date: "1.11.23",
   },
