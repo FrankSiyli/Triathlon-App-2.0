@@ -11,14 +11,17 @@ import { showWattInputState } from "@/app/recoil/atoms/user/showWattInputState";
 const buttonValueArray = [
   {
     name: "Maximalpuls",
+    secondName: "",
     click: "handleHrClick",
   },
   {
-    name: "FunctionalTresholdPower",
+    name: "FTP",
+    secondName: "(Functional Treshold Power)",
     click: "handleWattClick",
   },
   {
     name: "Schwimmzeit",
+    secondName: "",
     click: "handleSwimTimeClick",
   },
 ];
@@ -95,7 +98,13 @@ function Zones({ setShowProfil }) {
             }}
             className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
           >
-            <div className="ml-5"> {singleButtonValue.name}</div>
+            <div className="ml-5">
+              {" "}
+              {singleButtonValue.name}
+              <span className="icon-text ml-1">
+                {singleButtonValue.secondName}
+              </span>
+            </div>
             <svg
               xmlns="http://w3.org/2000/svg"
               fill="none"
