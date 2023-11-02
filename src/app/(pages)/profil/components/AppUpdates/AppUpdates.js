@@ -2,6 +2,10 @@ import React from "react";
 
 const updates = [
   {
+    name: "Radeinheiten haben einen neuen Button, mit dem man zwischen Puls und Wattwerten wechseln kann",
+    date: "2.11.23",
+  },
+  {
     name: "Tage werden grün markiert wenn alle Tageseinheiten absolviert wurden",
     date: "2.11.23",
   },
