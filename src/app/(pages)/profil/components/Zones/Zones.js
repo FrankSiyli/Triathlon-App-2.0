@@ -5,9 +5,27 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import HeartrateCalculator from "./components/HeartrateCalculator";
 import SwimTimeCalculator from "./components/SwimTimeCalculator";
+import WattCalculator from "./components/WattCalculator";
+import { showWattInputState } from "@/app/recoil/atoms/user/showWattInputState";
+
+const buttonValueArray = [
+  {
+    name: "Maximalpuls",
+    click: "handleHrClick",
+  },
+  {
+    name: "FTP",
+    click: "handleWattClick",
+  },
+  {
+    name: "Schwimmzeit",
+    click: "handleSwimTimeClick",
+  },
+];
 
 function Zones({ setShowProfil }) {
   const [showHrInput, setShowHrInput] = useRecoilState(showHrInputState);
+  const [showWattInput, setShowWattInput] = useRecoilState(showWattInputState);
   const [showSwimTimeInput, setShowSwimTimeInput] = useRecoilState(
     showSwimTimeInputState
   );
@@ -15,10 +33,17 @@ function Zones({ setShowProfil }) {
   const handleHrClick = () => {
     setShowHrInput(!showHrInput);
     setShowSwimTimeInput(false);
+    setShowWattInput(false);
+  };
+  const handleWattClick = () => {
+    setShowWattInput(!showWattInput);
+    setShowHrInput(false);
+    setShowSwimTimeInput(false);
   };
   const handleSwimTimeClick = () => {
     setShowSwimTimeInput(!showSwimTimeInput);
     setShowHrInput(false);
+    setShowWattInput(false);
   };
   const handleBackClick = () => {
     setShowProfil();
@@ -56,47 +81,39 @@ function Zones({ setShowProfil }) {
       </div>
 
       <div className="relative max-w-xl w-full mt-5">
-        <button
-          onClick={handleHrClick}
-          className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
-        >
-          <div className="ml-5"> Maximalpuls</div>
-          <svg
-            xmlns="http://w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-5 h-5 mr-5"
+        {buttonValueArray.map((singleButtonValue, buttonIndex) => (
+          <button
+            key={buttonIndex}
+            onClick={() => {
+              if (singleButtonValue.click === "handleHrClick") {
+                handleHrClick();
+              } else if (singleButtonValue.click === "handleWattClick") {
+                handleWattClick();
+              } else if (singleButtonValue.click === "handleSwimTimeClick") {
+                handleSwimTimeClick();
+              }
+            }}
+            className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
-        </button>
-        <button
-          onClick={handleSwimTimeClick}
-          className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
-        >
-          <div className="ml-5"> Schwimmzeit</div>
-          <svg
-            xmlns="http://w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-5 h-5 mr-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
-        </button>
+            <div className="ml-5"> {singleButtonValue.name}</div>
+            <svg
+              xmlns="http://w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5 mr-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
+        ))}
         {showHrInput && <HeartrateCalculator />}
+        {showWattInput && <WattCalculator />}
         {showSwimTimeInput && <SwimTimeCalculator />}
       </div>
     </>

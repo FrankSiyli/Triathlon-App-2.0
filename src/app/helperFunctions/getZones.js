@@ -1,7 +1,13 @@
 import React from "react";
 import { formatTime } from "@/app/helperFunctions/formatTime";
 
-const getZones = (exercise, savedSwimTime, savedHrMax) => {
+const getZones = (
+  exercise,
+  savedSwimTime,
+  savedHrMax,
+  savedWattValue,
+  wattIsActive
+) => {
   // Swim pace zones
   const swimCalc = savedSwimTime / 10;
   const swimZ1 = `${formatTime(Math.round(swimCalc + 20))} /100m`; // warm up / cool down
@@ -36,6 +42,25 @@ const getZones = (exercise, savedSwimTime, savedHrMax) => {
     hrCalc * 95
   )} bpm`;
 
+  // Bike watt zones
+  const w = parseFloat(savedWattValue);
+  const wattCalc = w / 100;
+  const bikeWattZ1 = `${Math.round(wattCalc * 55)} - ${Math.round(
+    wattCalc * 75
+  )} W`;
+  const bikeWattZ2 = `${Math.round(wattCalc * 75)} - ${Math.round(
+    wattCalc * 90
+  )} W`;
+  const bikeWattZ3 = `${Math.round(wattCalc * 90)} - ${Math.round(
+    wattCalc * 105
+  )} W`;
+  const bikeWattZ4 = `${Math.round(wattCalc * 105)} - ${Math.round(
+    wattCalc * 120
+  )} W`;
+  const bikeWattZ5 = `${Math.round(wattCalc * 120)} - ${Math.round(
+    wattCalc * 130
+  )} W`;
+
   if (exercise.zone === "swimZ1") {
     return swimZ1;
   } else if (exercise.zone === "swimZ2") {
@@ -58,16 +83,26 @@ const getZones = (exercise, savedSwimTime, savedHrMax) => {
     return runZ4;
   } else if (exercise.zone === "runZ5") {
     return runZ5;
-  } else if (exercise.zone === "bikeHrZ1") {
+  } else if (exercise.zone === "bikeHrZ1" && !wattIsActive) {
     return bikeHrZ1;
-  } else if (exercise.zone === "bikeHrZ2") {
+  } else if (exercise.zone === "bikeHrZ2" && !wattIsActive) {
     return bikeHrZ2;
-  } else if (exercise.zone === "bikeHrZ3") {
+  } else if (exercise.zone === "bikeHrZ3" && !wattIsActive) {
     return bikeHrZ3;
-  } else if (exercise.zone === "bikeHrZ4") {
+  } else if (exercise.zone === "bikeHrZ4" && !wattIsActive) {
     return bikeHrZ4;
-  } else if (exercise.zone === "bikeHrZ5") {
+  } else if (exercise.zone === "bikeHrZ5" && !wattIsActive) {
     return bikeHrZ5;
+  } else if (exercise.zone === "bikeHrZ1" && wattIsActive) {
+    return bikeWattZ1;
+  } else if (exercise.zone === "bikeHrZ2" && wattIsActive) {
+    return bikeWattZ2;
+  } else if (exercise.zone === "bikeHrZ3" && wattIsActive) {
+    return bikeWattZ3;
+  } else if (exercise.zone === "bikeHrZ4" && wattIsActive) {
+    return bikeWattZ4;
+  } else if (exercise.zone === "bikeHrZ5" && wattIsActive) {
+    return bikeWattZ5;
   } else {
     return exercise.zone;
   }

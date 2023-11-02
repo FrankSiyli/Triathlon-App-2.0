@@ -6,6 +6,7 @@ import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 import getZones from "@/app/helperFunctions/getZones";
 import { formatTime } from "@/app/helperFunctions/formatTime";
+import { savedWattState } from "@/app/recoil/atoms/user/savedWattState";
 
 const PrintSessions = forwardRef(
   (
@@ -16,11 +17,13 @@ const PrintSessions = forwardRef(
       activityIndex,
       totalDistance,
       totalDuration,
+      wattIsActive,
     },
     ref
   ) => {
     const savedSwimTime = useRecoilValue(savedSwimTimeState);
     const savedHrMax = useRecoilValue(savedHrMaxState);
+    const savedWattValue = useRecoilValue(savedWattState);
 
     const [openWarmUpImage, setOpenWarmUpImage] = useState(null);
     const [openMainImage, setOpenMainImage] = useState(null);
@@ -62,7 +65,15 @@ const PrintSessions = forwardRef(
                       ) : exercise.duration > 0 ? (
                         <p>{formatTime(exercise.duration)}</p>
                       ) : null}
-                      <p>{getZones(exercise, savedSwimTime, savedHrMax)}</p>
+                      <p>
+                        {getZones(
+                          exercise,
+                          savedSwimTime,
+                          savedHrMax,
+                          savedWattValue,
+                          wattIsActive
+                        )}
+                      </p>
                     </div>
                     <div
                       className={`${
