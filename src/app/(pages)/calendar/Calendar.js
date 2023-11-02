@@ -52,6 +52,7 @@ function Calendar() {
 
   const currentWeekSessions = homepagePlan?.weeks?.[currentWeek]?.sessions;
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
+
   return (
     <div className="sm:grid sm:grid-cols-1 md:grid md:grid-cols-1 lg:grid lg:grid-cols-3 gap-5">
       <>
@@ -83,6 +84,7 @@ function Calendar() {
                       toggleDay={toggleDay}
                       dayIndex={dayIndex}
                       openDay={openDay}
+                      activity={activity}
                     />
 
                     <Activity
