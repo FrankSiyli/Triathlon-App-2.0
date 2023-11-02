@@ -5,10 +5,18 @@ import { formatTime } from "@/app/helperFunctions/formatTime";
 import getZones from "@/app/helperFunctions/getZones";
 import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
+import { savedWattState } from "@/app/recoil/atoms/user/savedWattState";
 
-const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
+const Sessions = ({
+  singleActivity,
+  openOverlay,
+  dayIndex,
+  activityIndex,
+  wattIsActive,
+}) => {
   const savedSwimTime = useRecoilValue(savedSwimTimeState);
   const savedHrMax = useRecoilValue(savedHrMaxState);
+  const savedWattValue = useRecoilValue(savedWattState);
 
   const [openWarmUpImage, setOpenWarmUpImage] = useState(null);
   const [openMainImage, setOpenMainImage] = useState(null);
@@ -50,7 +58,15 @@ const Sessions = ({ singleActivity, openOverlay, dayIndex, activityIndex }) => {
                     ) : exercise.duration > 0 ? (
                       <p>{formatTime(exercise.duration)}</p>
                     ) : null}
-                    <p>{getZones(exercise, savedSwimTime, savedHrMax)}</p>
+                    <p>
+                      {getZones(
+                        exercise,
+                        savedSwimTime,
+                        savedHrMax,
+                        savedWattValue,
+                        wattIsActive
+                      )}
+                    </p>
                   </div>
                   <div
                     className={`mx-3 ${

@@ -12,6 +12,7 @@ import { useRecoilState } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import Alert from "@/app/components/Alerts/Alert";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
+import { wattIsActiveState } from "@/app/recoil/atoms/wattIsActiveState";
 
 const SessionOverlay = ({
   sessionSections,
@@ -29,6 +30,7 @@ const SessionOverlay = ({
   const [isLoading, setIsLoading] = useState(false);
   const [overlayView, setOverlayView] = useState(true);
   const [, setHomepagePlan] = useRecoilState(homepagePlanState);
+  const [wattIsActive, setWattIsActive] = useRecoilState(wattIsActiveState);
   const [showAlert, setShowAlert] = useState(false);
   const [error, setError] = useState("");
 
@@ -87,6 +89,10 @@ const SessionOverlay = ({
     setIsLoading(false);
   };
 
+  const handleWattClick = () => {
+    setWattIsActive(!wattIsActive);
+  };
+
   return (
     <div>
       {initialOpen && <div className="dark-overlay"></div>}
@@ -104,7 +110,7 @@ const SessionOverlay = ({
                   : null
               }`}
             >
-              <div>
+              <div className="flex flex-col">
                 <button
                   onClick={() => toggleOverlay(dayIndex, activityIndex)}
                   className=" btn btn-ghost btn-sm  m-3 border border-transparent text-first "
@@ -164,6 +170,18 @@ const SessionOverlay = ({
                       />
                     </svg>
                   )}
+                </button>
+                <button
+                  onClick={handleWattClick}
+                  className="justify-center text-sm m-3 flex border border-alert rounded-md"
+                >
+                  <span className={`${wattIsActive ? "text-alert" : null}`}>
+                    W
+                  </span>
+                  -
+                  <span className={`${!wattIsActive ? "text-alert" : null}`}>
+                    Hr
+                  </span>
                 </button>
               </div>
               <div className="w-full h-auto text-right p-1 mr-1">
@@ -234,6 +252,7 @@ const SessionOverlay = ({
               openOverlay={openOverlay}
               dayIndex={dayIndex}
               activityIndex={activityIndex}
+              wattIsActive={wattIsActive}
             />
             <hr className="m-3 opacity-20 "></hr>
             <div className="flex flex-col  items-center">
@@ -295,6 +314,7 @@ const SessionOverlay = ({
               activityIndex={activityIndex}
               totalDistance={totalDistance}
               totalDuration={totalDuration}
+              wattIsActive={wattIsActive}
             />
             <div className="flex flex-col items-center gap-10">
               <div className="flex flex-row gap-3">

@@ -87,6 +87,10 @@ const UserSchema = new Schema(
       type: Number,
       default: 160,
     },
+    watt: {
+      type: Number,
+      default: 120,
+    },
     swimTime: {
       type: Number,
       default: 1200,
