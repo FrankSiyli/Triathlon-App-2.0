@@ -2,5 +2,5 @@ import { atom } from "recoil";
 
 export const savedWattState = atom({
   key: "savedWattState",
-  default: 160,
+  default: 120,
 });
