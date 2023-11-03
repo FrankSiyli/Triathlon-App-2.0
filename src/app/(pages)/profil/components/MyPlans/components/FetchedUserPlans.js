@@ -134,13 +134,13 @@ const FetchedUserPlans = ({
                       onClick={() =>
                         handleRemovePlanClick(myPlan._id, userEmail)
                       }
-                      className="btn btn-sm m-5 mx-auto btn-outline border border-red text-first"
+                      className="btn btn-sm m-5  btn-outline border border-red text-first"
                     >
                       Löschen
                     </div>
                     <div
                       onClick={() => handleLoadPlanClick(expandedPlanIndex)}
-                      className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
+                      className="btn btn-sm m-5  btn-outline border border-alert text-first"
                     >
                       Laden
                     </div>

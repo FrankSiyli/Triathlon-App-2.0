@@ -176,7 +176,9 @@ const WishYouWhat = ({ setShowProfil }) => {
             .map((post) => (
               <div
                 key={post._id}
-                className="relative w-11/12 my-5 shadow-md p-2 rounded-md mx-5 max-w-xl text-center "
+                className={`relative w-full my-7 shadow-md p-2 rounded-md  max-w-xl text-center ${
+                  post.isDone ? "border-l-2 border-r-2 border-green" : null
+                }`}
               >
                 <div className="absolute top-0 left-2 ">{post.name}:</div>
                 <div className="mb-10 mt-5 mx-3  overflow-hidden">
