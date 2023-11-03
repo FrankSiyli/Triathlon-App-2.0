@@ -20,7 +20,7 @@ const UserValues = ({ isLoading }) => {
         {isLoading ? (
           <span className="loading loading-ring loading-sm"></span>
         ) : (
-          <span className="ml-1"> {savedHrMax} </span>
+          <span className="ml-1"> {savedHrMax} bpm</span>
         )}
       </div>
       <div className=" flex items-center">
@@ -28,7 +28,7 @@ const UserValues = ({ isLoading }) => {
         {isLoading ? (
           <span className="loading loading-ring loading-sm"></span>
         ) : (
-          <span className="ml-1"> {savedWatt} </span>
+          <span className="ml-1"> {savedWatt} W</span>
         )}
       </div>
       <div className="flex items-center">
@@ -36,7 +36,7 @@ const UserValues = ({ isLoading }) => {
         {isLoading ? (
           <span className="loading loading-ring loading-sm"></span>
         ) : (
-          <span className="ml-1"> {formatTime(savedSwimTime)} </span>
+          <span className="ml-1"> {formatTime(savedSwimTime)} min</span>
         )}
       </div>
     </>

@@ -11,7 +11,7 @@ const Day = ({ day, toggleDay, dayIndex, openDay, activity }) => {
       <div
         onClick={() => toggleDay(dayIndex)}
         className={`flex justify-between w-full max-w-xl shadow-md p-2 rounded-md my-1 ${
-          allDaySessionsDone() ? "border-l-2 border-green" : null
+          allDaySessionsDone() ? "border-l-2 border-r-2 border-green" : null
         }`}
       >
         <div key={dayIndex} className="ml-5 ">

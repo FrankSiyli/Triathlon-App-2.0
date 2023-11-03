@@ -78,6 +78,7 @@ const PowerWatt = ({ setShowInfos }) => {
             <span className="icon-text">ower</span> bereits auf einer smarten
             Rolle ermittelt?
           </p>
+          <br />
           <p>Dann kannst du hier deine Trainingszonen berechnen.</p>
         </div>
         <div>
@@ -104,7 +105,7 @@ const PowerWatt = ({ setShowInfos }) => {
             />
 
             <button
-              className="btn btn-sm  mb-10 bg-third border border-transparent text-first shadow-xl"
+              className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
               onClick={calculateWattZones}
             >
               Berechnen

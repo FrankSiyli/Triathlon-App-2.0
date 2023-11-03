@@ -128,19 +128,19 @@ const FetchedUserPlans = ({
                   <div className="m-3 mx-auto p-1 w-24 text-sm text-center">
                     Wochen: {myPlan.duration}
                   </div>
-                  <div className="font-light text-center">{myPlan.info}</div>
+                  <div className="font-light text-left">{myPlan.info}</div>
                   <div className="flex justify-between m-5">
                     <div
                       onClick={() =>
                         handleRemovePlanClick(myPlan._id, userEmail)
                       }
-                      className="btn btn-sm btn-outline w-20 text-first shadow-xl "
+                      className="btn btn-sm m-5 mx-auto btn-outline border border-red text-first"
                     >
                       Löschen
                     </div>
                     <div
                       onClick={() => handleLoadPlanClick(expandedPlanIndex)}
-                      className="btn btn-sm  w-20  border border-transparent bg-third  text-first shadow-xl "
+                      className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
                     >
                       Laden
                     </div>

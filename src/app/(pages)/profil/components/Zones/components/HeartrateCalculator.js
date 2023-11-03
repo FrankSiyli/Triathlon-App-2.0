@@ -97,7 +97,7 @@ function HeartrateCalculator() {
               />
               <button
                 onClick={handleHeartrateInputClick}
-                className="btn btn-sm m-3 bg-third border border-transparent text-first shadow-xl"
+                className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
               >
                 speichern
               </button>
@@ -111,7 +111,7 @@ function HeartrateCalculator() {
               </div>
               <button
                 onClick={handleChangeHrMaxClick}
-                className="btn btn-sm  m-2 bg-third border border-transparent text-first shadow-xl"
+                className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
               >
                 ändern
               </button>

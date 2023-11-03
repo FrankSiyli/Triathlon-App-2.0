@@ -103,14 +103,8 @@ const SessionOverlay = ({
       >
         {overlayView ? (
           <div className="z-20">
-            <div
-              className={`flex ${
-                singleActivity[3] === true
-                  ? "border-l border-r border-green"
-                  : null
-              }`}
-            >
-              <div className="flex flex-col">
+            <div className="flex">
+              <div className="flex flex-col items-start">
                 <button
                   onClick={() => toggleOverlay(dayIndex, activityIndex)}
                   className=" btn btn-ghost btn-sm  m-3 border border-transparent text-first "
@@ -136,53 +130,63 @@ const SessionOverlay = ({
                   className=" btn btn-ghost btn-sm  border border-transparent text-first "
                 >
                   {isLoading && (
-                    <span className="loading loading-ring loading-xs"></span>
+                    <div className="flex justify-center items-center border border-alert rounded-md w-7 h-7">
+                      <span className="loading loading-ring loading-xs"></span>
+                    </div>
                   )}
                   {!isLoading && !singleActivity[3] && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6 text-alert"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M4.5 12.75l6 6 9-13.5"
-                      />
-                    </svg>
+                    <div className="border border-alert rounded-md">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6 text-alert m-0.5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M4.5 12.75l6 6 9-13.5"
+                        />
+                      </svg>
+                    </div>
                   )}
                   {!isLoading && singleActivity[3] && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6 text-alert"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
+                    <div className="border border-alert rounded-md ">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6 text-alert m-0.5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </div>
                   )}
                 </button>
 
                 {singleActivity[0] === "Rad" ? (
                   <button
                     onClick={handleWattClick}
-                    className="justify-center text-sm m-3 flex border border-alert rounded-md"
+                    className="flex justify-center items-center text-sm m-3  border border-alert rounded-md"
                   >
-                    <span className={`${wattIsActive ? "text-alert" : null}`}>
+                    <span
+                      className={`ml-1 ${wattIsActive ? "text-alert" : null}`}
+                    >
                       W
                     </span>
-                    -
-                    <span className={`${!wattIsActive ? "text-alert" : null}`}>
-                      Hr
+                    <span className="m-1">|</span>
+                    <span
+                      className={`mr-1 ${!wattIsActive ? "text-alert" : null}`}
+                    >
+                      Puls
                     </span>
                   </button>
                 ) : null}
@@ -249,7 +253,11 @@ const SessionOverlay = ({
                 ) : null}
               </div>
             </div>
-            <hr className="m-3 opacity-20 "></hr>
+            <hr
+              className={`m-3  ${
+                singleActivity[3] ? "text-green" : "opacity-20"
+              }`}
+            ></hr>
             <Sessions
               singleActivity={singleActivity}
               openOverlay={openOverlay}
@@ -260,18 +268,18 @@ const SessionOverlay = ({
             <hr className="m-3 opacity-20 "></hr>
             <div className="flex flex-col  items-center">
               <button
-                className="btn btn-sm w-32 btn-outline border border-transparent text-first bg-third m-5"
+                className="btn btn-sm m-3 w-32 btn-outline border border-alert text-first"
                 onClick={handleViewClick}
               >
                 Druckversion
               </button>
               <button
                 onClick={() => toggleOverlay(dayIndex, activityIndex)}
-                className="btn btn-sm btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
+                className="border border-alert text-alert rounded-md mb-20"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-6 w-6 m-0.5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -322,25 +330,25 @@ const SessionOverlay = ({
             <div className="flex flex-col items-center gap-10">
               <div className="flex flex-row gap-3">
                 <button
-                  className="btn btn-sm w-32 btn-outline border border-transparent text-first bg-third"
+                  className="btn btn-sm m-3 w-32 btn-outline border border-alert text-first"
                   onClick={handleViewClick}
                 >
                   Farbversion
                 </button>
                 <button
                   onClick={handlePrint}
-                  className="btn btn-sm w-32 btn-outline border border-transparent text-first bg-third"
+                  className="btn btn-sm m-3 w-32 btn-outline border border-alert text-first"
                 >
                   drucken
                 </button>
               </div>
               <button
                 onClick={() => toggleOverlay(dayIndex, activityIndex)}
-                className="btn btn-sm btn-circle btn-outline border border-transparent text-first mb-20 bg-third"
+                className="border border-alert text-alert rounded-md mb-20"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-6 w-6 m-0.5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

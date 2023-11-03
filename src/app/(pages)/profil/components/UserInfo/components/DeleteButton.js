@@ -65,7 +65,7 @@ const DeleteButton = ({ setShowProfil }) => {
       ) : (
         <button
           onClick={handleDeleteUserClick}
-          className="btn btn-sm border- border-transparent bg-fourth text-first shadow-xl m-10"
+          className="btn btn-sm m-5 mx-auto btn-outline border border-red text-first"
         >
           Konto löschen
         </button>

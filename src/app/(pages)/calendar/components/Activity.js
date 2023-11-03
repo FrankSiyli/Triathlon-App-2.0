@@ -14,7 +14,9 @@ const Activity = ({ openDay, dayIndex, activity, toggleOverlay }) => {
             >
               <div
                 className={`relative flex p-1 mx-2 my-1 justify-between bg-fourth/5 items-center font-light text-first rounded-md shadow-md ${
-                  singleActivity[3] === true ? " border-l-2 border-green" : null
+                  singleActivity[3] === true
+                    ? " border-l-2 border-r-2 border-green"
+                    : null
                 }`}
               >
                 <div className="ml-2 text-left">
