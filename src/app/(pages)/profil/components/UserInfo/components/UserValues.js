@@ -15,30 +15,30 @@ const UserValues = ({ isLoading }) => {
 
   return (
     <>
-      <div className="mt-5 flex items-center">
-        Maximalpuls:
+      <button className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 mt-5">
+        <span className="ml-2">Maximalpuls:</span>
         {isLoading ? (
           <span className="loading loading-ring loading-sm"></span>
         ) : (
-          <span className="ml-1"> {savedHrMax} bpm</span>
+          <span className="mr-2"> {savedHrMax} bpm</span>
         )}
-      </div>
-      <div className=" flex items-center">
-        FTP:
+      </button>
+      <button className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 ">
+        <span className="ml-2">FTP:</span>
         {isLoading ? (
           <span className="loading loading-ring loading-sm"></span>
         ) : (
-          <span className="ml-1"> {savedWatt} W</span>
+          <span className="mr-2"> {savedWatt} W</span>
         )}
-      </div>
-      <div className="flex items-center">
-        1000m Schwimmzeit:
+      </button>
+      <button className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 ">
+        <span className="ml-2">1000m Schwimmzeit:</span>
         {isLoading ? (
           <span className="loading loading-ring loading-sm"></span>
         ) : (
-          <span className="ml-1"> {formatTime(savedSwimTime)} min</span>
+          <span className="mr-2"> {formatTime(savedSwimTime)} min</span>
         )}
-      </div>
+      </button>
     </>
   );
 };
