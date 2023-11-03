@@ -93,7 +93,7 @@ const UserInfo = ({ setShowProfil }) => {
         </button>
       </div>
       <p className=" mx-auto w-40 text-center -mt-10">Konto</p>
-      <div className="w-screen mt-10">
+      <div className="w-full mt-10">
         <button className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 ">
           <span className="ml-2">Name:</span>{" "}
           <span className="mr-2">{userName}</span>
