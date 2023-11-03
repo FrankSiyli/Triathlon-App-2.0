@@ -94,7 +94,7 @@ body {
 
 .custom-toast {
   animation: slideInOut 4s linear 0s 1 forwards;
-  background-color: #00a2b1;
+  background-color: #1d2732;
   z-index: 50;
   position: fixed;
   top: 5vh;
@@ -107,7 +107,7 @@ body {
   border-bottom-width: 2px;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
-  border-color: #f5f4f5;
+  border-color: #00a3b1;
   color: #f5f4f5;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }

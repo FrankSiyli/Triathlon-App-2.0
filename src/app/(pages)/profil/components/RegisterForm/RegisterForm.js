@@ -262,7 +262,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
               </div>
             </div>
 
-            <button className="btn btn-sm bg-third mt-5 text-first shadow-xl border-transparent">
+            <button className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first">
               Konto erstellen
             </button>
           </form>
