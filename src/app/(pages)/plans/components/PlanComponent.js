@@ -166,7 +166,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
                   )}
                 </div>
                 {expandedPlanIndex === plan._id && (
-                  <div className="mt-5 select-none">
+                  <div className="mt-5 select-none flex flex-col itmes-center">
                     <hr />
                     <div className="w-full my-7 p-1 flex flex-col text-center">
                       <span className=" p-1 border-l border-r border-alert">
@@ -178,10 +178,10 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
                         </span>
                       )}
                     </div>
-                    <div className="font-light text-center">{plan.info}</div>
+                    <div className="font-light text-left">{plan.info}</div>
                     <div
                       onClick={handleLoadPlanClick}
-                      className="btn btn-sm flex mx-auto w-20 m-5 border border-transparent bg-third text-first shadow-xl"
+                      className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
                     >
                       Laden
                     </div>

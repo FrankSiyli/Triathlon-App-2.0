@@ -94,9 +94,11 @@ const UserInfo = ({ setShowProfil }) => {
       </div>
       <p className=" mx-auto w-40 text-center -mt-10">Konto</p>
       <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
-        <span>Name: {userName}</span>
-        <span>Email: {userEmail} </span>
-        <UserValues isLoading={isLoading} />
+        <div className="text-left flex flex-col">
+          <span>Name: {userName}</span>
+          <span>Email: {userEmail} </span>
+          <UserValues isLoading={isLoading} />
+        </div>
         <LogoutButton setShowProfil={setShowProfil} />
         <DeleteButton setShowProfil={setShowProfil} />
       </div>

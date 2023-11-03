@@ -161,11 +161,10 @@ const WishYouWhat = ({ setShowProfil }) => {
           </div>
           <button
             onClick={handleCreatePost}
-            className="btn btn-sm flex w-40 mx-auto m-5 border border-transparent bg-third text-first shadow-xl"
+            className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
           >
             Senden
           </button>
-          {/** bike */}
         </div>
 
         <Loader isLoading={isLoading || fetchingPosts} />

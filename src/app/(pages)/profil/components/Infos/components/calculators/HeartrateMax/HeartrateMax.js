@@ -73,11 +73,13 @@ function HeartrateMax({ setShowInfos }) {
             Einem HRmax Test sollten mehrere Monate mit strukturiertem Training
             vorangehen.
           </p>
+          <br />
           <p>
             Falls du in den letzten 6 Monaten bei einem Event einen All OUT
             Zielsprint angesetzt hast kannst du dir diese Puls-Werte gern mal
             genauer anschauen.
           </p>
+          <br />
           <p>
             Der sicherste Weg um genaue Werte zu erhalten bleibt eine
             professionelle Leistungsdiagnostik.
@@ -108,7 +110,7 @@ function HeartrateMax({ setShowInfos }) {
 
             <button
               type="submit"
-              className="btn btn-sm  mb-10 bg-third border border-transparent text-first shadow-xl"
+              className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
               id="calculateBtn"
               onClick={calculatePercentages}
             >
