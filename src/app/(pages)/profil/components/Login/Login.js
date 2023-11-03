@@ -141,7 +141,7 @@ function Login({ setShowProfil, setShowRegisterForm }) {
               placeholder="Passwort"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="btn btn-sm bg-third text-first shadow-xl m-2 border-transparent">
+            <button className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first">
               Anmelden
             </button>
             <button
