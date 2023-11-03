@@ -10,6 +10,7 @@ import Loader from "@/app/components/Loader/Loader";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import { examplePlan } from "../../../../../../database/mockDb";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
+import { sendEmail } from "@/app/helperFunctions/mailer";
 
 export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
   const [name, setName] = useState("");
@@ -117,6 +118,8 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
       });
 
       if (res.ok) {
+        await sendEmail({ email, emailType: "VERIFY", userId: user._id });
+
         const signInResponse = await signIn("credentials", {
           name,
           email,
