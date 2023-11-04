@@ -81,10 +81,10 @@ function HeartrateCalculator() {
         <div className="mt-10 rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center linear-background">
           {!heartrateInputFired && (
             <>
-              <p>Pulszonen-Berechnung</p>
+              <p>Zur Berechnung deiner Pulszonen</p>
               <label className="label">
-                <p className="label-text-alt text-first  text-center">
-                  Dein Maximalpuls in bpm
+                <p className="text-first  text-center">
+                  gib deinen Maximalpuls in bpm an
                 </p>
               </label>
               <input
