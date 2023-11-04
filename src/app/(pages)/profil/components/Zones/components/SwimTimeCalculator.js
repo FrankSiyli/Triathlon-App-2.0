@@ -61,11 +61,11 @@ function SwimTimeCalculator() {
         <div className="mt-10 rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center linear-background">
           {!swimTimeInputFired && (
             <>
-              <p>Schwimm-Pace-Berechnung</p>
+              <p>Zur Berechnung deiner Schwimm-Pace</p>
               <label className="label">
-                <p className="label-text-alt text-first text-center">
-                  Deine 1000m P<span className="icon-text">ersönliche</span>B
-                  <span className="icon-text">estleistung</span>
+                <p className=" text-first text-center">
+                  gib deine 1000m P<span className="icon-text">ersönliche</span>
+                  B<span className="icon-text">estleistung</span> an
                 </p>
               </label>
 

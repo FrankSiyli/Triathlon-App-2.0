@@ -80,15 +80,15 @@ function WattCalculator() {
         <div className="mt-10 rounded-md p-3  w-full max-w-xl flex flex-col justify-center items-center linear-background">
           {!wattInputFired && (
             <>
-              <p>Watt-Berechnung</p>
+              <p>Zur Berechnung deiner Wattwerte</p>
               <label className="label">
-                <p className="label-text-alt text-first  text-center">
-                  Deine FTP in Watt
+                <p className=" text-first  text-center">
+                  gib deine FTP in Watt an
                 </p>
               </label>
               <input
                 type="number"
-                placeholder="z.B. 185"
+                placeholder="z.B. 165"
                 value={wattCalculatorInput}
                 onChange={(e) => setWattCalculatorInput(e.target.value)}
                 onKeyDown={handleKeyDown}
