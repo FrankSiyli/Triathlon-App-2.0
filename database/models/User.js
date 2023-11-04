@@ -101,15 +101,19 @@ const UserSchema = new Schema(
     },
     forgotPasswordToken: {
       type: String,
+      default: "",
     },
     forgotPasswordTokenExpiry: {
       type: Date,
+      default: "",
     },
     verifyToken: {
       type: String,
+      default: "",
     },
     verifyTokenExpiry: {
       type: Date,
+      default: "",
     },
   },
   { timestamps: true }

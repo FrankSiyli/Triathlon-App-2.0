@@ -117,7 +117,35 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
       });
 
       if (res.ok) {
-        // await sendEmail({ email, emailType: "VERIFY", userId: user._id });
+        //---------------------new-----------------------------------------------------------
+
+        const registeredUser = await res.json();
+
+        try {
+          const response = await fetch("/api/user/mailer", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: registeredUser.email,
+              emailType: "VERIFY",
+              userId: registeredUser._id,
+            }),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            console.log("Email sent successfully", data.emailResponse);
+          } else {
+            const data = await response.json();
+            console.error("Error sending email:", data.error);
+          }
+        } catch (error) {
+          console.error("Error sending email:", error);
+        }
+
+        //---------------------new-----------------------------------------------------------
 
         const signInResponse = await signIn("credentials", {
           name,
