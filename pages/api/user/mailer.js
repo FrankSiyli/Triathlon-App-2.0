@@ -49,18 +49,18 @@ export default async function sendEmail(req, res) {
     to: email,
     subject:
       emailType === "VERIFY"
-        ? "Willkommen bei siyli-app.de 👋"
-        : "Willkommen bei siyli-app.de 👋 ",
-    html: `<p>Klicke  
+        ? "Willkommen bei der siyli-app 👋"
+        : "Willkommen bei der siyli-app 👋 ",
+    html: `<p>Klicke bitte 
           <a href="${
             // change url and set vercel envs before deployment
             process.env.NODEMAILER_URL
-          }/verifyemail?token=${hashedToken}"> hier </a>
+          }/verifyemail?token=${hashedToken}">  hier  </a>
       um  
       ${
         emailType === "VERIFY"
-          ? " deine Email-Adresse zu bestätigen"
-          : " dein Passwort zurückzusetzen"
+          ? " deine Email-Adresse zu bestätigen."
+          : " dein Passwort zurückzusetzen."
       } </p>`,
   };
 
