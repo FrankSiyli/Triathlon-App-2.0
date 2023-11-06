@@ -1,13 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
 import User from "../../../database/models/User";
 import dbConnect from "../../../database/dbConnect";
 
-export async function Post(request) {
+export default async function Post(req, res) {
   dbConnect();
   try {
-    const reqBody = await request.json();
-    const { token } = reqBody;
-    console.log(token);
+    const { token } = req.body;
 
     const user = await User.findOne({
       verifyToken: token,
@@ -15,9 +12,8 @@ export async function Post(request) {
     });
 
     if (!user) {
-      return NextResponse.json({ error: "invalid token" }, { status: 400 });
+      return res.status(500).json({ message: "invalid token" });
     }
-    console.log(user);
 
     user.isVerified = true;
     user.verifyToken = undefined;
@@ -25,11 +21,8 @@ export async function Post(request) {
 
     await user.save();
 
-    return NextResponse.json({
-      message: "Email-Adresse bestätigt",
-      success: true,
-    });
+    return res.status(201).json(user);
   } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return res.status(500).json({ message: "token validation failed" });
   }
 }

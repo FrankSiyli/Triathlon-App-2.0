@@ -31,8 +31,7 @@ export default async function sendEmail(req, res) {
 
   try {
     transporter = nodemailer.createTransport({
-      port: 465,
-      host: "smtp.gmail.com",
+      service: "gmail",
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_PASS,
@@ -45,8 +44,10 @@ export default async function sendEmail(req, res) {
   }
 
   const mailOptions = {
-    from: "siyli-app.de",
+    from: "info@siyli-endurance-coaching.com",
     to: email,
+    text: "siyli-app.de Email Bestätigung",
+
     subject:
       emailType === "VERIFY"
         ? "Willkommen bei der siyli-app 👋"

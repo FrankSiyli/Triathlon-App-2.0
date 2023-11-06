@@ -1,15 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { signIn } from "next-auth/react";
 import Alert from "@/app/components/Alerts/Alert";
-import { useRecoilState } from "recoil";
-import { userNameState } from "@/app/recoil/atoms/user/userNameState";
-import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 import Loader from "@/app/components/Loader/Loader";
-import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
-import { examplePlan } from "../../../../../../database/mockDb";
-import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 
 export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
   const [name, setName] = useState("");
@@ -17,18 +10,13 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showAlert, setShowAlert] = useState(false);
-  const [userName, setUserName] = useRecoilState(userNameState);
-  const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [isLoading, setIsLoading] = useState(false);
-  const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
-  const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
-    useRecoilState(loggedInUserLastLoadedPlanState);
+
   const [passwordHints, setPasswordHints] = useState({
     length: false,
     specialChar: false,
     upperCase: false,
   });
-
   const router = useRouter();
   const calculateHints = (password) => {
     const newHints = {
@@ -68,7 +56,6 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
       setShowAlert(true);
       setError("Bitte fülle alle Felder aus");
       setIsLoading(false);
-
       return;
     }
 
@@ -79,7 +66,6 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
       setShowAlert(true);
       setError("Passwort erfüllt nicht die Anforderungen");
       setIsLoading(false);
-
       return;
     }
 
@@ -93,17 +79,13 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
           email,
         }),
       });
-
       const { user } = await resUserExists.json();
-
       if (user) {
         setIsLoading(false);
         setShowAlert(true);
         setError("Konto existiert bereits");
-
         return;
       }
-
       const res = await fetch("/api/user/registerUser", {
         method: "POST",
         headers: {
@@ -115,14 +97,10 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
           password,
         }),
       });
-
       if (res.ok) {
-        //---------------------new-----------------------------------------------------------
-
         const registeredUser = await res.json();
-
         try {
-          const response = await fetch("/api/user/mailer", {
+          const response = await fetch("/api/user/sendMail", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -133,40 +111,18 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
               userId: registeredUser._id,
             }),
           });
-
-          if (response.ok) {
-            const data = await response.json();
-            console.log("Email sent successfully", data.emailResponse);
-          } else {
-            const data = await response.json();
-            console.error("Error sending email:", data.error);
-          }
         } catch (error) {
           console.error("Error sending email:", error);
-        }
-
-        //---------------------new-----------------------------------------------------------
-
-        const signInResponse = await signIn("credentials", {
-          name,
-          email,
-          password,
-        });
-        setUserName(name);
-        setUserEmail(email);
-        if (loggedInUserLastLoadedPlan.length !== 0) {
-          setHomepagePlan(loggedInUserLastLoadedPlan);
-        } else {
-          setHomepagePlan(examplePlan);
         }
       }
     } catch (error) {
       setIsLoading(false);
       setShowAlert(true);
-      setError("Etwas ist schief gelaufen");
+      setError("Etwas ist beim Senden der Email schief gelaufen");
     }
     setIsLoading(false);
   };
+
   const handleBackClick = () => {
     setShowProfil(true), setShowRegisterForm(false);
   };
@@ -196,9 +152,12 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
       </div>
       <p className=" mx-auto w-40 text-center -mt-10">Konto erstellen</p>
 
-      {isLoading ? (
-        <Loader error={error} isLoading={isLoading} />
-      ) : (
+      <div className="flex flex-col items-center justify-center text-center mt-20 py-2">
+        Bitte schau in dein Email Postfach und bestätige den Link 👋{" "}
+      </div>
+
+      {isLoading && <Loader error={error} isLoading={isLoading} />}
+      {!isLoading && (
         <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
           <form
             onSubmit={handleSubmit}

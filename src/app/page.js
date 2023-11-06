@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../public/images/logoSmall.png";
 import "./globals.css";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { homepagePlanState } from "./recoil/atoms/plans/homepagePlanState";
 import { savedSwimTimeState } from "./recoil/atoms/user/savedSwimTimeState";
@@ -15,6 +16,7 @@ import { examplePlan } from "../../database/mockDb";
 import { hasCookie, setCookie } from "cookies-next";
 import PrivacyPolicy from "./(pages)/profil/components/legal/PrivacyPolicy";
 import Calendar from "./(pages)/calendar/Calendar";
+import { userIsVerificatedState } from "./recoil/atoms/user/userIsVerificatedState";
 
 export default function Home() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
@@ -26,6 +28,9 @@ export default function Home() {
   const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
   const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
     useRecoilState(loggedInUserLastLoadedPlanState);
+  const [userIsVerificated, setUserIsVerificated] = useRecoilState(
+    userIsVerificatedState
+  );
 
   const [isClient, setIsClient] = useState(false);
 
