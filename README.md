@@ -1,7 +1,28 @@
 
 
 
-This is a [Next.js](https://nextjs.org/) project 
+
+
+"React",
+      "Next.js 13",
+      "Tailwind",
+      "MongoDB",
+      "NextAuth",
+      "Node.js",
+      "Recoil State Management",
+      "Daisy UI",
+      "Local Storage",
+      "bcryptjs",
+      "SWR",
+      "React-to-print",
+
+
+
+
+
+
+
+
 
 ## Getting Started
 
