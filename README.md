@@ -3,18 +3,7 @@
 
 
 
-"React",
-      "Next.js 13",
-      "Tailwind",
-      "MongoDB",
-      "NextAuth",
-      "Node.js",
-      "Recoil State Management",
-      "Daisy UI",
-      "Local Storage",
-      "bcryptjs",
-      "SWR",
-      "React-to-print",
+React, Next.js 13, Tailwind, MongoDB, Mongoose, NextAuth, Node.js, Nodemailer, Recoil State Management, Daisy UI, Local Storage, bcryptjs, SWR, React-to-print, Google analytics
 
 
 
