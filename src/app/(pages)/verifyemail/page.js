@@ -37,22 +37,12 @@ const VarifyEmailPage = () => {
           setTokenIsSet(false);
           setIsLoading(false);
           return;
-        } else {
-          setTimeout(() => {
-            setShowAlert(true);
-            setError("Etwas ist schief gelaufen");
-            setIsLoading(false);
-            setTokenIsSet(false);
-          }, 1000);
-          return;
         }
       } catch (error) {
-        setTimeout(() => {
-          setShowAlert(true);
-          setError("Etwas ist schief gelaufen");
-          setIsLoading(false);
-          setTokenIsSet(false);
-        }, 1000);
+        setShowAlert(true);
+        setError("Etwas ist schief gelaufen");
+        setIsLoading(false);
+        setTokenIsSet(false);
         return;
       }
     };
@@ -68,7 +58,7 @@ const VarifyEmailPage = () => {
           </>
         ) : (
           <>
-            <div className="text-center">
+            <div className="text-center mx-5">
               Konto wurde erstellt 🎉
               <br />
               Du kannst dich jetzt anmelden.
