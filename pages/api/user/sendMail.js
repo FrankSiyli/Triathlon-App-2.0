@@ -15,12 +15,12 @@ export default async function sendEmail(req, res) {
   await dbConnect();
 
   const hashedToken = await bcryptjs.hash(userId?.toString(), 10);
-  if (emailType === "VERIFY") {
+  if (emailType === "VERIFY" && req.method === "POST") {
     await User.findByIdAndUpdate(userId, {
       verifyToken: hashedToken,
       verifyTokenExpiry: Date.now() + 3600000,
     });
-  } else if (emailType === "RESET") {
+  } else if (emailType === "RESET" && req.method === "POST") {
     await User.findByIdAndUpdate(userId, {
       forgotPasswordToken: hashedToken,
       forgotPasswordTokenExpiry: Date.now() + 3600000,
@@ -64,9 +64,17 @@ export default async function sendEmail(req, res) {
       } </p>`,
   };
 
-  await new Promise(() => {
-    transporter.sendMail(mailOptions);
+  await new Promise((resolve, reject) => {
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        console.error(err);
+        reject(err);
+      } else {
+        console.log(info);
+        resolve(info);
+      }
+    });
   });
 
-  res.status(200).json({ status: "OK" });
+  res.status(200).json();
 }
