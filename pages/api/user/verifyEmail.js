@@ -21,7 +21,7 @@ export default async function Post(req, res) {
 
     await user.save();
 
-    return res.status(201).json(user);
+    return res.status(201).json({ message: "User verified" });
   } catch (error) {
     return res.status(500).json({ message: "token validation failed" });
   }

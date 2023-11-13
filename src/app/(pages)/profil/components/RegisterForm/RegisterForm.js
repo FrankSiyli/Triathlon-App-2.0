@@ -11,6 +11,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
   const [error, setError] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [mailHasBeenSent, setMailHasBeenSent] = useState(false);
 
   const [passwordHints, setPasswordHints] = useState({
     length: false,
@@ -120,11 +121,13 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
       setShowAlert(true);
       setError("Etwas ist beim Senden der Email schief gelaufen");
     }
+    setMailHasBeenSent(true);
     setIsLoading(false);
   };
 
   const handleBackClick = () => {
     setShowProfil(true), setShowRegisterForm(false);
+    setMailHasBeenSent(false);
   };
 
   return (
@@ -152,12 +155,15 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
       </div>
       <p className=" mx-auto w-40 text-center -mt-10">Konto erstellen</p>
 
-      <div className="flex flex-col items-center justify-center text-center mt-20 py-2">
-        Bitte schau in dein Email Postfach und bestätige den Link 👋{" "}
-      </div>
-
       {isLoading && <Loader error={error} isLoading={isLoading} />}
-      {!isLoading && (
+
+      {mailHasBeenSent && (
+        <div className="flex flex-col items-center justify-center text-center mt-20 py-2">
+          Bitte schau in dein Email Postfach und bestätige den Link 👋{" "}
+        </div>
+      )}
+
+      {!isLoading && !mailHasBeenSent && (
         <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
           <form
             onSubmit={handleSubmit}
