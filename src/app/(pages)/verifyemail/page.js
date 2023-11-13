@@ -38,17 +38,21 @@ const VarifyEmailPage = () => {
           setIsLoading(false);
           return;
         } else {
-          setShowAlert(true);
-          setError("Etwas ist schief gelaufen1");
-          setIsLoading(false);
-          setTokenIsSet(false);
+          setTimeout(() => {
+            setShowAlert(true);
+            setError("Etwas ist schief gelaufen");
+            setIsLoading(false);
+            setTokenIsSet(false);
+          }, 1000);
           return;
         }
       } catch (error) {
-        setShowAlert(true);
-        setError("Etwas ist schief gelaufen2");
-        setIsLoading(false);
-        setTokenIsSet(false);
+        setTimeout(() => {
+          setShowAlert(true);
+          setError("Etwas ist schief gelaufen");
+          setIsLoading(false);
+          setTokenIsSet(false);
+        }, 1000);
         return;
       }
     };
