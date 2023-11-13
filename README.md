@@ -1,12 +1,20 @@
-React,
-Next.js 13
-Styling: Tailwind, Daisy UI
-Database: MongoDB, Mongoose
-Authentication: NextAuth, bcryptjs
-Email verification: Node.js, Nodemailer, bcryptjs
-State management: Recoil State Management, Local Storage
-Print: React-to-print
-Data analysing: Google analytics
+<b>React</b>
+<br/>
+<b>Next.js 13</b>
+<br/>
+<b>Styling:</b> Tailwind, Daisy UI
+<br/>
+<b>Database:</b> MongoDB, Mongoose
+<br/>
+<b>Authentication:</b> NextAuth, bcryptjs
+<br/>
+<b>Email verification:</b> Node.js, Nodemailer, bcryptjs
+<br/>
+<b>State management:</b> Recoil State Management, Local Storage
+<br/>
+<b>Print:</b> React-to-print
+<br/>
+<b>Data analysing:</b> Google analytics
 
 
 
