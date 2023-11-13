@@ -54,7 +54,6 @@ export default async function sendEmail(req, res) {
         : "Willkommen bei der siyli-app 👋 ",
     html: `<p>Klicke bitte 
           <a href="${
-            // change url and set vercel envs before deployment
             process.env.NODEMAILER_URL
           }/verifyemail?token=${hashedToken}">  hier  </a>
       um  
@@ -65,16 +64,8 @@ export default async function sendEmail(req, res) {
       } </p>`,
   };
 
-  await new Promise((resolve, reject) => {
-    transporter.sendMail(mailOptions, (err, info) => {
-      if (err) {
-        console.error(err);
-        reject(err);
-      } else {
-        console.log(info);
-        resolve(info);
-      }
-    });
+  await new Promise(() => {
+    transporter.sendMail(mailOptions);
   });
 
   res.status(200).json({ status: "OK" });
