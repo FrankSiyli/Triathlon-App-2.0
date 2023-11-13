@@ -257,7 +257,11 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
               </div>
             </div>
 
-            <button className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first">
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
+            >
               Konto erstellen
             </button>
           </form>
