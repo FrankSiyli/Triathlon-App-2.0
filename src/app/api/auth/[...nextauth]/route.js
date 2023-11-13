@@ -3,12 +3,20 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import User from "../../../../../database/models/User";
 import dbConnect from "../../../../../database/dbConnect";
+import EmailProvider from "next-auth/providers/email";
 
 export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "credentials",
       credentials: {},
+
+      providers: [
+        EmailProvider({
+          server: process.env.EMAIL_SERVER,
+          from: process.env.EMAIL_FROM,
+        }),
+      ],
 
       async authorize(credentials) {
         const { email, password } = credentials;
@@ -25,7 +33,9 @@ export const authOptions = {
           }
 
           return user;
-        } catch (error) {}
+        } catch (error) {
+          return null;
+        }
       },
     }),
   ],
@@ -34,7 +44,7 @@ export const authOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/profil/login",
+    signIn: "/",
   },
 };
 

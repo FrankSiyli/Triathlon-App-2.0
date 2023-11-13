@@ -95,6 +95,26 @@ const UserSchema = new Schema(
       type: Number,
       default: 1200,
     },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    forgotPasswordToken: {
+      type: String,
+      default: "",
+    },
+    forgotPasswordTokenExpiry: {
+      type: Date,
+      default: "",
+    },
+    verifyToken: {
+      type: String,
+      default: "",
+    },
+    verifyTokenExpiry: {
+      type: Date,
+      default: "",
+    },
   },
   { timestamps: true }
 );
