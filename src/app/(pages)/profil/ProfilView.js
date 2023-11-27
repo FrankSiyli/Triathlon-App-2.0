@@ -68,7 +68,7 @@ function ProfilView() {
             onClick={() => handleComponentChange("zones")}
             className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
           >
-            <div className="ml-5">Puls und Pace Kalenderwerte</div>
+            <div className="ml-5">Persönliche Kalenderwerte</div>
             <svg
               xmlns="http://w3.org/2000/svg"
               fill="none"
