@@ -37,11 +37,11 @@ function PlansView() {
     <>
       {activeComponent === "plans" && (
         <>
-          <div className="mx-auto text-center h-10 mt-3 mb-10 rounded-sm px-3 py-1 z-40 bg-gradient-to-b from-transparent via-transparent via-10% to-background ">
+          <div className="mx-auto text-center h-10 mt-3 mb-10 rounded-sm px-3 py-1 z-40 bg-gradient-to-b from-transparent  to-background ">
             <span>Pläne</span>
           </div>
           <Image
-            className="absolute top-0 right-0 h-12 w-full z-10 object-cover object-center"
+            className="absolute top-0 right-0 h-12 w-full z-10 object-cover object-top"
             src="/images/triathlonImage_4.jpg"
             alt="sport image"
             quality={100}
