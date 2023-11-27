@@ -146,6 +146,10 @@ body {
   }
 }
 
+.linear-opacity {
+  animation: linear-opacity;
+}
+
 /*----------------tables----------------------*/
 
 input[type="number"] {
