@@ -72,6 +72,7 @@ function Calendar() {
                 src="/images/triathlonImage_3.jpg"
                 alt="sport image"
                 quality={100}
+                priority
                 width={600}
                 height={600}
               />
