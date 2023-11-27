@@ -102,7 +102,7 @@ const SessionOverlay = ({
         }`}
       >
         {overlayView ? (
-          <div className="z-20">
+          <div className="z-40">
             <div className="flex">
               <div className="flex flex-col items-start">
                 <button
