@@ -45,6 +45,7 @@ function PlansView() {
             src="/images/triathlonImage_4.jpg"
             alt="sport image"
             quality={100}
+            priority
             width={600}
             height={600}
           />
