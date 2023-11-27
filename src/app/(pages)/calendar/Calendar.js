@@ -58,7 +58,7 @@ function Calendar() {
     <div className="sm:grid sm:grid-cols-1 md:grid md:grid-cols-1 lg:grid lg:grid-cols-3 gap-5">
       <>
         {showPlans && (
-          <div className="flex flex-col mx-auto max-w-xl relative w-full  overflow-y-auto max-h-screen  ">
+          <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen  ">
             <PlansView />
             <span className="mb-40"></span>
           </div>
@@ -66,7 +66,7 @@ function Calendar() {
 
         {homepagePlan && showCalendar && (
           <>
-            <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen bg-background/90">
+            <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen bg-background/50">
               <Image
                 className="absolute top-0 right-0 h-12 w-full z-10 object-cover object-center"
                 src="/images/triathlonImage_3.jpg"
@@ -78,7 +78,7 @@ function Calendar() {
               />
               <div className="h-12 absolute right-0 top-0 w-full  bg-gradient-to-b from-transparent via-transparent via-70% to-background z-10"></div>
 
-              <div className="mx-auto text-center h-10 mt-4 mb-10 rounded-sm px-3 py-1 z-20 bg-gradient-to-b from-transparent  to-background ">
+              <div className="mx-auto text-center h-10 mt-4 mb-10 px-3 py-1 z-20 rounded-t-md bg-gradient-to-b from-transparent via-background via-20%  to-background ">
                 {homepagePlan?.name}
               </div>
               <WeekScrollButtons
