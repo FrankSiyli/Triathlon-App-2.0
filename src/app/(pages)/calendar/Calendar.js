@@ -66,7 +66,7 @@ function Calendar() {
 
         {homepagePlan && showCalendar && (
           <>
-            <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen ">
+            <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen bg-background/90">
               <Image
                 className="absolute top-0 right-0 h-12 w-full z-10 object-cover object-center"
                 src="/images/triathlonImage_3.jpg"
