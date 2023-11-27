@@ -14,25 +14,21 @@ function PlansView() {
     {
       type: "triathlonPlans",
       name: "Triathlon",
-      label: "Triathlonpläne",
       imageSrc: "/images/triathlonImage.jpg",
     },
     {
       type: "runPlans",
       name: "Laufen",
-      label: "Laufpläne",
       imageSrc: "/images/runImage.jpg",
     },
     {
       type: "swimPlans",
       name: "Schwimmen",
-      label: "Schwimmpläne",
       imageSrc: "/images/swimImage.jpg",
     },
     {
       type: "specialPlans",
       name: "Spezial",
-      label: "Spezialpläne",
       imageSrc: "/images/specialImage.jpg",
     },
   ];
@@ -79,93 +75,6 @@ function PlansView() {
               </svg>
             </button>
           ))}
-          {/* <button
-            className="relative text-center h-12 w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
-            onClick={() => handlePlanTypeClick("runPlans")}
-          >
-            <Image
-              className="h-12 object-cover absolute left-0 top-0 rounded-l-sm"
-              src="/images/runImage.jpg"
-              alt="siyli app"
-              width={80}
-              height={80}
-            />
-            <div className="h-12 absolute left-0 top-0 w-20 rounded-sm bg-gradient-to-b from-transparent via-transparent via-70% to-background z-40"></div>
-
-            <p> Laufpläne</p>
-            <svg
-              xmlns="http://w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="absolute w-5 h-5 right-7 top-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </button>
-          <button
-            className="relative text-center h-12 w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
-            onClick={() => handlePlanTypeClick("swimPlans")}
-          >
-            <Image
-              className="h-12 object-cover absolute left-0 top-0 rounded-l-sm"
-              src="/images/swimImage.jpg"
-              alt="siyli app"
-              width={80}
-              height={80}
-            />
-            <div className="h-12 absolute left-0 top-0 w-20 rounded-sm bg-gradient-to-b from-transparent via-transparent via-70% to-background z-40"></div>
-
-            <p> Schwimmpläne</p>
-            <svg
-              xmlns="http://w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="absolute w-5 h-5 right-7 top-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </button>
-          <button
-            className="relative text-center h-12 w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
-            onClick={() => handlePlanTypeClick("specialPlans")}
-          >
-            <Image
-              className="h-12 object-cover absolute left-0 top-0 rounded-l-sm"
-              src="/images/specialImage.jpg"
-              alt="siyli app"
-              width={80}
-              height={80}
-            />
-            <div className="h-12 absolute left-0 top-0 w-20 rounded-sm bg-gradient-to-b from-transparent via-transparent via-70% to-background z-40"></div>
-
-            <p> Spezialpläne</p>
-            <svg
-              xmlns="http://w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="absolute w-5 h-5 right-7 top-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </button> */}
         </div>
       )}
 
