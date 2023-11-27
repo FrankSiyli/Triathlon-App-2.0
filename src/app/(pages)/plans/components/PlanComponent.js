@@ -7,10 +7,11 @@ import Loader from "../../../components/Loader/Loader";
 import useSWR from "swr";
 import { getSession } from "next-auth/react";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
+import Image from "next/image";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
+const PlanComponent = ({ setShowPlans, title, apiEndpoint, image }) => {
   const {
     data,
     error,
@@ -107,6 +108,17 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint }) => {
         </button>
       </div>
       <p className="mx-auto text-center -mt-10">{title}</p>
+
+      <Image
+        className="absolute top-0 right-0 h-12 w-20"
+        src={image}
+        alt="sport image"
+        width={80}
+        height={80}
+      />
+      <div className="h-12 absolute right-0 top-0 w-20  bg-gradient-to-b from-transparent via-transparent via-70% to-background z-40"></div>
+      <div className="h-12 absolute right-0 top-0 w-20  bg-gradient-to-l from-transparent via-transparent via-70% to-background z-40"></div>
+
       {isLoading || isLoadingPlan ? (
         <Loader error={error} isLoading={isLoading || isLoadingPlan} />
       ) : null}

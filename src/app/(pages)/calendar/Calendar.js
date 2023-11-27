@@ -14,6 +14,7 @@ import { useRecoilState } from "recoil";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import PlansView from "../plans/PlansView";
 import ProfilView from "../profil/ProfilView";
+import Image from "next/image";
 
 function Calendar() {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
@@ -66,7 +67,19 @@ function Calendar() {
         {homepagePlan && showCalendar && (
           <>
             <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen ">
-              <div className="mx-auto mb-5 mt-3  text-first text-sm p-1 text-center">
+              <Image
+                className="absolute top-0 right-0 h-12 w-full z-10 object-cover object-center"
+                src="/images/triathlonImage_3.jpg"
+                alt="sport image"
+                quality={100}
+                width={600}
+                height={600}
+              />
+              <div className="h-12 absolute right-0 top-0 w-full  bg-gradient-to-b from-transparent via-transparent via-70% to-background z-40"></div>
+              <div className="h-12 absolute right-0 top-0 w-full  bg-gradient-to-l from-transparent via-transparent via-70% to-background z-40"></div>
+              <div className="h-12 absolute right-0 top-0 w-full  bg-gradient-to-r from-transparent via-transparent via-70% to-background z-40"></div>
+
+              <div className="mx-auto text-center h-10 mt-3 mb-10 rounded-sm px-3 py-1 z-40 bg-gradient-to-b from-transparent via-transparent via-10% to-background ">
                 {homepagePlan?.name}
               </div>
               <WeekScrollButtons
