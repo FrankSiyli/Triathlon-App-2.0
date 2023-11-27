@@ -36,9 +36,22 @@ function PlansView() {
   return (
     <>
       {activeComponent === "plans" && (
-        <div className=" mx-auto  text-center mt-5 mb-10">
-          <span>Pläne</span>
-        </div>
+        <>
+          <div className="mx-auto text-center h-10 mt-3 mb-10 rounded-sm px-3 py-1 z-40 bg-gradient-to-b from-transparent via-transparent via-10% to-background ">
+            <span>Pläne</span>
+          </div>
+          <Image
+            className="absolute top-0 right-0 h-12 w-full z-10 object-cover object-center"
+            src="/images/triathlonImage_4.jpg"
+            alt="sport image"
+            quality={100}
+            width={600}
+            height={600}
+          />
+          <div className="h-12 absolute right-0 top-0 w-full  bg-gradient-to-b from-transparent via-transparent via-70% to-background z-40"></div>
+          <div className="h-12 absolute right-0 top-0 w-full  bg-gradient-to-l from-transparent via-transparent via-70% to-background z-40"></div>
+          <div className="h-12 absolute right-0 top-0 w-full  bg-gradient-to-r from-transparent via-transparent via-70% to-background z-40"></div>
+        </>
       )}
 
       {activeComponent === "plans" && (
@@ -56,7 +69,8 @@ function PlansView() {
                 width={80}
                 height={80}
               />
-              <div className="h-12 absolute left-0 top-0 w-20 rounded-sm bg-gradient-to-b from-transparent via-transparent via-70% to-background z-40"></div>
+              <div className="h-12 absolute left-0 top-0 w-20  bg-gradient-to-b from-transparent via-transparent via-70% to-background z-40"></div>
+              <div className="h-12 absolute left-0 top-0 w-20  bg-gradient-to-r from-transparent via-transparent via-70% to-background z-40"></div>
 
               <p> {plan.name}</p>
               <svg
@@ -83,6 +97,7 @@ function PlansView() {
           title="Laufpläne"
           apiEndpoint="/api/trainingPlans/fetchRunPlans"
           setShowPlans={() => handlePlanTypeClick("plans")}
+          image="/images/runImage.jpg"
         />
       )}
       {activeComponent === "specialPlans" && (
@@ -90,6 +105,7 @@ function PlansView() {
           title="Spezialpläne"
           apiEndpoint="/api/trainingPlans/fetchSpecialPlans"
           setShowPlans={() => handlePlanTypeClick("plans")}
+          image="/images/specialImage.jpg"
         />
       )}
       {activeComponent === "swimPlans" && (
@@ -97,6 +113,7 @@ function PlansView() {
           title="Schwimmpläne"
           apiEndpoint="/api/trainingPlans/fetchSwimPlans"
           setShowPlans={() => handlePlanTypeClick("plans")}
+          image="/images/swimImage.jpg"
         />
       )}
       {activeComponent === "triathlonPlans" && (
@@ -104,6 +121,7 @@ function PlansView() {
           title="Triathlonpläne"
           apiEndpoint="/api/trainingPlans/fetchTriathlonPlans"
           setShowPlans={() => handlePlanTypeClick("plans")}
+          image="/images/triathlonImage.jpg"
         />
       )}
     </>
