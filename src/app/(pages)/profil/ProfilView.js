@@ -39,7 +39,7 @@ function ProfilView() {
       {activeComponent === "profil" && (
         <>
           <Image
-            className="absolute top-0 right-0 h-12 w-full z-10 object-cover object-center"
+            className="absolute top-0 right-0 h-12 w-full z-10 object-cover object-top"
             src="/images/triathlonImage_2.jpg"
             alt="sport image"
             quality={100}
