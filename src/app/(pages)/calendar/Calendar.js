@@ -68,7 +68,7 @@ function Calendar() {
           <>
             <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen bg-background/50">
               <Image
-                className="absolute top-0 right-0 h-12 w-full z-10 object-cover object-center"
+                className="absolute top-0 right-0 h-12 w-full z-10 object-cover object-top"
                 src="/images/triathlonImage_3.jpg"
                 alt="sport image"
                 quality={100}
