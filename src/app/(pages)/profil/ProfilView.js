@@ -51,7 +51,7 @@ function ProfilView() {
           <div className="h-12 absolute right-0 top-0 w-full  bg-gradient-to-l from-transparent via-transparent via-70% to-background z-40"></div>
           <div className="h-12 absolute right-0 top-0 w-full  bg-gradient-to-r from-transparent via-transparent via-70% to-background z-40"></div>
 
-          <div className="mx-auto text-center h-10 mt-3 mb-10 rounded-sm px-3 py-1 z-40 bg-gradient-to-b from-transparent via-transparent via-10% to-background ">
+          <div className="mx-auto text-center h-10 mt-3 mb-10 rounded-sm px-3 py-1 z-40 bg-gradient-to-b from-transparent  to-background ">
             <span>Willkommen {session?.user.name}</span>
           </div>
 
