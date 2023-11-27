@@ -42,6 +42,8 @@ function PrivacyPolicy({ setShowProfil }) {
           Einzig ausgeführter Google Analytics Parameter ist: Seitenaufrufe.
         </p>
         <br />
+        <p>Bilder von Pixabay.com</p>
+        <br />
         <p>Ihre Betroffenenrechte</p>
         <br />
         <p>
