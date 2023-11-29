@@ -116,7 +116,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint, image }) => {
         width={80}
         height={80}
       />
-      <div className="h-12 absolute right-0 top-0 w-20  bg-gradient-to-l from-transparent via-transparent via-70% to-background z-40"></div>
+      <div className="h-12 absolute right-0 top-0 w-20  bg-gradient-to-l from-transparent via-transparent via-70% to-background z-10"></div>
 
       {isLoading || isLoadingPlan ? (
         <Loader error={error} isLoading={isLoading || isLoadingPlan} />
