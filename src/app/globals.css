@@ -7,6 +7,7 @@
   --second: #35558287;
   --third: #007ca687;
   --fourth: #00a3b187;
+  --fifth: #8426c3;
   --alert: #00a3b1;
   --background: #1d2732;
   --green: #07f53b;
@@ -38,9 +39,25 @@ body {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   color: #f5f4f5;
-  background-color: #1d2732;
+  background: #1d2732;
+  background: linear-gradient(
+    120deg,
+    #0a1120 0%,
+    #0e1a34 15%,
+    #0a1120 40%,
+    #0b243a 75%,
+    #0a1120 80%,
+    #2f1e3a 85%,
+    #0a1120 87%,
+    #0a1120 100%
+  );
   white-space: pre-line;
   vertical-align: bottom;
+}
+
+.btm-nav {
+  background-color: transparent;
+  backdrop-filter: blur(20px);
 }
 
 @media print {
@@ -86,7 +103,6 @@ body {
   51% {
     scale: 100%;
   }
-
   to {
     scale: 100%;
   }
@@ -219,7 +235,18 @@ tr {
 /*----------------session overlay----------------------*/
 
 .overlay-background {
-  background-color: #1d232a;
+  background: #1d2732;
+  background: linear-gradient(
+    120deg,
+    #0a1120 0%,
+    #0e1a34 15%,
+    #0a1120 40%,
+    #0b243a 75%,
+    #0a1120 80%,
+    #2f1e3a 85%,
+    #0a1120 87%,
+    #0a1120 100%
+  );
 }
 .dark-overlay {
   position: fixed;
