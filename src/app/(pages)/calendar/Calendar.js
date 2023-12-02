@@ -66,7 +66,7 @@ function Calendar() {
 
         {homepagePlan && showCalendar && (
           <>
-            <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen shadow-xl">
+            <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen shadow-2xl">
               <Image
                 className="absolute top-0 right-0 h-16 w-full z-10 object-cover object-top"
                 src="/images/triathlonImage_3.jpg"
@@ -78,7 +78,7 @@ function Calendar() {
               />
               <div className="h-16 absolute right-0 top-0 w-full  bg-gradient-to-b from-transparent via-transparent via-80% to-fifth z-10"></div>
 
-              <div className="flex items-center mx-auto text-center border border-first/50 mt-11 mb-10 px-3 py-1 z-20 rounded-md backdrop-blur-sm shadow-xl">
+              <div className="flex items-center mx-auto text-center border border-first/10 mt-11 mb-10 px-3 py-1 z-20 rounded-md backdrop-blur-sm shadow-xl">
                 {homepagePlan?.name}
               </div>
               <WeekScrollButtons

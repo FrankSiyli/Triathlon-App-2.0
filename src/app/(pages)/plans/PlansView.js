@@ -37,7 +37,7 @@ function PlansView() {
     <>
       {activeComponent === "plans" && (
         <>
-          <div className="flex items-center mx-auto text-center border border-first/50 mt-11 mb-10 px-3 py-1 z-20 rounded-md backdrop-blur-sm shadow-xl">
+          <div className="flex items-center mx-auto text-center border border-first/10 mt-11 mb-10 px-3 py-1 z-20 rounded-md backdrop-blur-sm shadow-xl">
             <span>Trainingspläne</span>
           </div>
           <Image
