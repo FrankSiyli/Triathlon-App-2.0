@@ -110,13 +110,13 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint, image }) => {
       <p className="mx-auto text-center -mt-10">{title}</p>
 
       <Image
-        className="absolute top-0 right-0 h-12 w-20"
+        className="absolute top-0 right-0 h-16 w-24 rounded-bl"
         src={image}
         alt="sport image"
         width={80}
         height={80}
       />
-      <div className="h-12 absolute right-0 top-0 w-20  bg-gradient-to-l from-transparent via-transparent via-70% to-background z-10"></div>
+      <div className="h-12 absolute right-0 top-0 w-24  bg-gradient-to-l from-transparent via-transparent via-90% to-background z-10"></div>
 
       {isLoading || isLoadingPlan ? (
         <Loader error={error} isLoading={isLoading || isLoadingPlan} />

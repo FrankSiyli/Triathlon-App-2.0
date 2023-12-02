@@ -134,7 +134,7 @@ export default function Home() {
       return null;
     }
     return (
-      <div className=" fixed mx-auto z-50 bottom-0 left-0 right-0 flex flex-col gap-3 items-center text-center bg-background px-2 py-2 border border-alert rounded-md max-w-2xl">
+      <div className=" fixed mx-auto z-50 bottom-0 left-0 right-0 flex flex-col gap-3 items-center text-center backdrop-blur-lg px-2 py-2 border border-alert rounded-md max-w-2xl">
         <p className="text-alert mt-5">Einfach trainieren mit der Siyli-App</p>
         <p className="text-alert">
           Finde deinen Trainingsplan und erreiche deine Ziele 🚀

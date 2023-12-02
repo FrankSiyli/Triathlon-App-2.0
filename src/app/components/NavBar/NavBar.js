@@ -32,7 +32,7 @@ function NavBar({
   };
 
   return (
-    <div className="btm-nav lg:hidden mx-auto h-12 icon-text bg-background  z-40">
+    <div className="btm-nav lg:hidden mx-auto h-12 icon-text z-40">
       <button
         onClick={handleCalendarClick}
         className={showCalendar ? activeStyle : nonActiveStyle}
