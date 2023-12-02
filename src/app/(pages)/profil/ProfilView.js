@@ -47,9 +47,9 @@ function ProfilView() {
             width={600}
             height={600}
           />
-          <div className="h-16 absolute right-0 top-0 w-full  bg-gradient-to-b from-transparent via-transparent via-80% to-background z-10"></div>
+          <div className="h-16 absolute right-0 top-0 w-full  bg-gradient-to-b from-transparent via-transparent via-80% to-fifth z-10"></div>
 
-          <div className="flex items-center mx-auto text-center border border-first/50 mt-12 mb-10 px-3 py-1 z-20 rounded-md backdrop-blur-md">
+          <div className="flex items-center mx-auto text-center border border-first/50 mt-11 mb-10 px-3 py-1 z-20 rounded-md backdrop-blur-sm shadow-xl">
             <span>Willkommen {session?.user.name}</span>
           </div>
 

@@ -7,7 +7,7 @@
   --second: #35558287;
   --third: #007ca687;
   --fourth: #00a3b187;
-  --fifth: #8426c3;
+  --fifth: #0a1120;
   --alert: #00a3b1;
   --background: #1d2732;
   --green: #07f53b;
@@ -110,7 +110,7 @@ body {
 
 .custom-toast {
   animation: slideInOut 4s linear 0s 1 forwards;
-  background-color: #1d2732;
+  background-color: #0a1120;
   z-index: 50;
   position: fixed;
   top: 5vh;
@@ -169,34 +169,34 @@ body {
 /*----------------tables----------------------*/
 
 input[type="number"] {
-  background-color: #1d2732;
+  background-color: #0a112079;
   border: 1px #00a3b1 solid;
   text-align: center;
 }
 
 input[type="text"] {
-  background-color: #1d2732;
+  background-color: #0a112079;
   border: 1px #00a3b1 solid;
   text-align: center;
 }
 
 input[type="time"] {
-  background-color: #1d2732;
+  background-color: #0a112079;
   border: 1px #00a3b1 solid;
   text-align: center;
 }
 input[type="string"] {
-  background-color: #1d2732;
+  background-color: #0a112079;
   border: 1px #00a3b1 solid;
   text-align: center;
 }
 input[type="email"] {
-  background-color: #1d2732;
+  background-color: #0a112079;
   border: 1px #00a3b1 solid;
   text-align: center;
 }
 input[type="password"] {
-  background-color: #1d2732;
+  background-color: #0a112079;
   border: 1px #00a3b1 solid;
   text-align: center;
 }
