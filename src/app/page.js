@@ -24,10 +24,10 @@ export default function Home() {
   const [userEmail, setUserEmail] = useRecoilState(userEmailState);
   const [savedSwimTime, setSavedSwimTime] = useRecoilState(savedSwimTimeState);
   const [savedHrMax, setSavedHrMax] = useRecoilState(savedHrMaxState);
+  const [showConsent, setShowConsent] = useState(true);
+  const [isClient, setIsClient] = useState(false);
   const [loggedInUserLastLoadedPlan, setLoggedInUserLastLoadedPlan] =
     useRecoilState(loggedInUserLastLoadedPlanState);
-
-  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -119,8 +119,6 @@ export default function Home() {
   };
 
   const CookieConsent = (props) => {
-    const [showConsent, setShowConsent] = useState(true);
-
     useEffect(() => {
       setShowConsent(hasCookie("localConsent"));
     }, []);
@@ -134,7 +132,7 @@ export default function Home() {
       return null;
     }
     return (
-      <div className=" fixed mx-auto z-50 bottom-0 left-0 right-0 flex flex-col gap-3 items-center text-center backdrop-blur-lg px-2 py-2 border border-alert rounded-md max-w-2xl">
+      <div className=" fixed mx-auto z-50 bottom-0 left-0 right-0 flex flex-col gap-3 items-center text-center backdrop-blur-lg px-2 py-2 border border-alert rounded-md max-w-2xl shadow-xl">
         <p className="text-alert mt-5">Einfach trainieren mit der Siyli-App</p>
         <p className="text-alert">
           Finde deinen Trainingsplan und erreiche deine Ziele 🚀
@@ -147,18 +145,13 @@ export default function Home() {
           width={100}
           height={100}
         />{" "}
-        <p className="text-center text-sm">
-          Diese App verwendet Cookies. Wenn du fortfährst, gehen wir davon aus,
-          dass du damit einverstanden bist. Weitere Informationen findest du in
-          unserer
-          <span
-            onClick={handlePolicyClick}
-            className="underline cursor-pointer text-sm ml-1"
-          >
-            Datenschutzrichtlinie
-          </span>
-          .
-        </p>
+        <p className="text-center text-sm">Diese App verwendet Cookies.</p>
+        <span
+          onClick={handlePolicyClick}
+          className="underline cursor-pointer text-sm ml-1"
+        >
+          Zur Datenschutzrichtlinie
+        </span>
         <button
           className="btn btn-sm btn-outline text-alert m-3 py-2 px-6"
           onClick={() => acceptCookie()}
@@ -172,7 +165,11 @@ export default function Home() {
   return (
     <div>
       {isLoading && (
-        <div className="flex flex-col justify-center items-center w-screen h-screen">
+        <div
+          className={`flex flex-col justify-center items-center w-screen h-screen  ${
+            !showConsent ? "bg-second opacity-10" : ""
+          } `}
+        >
           <Image
             src={logo}
             alt="hero-image"
@@ -185,7 +182,7 @@ export default function Home() {
         </div>
       )}
 
-      {!showPrivacyPolicy && isClient && <Calendar />}
+      {!showPrivacyPolicy && isClient && <Calendar showConsent={showConsent} />}
       {showPrivacyPolicy && isClient && (
         <div className="mx-5 overflow-y-auto max-h-screen">
           <button className="fixed top-0 left-0 z-50 h-16 w-full bg-background">

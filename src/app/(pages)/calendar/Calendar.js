@@ -16,7 +16,7 @@ import PlansView from "../plans/PlansView";
 import ProfilView from "../profil/ProfilView";
 import Image from "next/image";
 
-function Calendar() {
+function Calendar({ showConsent }) {
   const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
   const [showCalendar, setShowCalendar] = useState(true);
   const [showPlans, setShowPlans] = useState(false);
@@ -55,7 +55,11 @@ function Calendar() {
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
 
   return (
-    <div className="sm:grid sm:grid-cols-1 md:grid md:grid-cols-1 lg:grid lg:grid-cols-3 gap-5">
+    <div
+      className={`sm:grid sm:grid-cols-1 md:grid md:grid-cols-1 lg:grid lg:grid-cols-3 gap-5 ${
+        !showConsent ? "bg-second opacity-10" : ""
+      }`}
+    >
       <>
         {showPlans && (
           <div className="flex flex-col mx-auto max-w-xl relative w-full overflow-y-auto max-h-screen  ">
