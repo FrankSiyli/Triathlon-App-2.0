@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import PlanComponent from "./components/PlanComponent";
 import Image from "next/image";
+import PlanBuilder from "./components/planBuilder/PlanBuilder";
 
 function PlansView() {
   const [activeComponent, setActiveComponent] = useState("plans");
@@ -26,10 +27,16 @@ function PlansView() {
       name: "Schwimmen",
       imageSrc: "/images/swimImage.jpg",
     },
-    {
+    /* {
       type: "specialPlans",
       name: "Spezial",
       imageSrc: "/images/specialImage.jpg",
+    }, */
+
+    {
+      type: "planBuilder",
+      name: "Plan erstellen",
+      imageSrc: "/images/planBuilderImage.jpg",
     },
   ];
 
@@ -98,14 +105,14 @@ function PlansView() {
           image="/images/runImage.jpg"
         />
       )}
-      {activeComponent === "specialPlans" && (
+      {/*  {activeComponent === "specialPlans" && (
         <PlanComponent
           title="Spezialpläne"
           apiEndpoint="/api/trainingPlans/fetchSpecialPlans"
           setShowPlans={() => handlePlanTypeClick("plans")}
           image="/images/specialImage.jpg"
         />
-      )}
+      )} */}
       {activeComponent === "swimPlans" && (
         <PlanComponent
           title="Schwimmpläne"
@@ -120,6 +127,14 @@ function PlansView() {
           apiEndpoint="/api/trainingPlans/fetchTriathlonPlans"
           setShowPlans={() => handlePlanTypeClick("plans")}
           image="/images/triathlonImage.jpg"
+        />
+      )}
+      {activeComponent === "planBuilder" && (
+        <PlanBuilder
+          title="Plan erstellen"
+          /* apiEndpoint="/api/trainingPlans/fetchPlans" */
+          setShowPlans={() => handlePlanTypeClick("plans")}
+          image="/images/planBuilderImage.jpg"
         />
       )}
     </>

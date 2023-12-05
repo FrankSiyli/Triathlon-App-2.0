@@ -9,7 +9,6 @@ import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { useRecoilState } from "recoil";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
-import { examplePlan } from "../../../../../../database/mockDb";
 
 function Login({ setShowProfil, setShowRegisterForm }) {
   const [email, setEmail] = useState("");

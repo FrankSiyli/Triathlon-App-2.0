@@ -8,7 +8,7 @@ function LogInButtons() {
         <Link
           onClick={handleAlertClick_2}
           href=""
-          className="btn btn-sm  m-3 bg-third border border-first/50 text-first"
+          className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
         >
           Log in
         </Link>
@@ -22,7 +22,7 @@ function LogInButtons() {
         <Link
           onClick={handleAlertClick_2}
           href=""
-          className="btn btn-sm  m-3 bg-fourth border border-first/50 text-first"
+          className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
         >
           Sign up
         </Link>
