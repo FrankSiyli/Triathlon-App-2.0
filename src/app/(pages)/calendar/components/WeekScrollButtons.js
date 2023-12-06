@@ -3,13 +3,13 @@ import React from "react";
 const WeekScrollButtons = ({
   currentWeek,
   numberOfPlanWeeks,
-  handleBackClick,
-  handleNextClick,
+  handlePreviousWeekClick,
+  handleNextWeekClick,
 }) => (
-  <div className="flex justify-between  mb-5 items-center  mx-10">
+  <div className="relative flex justify-between  mb-5 items-center  mx-10">
     <button
-      onClick={handleBackClick}
-      className="btn btn-sm btn-outline  border border-transparent w-12 flex justify-center items-center text-first"
+      onClick={handlePreviousWeekClick}
+      className="btn btn-sm btn-outline  border border-transparent w-12 flex justify-center items-center text-first hover:bg-transparent hover:border-transparent"
     >
       {currentWeek > 0 ? (
         <svg
@@ -31,8 +31,8 @@ const WeekScrollButtons = ({
 
     <p>{`Woche ${currentWeek + 1} | ${numberOfPlanWeeks}`}</p>
     <button
-      onClick={handleNextClick}
-      className="btn btn-sm btn-outline border border-transparent w-12 flex justify-center items-center text-first"
+      onClick={handleNextWeekClick}
+      className="btn btn-sm btn-outline border border-transparent w-12 flex justify-center items-center text-first hover:bg-transparent hover:border-transparent"
     >
       {currentWeek + 1 < numberOfPlanWeeks ? (
         <svg

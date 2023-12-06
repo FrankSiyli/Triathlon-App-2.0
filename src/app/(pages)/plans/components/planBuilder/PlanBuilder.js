@@ -86,6 +86,7 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
             onChange={(e) => setNewPlanDescription(e.target.value)}
           />
           <button
+            disabled
             type="submit"
             className="btn btn-sm my-5 mx-auto btn-outline border border-alert text-first"
           >

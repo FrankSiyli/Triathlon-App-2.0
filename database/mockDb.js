@@ -1980,3 +1980,40 @@ export const examplePlan = {
     },
   ],
 };
+
+export const newPlan = {
+  category: "sport type.value",
+  name: "name.value",
+  info: "description.value",
+  price: "kostenlos",
+  duration: 10,
+  weeks: [
+    {
+      week: 1,
+      sessions: [
+        {
+          day: "Montag",
+        },
+
+        {
+          day: "Dienstag",
+        },
+        {
+          day: "Mittwoch",
+        },
+        {
+          day: "Donnerstag",
+        },
+        {
+          day: "Freitag",
+        },
+        {
+          day: "Samstag",
+        },
+        {
+          day: "Sonntag",
+        },
+      ],
+    },
+  ],
+};
