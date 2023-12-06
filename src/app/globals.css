@@ -202,7 +202,7 @@ input[type="password"] {
   text-align: center;
 }
 textarea {
-  min-height: 45vh;
+  min-height: 40vh;
   padding: 10px;
   font-size: 16px;
   line-height: 1.5;

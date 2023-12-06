@@ -3,16 +3,22 @@ import React, { useState } from "react";
 import Alert from "@/app/components/Alerts/Alert";
 import Image from "next/image";
 import ChooseSportCheckBoxes from "./ChooseSportCheckBoxes";
+import { useRecoilState } from "recoil";
+import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameState";
+import { newPlanDescriptionState } from "@/app/recoil/atoms/planBuilder/newPlanDescriptionState";
 
 const PlanBuilder = ({ setShowPlans, title, image }) => {
-  const [planName, setPlanName] = useState("");
   const [planInfo, setPlanInfo] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [error, setError] = useState("");
+  const [newPlanName, setNewPlanName] = useRecoilState(newPlanNameState);
+  const [newPlanDescription, setNewPlanDescription] = useRecoilState(
+    newPlanDescriptionState
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!planName) {
+    if (!newPlanName) {
       setShowAlert(true);
       setError("Bitte gib deinem Plan einen Namen");
     }
@@ -66,17 +72,18 @@ const PlanBuilder = ({ setShowPlans, title, image }) => {
             className="input border border-transparent my-10"
             type="string"
             placeholder="Planname"
-            onChange={(e) => setPlanName(e.target.value)}
+            onChange={(e) => setNewPlanName(e.target.value)}
           />
           <ChooseSportCheckBoxes />
           <textarea
-            className=" rounded-md w-full mt-10 max-w-xl bg-sixth border border-alert p-2"
+            className="rounded-md w-full mt-10 max-w-xl bg-sixth border border-alert p-2"
             type="text"
-            placeholder="Planinfos"
-            value={planInfo}
-            onChange={(e) => setPlanInfo(e.target.value)}
+            placeholder="Im Aufbau. Hier kannst du bald deine eigenen Trainingspläne zusammenstellen."
+            value={newPlanDescription}
+            onChange={(e) => setNewPlanDescription(e.target.value)}
           />
           <button
+            disabled
             type="submit"
             className="btn btn-sm my-5 mx-auto btn-outline border border-alert text-first"
           >
