@@ -45,11 +45,8 @@ function Calendar({ showConsent }) {
   const { openOverlay, toggleOverlay, activityIndex } = useOpenOverlay();
   const { openDay, toggleDay } = useOpenDay();
 
-  const { currentWeek, handleBackClick, handleNextClick } = useCurrentWeek(
-    homepagePlan,
-    numberOfPlanWeeks,
-    toggleDay
-  );
+  const { currentWeek, handlePreviousWeekClick, handleNextWeekClick } =
+    useCurrentWeek(homepagePlan, numberOfPlanWeeks, toggleDay);
 
   const currentWeekSessions = homepagePlan?.weeks?.[currentWeek]?.sessions;
   const activitiesByDay = useActivitiesByDay(currentWeekSessions);
@@ -88,8 +85,8 @@ function Calendar({ showConsent }) {
               <WeekScrollButtons
                 currentWeek={currentWeek}
                 numberOfPlanWeeks={numberOfPlanWeeks}
-                handleBackClick={handleBackClick}
-                handleNextClick={handleNextClick}
+                handlePreviousWeekClick={handlePreviousWeekClick}
+                handleNextWeekClick={handleNextWeekClick}
               />
 
               {activitiesByDay &&

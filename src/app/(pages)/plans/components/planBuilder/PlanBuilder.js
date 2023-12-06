@@ -7,8 +7,7 @@ import { useRecoilState } from "recoil";
 import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameState";
 import { newPlanDescriptionState } from "@/app/recoil/atoms/planBuilder/newPlanDescriptionState";
 
-const PlanBuilder = ({ setShowPlans, title, image }) => {
-  const [planInfo, setPlanInfo] = useState("");
+const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [error, setError] = useState("");
   const [newPlanName, setNewPlanName] = useRecoilState(newPlanNameState);
@@ -16,12 +15,16 @@ const PlanBuilder = ({ setShowPlans, title, image }) => {
     newPlanDescriptionState
   );
 
+  const handlePlanTypeClick = (planType) => {
+    setActiveComponent(planType);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!newPlanName) {
       setShowAlert(true);
       setError("Bitte gib deinem Plan einen Namen");
-    }
+    } else handlePlanTypeClick("newPlan");
   };
 
   const handleBackClick = () => {
@@ -69,16 +72,16 @@ const PlanBuilder = ({ setShowPlans, title, image }) => {
           className="w-full flex flex-col items-center"
         >
           <input
-            className="input border border-transparent my-10"
+            className="input border border-transparent my-10 placeholder-first/80"
             type="string"
             placeholder="Planname"
             onChange={(e) => setNewPlanName(e.target.value)}
           />
           <ChooseSportCheckBoxes />
           <textarea
-            className="rounded-md w-full mt-10 max-w-xl bg-sixth border border-alert p-2"
+            className="rounded-md w-full mt-10 max-w-xl bg-sixth border border-alert p-2 placeholder-first/80"
             type="text"
-            placeholder="Im Aufbau. Hier kannst du bald deine eigenen Trainingspläne zusammenstellen."
+            placeholder="Im Aufbau. Hier kannst du bald deine eigenen Trainingspläne erstellen."
             value={newPlanDescription}
             onChange={(e) => setNewPlanDescription(e.target.value)}
           />

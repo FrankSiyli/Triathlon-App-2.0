@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PlanComponent from "./components/PlanComponent";
 import Image from "next/image";
 import PlanBuilder from "./components/planBuilder/PlanBuilder";
+import NewPlan from "./components/newPlan/NewPlan";
 
 function PlansView() {
   const [activeComponent, setActiveComponent] = useState("plans");
@@ -132,8 +133,16 @@ function PlansView() {
       {activeComponent === "planBuilder" && (
         <PlanBuilder
           title="Plan erstellen"
-          /* apiEndpoint="/api/trainingPlans/fetchPlans" */
           setShowPlans={() => handlePlanTypeClick("plans")}
+          image="/images/planBuilderImage.jpg"
+          setActiveComponent={setActiveComponent}
+        />
+      )}
+      {activeComponent === "newPlan" && (
+        <NewPlan
+          title="Plan erstellen"
+          /* apiEndpoint="/api/trainingPlans/fetchTriathlonPlans" */
+          setShowPlans={() => handlePlanTypeClick("planBuilder")}
           image="/images/planBuilderImage.jpg"
         />
       )}
