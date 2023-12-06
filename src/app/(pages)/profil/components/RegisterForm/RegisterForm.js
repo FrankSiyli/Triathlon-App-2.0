@@ -164,31 +164,31 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
       )}
 
       {!isLoading && !mailHasBeenSent && (
-        <div className=" flex flex-col items-center  mt-10 gap-1  max-w-xl mx-5 ">
+        <div className=" flex flex-col items-center mt-10 gap-1  max-w-xl mx-5 ">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col items-center gap-3"
           >
             <input
-              className="input  border border-transparent "
+              className="input border border-transparent "
               type="string"
               placeholder="Benutzername"
               onChange={(e) => setName(e.target.value)}
             />
             <input
-              className="input  border border-transparent "
+              className="input border border-transparent "
               type="email"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
 
             <input
-              className="input  border border-transparent "
+              className="input border border-transparent "
               type="password"
               placeholder="Passwort"
               onChange={handlePasswordChange}
             />
-            <div className=" flex flex-col text-center text-alert">
+            <div className="flex flex-col text-center text-alert">
               <div className="flex gap-2">
                 <span>10 Zeichen</span>
                 {passwordHints.length && (

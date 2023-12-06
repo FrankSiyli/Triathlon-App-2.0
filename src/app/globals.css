@@ -8,6 +8,7 @@
   --third: #007ca687;
   --fourth: #00a3b187;
   --fifth: #0a1120;
+  --sixth: #0a112079;
   --alert: #00a3b1;
   --background: #1d2732;
   --green: #07f53b;
@@ -199,6 +200,13 @@ input[type="password"] {
   background-color: #0a112079;
   border: 1px #00a3b1 solid;
   text-align: center;
+}
+textarea {
+  min-height: 40vh;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  resize: vertical;
 }
 
 td {
