@@ -13,6 +13,9 @@ import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import Alert from "@/app/components/Alerts/Alert";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import { wattIsActiveState } from "@/app/recoil/atoms/wattIsActiveState";
+import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import UncheckSvg from "@/app/components/SVGs/UncheckSvg";
+import CheckSvg from "@/app/components/SVGs/CheckSvg";
 
 const SessionOverlay = ({
   sessionSections,
@@ -109,20 +112,7 @@ const SessionOverlay = ({
                   onClick={() => toggleOverlay(dayIndex, activityIndex)}
                   className=" btn btn-ghost btn-sm  m-3 border border-transparent text-first "
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.75 19.5L8.25 12l7.5-7.5"
-                    />
-                  </svg>
+                  <ArrowLeftSvg />
                 </button>
 
                 <button
@@ -136,38 +126,12 @@ const SessionOverlay = ({
                   )}
                   {!isLoading && !singleActivity[3] && (
                     <div className="border border-alert rounded-md">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6 text-alert m-0.5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
+                      <CheckSvg />
                     </div>
                   )}
                   {!isLoading && singleActivity[3] && (
                     <div className="border border-alert rounded-md ">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6 text-alert m-0.5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
+                      <UncheckSvg />
                     </div>
                   )}
                 </button>
@@ -277,20 +241,7 @@ const SessionOverlay = ({
                 onClick={() => toggleOverlay(dayIndex, activityIndex)}
                 className="border border-alert text-alert rounded-md mb-20"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 m-0.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <UncheckSvg />
               </button>
             </div>
           </div>
@@ -301,20 +252,7 @@ const SessionOverlay = ({
                 onClick={() => toggleOverlay(dayIndex, activityIndex)}
                 className="focus:outline-none top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 19.5L8.25 12l7.5-7.5"
-                  />
-                </svg>
+                <ArrowLeftSvg />
               </button>{" "}
             </div>
             <PrintSessions
@@ -346,20 +284,7 @@ const SessionOverlay = ({
                 onClick={() => toggleOverlay(dayIndex, activityIndex)}
                 className="border border-alert text-alert rounded-md mb-20"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 m-0.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <UncheckSvg />
               </button>
             </div>
           </>
