@@ -1981,12 +1981,12 @@ export const examplePlan = {
   ],
 };
 
-export const newPlan = {
+export const newMockPlan = {
   category: "sport type.value",
   name: "name.value",
   info: "description.value",
   price: "kostenlos",
-  duration: 10,
+  duration: 1,
   weeks: [
     {
       week: 1,

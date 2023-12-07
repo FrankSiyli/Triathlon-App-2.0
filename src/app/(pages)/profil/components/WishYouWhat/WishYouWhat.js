@@ -1,6 +1,7 @@
 "use client";
 import Alert from "@/app/components/Alerts/Alert";
 import Loader from "@/app/components/Loader/Loader";
+import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
 import { getSession } from "next-auth/react";
 import React, { useState } from "react";
 import useSWR, { mutate } from "swr";
@@ -121,20 +122,7 @@ const WishYouWhat = ({ setShowProfil }) => {
           className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
           onClick={handleBackClick}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
+          <ArrowLeftSvg />
         </button>
       </div>
       <p className="mx-auto w-40 text-center -mt-10">Wünsch dir was!</p>

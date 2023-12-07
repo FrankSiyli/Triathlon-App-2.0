@@ -1,11 +1,11 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
-import { newPlan } from "../../../../../database/mockDb";
+import { newMockPlan } from "../../../../../database/mockDb";
 
 const { persistAtom } = recoilPersist();
 
 export const newPlanState = atom({
   key: "newPlanState",
-  default: [newPlan],
+  default: newMockPlan,
   effects_UNSTABLE: [persistAtom],
 });
