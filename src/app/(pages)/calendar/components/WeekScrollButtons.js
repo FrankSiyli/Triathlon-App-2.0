@@ -1,5 +1,5 @@
-import ArrowDoubleLeftSvg from "@/app/components/SVGs/ArrowDoubleLeftSvg";
-import ArrowDoubleRightSvg from "@/app/components/SVGs/ArrowDoubleRightSvg";
+import ArrowDoubleLeftSvg from "@/app/components/SVGs/arrows/ArrowDoubleLeftSvg";
+import ArrowDoubleRightSvg from "@/app/components/SVGs/arrows/ArrowDoubleRightSvg";
 import React from "react";
 
 const WeekScrollButtons = ({

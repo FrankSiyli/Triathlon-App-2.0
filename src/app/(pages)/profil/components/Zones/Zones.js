@@ -7,7 +7,8 @@ import HeartrateCalculator from "./components/HeartrateCalculator";
 import SwimTimeCalculator from "./components/SwimTimeCalculator";
 import WattCalculator from "./components/WattCalculator";
 import { showWattInputState } from "@/app/recoil/atoms/user/showWattInputState";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
+import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
 
 const buttonValueArray = [
   {
@@ -87,26 +88,12 @@ function Zones({ setShowProfil }) {
             className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
           >
             <div className="ml-5">
-              {" "}
               {singleButtonValue.name}
               <span className="icon-text ml-1">
                 {singleButtonValue.secondName}
               </span>
             </div>
-            <svg
-              xmlns="http://w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 mr-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            <ArrowRightSvg />
           </button>
         ))}
         {showHrInput && <HeartrateCalculator />}

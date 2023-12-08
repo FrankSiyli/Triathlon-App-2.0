@@ -4,6 +4,7 @@ import PlanComponent from "./components/PlanComponent";
 import Image from "next/image";
 import PlanBuilder from "./components/planBuilder/PlanBuilder";
 import NewPlan from "./components/newPlan/NewPlan";
+import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
 
 function PlansView() {
   const [activeComponent, setActiveComponent] = useState("plans");
@@ -63,36 +64,24 @@ function PlansView() {
 
       {activeComponent === "plans" && (
         <div className="flex flex-col mx-auto max-w-xl relative h-auto w-full overflow-y-auto max-h-screen ">
-          {planTypes.map((plan) => (
+          {planTypes.map((planType) => (
             <button
-              key={plan.type}
-              className="relative text-center h-12 w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
-              onClick={() => handlePlanTypeClick(plan.type)}
+              key={planType.type}
+              className="relative flex justify-between  h-12 w-full max-w-xl shadow-md p-2 rounded-md  my-1 "
+              onClick={() => handlePlanTypeClick(planType.type)}
             >
-              <Image
-                className="h-12 object-cover absolute left-0 top-0 rounded-l-sm"
-                src={plan.imageSrc}
-                alt="siyli app"
-                width={80}
-                height={80}
-              />
-              <div className="h-12 absolute left-0 top-0 w-20  bg-gradient-to-r from-transparent via-transparent via-80% to-fifth z-40"></div>
-
-              <p> {plan.name}</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="absolute w-5 h-5 right-7 top-4"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              <div>
+                <Image
+                  className="h-12 object-cover absolute left-0 top-0 rounded-l-sm"
+                  src={planType.imageSrc}
+                  alt="siyli app"
+                  width={80}
+                  height={80}
                 />
-              </svg>
+                <div className="h-12 absolute left-0 top-0 w-20  bg-gradient-to-r from-transparent via-transparent via-80% to-fifth z-40"></div>
+              </div>
+              <p className="ml-5"> {planType.name}</p>
+              <ArrowRightSvg />
             </button>
           ))}
         </div>

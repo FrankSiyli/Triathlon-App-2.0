@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import trainingpeaksLogo from "../../../../../../public/images/trainingpeaks_logo_2.png";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 
 const Trainingpeaks = ({ setShowProfil }) => {
   const handleBackClick = () => {

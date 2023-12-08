@@ -9,7 +9,7 @@ import { userNameState } from "@/app/recoil/atoms/user/userNameState";
 import { useRecoilState } from "recoil";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 
 function Login({ setShowProfil, setShowRegisterForm }) {
   const [email, setEmail] = useState("");
@@ -128,12 +128,12 @@ function Login({ setShowProfil, setShowRegisterForm }) {
               placeholder="Passwort"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first">
+            <button className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first hover:text-alert">
               Anmelden
             </button>
             <button
               onClick={handleRegisterClick}
-              className="underline underline-offset-2"
+              className="underline underline-offset-2 hover:text-alert"
             >
               Konto erstellen
             </button>

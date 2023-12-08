@@ -6,6 +6,7 @@ import ChooseSportCheckBoxes from "./ChooseSportCheckBoxes";
 import { useRecoilState } from "recoil";
 import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameState";
 import { newPlanDescriptionState } from "@/app/recoil/atoms/planBuilder/newPlanDescriptionState";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 
 const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
   const [showAlert, setShowAlert] = useState(false);
@@ -38,20 +39,7 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
           className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
           onClick={handleBackClick}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
+          <ArrowLeftSvg />
         </button>
       </div>
       <p className="mx-auto text-center -mt-10">{title}</p>
@@ -88,7 +76,7 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
           <button
             disabled
             type="submit"
-            className="btn btn-sm my-5 mx-auto btn-outline border border-alert text-first"
+            className="btn btn-sm my-5 mx-auto btn-outline border border-alert hover:text-alert text-first"
           >
             weiter
           </button>

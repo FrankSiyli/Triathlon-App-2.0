@@ -9,13 +9,23 @@ import { useRecoilState } from "recoil";
 import { useOpenDay } from "@/app/(pages)/calendar/stateHooks/useOpenDay";
 import { newPlanState } from "@/app/recoil/atoms/planBuilder/newPlanState";
 import PlusSvg from "@/app/components/SVGs/PlusSvg";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
-import ArrowDownSvg from "@/app/components/SVGs/ArrowDownSvg";
-import ArrowUpSvg from "@/app/components/SVGs/ArrowUpSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
+import ArrowDownSvg from "@/app/components/SVGs/arrows/ArrowDownSvg";
+import ArrowUpSvg from "@/app/components/SVGs/arrows/ArrowUpSvg";
 import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameState";
+import LibrarySvg from "@/app/components/SVGs/LibrarySvg";
+import ShoeSvg from "@/app/components/SVGs/ShoeSvg";
+import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
+import SwimSvg from "@/app/components/SVGs/SwimSvg";
+import BicycleSvg from "@/app/components/SVGs/BicycleSvg";
+import FasciaRollSvg from "@/app/components/SVGs/FasciaRollSvg";
+import YogaSvg from "@/app/components/SVGs/YogaSvg";
+import StabiSvg from "@/app/components/SVGs/StabiSvg";
+import OthersSvg from "@/app/components/SVGs/OthersSvg";
 
 const NewPlan = ({ image, title, setShowPlans }) => {
   const [showAlert, setShowAlert] = useState(false);
+  const [showAddSessionIcons, setShowAddSessionIcons] = useState(false);
   const [error, setError] = useState("");
   const [newPlan, setNewPlan] = useRecoilState(newPlanState);
   const [newPlanName, setNewPlanName] = useRecoilState(newPlanNameState);
@@ -46,6 +56,26 @@ const NewPlan = ({ image, title, setShowPlans }) => {
       weeks: [...prevPlan.weeks, newWeek],
     }));
   };
+
+  const handleDayClick = (dayIndex) => {
+    toggleDay(dayIndex);
+    setShowAddSessionIcons(false);
+  };
+
+  const handleAddSessionClick = () => {
+    setShowAddSessionIcons(true);
+  };
+
+  const sessionTypes = [
+    { component: <SwimSvg />, label: "Schwimmen" },
+    { component: <BicycleSvg />, label: "Rad" },
+    { component: <ShoeSvg />, label: "Laufen" },
+    { component: <YogaSvg />, label: "Yoga" },
+    { component: <StabiSvg />, label: "Stabi" },
+    { component: <FasciaRollSvg />, label: "Faszienrolle" },
+    { component: <OthersSvg />, label: "Andere" },
+    { component: <LibrarySvg />, label: "Bibliothek" },
+  ];
 
   return (
     <>
@@ -90,7 +120,7 @@ const NewPlan = ({ image, title, setShowPlans }) => {
             <>
               <div
                 key={uuidv1()}
-                onClick={() => toggleDay(dayIndex)}
+                onClick={() => handleDayClick(dayIndex)}
                 className="flex justify-between w-full max-w-xl shadow-md py-2 rounded-md my-1 cursor-pointer"
               >
                 <div className="ml-5">{session.day}</div>
@@ -98,10 +128,26 @@ const NewPlan = ({ image, title, setShowPlans }) => {
               </div>
               <div className="flex flex-col w-full max-w-xl rounded-md">
                 {dayIndex === openDay && (
-                  <div className="relative flex min-h-12 py-2 mx-2 my-1 justify-between bg-fourth/5 items-center font-light text-first rounded-md shadow-md">
-                    <button className="ml-5 border border-alert rounded text-alert">
-                      <PlusSvg />
+                  <div className="relative flex flex-col justify-center gap-4 min-h-12  py-1 mx-5 my-1 bg-fourth/5 font-light text-first rounded-md shadow-md">
+                    <button className="border border-alert rounded text-alert w-7 ml-2">
+                      <PlusSvg onClick={handleAddSessionClick} />
                     </button>
+                    {showAddSessionIcons && (
+                      <div className="flex flex-col gap-2">
+                        {sessionTypes.map((sessionType) => (
+                          <div
+                            key={uuidv1()}
+                            className="flex items-center justify-between cursor-pointer shadow-md py-2 rounded-md"
+                          >
+                            <span className="ml-2">
+                              {sessionType.component}
+                            </span>
+                            <p className="ml-4 text-sm">{sessionType.label}</p>
+                            <ArrowRightSvg />
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

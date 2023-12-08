@@ -1,4 +1,4 @@
-import ArrowRightSvg from "@/app/components/SVGs/ArrowRightSvg";
+import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
 import React from "react";
 
 const Activity = ({ openDay, dayIndex, activity, toggleOverlay }) => {

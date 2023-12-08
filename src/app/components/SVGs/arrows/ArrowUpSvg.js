@@ -1,6 +1,6 @@
 import React from "react";
 
-const ArrowDoubleRightSvg = () => {
+const ArrowUpSvg = () => {
   return (
     <>
       {" "}
@@ -10,16 +10,16 @@ const ArrowDoubleRightSvg = () => {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-6 h-6"
+        className="w-6 h-6 mr-5 hover:text-alert"
       >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
         />
       </svg>
     </>
   );
 };
 
-export default ArrowDoubleRightSvg;
+export default ArrowUpSvg;

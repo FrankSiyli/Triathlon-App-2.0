@@ -9,7 +9,7 @@ import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 import { getSession } from "next-auth/react";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 
 const UserInfo = ({ setShowProfil }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -82,14 +82,14 @@ const UserInfo = ({ setShowProfil }) => {
       </div>
       <p className=" mx-auto w-40 text-center -mt-10">Konto</p>
       <div className="w-full mt-10">
-        <button className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 ">
+        <div className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 ">
           <span className="ml-2">Name:</span>{" "}
           <span className="mr-2">{userName}</span>
-        </button>
-        <button className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 ">
+        </div>
+        <div className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md  my-1 ">
           <span className="ml-2">Email:</span>{" "}
           <span className="mr-2">{userEmail}</span>
-        </button>
+        </div>
         <UserValues isLoading={isLoading} />
       </div>
       <LogoutButton setShowProfil={setShowProfil} />

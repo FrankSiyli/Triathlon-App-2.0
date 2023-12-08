@@ -1,4 +1,4 @@
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 import React from "react";
 
 function Agb({ setShowProfil }) {
@@ -13,7 +13,7 @@ function Agb({ setShowProfil }) {
           className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
           onClick={handleBackClick}
         >
-          <ArrowLeftSvg/>
+          <ArrowLeftSvg />
         </button>
       </div>
 

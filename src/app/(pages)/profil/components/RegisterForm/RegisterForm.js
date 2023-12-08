@@ -3,7 +3,8 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Alert from "@/app/components/Alerts/Alert";
 import Loader from "@/app/components/Loader/Loader";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
+import CheckSvg from "@/app/components/SVGs/CheckSvg";
 
 export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
   const [name, setName] = useState("");
@@ -181,21 +182,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
                 <span>10 Zeichen</span>
                 {passwordHints.length && (
                   <span>
-                    {" "}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M4.5 12.75l6 6 9-13.5"
-                      />
-                    </svg>
+                    <CheckSvg />
                   </span>
                 )}
               </div>
@@ -203,21 +190,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
                 <span>1 Sonderzeichen </span>{" "}
                 {passwordHints.specialChar && (
                   <span>
-                    {" "}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M4.5 12.75l6 6 9-13.5"
-                      />
-                    </svg>
+                    <CheckSvg />
                   </span>
                 )}
               </div>
@@ -225,21 +198,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
                 <span>1 Großbuchstabe </span>
                 {passwordHints.upperCase && (
                   <span>
-                    {" "}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M4.5 12.75l6 6 9-13.5"
-                      />
-                    </svg>
+                    <CheckSvg />
                   </span>
                 )}
               </div>
@@ -248,7 +207,7 @@ export default function RegisterForm({ setShowProfil, setShowRegisterForm }) {
             <button
               onClick={handleSubmit}
               type="submit"
-              className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
+              className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first hover:text-alert"
             >
               Konto erstellen
             </button>

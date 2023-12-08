@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import MenCalculatorByAge from "./components/MenCalculatorByAge";
 import WomenCalculatorByAge from "./components/WomenCalculatorByAge";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
+import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
 
 function HeartrateByAge({ setShowInfos }) {
   const [showWomenInput, setShowWomenInput] = useState(false);
@@ -45,40 +46,14 @@ function HeartrateByAge({ setShowInfos }) {
             className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md my-1"
           >
             <div className="ml-5">Herren</div>
-            <svg
-              xmlns="http://w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 mr-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            <ArrowRightSvg />
           </button>
           <button
             onClick={handleWomenClick}
             className="flex justify-between w-full max-w-xl shadow-md p-2 rounded-md my-1 "
           >
             <div className="ml-5">Damen</div>
-            <svg
-              xmlns="http://w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 mr-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            <ArrowRightSvg />
           </button>
         </div>
         {showWomenInput && <WomenCalculatorByAge />}
