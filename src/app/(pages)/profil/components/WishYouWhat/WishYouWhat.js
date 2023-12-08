@@ -1,7 +1,7 @@
 "use client";
 import Alert from "@/app/components/Alerts/Alert";
 import Loader from "@/app/components/Loader/Loader";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 import { getSession } from "next-auth/react";
 import React, { useState } from "react";
 import useSWR, { mutate } from "swr";
@@ -119,7 +119,7 @@ const WishYouWhat = ({ setShowProfil }) => {
     <>
       <div className="w-full max-w-xl mx-auto">
         <button
-          className="top-5 left-5 btn btn-ghost btn-sm  m-3 border border-transparent text-first "
+          className="top-5 left-5 btn btn-ghost btn-sm m-3 border border-transparent text-first "
           onClick={handleBackClick}
         >
           <ArrowLeftSvg />
@@ -149,7 +149,7 @@ const WishYouWhat = ({ setShowProfil }) => {
           </div>
           <button
             onClick={handleCreatePost}
-            className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
+            className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first hover:text-alert"
           >
             Senden
           </button>

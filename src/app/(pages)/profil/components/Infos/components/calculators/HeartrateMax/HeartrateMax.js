@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Alert from "@/app/components/Alerts/Alert";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 
 function HeartrateMax({ setShowInfos }) {
   const [calculatorInput, setCalculatorInput] = useState("");
@@ -98,7 +98,7 @@ function HeartrateMax({ setShowInfos }) {
 
             <button
               type="submit"
-              className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
+              className="btn btn-sm m-5 mx-auto btn-outline border border-alert hover:text-alert text-first"
               id="calculateBtn"
               onClick={calculatePercentages}
             >

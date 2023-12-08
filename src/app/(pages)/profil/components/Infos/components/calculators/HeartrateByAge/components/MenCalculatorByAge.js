@@ -51,7 +51,7 @@ const MenCalculatorByAge = () => {
         )}
         <button
           onClick={handleMenInputClick}
-          className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
+          className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first hover:text-alert"
         >
           Berechnen
         </button>

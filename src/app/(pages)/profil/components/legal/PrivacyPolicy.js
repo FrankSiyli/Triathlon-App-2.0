@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 
 function PrivacyPolicy({ setShowProfil }) {
   const handleBackClick = () => {
@@ -31,6 +31,8 @@ function PrivacyPolicy({ setShowProfil }) {
         </p>
         <br />
         <p>Bilder von Pixabay.com</p>
+        <br />
+        <p>Icons von heroicons.com und svgrepo.com</p>
         <br />
         <p>Ihre Betroffenenrechte</p>
         <br />

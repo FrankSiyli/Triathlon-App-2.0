@@ -1,3 +1,4 @@
+import CheckSvg from "@/app/components/SVGs/CheckSvg";
 import { newPlanSportTypeState } from "@/app/recoil/atoms/planBuilder/newPlanSportTypeState";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
@@ -42,22 +43,7 @@ const ChooseSportCheckBoxes = () => {
             triathlonChecked ? "border-alert" : "border-alert/50"
           }`}
         >
-          {triathlonChecked ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-alert "
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4.5 12.75l6 6 9-13.5"
-              />
-            </svg>
-          ) : null}
+          {triathlonChecked ? <CheckSvg /> : null}
         </button>
       </div>
 
@@ -72,22 +58,7 @@ const ChooseSportCheckBoxes = () => {
             runChecked ? "border-alert" : "border-alert/50"
           }`}
         >
-          {runChecked ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-alert m-0.5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4.5 12.75l6 6 9-13.5"
-              />
-            </svg>
-          ) : null}
+          {runChecked ? <CheckSvg /> : null}
         </button>
       </div>
 
@@ -102,22 +73,7 @@ const ChooseSportCheckBoxes = () => {
             swimChecked ? "border-alert" : "border-alert/50"
           }`}
         >
-          {swimChecked ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-alert m-0.5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4.5 12.75l6 6 9-13.5"
-              />
-            </svg>
-          ) : null}
+          {swimChecked ? <CheckSvg /> : null}
         </button>
       </div>
     </>

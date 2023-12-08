@@ -96,7 +96,7 @@ function WattCalculator() {
               />
               <button
                 onClick={handleWattInputClick}
-                className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
+                className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first hover:text-alert"
               >
                 speichern
               </button>
@@ -110,7 +110,7 @@ function WattCalculator() {
               </div>
               <button
                 onClick={handleChangeWattClick}
-                className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
+                className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first hover:text-alert"
               >
                 ändern
               </button>

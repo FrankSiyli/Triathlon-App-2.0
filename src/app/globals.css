@@ -56,6 +56,10 @@ body {
   vertical-align: bottom;
 }
 
+button:hover {
+  background: none !important;
+}
+
 .btm-nav {
   background-color: transparent;
   backdrop-filter: blur(20px);

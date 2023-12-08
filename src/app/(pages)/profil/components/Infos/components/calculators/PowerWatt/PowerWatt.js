@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Alert from "@/app/components/Alerts/Alert";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 
 const PowerWatt = ({ setShowInfos }) => {
   const [showAlert, setShowAlert] = useState(false);
@@ -93,7 +93,7 @@ const PowerWatt = ({ setShowInfos }) => {
             />
 
             <button
-              className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first"
+              className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first hover:text-alert"
               onClick={calculateWattZones}
             >
               Berechnen

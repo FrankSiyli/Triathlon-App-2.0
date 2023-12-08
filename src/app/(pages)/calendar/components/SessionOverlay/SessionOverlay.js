@@ -13,7 +13,7 @@ import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 import Alert from "@/app/components/Alerts/Alert";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
 import { wattIsActiveState } from "@/app/recoil/atoms/wattIsActiveState";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 import UncheckSvg from "@/app/components/SVGs/UncheckSvg";
 import CheckSvg from "@/app/components/SVGs/CheckSvg";
 
@@ -232,7 +232,7 @@ const SessionOverlay = ({
             <hr className="m-3 opacity-20 "></hr>
             <div className="flex flex-col  items-center">
               <button
-                className="btn btn-sm m-3 w-32 btn-outline border border-alert text-first"
+                className="btn btn-sm m-3 w-32 btn-outline border border-alert hover:text-alert text-first"
                 onClick={handleViewClick}
               >
                 Druckversion
@@ -268,14 +268,14 @@ const SessionOverlay = ({
             <div className="flex flex-col items-center gap-10">
               <div className="flex flex-row gap-3">
                 <button
-                  className="btn btn-sm m-3 w-32 btn-outline border border-alert text-first"
+                  className="btn btn-sm m-3 w-32 btn-outline border border-alert hover:text-alert text-first"
                   onClick={handleViewClick}
                 >
                   Farbversion
                 </button>
                 <button
                   onClick={handlePrint}
-                  className="btn btn-sm m-3 w-32 btn-outline border border-alert text-first"
+                  className="btn btn-sm m-3 w-32 btn-outline border border-alert hover:text-alert text-first"
                 >
                   drucken
                 </button>

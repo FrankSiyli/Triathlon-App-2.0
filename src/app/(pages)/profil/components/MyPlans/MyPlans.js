@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import FetchedUserPlans from "./components/FetchedUserPlans";
 import { loggedInUserLastLoadedPlanState } from "@/app/recoil/atoms/user/loggedInUserLastLoadedPlanState";
-import ArrowLeftSvg from "@/app/components/SVGs/ArrowLeftSvg";
+import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 
 function MyPlans({ setShowProfil }) {
   const [expandedPlanIndex, setExpandedPlanIndex] = useState(null);

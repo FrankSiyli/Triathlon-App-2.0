@@ -1,5 +1,5 @@
-import ArrowDownSvg from "@/app/components/SVGs/ArrowDownSvg";
-import ArrowUpSvg from "@/app/components/SVGs/ArrowUpSvg";
+import ArrowDownSvg from "@/app/components/SVGs/arrows/ArrowDownSvg";
+import ArrowUpSvg from "@/app/components/SVGs/arrows/ArrowUpSvg";
 
 const Day = ({ day, toggleDay, dayIndex, openDay, activity }) => {
   const allDaySessionsDone = () => {
@@ -11,7 +11,7 @@ const Day = ({ day, toggleDay, dayIndex, openDay, activity }) => {
 
   return (
     <>
-      <div
+      <button
         onClick={() => toggleDay(dayIndex)}
         className={`flex justify-between w-full max-w-xl shadow-md p-2 rounded-md my-1 cursor-pointer ${
           allDaySessionsDone() ? "border-l-2 border-r-2 border-green" : null
@@ -21,7 +21,7 @@ const Day = ({ day, toggleDay, dayIndex, openDay, activity }) => {
           {day}
         </div>
         {dayIndex === openDay ? <ArrowDownSvg /> : <ArrowUpSvg />}
-      </div>
+      </button>
     </>
   );
 };
