@@ -100,7 +100,7 @@ const FetchedUserPlans = ({
               </div>
               {expandedPlanIndex === myPlanIndex && (
                 <div className="mt-5 select-none ">
-                  <hr />
+                  <hr className="opacity-10 mx-1" />
                   <div className="m-3 mx-auto p-1 w-24 text-sm text-center">
                     Wochen: {myPlan.duration}
                   </div>

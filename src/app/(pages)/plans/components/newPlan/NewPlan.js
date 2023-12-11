@@ -200,11 +200,12 @@ const NewPlan = ({ image, title, setShowPlans }) => {
                               )}
                             </div>
                             {sessionTypeClicked[sessionTypeIndex] && (
-                              <div className="w-full mx-auto mt-2 text-sm">
+                              <div className="w-full mx-auto mt-2 text-sm ">
+                                <hr className="opacity-10 mx-1" />
                                 {sessionBuildTypes.map(
                                   (sessionBuildType, sessionBuildTypeIndex) => (
                                     <div
-                                      className="flex m-1 p-1 items-center justify-between cursor-pointer  bg-fourth/5 rounded shadow"
+                                      className="hover:text-neutral-500 cursor-not-allowed flex m-1 p-1 items-center justify-between  bg-fourth/5 rounded shadow"
                                       key={sessionBuildTypeIndex}
                                       onClick={sessionBuildType.onclick}
                                     >

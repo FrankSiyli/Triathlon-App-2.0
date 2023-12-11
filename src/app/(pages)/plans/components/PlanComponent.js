@@ -143,7 +143,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint, image }) => {
                 </button>
                 {expandedPlanIndex === plan._id && (
                   <div className="mt-5 select-none flex flex-col itmes-center">
-                    <hr />
+                    <hr className="opacity-10 mx-1" />
                     <div className="w-full my-7 p-1 flex flex-col text-center">
                       <span className=" p-1 border-l border-r border-alert">
                         Wochen: {plan.duration}
