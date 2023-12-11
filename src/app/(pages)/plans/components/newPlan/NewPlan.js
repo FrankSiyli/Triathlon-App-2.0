@@ -22,17 +22,33 @@ import FasciaRollSvg from "@/app/components/SVGs/FasciaRollSvg";
 import YogaSvg from "@/app/components/SVGs/YogaSvg";
 import StabiSvg from "@/app/components/SVGs/StabiSvg";
 import OthersSvg from "@/app/components/SVGs/OthersSvg";
+import FolderSvg from "@/app/components/SVGs/FolderSvg";
+import CalculatorSvg from "@/app/components/SVGs/CalculatorSvg";
+
+const sessionTypes = [
+  { component: <SwimSvg />, label: "Schwimmen" },
+  { component: <BicycleSvg />, label: "Rad" },
+  { component: <ShoeSvg />, label: "Laufen" },
+  { component: <YogaSvg />, label: "Yoga" },
+  { component: <StabiSvg />, label: "Stabi" },
+  { component: <FasciaRollSvg />, label: "Faszienrolle" },
+  { component: <OthersSvg />, label: "Andere" },
+];
 
 const NewPlan = ({ image, title, setShowPlans }) => {
   const [showAlert, setShowAlert] = useState(false);
-  const [showAddSessionIcons, setShowAddSessionIcons] = useState(false);
   const [error, setError] = useState("");
+  const [showAddSessionMenu, setShowAddSessionMenu] = useState(false);
+  const [showBuildTypesMenu, setShowBuildTypesMenu] = useState(false);
   const [newPlan, setNewPlan] = useRecoilState(newPlanState);
   const [newPlanName, setNewPlanName] = useRecoilState(newPlanNameState);
   const numberOfPlanWeeks = newPlan?.weeks?.length;
   const { openDay, toggleDay } = useOpenDay();
   const { currentWeek, handlePreviousWeekClick, handleNextWeekClick } =
     useCurrentWeek(newPlan, numberOfPlanWeeks, toggleDay);
+  const [sessionTypeClicked, setSessionTypeClicked] = useState(
+    new Array(sessionTypes.length).fill(false)
+  );
 
   const handleBackClick = () => {
     setShowPlans();
@@ -59,22 +75,50 @@ const NewPlan = ({ image, title, setShowPlans }) => {
 
   const handleDayClick = (dayIndex) => {
     toggleDay(dayIndex);
-    setShowAddSessionIcons(false);
+    setShowAddSessionMenu(false);
+    setSessionTypeClicked(-1);
   };
 
   const handleAddSessionClick = () => {
-    setShowAddSessionIcons(true);
+    setShowAddSessionMenu(true);
   };
 
-  const sessionTypes = [
-    { component: <SwimSvg />, label: "Schwimmen" },
-    { component: <BicycleSvg />, label: "Rad" },
-    { component: <ShoeSvg />, label: "Laufen" },
-    { component: <YogaSvg />, label: "Yoga" },
-    { component: <StabiSvg />, label: "Stabi" },
-    { component: <FasciaRollSvg />, label: "Faszienrolle" },
-    { component: <OthersSvg />, label: "Andere" },
-    { component: <LibrarySvg />, label: "Bibliothek" },
+  const handleSessionTypeClick = (sessionTypeIndex) => {
+    setSessionTypeClicked((prevClicked) => {
+      const newClicked = new Array(sessionTypes.length).fill(false);
+      newClicked[sessionTypeIndex] = !prevClicked[sessionTypeIndex];
+      return newClicked;
+    });
+  };
+
+  const handleNewSessionClick = () => {
+    setShowAlert(true);
+    setError("Feature ist in Arbeit");
+  };
+  const handleMySessionsClick = () => {
+    setShowAlert(true);
+    setError("Feature ist in Arbeit");
+  };
+  const handleSiyliLibraryClick = () => {
+    setShowAlert(true);
+    setError("Feature ist in Arbeit");
+  };
+  const sessionBuildTypes = [
+    {
+      component: <CalculatorSvg />,
+      label: "Neue Einheit",
+      onclick: () => handleNewSessionClick(),
+    },
+    {
+      component: <FolderSvg />,
+      label: "Meine Vorlagen",
+      onclick: () => handleMySessionsClick(),
+    },
+    {
+      component: <LibrarySvg />,
+      label: "Siyli-App-Bibliothek",
+      onclick: () => handleSiyliLibraryClick(),
+    },
   ];
 
   return (
@@ -117,7 +161,7 @@ const NewPlan = ({ image, title, setShowPlans }) => {
         </div>
         <div>
           {newPlan?.weeks?.[currentWeek]?.sessions.map((session, dayIndex) => (
-            <>
+            <div key={uuidv1()}>
               <div
                 key={uuidv1()}
                 onClick={() => handleDayClick(dayIndex)}
@@ -128,22 +172,52 @@ const NewPlan = ({ image, title, setShowPlans }) => {
               </div>
               <div className="flex flex-col w-full max-w-xl rounded-md">
                 {dayIndex === openDay && (
-                  <div className="relative flex flex-col justify-center gap-4 min-h-12  py-1 mx-5 my-1 bg-fourth/5 font-light text-first rounded-md shadow-md">
+                  <div className="relative flex flex-col justify-center gap-4 min-h-12  py-1 mx-5 my-1 font-light text-first rounded-md shadow-md">
                     <button className="border border-alert rounded text-alert w-7 ml-2">
                       <PlusSvg onClick={handleAddSessionClick} />
                     </button>
-                    {showAddSessionIcons && (
+                    {showAddSessionMenu && (
                       <div className="flex flex-col gap-2">
-                        {sessionTypes.map((sessionType) => (
+                        {sessionTypes.map((sessionType, sessionTypeIndex) => (
                           <div
                             key={uuidv1()}
-                            className="flex items-center justify-between cursor-pointer shadow-md py-2 rounded-md"
+                            onClick={() =>
+                              handleSessionTypeClick(sessionTypeIndex)
+                            }
+                            className="flex flex-col shadow-md p-1 rounded-md  bg-fourth/5"
                           >
-                            <span className="ml-2">
-                              {sessionType.component}
-                            </span>
-                            <p className="ml-4 text-sm">{sessionType.label}</p>
-                            <ArrowRightSvg />
+                            <div className="flex w-full items-center justify-between cursor-pointer ">
+                              <span className="ml-2">
+                                {sessionType.component}
+                              </span>
+                              <p className="ml-4 text-sm">
+                                {sessionType.label}
+                              </p>
+                              {sessionTypeClicked[sessionTypeIndex] ? (
+                                <ArrowDownSvg />
+                              ) : (
+                                <ArrowUpSvg />
+                              )}
+                            </div>
+                            {sessionTypeClicked[sessionTypeIndex] && (
+                              <div className="w-full mx-auto mt-2 text-sm">
+                                {sessionBuildTypes.map(
+                                  (sessionBuildType, sessionBuildTypeIndex) => (
+                                    <div
+                                      className="flex m-1 p-1 items-center justify-between cursor-pointer  bg-fourth/5 rounded shadow"
+                                      key={sessionBuildTypeIndex}
+                                      onClick={sessionBuildType.onclick}
+                                    >
+                                      <span className="ml-2">
+                                        {sessionBuildType.component}
+                                      </span>
+                                      {sessionBuildType.label}
+                                      <ArrowRightSvg />
+                                    </div>
+                                  )
+                                )}
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
@@ -151,10 +225,11 @@ const NewPlan = ({ image, title, setShowPlans }) => {
                   </div>
                 )}
               </div>
-            </>
+            </div>
           ))}
         </div>
       </div>
+      {showAlert && <Alert alertText={error} setShowAlert={setShowAlert} />}
     </>
   );
 };
