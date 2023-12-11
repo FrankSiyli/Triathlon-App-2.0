@@ -116,7 +116,7 @@ const NewPlan = ({ image, title, setShowPlans }) => {
     },
     {
       component: <LibrarySvg />,
-      label: "Siyli-App-Bibliothek",
+      label: "App-Bibliothek",
       onclick: () => handleSiyliLibraryClick(),
     },
   ];
