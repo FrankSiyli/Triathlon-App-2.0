@@ -2,7 +2,6 @@
 import { formatTime } from "@/app/helperFunctions/formatTime";
 import React from "react";
 import { useRecoilState } from "recoil";
-import { userEmailState } from "@/app/recoil/atoms/user/userEmailState";
 import { savedHrMaxState } from "@/app/recoil/atoms/user/savedHrMaxState";
 import { savedSwimTimeState } from "@/app/recoil/atoms/user/savedSwimTimeState";
 import { savedWattState } from "@/app/recoil/atoms/user/savedWattState";

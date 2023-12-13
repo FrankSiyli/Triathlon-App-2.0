@@ -7,9 +7,14 @@ import ArrowUpSvg from "@/app/components/SVGs/arrows/ArrowUpSvg";
 import { newPlanState } from "@/app/recoil/atoms/planBuilder/newPlanState";
 import { useRecoilState } from "recoil";
 import { v1 as uuidv1 } from "uuid";
-import NewPlanSessionTypes from "./NewPlanSessionTypes";
+import NewPlanSessionTypes from "./newPlanSessionTypes/NewPlanSessionTypes";
 
-const NewPlanWeekSchedule = ({ currentWeek, openDay, toggleDay }) => {
+const NewPlanWeekSchedule = ({
+  currentWeek,
+  openDay,
+  toggleDay,
+  setActiveComponent,
+}) => {
   const [showAlert, setShowAlert] = useState(false);
   const [error, setError] = useState("");
   const [newPlan, setNewPlan] = useRecoilState(newPlanState);
@@ -50,6 +55,7 @@ const NewPlanWeekSchedule = ({ currentWeek, openDay, toggleDay }) => {
                         setShowAlert={setShowAlert}
                         error={error}
                         setError={setError}
+                        setActiveComponent={setActiveComponent}
                       />
                     </div>
                   )}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import PlanBuilder from "./components/planBuilder/PlanBuilder";
 import NewPlan from "./components/planBuilder/components/newPlan/NewPlan";
 import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
+import AppLibrary from "./components/planBuilder/components/newPlan/components/newPlanSessionTypes/components/newPlanSessionBuildTypes/components/appLibrary/AppLibrary";
 
 function PlansView() {
   const [activeComponent, setActiveComponent] = useState("plans");
@@ -132,6 +133,15 @@ function PlansView() {
           title="Plan erstellen"
           /* apiEndpoint="/api/trainingPlans/fetchTriathlonPlans" */
           setShowPlans={() => handlePlanTypeClick("planBuilder")}
+          image="/images/planBuilderImage.jpg"
+          setActiveComponent={setActiveComponent}
+        />
+      )}
+      {activeComponent === "appLibrary" && (
+        <AppLibrary
+          title="App-Bibliothek"
+          /* apiEndpoint="/api/trainingPlans/fetchTriathlonPlans" */
+          setShowPlans={() => handlePlanTypeClick("newPlan")}
           image="/images/planBuilderImage.jpg"
         />
       )}

@@ -1,16 +1,13 @@
-"use client";
-import React, { useState } from "react";
-import Alert from "@/app/components/Alerts/Alert";
+import React from "react";
 import CalculatorSvg from "@/app/components/SVGs/CalculatorSvg";
 import FolderSvg from "@/app/components/SVGs/FolderSvg";
 import LibrarySvg from "@/app/components/SVGs/LibrarySvg";
 import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
 
 const NewPlanSessionBuildTypes = ({
-  showAlert,
   setShowAlert,
-  error,
   setError,
+  setActiveComponent,
 }) => {
   const handleNewSessionClick = () => {
     setShowAlert(true);
@@ -22,23 +19,28 @@ const NewPlanSessionBuildTypes = ({
   };
 
   const handleSiyliLibraryClick = () => {
-    setShowAlert(true);
-    setError("Feature ist in Arbeit");
+    setActiveComponent("appLibrary");
   };
   const sessionBuildTypes = [
     {
       component: <CalculatorSvg />,
       label: "Neue Einheit",
+      labelColor: "neutral-500",
+      cursor: "not-allowed",
       onclick: () => handleNewSessionClick(),
     },
     {
       component: <FolderSvg />,
       label: "Meine Vorlagen",
+      labelColor: "neutral-500",
+      cursor: "not-allowed",
       onclick: () => handleMySessionsClick(),
     },
     {
       component: <LibrarySvg />,
       label: "App-Bibliothek",
+      labelColor: "first",
+      cursor: "pointer",
       onclick: () => handleSiyliLibraryClick(),
     },
   ];
@@ -47,12 +49,12 @@ const NewPlanSessionBuildTypes = ({
     <>
       {sessionBuildTypes.map((sessionBuildType, sessionBuildTypeIndex) => (
         <div
-          className="hover:text-neutral-500 cursor-not-allowed flex m-1 p-1 items-center justify-between  bg-fourth/5 rounded shadow"
+          className={`flex m-2 p-1 items-center justify-between  bg-fourth/5 rounded shadow text-${sessionBuildType.labelColor} cursor-${sessionBuildType.cursor}`}
           key={sessionBuildTypeIndex}
           onClick={sessionBuildType.onclick}
         >
-          <span className="ml-2">{sessionBuildType.component}</span>
-          {sessionBuildType.label}
+          <span className="ml-2 ">{sessionBuildType.component}</span>
+          <span>{sessionBuildType.label}</span>
           <ArrowRightSvg />
         </div>
       ))}
