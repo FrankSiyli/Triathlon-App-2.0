@@ -22,7 +22,6 @@ function Impressum({ setShowProfil }) {
         <p>Siyli endurance coaching</p>
         <p>Vogt Groth Weg 45a</p>
         <p>22609 Hamburg</p>
-        <p>Tel.: 016099159478</p>
         <p>E-Mail: info@siyli-endurance-coaching.com</p>
         <p>
           USt. wird nicht ausgewiesen, da der Verkäufer/ die Verkäuferin
