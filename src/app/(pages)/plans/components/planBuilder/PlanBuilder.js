@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Alert from "@/app/components/Alerts/Alert";
 import Image from "next/image";
-import ChooseSportCheckBoxes from "./ChooseSportCheckBoxes";
+import ChooseSportCheckBoxes from "./components/ChooseSportCheckBoxes";
 import { useRecoilState } from "recoil";
 import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameState";
 import { newPlanDescriptionState } from "@/app/recoil/atoms/planBuilder/newPlanDescriptionState";
