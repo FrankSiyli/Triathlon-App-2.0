@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PlanComponent from "./components/PlanComponent";
 import Image from "next/image";
 import PlanBuilder from "./components/planBuilder/PlanBuilder";
-import NewPlan from "./components/newPlan/NewPlan";
+import NewPlan from "./components/planBuilder/components/newPlan/NewPlan";
 import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
 
 function PlansView() {

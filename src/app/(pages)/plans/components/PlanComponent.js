@@ -129,7 +129,7 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint, image }) => {
               >
                 <button
                   onClick={() => handleInfoClick(plan)}
-                  className="relative w-full flex flex-row justify-between cursor-pointer"
+                  className="relative w-full flex flex-row justify-between text-left cursor-pointer"
                 >
                   <div className="absolute -top-2 -left-1 text-alert text-sm">
                     <span className="icon-text"> {plan.duration}w</span>
