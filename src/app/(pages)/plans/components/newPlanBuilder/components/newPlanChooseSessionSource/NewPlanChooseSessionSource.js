@@ -4,7 +4,7 @@ import FolderSvg from "@/app/components/SVGs/FolderSvg";
 import LibrarySvg from "@/app/components/SVGs/LibrarySvg";
 import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
 
-const NewPlanSessionBuildTypes = ({
+const NewPlanChooseSessionSource = ({
   setShowAlert,
   setError,
   setActiveComponent,
@@ -62,4 +62,4 @@ const NewPlanSessionBuildTypes = ({
   );
 };
 
-export default NewPlanSessionBuildTypes;
+export default NewPlanChooseSessionSource;

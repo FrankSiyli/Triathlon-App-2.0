@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import PlanComponent from "./components/PlanComponent";
 import Image from "next/image";
-import PlanBuilder from "./components/planBuilder/PlanBuilder";
-import NewPlan from "./components/planBuilder/components/newPlan/NewPlan";
+import PlanBuilder from "./components/newPlanBuilder/components/NewPlanBuilder";
+import NewPlan from "./components/newPlanBuilder/components/newPlanCalendar/NewPlanCalendar";
 import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
-import AppLibrary from "./components/planBuilder/components/newPlan/components/newPlanSessionTypes/components/newPlanSessionBuildTypes/components/appLibrary/AppLibrary";
+import AppLibrary from "./components/newPlanBuilder/components/newPlanAppLibrary/NewPlanAppLibrary";
 
 function PlansView() {
   const [activeComponent, setActiveComponent] = useState("plans");

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Alert from "@/app/components/Alerts/Alert";
 import Image from "next/image";
-import ChooseSportCheckBoxes from "./components/ChooseSportCheckBoxes";
+import ChooseSportCheckBoxes from "./newPlanChooseSportCheckBoxes/NewPlanChooseSportCheckBoxes";
 import { useRecoilState } from "recoil";
 import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameState";
 import { newPlanDescriptionState } from "@/app/recoil/atoms/planBuilder/newPlanDescriptionState";
@@ -74,11 +74,11 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
             onChange={(e) => setNewPlanDescription(e.target.value)}
           />
           <button
-            /* disabled */
             type="submit"
             className="btn btn-sm my-5 mx-auto btn-outline border border-alert hover:text-alert text-first"
           >
             weiter
+            {/* to NewPlanCalendar */}
           </button>
         </form>
       </div>

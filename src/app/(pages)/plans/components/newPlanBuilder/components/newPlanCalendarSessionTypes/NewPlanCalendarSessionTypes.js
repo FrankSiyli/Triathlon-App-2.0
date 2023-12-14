@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import NewPlanSessionBuildTypes from "./components/newPlanSessionBuildTypes/NewPlanSessionBuildTypes";
+import NewPlanSessionBuildTypes from "../newPlanChooseSessionSource/NewPlanChooseSessionSource";
 import ArrowUpSvg from "@/app/components/SVGs/arrows/ArrowUpSvg";
 import ArrowDownSvg from "@/app/components/SVGs/arrows/ArrowDownSvg";
 import SwimSvg from "@/app/components/SVGs/SwimSvg";
@@ -12,15 +12,46 @@ import FasciaRollSvg from "@/app/components/SVGs/FasciaRollSvg";
 import OthersSvg from "@/app/components/SVGs/OthersSvg";
 import { newPlanClickedSessionTypeState } from "@/app/recoil/atoms/planBuilder/newPlanClickedSessionTypeState";
 import { useRecoilState } from "recoil";
+import { newPlanClickedSessionTypeApiState } from "@/app/recoil/atoms/planBuilder/newPlanClickedSessionTypeApiState";
 
 const sessionTypes = [
-  { type: "swim", component: <SwimSvg />, label: "Schwimmen" },
-  { type: "bike", component: <BicycleSvg />, label: "Rad" },
-  { type: "run", component: <ShoeSvg />, label: "Laufen" },
-  { type: "yoga", component: <YogaSvg />, label: "Yoga" },
+  {
+    type: "swim",
+    component: <SwimSvg />,
+    label: "Schwimmen",
+    api: "/api/planBuilder/fetchAllSwimSessions",
+  },
+  {
+    type: "bike",
+    component: <BicycleSvg />,
+    label: "Rad",
+    api: "/api/planBuilder/fetchAllBikeSessions",
+  },
+  {
+    type: "run",
+    component: <ShoeSvg />,
+    label: "Laufen",
+    api: "/api/planBuilder/fetchAllRunSessions",
+  },
+  {
+    type: "yoga",
+    component: <YogaSvg />,
+    label: "Yoga",
+    api: "/api/planBuilder/fetchAllYogaSessions",
+  },
   { type: "stabi", component: <StabiSvg />, label: "Stabi" },
-  { type: "fascia", component: <FasciaRollSvg />, label: "Faszienrolle" },
-  { type: "others", component: <OthersSvg />, label: "Andere" },
+  {
+    type: "fascia",
+    component: <FasciaRollSvg />,
+    label: "Faszienrolle",
+    api: "/api/planBuilder/fetchAllFasciaSessions",
+  },
+  {
+    type: "others",
+    component: <OthersSvg />,
+    label: "Andere",
+    api: "/api/planBuilder/fetchAllOthersSessions",
+  },
 ];
 
 const NewPlanSessionTypes = ({
@@ -32,25 +63,33 @@ const NewPlanSessionTypes = ({
 }) => {
   const [newPlanClickedSessionType, setNewPlanClickedSessionType] =
     useRecoilState(newPlanClickedSessionTypeState);
+  const [newPlanClickedSessionTypeApi, setNewPlanClickedSessionTypeApi] =
+    useRecoilState(newPlanClickedSessionTypeApiState);
 
   const [sessionTypeClicked, setSessionTypeClicked] = useState(
     new Array(sessionTypes.length).fill(false)
   );
-  const handleSessionTypeClick = (sessionTypeIndex, type) => {
+  const handleSessionTypeClick = (sessionTypeIndex, type, api) => {
     setSessionTypeClicked((prevClicked) => {
       const newClicked = new Array(sessionTypes.length).fill(false);
       newClicked[sessionTypeIndex] = !prevClicked[sessionTypeIndex];
       return newClicked;
     });
     setNewPlanClickedSessionType(type);
+    setNewPlanClickedSessionTypeApi(api);
   };
+
   return (
     <>
       {sessionTypes.map((sessionType, sessionTypeIndex) => (
         <div
           key={sessionTypeIndex}
           onClick={() =>
-            handleSessionTypeClick(sessionTypeIndex, sessionType.type)
+            handleSessionTypeClick(
+              sessionTypeIndex,
+              sessionType.type,
+              sessionType.api
+            )
           }
           className="flex flex-col shadow-md p-1 rounded-md  bg-fourth/5"
         >
@@ -58,9 +97,9 @@ const NewPlanSessionTypes = ({
             <span className="ml-2">{sessionType.component}</span>
             <p className="ml-4 text-sm">{sessionType.label}</p>
             {sessionTypeClicked[sessionTypeIndex] ? (
-              <ArrowDownSvg />
-            ) : (
               <ArrowUpSvg />
+            ) : (
+              <ArrowDownSvg />
             )}
           </div>
           {sessionTypeClicked[sessionTypeIndex] && (
@@ -73,6 +112,7 @@ const NewPlanSessionTypes = ({
                 setError={setError}
                 setActiveComponent={setActiveComponent}
               />
+              {/* to NewPlanAppLibrary ||  NewPlanNewSession || NewPlanMyTemplates*/}
             </div>
           )}
         </div>

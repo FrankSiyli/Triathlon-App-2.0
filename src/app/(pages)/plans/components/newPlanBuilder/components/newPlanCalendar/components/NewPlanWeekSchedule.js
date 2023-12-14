@@ -7,7 +7,7 @@ import ArrowUpSvg from "@/app/components/SVGs/arrows/ArrowUpSvg";
 import { newPlanState } from "@/app/recoil/atoms/planBuilder/newPlanState";
 import { useRecoilState } from "recoil";
 import { v1 as uuidv1 } from "uuid";
-import NewPlanSessionTypes from "./newPlanSessionTypes/NewPlanSessionTypes";
+import NewPlanSessionTypes from "../../newPlanCalendarSessionTypes/NewPlanCalendarSessionTypes";
 
 const NewPlanWeekSchedule = ({
   currentWeek,
@@ -40,11 +40,13 @@ const NewPlanWeekSchedule = ({
               className="flex justify-between w-full max-w-xl shadow-md py-2 rounded-md my-1 cursor-pointer"
             >
               <div className="ml-5">{session.day}</div>
-              {dayIndex === openDay ? <ArrowDownSvg /> : <ArrowUpSvg />}
+              <span className="mr-5">
+                {dayIndex === openDay ? <ArrowUpSvg /> : <ArrowDownSvg />}
+              </span>
             </div>
             <div className="flex flex-col w-full max-w-xl rounded-md">
               {dayIndex === openDay && (
-                <div className="relative flex flex-col justify-center gap-4 min-h-12  py-1 mx-5 my-1 font-light text-first rounded-md shadow-md">
+                <div className="relative flex flex-col justify-center gap-4 min-h-12  py-1 mx-5 my-1 font-light  rounded-md shadow-md">
                   <button className="border border-alert rounded text-alert w-7 ml-2">
                     <PlusSvg onClick={handleAddSessionClick} />
                   </button>

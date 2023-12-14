@@ -1,46 +1,31 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 import { newPlanClickedSessionTypeState } from "@/app/recoil/atoms/planBuilder/newPlanClickedSessionTypeState";
 import Image from "next/image";
-import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import BicycleSvg from "@/app/components/SVGs/BicycleSvg";
-import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
-
-const bikeSessionTypes = [
-  {
-    type: "beginner",
-    name: "Einheiten für Beginner",
-    api: "/api/planBuilder/fetchBikeBeginnerSessions",
-  },
-  {
-    type: "lit",
-    name: "Leichte Einheiten",
-    api: "/api/planBuilder/fetchBikeLitSessions",
-  },
-  {
-    type: "mit",
-    name: "Mittlere Einheiten",
-    api: "/api/planBuilder/fetchBikeMitSessions",
-  },
-  {
-    type: "hit",
-    name: "Harte Einheiten",
-    api: "/api/planBuilder/fetchBikeHitSessions",
-  },
-];
+import NewPlanAppLibrarySessionTypes from "./components/NewPlanAppLibrarySessionTypes";
+import { newPlanClickedSessionTypeApiState } from "@/app/recoil/atoms/planBuilder/newPlanClickedSessionTypeApiState";
 
 const AppLibrary = ({ image, title, setShowPlans }) => {
+  const [singleSessions, setSingleSessions] = useState([]);
+  const [newPlanClickedSessionTypeApi, setNewPlanClickedSessionTypeApi] =
+    useRecoilState(newPlanClickedSessionTypeApiState);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/planBuilder/fetchAllBikeSessions", {
-          method: "GET",
-        });
+        const response = await fetch(
+          { newPlanClickedSessionTypeApi },
+          {
+            method: "GET",
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
           console.log("sessions", data.sessions);
+          setSingleSessions(data.sessions);
         } else {
           console.error("Failed to fetch sessions. Status:", response.status);
         }
@@ -50,15 +35,13 @@ const AppLibrary = ({ image, title, setShowPlans }) => {
     };
 
     fetchData();
-  }, []);
+  }, [newPlanClickedSessionTypeApi]);
 
   const [newPlanClickedSessionType, setNewPlanClickedSessionType] =
     useRecoilState(newPlanClickedSessionTypeState);
   const handleBackClick = () => {
     setShowPlans();
   };
-
-  const handleBikeSessionTypeClick = () => {};
 
   return (
     <>
@@ -80,22 +63,8 @@ const AppLibrary = ({ image, title, setShowPlans }) => {
       />
       <div className="h-16 absolute right-0 top-0 w-24 bg-gradient-to-l from-transparent via-transparent via-80% to-fifth z-10"></div>
       <div className="h-16 absolute right-0 top-0 w-24 bg-gradient-to-b from-transparent via-transparent via-80% to-fifth z-10"></div>
-      {newPlanClickedSessionType === "bike" && (
-        <div className="flex flex-col items-center mt-20 w-full max-w-xl">
-          {bikeSessionTypes.map((bikeSessionType, bikeSessionTypeIndex) => (
-            <div
-              onClick={handleBikeSessionTypeClick}
-              key={bikeSessionTypeIndex}
-              className="flex justify-between items-center w-full max-w-xl shadow-md p-2 rounded-md "
-            >
-              <span className="ml-5">
-                <BicycleSvg />
-              </span>
-              <p>{bikeSessionType.name}</p>
-              <ArrowRightSvg />
-            </div>
-          ))}
-        </div>
+      {newPlanClickedSessionType && (
+        <NewPlanAppLibrarySessionTypes singleSessions={singleSessions} />
       )}
     </>
   );

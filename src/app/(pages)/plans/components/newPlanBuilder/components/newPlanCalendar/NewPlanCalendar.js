@@ -60,6 +60,7 @@ const NewPlan = ({ image, title, setShowPlans, setActiveComponent }) => {
           toggleDay={toggleDay}
           setActiveComponent={setActiveComponent}
         />
+        {/* to NewPlanCalendarSessionTypes*/}
       </div>
     </>
   );
