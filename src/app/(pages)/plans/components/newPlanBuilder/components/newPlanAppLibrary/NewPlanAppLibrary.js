@@ -9,11 +9,13 @@ import { newPlanClickedSessionTypeApiState } from "@/app/recoil/atoms/planBuilde
 
 const AppLibrary = ({ image, title, setShowPlans }) => {
   const [singleSessions, setSingleSessions] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [newPlanClickedSessionTypeApi, setNewPlanClickedSessionTypeApi] =
     useRecoilState(newPlanClickedSessionTypeApiState);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch(newPlanClickedSessionTypeApi, {
           method: "GET",
@@ -29,6 +31,7 @@ const AppLibrary = ({ image, title, setShowPlans }) => {
       } catch (error) {
         console.error("An error occurred:", error);
       }
+      setIsLoading(false);
     };
 
     fetchData();
@@ -61,7 +64,10 @@ const AppLibrary = ({ image, title, setShowPlans }) => {
       <div className="h-16 absolute right-0 top-0 w-24 bg-gradient-to-l from-transparent via-transparent via-80% to-fifth z-10"></div>
       <div className="h-16 absolute right-0 top-0 w-24 bg-gradient-to-b from-transparent via-transparent via-80% to-fifth z-10"></div>
       {newPlanClickedSessionType && (
-        <NewPlanAppLibrarySessionTypes singleSessions={singleSessions} />
+        <NewPlanAppLibrarySessionTypes
+          isLoading={isLoading}
+          singleSessions={singleSessions}
+        />
       )}
     </>
   );

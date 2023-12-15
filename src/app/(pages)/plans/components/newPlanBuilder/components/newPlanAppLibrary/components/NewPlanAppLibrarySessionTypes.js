@@ -13,7 +13,12 @@ import FasciaRollSvg from "@/app/components/SVGs/FasciaRollSvg";
 import YogaSvg from "@/app/components/SVGs/YogaSvg";
 import StabiSvg from "@/app/components/SVGs/StabiSvg";
 
-const SessionType = ({ sessionTypes, singleSessions, iconComponent }) => {
+const SessionType = ({
+  sessionTypes,
+  singleSessions,
+  iconComponent,
+  isLoading,
+}) => {
   const [showSingleSessions, setShowSingleSessions] = useState(false);
   const [clickedSessionType, setClickedSessionType] = useState(null);
   const [clickedSingleSession, setClickedSingleSession] = useState(-1);
@@ -47,20 +52,24 @@ const SessionType = ({ sessionTypes, singleSessions, iconComponent }) => {
             )}
           </div>
 
-          {clickedSessionType === sessionTypeIndex && showSingleSessions && (
-            <NewPlanAppLibrarySingleSessions
-              singleSessions={singleSessions}
-              clickedSingleSession={clickedSingleSession}
-              sessionType={sessionType}
-            />
-          )}
+          {clickedSessionType === sessionTypeIndex &&
+            showSingleSessions &&
+            (isLoading ? (
+              <span className="loading loading-ring loading-sm m-5"></span>
+            ) : (
+              <NewPlanAppLibrarySingleSessions
+                singleSessions={singleSessions}
+                clickedSingleSession={clickedSingleSession}
+                sessionType={sessionType}
+              />
+            ))}
         </div>
       ))}
     </div>
   );
 };
 
-const NewPlanAppLibrarySessionTypes = ({ singleSessions }) => {
+const NewPlanAppLibrarySessionTypes = ({ singleSessions, isLoading }) => {
   const [newPlanClickedSessionType, setNewPlanClickedSessionType] =
     useRecoilState(newPlanClickedSessionTypeState);
   return (
@@ -70,6 +79,7 @@ const NewPlanAppLibrarySessionTypes = ({ singleSessions }) => {
           sessionTypes={bikeSessionTypes}
           singleSessions={singleSessions}
           iconComponent={<BicycleSvg />}
+          isLoading={isLoading}
         />
       )}
       {newPlanClickedSessionType === "run" && (
@@ -77,6 +87,7 @@ const NewPlanAppLibrarySessionTypes = ({ singleSessions }) => {
           sessionTypes={runSessionTypes}
           singleSessions={singleSessions}
           iconComponent={<ShoeSvg />}
+          isLoading={isLoading}
         />
       )}
       {newPlanClickedSessionType === "swim" && (
@@ -84,6 +95,7 @@ const NewPlanAppLibrarySessionTypes = ({ singleSessions }) => {
           sessionTypes={swimSessionTypes}
           singleSessions={singleSessions}
           iconComponent={<SwimSvg />}
+          isLoading={isLoading}
         />
       )}
       {newPlanClickedSessionType === "others" && (
@@ -91,6 +103,7 @@ const NewPlanAppLibrarySessionTypes = ({ singleSessions }) => {
           sessionTypes={othersTypes}
           singleSessions={singleSessions}
           iconComponent={<OthersSvg />}
+          isLoading={isLoading}
         />
       )}
       {newPlanClickedSessionType === "fascia" && (
@@ -98,6 +111,7 @@ const NewPlanAppLibrarySessionTypes = ({ singleSessions }) => {
           sessionTypes={fasciaSessionTypes}
           singleSessions={singleSessions}
           iconComponent={<FasciaRollSvg />}
+          isLoading={isLoading}
         />
       )}
       {newPlanClickedSessionType === "yoga" && (
@@ -105,6 +119,7 @@ const NewPlanAppLibrarySessionTypes = ({ singleSessions }) => {
           sessionTypes={YogaSessionTypes}
           singleSessions={singleSessions}
           iconComponent={<YogaSvg />}
+          isLoading={isLoading}
         />
       )}
       {newPlanClickedSessionType === "stabi" && (
@@ -112,6 +127,7 @@ const NewPlanAppLibrarySessionTypes = ({ singleSessions }) => {
           sessionTypes={StabiSessionTypes}
           singleSessions={singleSessions}
           iconComponent={<StabiSvg />}
+          isLoading={isLoading}
         />
       )}
       {/*  {newPlanClickedSessionType === "yogaSingleExercises" && (
@@ -145,7 +161,7 @@ const swimSessionTypes = [
     sessionType: "swimPaceChange",
   },
   {
-    name: "Tabatal",
+    name: "Tabata",
     sessionType: "swimTabata",
   },
   {
