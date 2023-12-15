@@ -25,21 +25,24 @@ const NewPlanChooseSessionSource = ({
     {
       component: <CalculatorSvg />,
       label: "Neue Einheit",
-      labelColor: "neutral-500",
+      subLabel: "Feature ist in Arbeit",
+      labelTextColor: "text-second",
       cursor: "not-allowed",
       onclick: () => handleNewSessionClick(),
     },
     {
       component: <FolderSvg />,
       label: "Meine Vorlagen",
-      labelColor: "neutral-500",
+      subLabel: "Feature ist in Arbeit",
+      labelTextColor: "text-second",
       cursor: "not-allowed",
       onclick: () => handleMySessionsClick(),
     },
     {
       component: <LibrarySvg />,
       label: "App-Bibliothek",
-      labelColor: "first",
+      subLabel: "",
+      labelTextColor: "text-first",
       cursor: "pointer",
       onclick: () => handleSiyliLibraryClick(),
     },
@@ -49,12 +52,17 @@ const NewPlanChooseSessionSource = ({
     <>
       {sessionBuildTypes.map((sessionBuildType, sessionBuildTypeIndex) => (
         <div
-          className={`flex m-2 p-1 items-center justify-between  bg-fourth/5 rounded shadow text-${sessionBuildType.labelColor} cursor-${sessionBuildType.cursor}`}
+          className={`flex m-2 p-1 items-center justify-between  bg-fourth/5 rounded shadow ${sessionBuildType.labelTextColor} cursor-${sessionBuildType.cursor}`}
           key={sessionBuildTypeIndex}
           onClick={sessionBuildType.onclick}
         >
           <span className="ml-2 ">{sessionBuildType.component}</span>
-          <span>{sessionBuildType.label}</span>
+          <div className="flex flex-col text-center">
+            <span>{sessionBuildType.label}</span>
+            <span className="text-xs text-alert">
+              {sessionBuildType.subLabel}
+            </span>
+          </div>
           <ArrowRightSvg />
         </div>
       ))}

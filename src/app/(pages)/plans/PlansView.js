@@ -39,6 +39,7 @@ function PlansView() {
     {
       type: "planBuilder",
       name: "Plan erstellen",
+      subTitle: "Feature ist in Arbeit",
       imageSrc: "/images/planBuilderImage.jpg",
     },
   ];
@@ -81,7 +82,10 @@ function PlansView() {
                 />
                 <div className="h-12 absolute left-0 top-0 w-20  bg-gradient-to-r from-transparent via-transparent via-80% to-fifth z-40"></div>
               </div>
-              <p className="ml-5"> {planType.name}</p>
+              <div className="flex flex-col">
+                <p className="ml-5"> {planType.name}</p>
+                <p className="ml-5 text-alert text-xs"> {planType.subTitle}</p>
+              </div>
               <ArrowRightSvg />
             </button>
           ))}

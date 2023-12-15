@@ -39,7 +39,12 @@ const sessionTypes = [
     label: "Yoga",
     api: "/api/planBuilder/fetchAllYogaSessions",
   },
-  { type: "stabi", component: <StabiSvg />, label: "Stabi" },
+  {
+    type: "stabi",
+    component: <StabiSvg />,
+    label: "Stabi",
+    api: "/api/planBuilder/fetchAllStabiSessions",
+  },
   {
     type: "fascia",
     component: <FasciaRollSvg />,

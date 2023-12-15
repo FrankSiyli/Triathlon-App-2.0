@@ -4,10 +4,7 @@ import ArrowUpSvg from "@/app/components/SVGs/arrows/ArrowUpSvg";
 import ArrowDownSvg from "@/app/components/SVGs/arrows/ArrowDownSvg";
 import NewPlanAppLibrarySingleSessionParts from "./NewPlanAppLibrarySingleSessionParts";
 
-const NewPlanAppLibrarySingleSessions = ({
-  singleSessions,
-  bikeSessionType,
-}) => {
+const NewPlanAppLibrarySingleSessions = ({ singleSessions, sessionType }) => {
   const [showSessionParts, setShowSessionParts] = useState({});
 
   const handleSingleSessionClick = (singleSessionIndex) => {
@@ -23,9 +20,7 @@ const NewPlanAppLibrarySingleSessions = ({
   return (
     <>
       {singleSessions
-        .filter(
-          (session) => session?.sessionType === bikeSessionType?.sessionType
-        )
+        .filter((session) => session?.sessionType === sessionType?.sessionType)
         .map((singleSession, singleSessionIndex) => (
           <div
             key={singleSessionIndex}

@@ -15,16 +15,13 @@ const AppLibrary = ({ image, title, setShowPlans }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          { newPlanClickedSessionTypeApi },
-          {
-            method: "GET",
-          }
-        );
+        const response = await fetch(newPlanClickedSessionTypeApi, {
+          method: "GET",
+        });
 
         if (response.ok) {
           const data = await response.json();
-          console.log("sessions", data.sessions);
+          console.log("sessions applibrary", data.sessions);
           setSingleSessions(data.sessions);
         } else {
           console.error("Failed to fetch sessions. Status:", response.status);

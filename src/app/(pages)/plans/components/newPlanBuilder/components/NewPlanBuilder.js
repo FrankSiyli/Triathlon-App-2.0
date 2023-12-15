@@ -67,7 +67,7 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
           />
           <ChooseSportCheckBoxes />
           <textarea
-            className="rounded-md w-full mt-10 max-w-xl bg-sixth border border-alert p-2 placeholder-first/80"
+            className="rounded-md w-11/12 mt-10 bg-sixth border border-alert p-2 placeholder-first/80"
             type="text"
             placeholder="Hier kannst du bald deine eigenen Trainingspläne erstellen."
             value={newPlanDescription}

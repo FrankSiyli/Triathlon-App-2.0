@@ -8,6 +8,9 @@ module.exports = {
   ],
 
   theme: {
+    fontSize: {
+      xs: "0.7rem",
+    },
     colors: {
       first: "#f5f4f5",
       second: "#35558287",

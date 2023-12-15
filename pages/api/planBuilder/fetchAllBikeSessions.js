@@ -38,7 +38,7 @@ export default async function handler(request, response) {
 
       return response.status(200).json({ sessions });
     } catch (error) {
-      console.error("Error fetching sessions:", error);
+      console.error("Error fetching bike sessions:", error);
       return response
         .status(500)
         .json({ message: "Server error", error: error.message });
