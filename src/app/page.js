@@ -153,7 +153,7 @@ export default function Home() {
           Zur Datenschutzrichtlinie
         </span>
         <button
-          className="btn btn-sm btn-outline text-alert m-3 py-2 px-6"
+          className="btn btn-sm btn-outline border border-alert hover:text-alert text-first m-3 py-2 px-6"
           onClick={() => acceptCookie()}
         >
           ok
@@ -184,15 +184,15 @@ export default function Home() {
 
       {!showPrivacyPolicy && isClient && <Calendar showConsent={showConsent} />}
       {showPrivacyPolicy && isClient && (
-        <div className="mx-5 overflow-y-auto max-h-screen">
-          <button className="fixed top-0 left-0 z-50 h-16 w-full bg-background">
-            <span
+        <div className=" mx-5 overflow-y-auto max-h-screen">
+          <div className="fixed top-0 left-0 flex justify-start items-center z-50 h-16 w-full  backdrop-blur-lg shadow shadow-alert">
+            <button
               onClick={handleBackClick}
-              className="underline text-alert flex justify-start m-3 ml-5"
+              className="border border-alert rounded p-1 hover:text-alert ml-5 text-first shadow"
             >
-              zurück
-            </span>
-          </button>
+              Startseite
+            </button>
+          </div>
           <PrivacyPolicy />
         </div>
       )}

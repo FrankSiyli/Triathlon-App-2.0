@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import PlanComponent from "./components/PlanComponent";
 import Image from "next/image";
-import PlanBuilder from "./components/planBuilder/PlanBuilder";
-import NewPlan from "./components/planBuilder/components/newPlan/NewPlan";
+import PlanBuilder from "./components/newPlanBuilder/components/NewPlanBuilder";
+import NewPlan from "./components/newPlanBuilder/components/newPlanCalendar/NewPlanCalendar";
 import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
+import AppLibrary from "./components/newPlanBuilder/components/newPlanAppLibrary/NewPlanAppLibrary";
 
 function PlansView() {
   const [activeComponent, setActiveComponent] = useState("plans");
@@ -38,6 +39,7 @@ function PlansView() {
     {
       type: "planBuilder",
       name: "Plan erstellen",
+      subTitle: "Feature ist in Arbeit",
       imageSrc: "/images/planBuilderImage.jpg",
     },
   ];
@@ -80,7 +82,10 @@ function PlansView() {
                 />
                 <div className="h-12 absolute left-0 top-0 w-20  bg-gradient-to-r from-transparent via-transparent via-80% to-fifth z-40"></div>
               </div>
-              <p className="ml-5"> {planType.name}</p>
+              <div className="flex flex-col">
+                <p className="ml-5"> {planType.name}</p>
+                <p className="ml-5 text-alert text-xs"> {planType.subTitle}</p>
+              </div>
               <ArrowRightSvg />
             </button>
           ))}
@@ -132,6 +137,15 @@ function PlansView() {
           title="Plan erstellen"
           /* apiEndpoint="/api/trainingPlans/fetchTriathlonPlans" */
           setShowPlans={() => handlePlanTypeClick("planBuilder")}
+          image="/images/planBuilderImage.jpg"
+          setActiveComponent={setActiveComponent}
+        />
+      )}
+      {activeComponent === "appLibrary" && (
+        <AppLibrary
+          title="App-Bibliothek"
+          /* apiEndpoint="/api/trainingPlans/fetchTriathlonPlans" */
+          setShowPlans={() => handlePlanTypeClick("newPlan")}
           image="/images/planBuilderImage.jpg"
         />
       )}

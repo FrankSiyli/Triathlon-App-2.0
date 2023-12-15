@@ -20,7 +20,7 @@ const Day = ({ day, toggleDay, dayIndex, openDay, activity }) => {
         <div key={dayIndex} className="ml-5 ">
           {day}
         </div>
-        {dayIndex === openDay ? <ArrowDownSvg /> : <ArrowUpSvg />}
+        {dayIndex === openDay ? <ArrowUpSvg /> : <ArrowDownSvg />}
       </button>
     </>
   );

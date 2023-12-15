@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Alert from "@/app/components/Alerts/Alert";
 import Image from "next/image";
-import ChooseSportCheckBoxes from "./components/ChooseSportCheckBoxes";
+import ChooseSportCheckBoxes from "./newPlanChooseSportCheckBoxes/NewPlanChooseSportCheckBoxes";
 import { useRecoilState } from "recoil";
 import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameState";
 import { newPlanDescriptionState } from "@/app/recoil/atoms/planBuilder/newPlanDescriptionState";
@@ -67,18 +67,18 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
           />
           <ChooseSportCheckBoxes />
           <textarea
-            className="rounded-md w-full mt-10 max-w-xl bg-sixth border border-alert p-2 placeholder-first/80"
+            className="rounded-md w-11/12 mt-10 bg-sixth border border-alert p-2 placeholder-first/80"
             type="text"
             placeholder="Hier kannst du bald deine eigenen Trainingspläne erstellen."
             value={newPlanDescription}
             onChange={(e) => setNewPlanDescription(e.target.value)}
           />
           <button
-            /* disabled */
             type="submit"
             className="btn btn-sm my-5 mx-auto btn-outline border border-alert hover:text-alert text-first"
           >
             weiter
+            {/* to NewPlanCalendar */}
           </button>
         </form>
       </div>

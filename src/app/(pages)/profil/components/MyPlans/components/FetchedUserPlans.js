@@ -93,9 +93,9 @@ const FetchedUserPlans = ({
               >
                 <div className="ml-5">{myPlan.name}</div>
                 {expandedPlanIndex === myPlanIndex ? (
-                  <ArrowDownSvg />
-                ) : (
                   <ArrowUpSvg />
+                ) : (
+                  <ArrowDownSvg />
                 )}
               </div>
               {expandedPlanIndex === myPlanIndex && (

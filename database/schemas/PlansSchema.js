@@ -49,6 +49,8 @@ const PlansSchema = new Schema({
               ],
             },
           ],
+          sessionType: { type: String },
+          sessionCategory: { type: String },
         },
       ],
     },

@@ -11,7 +11,7 @@ import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameStat
 import NewPlanWeekSchedule from "./components/NewPlanWeekSchedule";
 import NewPlanAddWeekButton from "./components/NewPlanAddWeekButton";
 
-const NewPlan = ({ image, title, setShowPlans }) => {
+const NewPlan = ({ image, title, setShowPlans, setActiveComponent }) => {
   const [newPlan, setNewPlan] = useRecoilState(newPlanState);
   const [newPlanName, setNewPlanName] = useRecoilState(newPlanNameState);
   const numberOfPlanWeeks = newPlan?.weeks?.length;
@@ -58,7 +58,9 @@ const NewPlan = ({ image, title, setShowPlans }) => {
           currentWeek={currentWeek}
           openDay={openDay}
           toggleDay={toggleDay}
+          setActiveComponent={setActiveComponent}
         />
+        {/* to NewPlanCalendarSessionTypes*/}
       </div>
     </>
   );

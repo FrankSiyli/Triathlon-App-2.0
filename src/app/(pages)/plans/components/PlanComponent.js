@@ -136,9 +136,9 @@ const PlanComponent = ({ setShowPlans, title, apiEndpoint, image }) => {
                   </div>
                   <div className="ml-5">{plan.name}</div>
                   {expandedPlanIndex === plan._id ? (
-                    <ArrowDownSvg />
-                  ) : (
                     <ArrowUpSvg />
+                  ) : (
+                    <ArrowDownSvg />
                   )}
                 </button>
                 {expandedPlanIndex === plan._id && (

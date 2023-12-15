@@ -1,16 +1,13 @@
-"use client";
-import React, { useState } from "react";
-import Alert from "@/app/components/Alerts/Alert";
+import React from "react";
 import CalculatorSvg from "@/app/components/SVGs/CalculatorSvg";
 import FolderSvg from "@/app/components/SVGs/FolderSvg";
 import LibrarySvg from "@/app/components/SVGs/LibrarySvg";
 import ArrowRightSvg from "@/app/components/SVGs/arrows/ArrowRightSvg";
 
-const NewPlanSessionBuildTypes = ({
-  showAlert,
+const NewPlanChooseSessionSource = ({
   setShowAlert,
-  error,
   setError,
+  setActiveComponent,
 }) => {
   const handleNewSessionClick = () => {
     setShowAlert(true);
@@ -22,23 +19,31 @@ const NewPlanSessionBuildTypes = ({
   };
 
   const handleSiyliLibraryClick = () => {
-    setShowAlert(true);
-    setError("Feature ist in Arbeit");
+    setActiveComponent("appLibrary");
   };
   const sessionBuildTypes = [
     {
       component: <CalculatorSvg />,
       label: "Neue Einheit",
+      subLabel: "Feature ist in Arbeit",
+      labelTextColor: "text-second",
+      cursor: "not-allowed",
       onclick: () => handleNewSessionClick(),
     },
     {
       component: <FolderSvg />,
       label: "Meine Vorlagen",
+      subLabel: "Feature ist in Arbeit",
+      labelTextColor: "text-second",
+      cursor: "not-allowed",
       onclick: () => handleMySessionsClick(),
     },
     {
       component: <LibrarySvg />,
       label: "App-Bibliothek",
+      subLabel: "",
+      labelTextColor: "text-first",
+      cursor: "pointer",
       onclick: () => handleSiyliLibraryClick(),
     },
   ];
@@ -47,12 +52,17 @@ const NewPlanSessionBuildTypes = ({
     <>
       {sessionBuildTypes.map((sessionBuildType, sessionBuildTypeIndex) => (
         <div
-          className="hover:text-neutral-500 cursor-not-allowed flex m-1 p-1 items-center justify-between  bg-fourth/5 rounded shadow"
+          className={`flex m-2 p-1 items-center justify-between  bg-fourth/5 rounded shadow ${sessionBuildType.labelTextColor} cursor-${sessionBuildType.cursor}`}
           key={sessionBuildTypeIndex}
           onClick={sessionBuildType.onclick}
         >
-          <span className="ml-2">{sessionBuildType.component}</span>
-          {sessionBuildType.label}
+          <span className="ml-2 ">{sessionBuildType.component}</span>
+          <div className="flex flex-col text-center">
+            <span>{sessionBuildType.label}</span>
+            <span className="text-xs text-alert">
+              {sessionBuildType.subLabel}
+            </span>
+          </div>
           <ArrowRightSvg />
         </div>
       ))}
@@ -60,4 +70,4 @@ const NewPlanSessionBuildTypes = ({
   );
 };
 
-export default NewPlanSessionBuildTypes;
+export default NewPlanChooseSessionSource;
