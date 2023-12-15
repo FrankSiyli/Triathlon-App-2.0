@@ -156,10 +156,6 @@ const swimSessionTypes = [
     name: "Tempo",
     sessionType: "swimTempo",
   },
-  {
-    name: "Einzelübungen",
-    sessionType: "swimTechExercises",
-  },
 ];
 const bikeSessionTypes = [
   {

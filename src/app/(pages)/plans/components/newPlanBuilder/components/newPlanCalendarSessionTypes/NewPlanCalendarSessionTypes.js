@@ -98,7 +98,7 @@ const NewPlanSessionTypes = ({
           }
           className="flex flex-col shadow-md p-1 rounded-md  bg-fourth/5"
         >
-          <div className="flex w-full items-center justify-between cursor-pointer">
+          <div className="flex min-h-8 w-full items-center justify-between cursor-pointer">
             <span className="ml-2">{sessionType.component}</span>
             <p className="ml-4 text-sm">{sessionType.label}</p>
             {sessionTypeClicked[sessionTypeIndex] ? (
@@ -108,7 +108,7 @@ const NewPlanSessionTypes = ({
             )}
           </div>
           {sessionTypeClicked[sessionTypeIndex] && (
-            <div className="w-full mx-auto mt-2 text-sm ">
+            <div className="w-full mx-auto mt-2 text-sm">
               <hr className="opacity-10 mx-1" />
               <NewPlanSessionBuildTypes
                 showAlert={showAlert}
