@@ -9,7 +9,10 @@ import useSWR, { mutate } from "swr";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const WishYouWhat = ({ setShowProfil }) => {
-  const { data, isLoading: fetchingPosts } = useSWR("/api/", fetcher);
+  const { data, isLoading: fetchingPosts } = useSWR(
+    "/api/wishListPosts/fetchWishListPosts",
+    fetcher
+  );
   const fetchedPosts = data?.posts;
   const [showAlert, setShowAlert] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -38,7 +41,7 @@ const WishYouWhat = ({ setShowProfil }) => {
     }
     setIsLoading(true);
     try {
-      const res = await fetch("/api/mongoDbSendPost", {
+      const res = await fetch("/api/wishListPosts/sendWishListPost", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
