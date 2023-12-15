@@ -30,12 +30,6 @@ function PlansView() {
       name: "Schwimmen",
       imageSrc: "/images/swimImage.jpg",
     },
-    /* {
-      type: "specialPlans",
-      name: "Spezial",
-      imageSrc: "/images/specialImage.jpg",
-    }, */
-
     {
       type: "planBuilder",
       name: "Plan erstellen",
@@ -100,14 +94,7 @@ function PlansView() {
           image="/images/runImage.jpg"
         />
       )}
-      {/*  {activeComponent === "specialPlans" && (
-        <PlanComponent
-          title="Spezialpläne"
-          apiEndpoint="/api/trainingPlans/fetchSpecialPlans"
-          setShowPlans={() => handlePlanTypeClick("plans")}
-          image="/images/specialImage.jpg"
-        />
-      )} */}
+
       {activeComponent === "swimPlans" && (
         <PlanComponent
           title="Schwimmpläne"
@@ -135,7 +122,6 @@ function PlansView() {
       {activeComponent === "newPlan" && (
         <NewPlan
           title="Plan erstellen"
-          /* apiEndpoint="/api/trainingPlans/fetchTriathlonPlans" */
           setShowPlans={() => handlePlanTypeClick("planBuilder")}
           image="/images/planBuilderImage.jpg"
           setActiveComponent={setActiveComponent}
@@ -144,7 +130,6 @@ function PlansView() {
       {activeComponent === "appLibrary" && (
         <AppLibrary
           title="App-Bibliothek"
-          /* apiEndpoint="/api/trainingPlans/fetchTriathlonPlans" */
           setShowPlans={() => handlePlanTypeClick("newPlan")}
           image="/images/planBuilderImage.jpg"
         />

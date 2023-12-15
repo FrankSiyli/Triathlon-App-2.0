@@ -1,58 +1,44 @@
+import DistanceSvg from "@/app/components/SVGs/DistanceSvg";
+import WatchSvg from "@/app/components/SVGs/WatchSvg";
 import React from "react";
+
+const renderExercises = (exercises) => {
+  return exercises.map((exercise, exerciseIndex) => (
+    <div className="flex justify-between" key={exerciseIndex}>
+      <p>{exercise.name}</p>
+      <div className="flex items-center">
+        <DistanceSvg />
+        <p>{exercise.distance}</p>
+      </div>
+      <div className="flex items-center">
+        <WatchSvg />
+        <p>{exercise.duration}</p>
+      </div>
+      <p>{exercise.zone}</p>
+    </div>
+  ));
+};
+
+const renderSessionPart = (sessionPart, title) => (
+  <div className="w-full text-s mt-3 p-1 bg-fifth/40 rounded" key={title}>
+    <h3 className="text-alert">{title}</h3>
+    {sessionPart.map((partItem, partIndex) => (
+      <div key={partIndex}>
+        <h4>{partItem.multiplier}x</h4>
+        {renderExercises(partItem.exercises)}
+      </div>
+    ))}
+  </div>
+);
 
 const NewPlanAppLibrarySingleSessionParts = ({ sessionParts }) => {
   return (
     <>
       {sessionParts.map((sessionPart, sessionPartIndex) => (
-        <div
-          className="w-full text-sm mt-3 p-1 bg-fifth/40 rounded"
-          key={sessionPartIndex}
-        >
-          <h3 className=" text-alert">Warm-Up</h3>
-          {sessionPart.warmUp.map((warmUpItem, warmUpIndex) => (
-            <div key={warmUpIndex}>
-              <h4>{warmUpItem.multiplier}x</h4>
-
-              {warmUpItem.exercises.map((exercise, exerciseIndex) => (
-                <div className="flex justify-between" key={exerciseIndex}>
-                  <p>{exercise.name}</p>
-                  <p>m{exercise.distance}</p>
-                  <p>t{exercise.duration}</p>
-                  <p>{exercise.zone}</p>
-                </div>
-              ))}
-            </div>
-          ))}
-          <h3 className="mt-5 text-alert">Main</h3>
-          {sessionPart.main.map((mainItem, mainIndex) => (
-            <div key={mainIndex}>
-              <h4>{mainItem.multiplier}x</h4>
-
-              {mainItem.exercises.map((exercise, exerciseIndex) => (
-                <div className="flex justify-between" key={exerciseIndex}>
-                  <p>{exercise.name}</p>
-                  <p>m{exercise.distance}</p>
-                  <p>t{exercise.duration}</p>
-                  <p>{exercise.zone}</p>
-                </div>
-              ))}
-            </div>
-          ))}
-          <h3 className="mt-5 text-alert">Cool-Down</h3>
-          {sessionPart.coolDown.map((coolDownItem, coolDownIndex) => (
-            <div key={coolDownIndex}>
-              <h4>{coolDownItem.multiplier}x</h4>
-
-              {coolDownItem.exercises.map((exercise, exerciseIndex) => (
-                <div className="flex justify-between" key={exerciseIndex}>
-                  <p>{exercise.name}</p>
-                  <p>m{exercise.distance}</p>
-                  <p>t{exercise.duration}</p>
-                  <p>{exercise.zone}</p>
-                </div>
-              ))}
-            </div>
-          ))}
+        <div key={sessionPartIndex}>
+          {renderSessionPart(sessionPart.warmUp, "Warm Up")}
+          {renderSessionPart(sessionPart.main, "Main")}
+          {renderSessionPart(sessionPart.coolDown, "Cool Down")}
         </div>
       ))}
     </>

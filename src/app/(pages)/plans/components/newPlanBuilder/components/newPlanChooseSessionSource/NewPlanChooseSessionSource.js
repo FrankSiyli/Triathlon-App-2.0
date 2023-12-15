@@ -26,24 +26,33 @@ const NewPlanChooseSessionSource = ({
       component: <CalculatorSvg />,
       label: "Neue Einheit",
       subLabel: "Feature ist in Arbeit",
-      labelTextColor: "text-second",
+      textSize: "text-xs",
       cursor: "not-allowed",
+      arrow: "",
+      align: "",
+      backGround: "",
       onclick: () => handleNewSessionClick(),
     },
     {
       component: <FolderSvg />,
       label: "Meine Vorlagen",
       subLabel: "Feature ist in Arbeit",
-      labelTextColor: "text-second",
+      textSize: "text-xs",
       cursor: "not-allowed",
+      arrow: "",
+      align: "",
+      backGround: "",
       onclick: () => handleMySessionsClick(),
     },
     {
       component: <LibrarySvg />,
       label: "App-Bibliothek",
       subLabel: "",
-      labelTextColor: "text-first",
+      textSize: "text-sm",
       cursor: "pointer",
+      arrow: <ArrowRightSvg />,
+      align: "justify-between",
+      backGround: "bg-fourth/5",
       onclick: () => handleSiyliLibraryClick(),
     },
   ];
@@ -52,18 +61,18 @@ const NewPlanChooseSessionSource = ({
     <>
       {sessionBuildTypes.map((sessionBuildType, sessionBuildTypeIndex) => (
         <div
-          className={`flex m-2 p-1 items-center justify-between  bg-fourth/5 rounded shadow ${sessionBuildType.labelTextColor} cursor-${sessionBuildType.cursor}`}
+          className={`flex min-h-12 m-2 p-1 items-center ${sessionBuildType.align} text-center  ${sessionBuildType.backGround} rounded shadow cursor-${sessionBuildType.cursor}`}
           key={sessionBuildTypeIndex}
           onClick={sessionBuildType.onclick}
         >
           <span className="ml-2 ">{sessionBuildType.component}</span>
-          <div className="flex flex-col text-center">
-            <span>{sessionBuildType.label}</span>
-            <span className="text-xs text-alert">
-              {sessionBuildType.subLabel}
-            </span>
+          <div className="flex flex-col mx-auto">
+            <p className={`${sessionBuildType.textSize}`}>
+              {sessionBuildType.label}
+            </p>
+            <p className="text-xs text-alert">{sessionBuildType.subLabel}</p>
           </div>
-          <ArrowRightSvg />
+          {sessionBuildType.arrow}
         </div>
       ))}
     </>
