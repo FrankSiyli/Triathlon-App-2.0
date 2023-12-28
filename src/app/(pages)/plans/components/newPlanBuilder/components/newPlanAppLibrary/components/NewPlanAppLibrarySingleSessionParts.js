@@ -4,17 +4,24 @@ import React from "react";
 
 const renderExercises = (exercises) => {
   return exercises.map((exercise, exerciseIndex) => (
-    <div className="flex justify-between" key={exerciseIndex}>
-      <p>{exercise.name}</p>
-      <div className="flex items-center">
-        <DistanceSvg />
-        <p>{exercise.distance}</p>
+    <div key={exerciseIndex} className="flex bg-fifth/40 rounded">
+      <p className="w-5/12">{exercise.name}</p>
+      <div className="flex justify-between w-7/12">
+        {exercise.distance > 0 ? (
+          <div className="flex items-center">
+            <DistanceSvg />
+            <p>{exercise.distance}m</p>
+          </div>
+        ) : null}
+
+        {exercise.duration > 0 ? (
+          <div className="flex items-center">
+            <WatchSvg />
+            <p>{exercise.duration}</p>
+          </div>
+        ) : null}
+        <p className="flex items-center">{exercise.zone}</p>
       </div>
-      <div className="flex items-center">
-        <WatchSvg />
-        <p>{exercise.duration}</p>
-      </div>
-      <p>{exercise.zone}</p>
     </div>
   ));
 };
@@ -24,17 +31,17 @@ const renderSessionPart = (sessionPart, title) => (
     <h3 className="text-alert">{title}</h3>
     {sessionPart.map((partItem, partIndex) => (
       <div key={partIndex}>
-        <h4>{partItem.multiplier}x</h4>
+        <h4 className="mt-2">{partItem.multiplier}x</h4>
         {renderExercises(partItem.exercises)}
       </div>
     ))}
   </div>
 );
 
-const NewPlanAppLibrarySingleSessionParts = ({ sessionParts }) => {
+const NewPlanAppLibrarySingleSessionParts = ({ singleSession }) => {
   return (
     <>
-      {sessionParts.map((sessionPart, sessionPartIndex) => (
+      {singleSession.sessionParts.map((sessionPart, sessionPartIndex) => (
         <div key={sessionPartIndex}>
           {renderSessionPart(sessionPart.warmUp, "Warm Up")}
           {renderSessionPart(sessionPart.main, "Main")}

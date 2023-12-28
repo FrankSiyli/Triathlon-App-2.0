@@ -16,6 +16,8 @@ import { wattIsActiveState } from "@/app/recoil/atoms/wattIsActiveState";
 import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 import UncheckSvg from "@/app/components/SVGs/UncheckSvg";
 import CheckSvg from "@/app/components/SVGs/CheckSvg";
+import WatchSvg from "@/app/components/SVGs/WatchSvg";
+import DistanceSvg from "@/app/components/SVGs/DistanceSvg";
 
 const SessionOverlay = ({
   sessionSections,
@@ -161,34 +163,7 @@ const SessionOverlay = ({
                 {totalDistance > 0 ? (
                   <div className="flex justify-end mt-5 -mb-2">
                     <div className="flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-4 h-4"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
-                        />
-                      </svg>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-4 h-4 mr-1"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                        />
-                      </svg>
+                      <DistanceSvg />
                     </div>
                     {totalDistance}m
                   </div>
@@ -198,20 +173,7 @@ const SessionOverlay = ({
                 ) : null}
                 {totalDuration > 0 ? (
                   <div className="flex justify-end items-center -mt-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-4 h-4 mr-1"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                    <WatchSvg />
                     {formatTime(totalDuration)}
                   </div>
                 ) : null}

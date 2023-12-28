@@ -23,7 +23,6 @@ const AppLibrary = ({ image, title, setShowPlans }) => {
 
         if (response.ok) {
           const data = await response.json();
-          console.log("sessions applibrary", data.sessions);
           setSingleSessions(data.sessions);
         } else {
           console.error("Failed to fetch sessions. Status:", response.status);
