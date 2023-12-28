@@ -1,33 +1,34 @@
 import DistanceSvg from "@/app/components/SVGs/DistanceSvg";
 import WatchSvg from "@/app/components/SVGs/WatchSvg";
+import { formatTime } from "@/app/helperFunctions/formatTime";
 import React from "react";
 
 const renderExercises = (exercises) => {
   return exercises.map((exercise, exerciseIndex) => (
-    <div key={exerciseIndex} className="flex bg-fifth/40 rounded">
+    <div key={exerciseIndex} className="flex  rounded">
       <p className="w-5/12">{exercise.name}</p>
-      <div className="flex justify-between w-7/12">
+      <div className="flex items-start justify-between w-7/12">
         {exercise.distance > 0 ? (
-          <div className="flex items-center">
+          <div className="flex items-center mx-2">
             <DistanceSvg />
             <p>{exercise.distance}m</p>
           </div>
         ) : null}
 
         {exercise.duration > 0 ? (
-          <div className="flex items-center">
+          <div className="flex items-center mx-2">
             <WatchSvg />
-            <p>{exercise.duration}</p>
+            <p>{formatTime(exercise.duration)}</p>
           </div>
         ) : null}
-        <p className="flex items-center">{exercise.zone}</p>
       </div>
+      <p className="flex text-right">{exercise.zone}</p>
     </div>
   ));
 };
 
 const renderSessionPart = (sessionPart, title) => (
-  <div className="w-full text-s mt-3 p-1 bg-fifth/40 rounded" key={title}>
+  <div className="w-full text-s mt-3 p-1 bg-fifth/20 rounded" key={title}>
     <h3 className="text-alert">{title}</h3>
     {sessionPart.map((partItem, partIndex) => (
       <div key={partIndex}>
