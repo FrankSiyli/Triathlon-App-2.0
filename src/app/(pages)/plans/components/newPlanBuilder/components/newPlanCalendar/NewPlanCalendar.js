@@ -2,13 +2,13 @@
 import React from "react";
 import Image from "next/image";
 import WeekScrollButtons from "@/app/(pages)/calendar/components/WeekScrollButtons";
-import { useCurrentWeek } from "@/app/(pages)/calendar/stateHooks/useCurrentWeek";
 import { useRecoilState } from "recoil";
-import { useOpenDay } from "@/app/(pages)/calendar/stateHooks/useOpenDay";
 import { newPlanState } from "@/app/recoil/atoms/planBuilder/newPlanState";
 import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 import NewPlanWeekSchedule from "./components/NewPlanWeekSchedule";
 import NewPlanAddWeekButton from "./components/NewPlanAddWeekButton";
+import { useCurrentNewPlanWeek } from "@/app/(pages)/calendar/stateHooks/useCurrentNewPlanWeek";
+import { useOpenNewPlanDay } from "@/app/(pages)/calendar/stateHooks/useOpenNewPlanDay";
 
 const NewPlanCalendar = ({
   image,
@@ -18,14 +18,15 @@ const NewPlanCalendar = ({
 }) => {
   const [newPlan, setNewPlan] = useRecoilState(newPlanState);
   const numberOfPlanWeeks = newPlan?.weeks?.length;
-  const { openDay, toggleDay } = useOpenDay();
+  const { openDay, toggleDay } = useOpenNewPlanDay();
+
+  console.log("NewPlanCalendar newPlan", newPlan);
+
   const { currentWeek, handlePreviousWeekClick, handleNextWeekClick } =
-    useCurrentWeek(newPlan, numberOfPlanWeeks, toggleDay);
+    useCurrentNewPlanWeek(newPlan, numberOfPlanWeeks, toggleDay);
   const handleBackClick = () => {
     setShowPlans();
   };
-
-  console.log("newPlancalendar", newPlan);
 
   return (
     <>

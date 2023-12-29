@@ -2,7 +2,11 @@ import { selectedWeekState } from "@/app/recoil/atoms/planBuilder/selectedWeekSt
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 
-export const useCurrentWeek = (homepagePlan, numberOfPlanWeeks, toggleDay) => {
+export const useCurrentNewPlanWeek = (
+  homepagePlan,
+  numberOfPlanWeeks,
+  toggleDay
+) => {
   const [currentWeek, setCurrentWeek] = useState(0);
   const [selectedWeek, setSelectedWeek] = useRecoilState(selectedWeekState);
 
@@ -10,6 +14,7 @@ export const useCurrentWeek = (homepagePlan, numberOfPlanWeeks, toggleDay) => {
     if (homepagePlan && currentWeek > 0) {
       setCurrentWeek(currentWeek - 1);
       toggleDay(-1);
+      setSelectedWeek(currentWeek - 1);
     }
   };
 
@@ -17,6 +22,7 @@ export const useCurrentWeek = (homepagePlan, numberOfPlanWeeks, toggleDay) => {
     if (homepagePlan && currentWeek + 1 < numberOfPlanWeeks) {
       setCurrentWeek(currentWeek + 1);
       toggleDay(-1);
+      setSelectedWeek(currentWeek + 1);
     }
   };
 
