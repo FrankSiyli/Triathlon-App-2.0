@@ -1,5 +1,6 @@
+"use client";
 import CheckSvg from "@/app/components/SVGs/CheckSvg";
-import { newPlanSportTypeState } from "@/app/recoil/atoms/planBuilder/newPlanSportTypeState";
+import { newPlanState } from "@/app/recoil/atoms/planBuilder/newPlanState";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 
@@ -7,27 +8,34 @@ const ChooseSportCheckBoxes = () => {
   const [triathlonChecked, setTriathlonChecked] = useState(true);
   const [runChecked, setRunChecked] = useState(false);
   const [swimChecked, setSwimChecked] = useState(false);
-  const [newPlanSportType, setNewPlanSportType] = useRecoilState(
-    newPlanSportTypeState
-  );
+  const [newPlan, setNewPlan] = useRecoilState(newPlanState);
 
   const handleTriathlonClick = () => {
     setTriathlonChecked(true);
     setRunChecked(false);
     setSwimChecked(false);
-    setNewPlanSportType("triathlon");
+    setNewPlan((prevPlan) => ({
+      ...prevPlan,
+      category: "triathlon",
+    }));
   };
   const handleRunClick = () => {
     setTriathlonChecked(false);
     setRunChecked(true);
     setSwimChecked(false);
-    setNewPlanSportType("run");
+    setNewPlan((prevPlan) => ({
+      ...prevPlan,
+      category: "run",
+    }));
   };
   const handleSwimClick = () => {
     setTriathlonChecked(false);
     setRunChecked(false);
     setSwimChecked(true);
-    setNewPlanSportType("swim");
+    setNewPlan((prevPlan) => ({
+      ...prevPlan,
+      category: "swim",
+    }));
   };
 
   return (

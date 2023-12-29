@@ -4,28 +4,29 @@ import Alert from "@/app/components/Alerts/Alert";
 import Image from "next/image";
 import ChooseSportCheckBoxes from "./newPlanChooseSportCheckBoxes/NewPlanChooseSportCheckBoxes";
 import { useRecoilState } from "recoil";
-import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameState";
-import { newPlanDescriptionState } from "@/app/recoil/atoms/planBuilder/newPlanDescriptionState";
 import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
+import { newPlanState } from "@/app/recoil/atoms/planBuilder/newPlanState";
 
 const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [error, setError] = useState("");
-  const [newPlanName, setNewPlanName] = useRecoilState(newPlanNameState);
-  const [newPlanDescription, setNewPlanDescription] = useRecoilState(
-    newPlanDescriptionState
-  );
-
-  const handlePlanTypeClick = (planType) => {
-    setActiveComponent(planType);
-  };
+  const [newPlan, setNewPlan] = useRecoilState(newPlanState);
+  const [newPlanName, setNewPlanName] = useState("");
+  const [newPlanDescription, setNewPlanDescription] = useState("");
+  // console.log("newPlanbuilder", newPlan);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!newPlanName) {
       setShowAlert(true);
       setError("Bitte gib deinem Plan einen Namen");
-    } else handlePlanTypeClick("newPlan");
+    } else
+      setNewPlan((prevPlan) => ({
+        ...prevPlan,
+        name: newPlanName,
+        info: newPlanDescription,
+      }));
+    setActiveComponent("newPlan");
   };
 
   const handleBackClick = () => {

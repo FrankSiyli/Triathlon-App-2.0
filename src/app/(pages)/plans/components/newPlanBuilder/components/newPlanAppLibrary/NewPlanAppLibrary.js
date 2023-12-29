@@ -6,12 +6,16 @@ import Image from "next/image";
 import { useRecoilState } from "recoil";
 import NewPlanAppLibrarySessionTypes from "./components/NewPlanAppLibrarySessionTypes";
 import { newPlanClickedSessionTypeApiState } from "@/app/recoil/atoms/planBuilder/newPlanClickedSessionTypeApiState";
+import { newPlanState } from "@/app/recoil/atoms/planBuilder/newPlanState";
 
 const AppLibrary = ({ image, title, setShowPlans }) => {
   const [singleSessions, setSingleSessions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [newPlanClickedSessionTypeApi, setNewPlanClickedSessionTypeApi] =
     useRecoilState(newPlanClickedSessionTypeApiState);
+  const [newPlan, setNewPlan] = useRecoilState(newPlanState);
+
+  // console.log("newPlanapplibrary", newPlan);
 
   useEffect(() => {
     const fetchData = async () => {

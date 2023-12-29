@@ -7,13 +7,11 @@ import { useRecoilState } from "recoil";
 import { useOpenDay } from "@/app/(pages)/calendar/stateHooks/useOpenDay";
 import { newPlanState } from "@/app/recoil/atoms/planBuilder/newPlanState";
 import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
-import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameState";
 import NewPlanWeekSchedule from "./components/NewPlanWeekSchedule";
 import NewPlanAddWeekButton from "./components/NewPlanAddWeekButton";
 
 const NewPlan = ({ image, title, setShowPlans, setActiveComponent }) => {
   const [newPlan, setNewPlan] = useRecoilState(newPlanState);
-  const [newPlanName, setNewPlanName] = useRecoilState(newPlanNameState);
   const numberOfPlanWeeks = newPlan?.weeks?.length;
   const { openDay, toggleDay } = useOpenDay();
   const { currentWeek, handlePreviousWeekClick, handleNextWeekClick } =
@@ -21,6 +19,8 @@ const NewPlan = ({ image, title, setShowPlans, setActiveComponent }) => {
   const handleBackClick = () => {
     setShowPlans();
   };
+
+  console.log("newPlancalendar", newPlan);
 
   return (
     <>
@@ -42,7 +42,7 @@ const NewPlan = ({ image, title, setShowPlans, setActiveComponent }) => {
       />
       <div className="h-16 absolute right-0 top-0 w-24 bg-gradient-to-l from-transparent via-transparent via-80% to-fifth z-10"></div>
       <div className="h-16 absolute right-0 top-0 w-24 bg-gradient-to-b from-transparent via-transparent via-80% to-fifth z-10"></div>
-      <p className="mt-10 text-sm mx-auto text-center">{newPlanName}</p>
+      <p className="mt-10 text-sm mx-auto text-center">{newPlan.name}</p>
 
       <div className="relative mt-5 mx-auto w-full max-w-xl">
         <div className="flex justify-center ">
