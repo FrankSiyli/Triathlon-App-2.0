@@ -22,9 +22,11 @@ const NewPlanAppLibrarySingleSessions = ({ singleSessions, sessionType }) => {
     setShowSessionParts(newShowSessionParts);
   };
 
+  const handleAddSessionClick = (singleSession) => {};
+
   return (
     <>
-      <div className="mt-2">
+      <div className="mt-2 flex flex-col items-center">
         {singleSessions
           .filter(
             (session) => session?.sessionType === sessionType?.sessionType
@@ -33,7 +35,7 @@ const NewPlanAppLibrarySingleSessions = ({ singleSessions, sessionType }) => {
             <div
               key={singleSessionIndex}
               onClick={() => handleSingleSessionClick(singleSessionIndex)}
-              className="flex flex-col w-full my-1 shadow p-1 text-sm rounded-md bg-fourth/5"
+              className="flex flex-col w-full mt-0.5 shadow p-1 text-sm rounded-md bg-fourth/5"
             >
               <div className="min-h-8 flex flex-col justify-between items-center">
                 <div className="flex justify-between items-center w-full ml-3">
@@ -68,9 +70,17 @@ const NewPlanAppLibrarySingleSessions = ({ singleSessions, sessionType }) => {
                 </div>
               </div>
               {showSessionParts[singleSessionIndex] && (
-                <NewPlanAppLibrarySingleSessionParts
-                  singleSession={singleSession}
-                />
+                <>
+                  <NewPlanAppLibrarySingleSessionParts
+                    singleSession={singleSession}
+                  />
+                  <button
+                    onClick={handleAddSessionClick(singleSession)}
+                    className="btn btn-sm m-5 mx-auto btn-outline border border-alert text-first hover:text-alert"
+                  >
+                    Hinzufügen
+                  </button>
+                </>
               )}
             </div>
           ))}

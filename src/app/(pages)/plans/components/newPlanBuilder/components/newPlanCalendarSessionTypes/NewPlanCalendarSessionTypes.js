@@ -96,7 +96,7 @@ const NewPlanSessionTypes = ({
               sessionType.api
             )
           }
-          className="flex flex-col shadow-md p-1 rounded-md  bg-fourth/5"
+          className="flex flex-col shadow-md p-1 my-0.5 rounded-md  bg-fourth/5"
         >
           <div className="flex min-h-8 w-full items-center justify-between cursor-pointer">
             <span className="ml-2">{sessionType.component}</span>
