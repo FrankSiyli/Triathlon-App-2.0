@@ -61,7 +61,7 @@ const NewPlanChooseSessionSource = ({
     <>
       {sessionBuildTypes.map((sessionBuildType, sessionBuildTypeIndex) => (
         <div
-          className={`flex min-h-12 m-2 p-1 items-center ${sessionBuildType.align} text-center  ${sessionBuildType.backGround} rounded shadow cursor-${sessionBuildType.cursor}`}
+          className={`flex min-h-12 m-0.5 p-1 items-center ${sessionBuildType.align} text-center  ${sessionBuildType.backGround} rounded shadow cursor-${sessionBuildType.cursor}`}
           key={sessionBuildTypeIndex}
           onClick={sessionBuildType.onclick}
         >

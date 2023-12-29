@@ -37,7 +37,7 @@ const SessionType = ({
       {sessionTypes.map((sessionType, sessionTypeIndex) => (
         <div
           key={sessionTypeIndex}
-          className="flex flex-col w-full max-w-xl cursor-pointer shadow-md p-2 rounded-md "
+          className="flex flex-col w-full max-w-xl cursor-pointer shadow-md p-1 rounded-md "
         >
           <div
             onClick={() => handleSessionTypeClick(sessionTypeIndex)}
