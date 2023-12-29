@@ -15,8 +15,6 @@ const AppLibrary = ({ image, title, setShowPlans }) => {
     useRecoilState(newPlanClickedSessionTypeApiState);
   const [newPlan, setNewPlan] = useRecoilState(newPlanState);
 
-  // console.log("newPlanapplibrary", newPlan);
-
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);

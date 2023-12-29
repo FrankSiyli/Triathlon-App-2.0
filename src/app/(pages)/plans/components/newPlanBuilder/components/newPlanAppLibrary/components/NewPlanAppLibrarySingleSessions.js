@@ -8,9 +8,12 @@ import DistanceSvg from "@/app/components/SVGs/DistanceSvg";
 import { formatTime } from "@/app/helperFunctions/formatTime";
 import { calculateTotalDuration } from "@/app/helperFunctions/calculateTotalDuration";
 import { calculateTotalDistance } from "@/app/helperFunctions/calculateTotalDistance";
+import { selectedWeekState } from "@/app/recoil/atoms/planBuilder/selectedWeekState";
+import { useRecoilState } from "recoil";
 
 const NewPlanAppLibrarySingleSessions = ({ singleSessions, sessionType }) => {
   const [showSessionParts, setShowSessionParts] = useState({});
+  const [selectedWeek, setSelectedWeek] = useRecoilState(selectedWeekState);
 
   const handleSingleSessionClick = (singleSessionIndex) => {
     const newShowSessionParts = {};
@@ -22,7 +25,15 @@ const NewPlanAppLibrarySingleSessions = ({ singleSessions, sessionType }) => {
     setShowSessionParts(newShowSessionParts);
   };
 
-  const handleAddSessionClick = (singleSession) => {};
+  const handleAddSessionClick = (singleSession, selectedWeek, openDay) => {
+    const updatedPlan = { ...newPlan };
+    const selectedWeekIndex = selectedWeek; // Adjust index since weeks start from 1
+    const selectedWeekObject = updatedPlan.weeks[selectedWeekIndex];
+    const selectedDayIndex = openDay - 1; // Adjust index since days start from 1
+    const selectedDayObject = selectedWeekObject.sessions[selectedDayIndex];
+    selectedDayObject.sessions = [...selectedDayObject.sessions, singleSession];
+    setNewPlan(updatedPlan);
+  };
 
   return (
     <>

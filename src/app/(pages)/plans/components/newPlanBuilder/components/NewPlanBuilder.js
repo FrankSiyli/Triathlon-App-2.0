@@ -13,7 +13,6 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
   const [newPlan, setNewPlan] = useRecoilState(newPlanState);
   const [newPlanName, setNewPlanName] = useState("");
   const [newPlanDescription, setNewPlanDescription] = useState("");
-  // console.log("newPlanbuilder", newPlan);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

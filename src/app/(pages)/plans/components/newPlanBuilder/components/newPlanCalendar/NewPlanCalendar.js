@@ -10,7 +10,12 @@ import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 import NewPlanWeekSchedule from "./components/NewPlanWeekSchedule";
 import NewPlanAddWeekButton from "./components/NewPlanAddWeekButton";
 
-const NewPlan = ({ image, title, setShowPlans, setActiveComponent }) => {
+const NewPlanCalendar = ({
+  image,
+  title,
+  setShowPlans,
+  setActiveComponent,
+}) => {
   const [newPlan, setNewPlan] = useRecoilState(newPlanState);
   const numberOfPlanWeeks = newPlan?.weeks?.length;
   const { openDay, toggleDay } = useOpenDay();
@@ -66,4 +71,4 @@ const NewPlan = ({ image, title, setShowPlans, setActiveComponent }) => {
   );
 };
 
-export default NewPlan;
+export default NewPlanCalendar;

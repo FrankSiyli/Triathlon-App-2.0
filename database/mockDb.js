@@ -3,7 +3,6 @@ export const newMockPlan = {
   name: "name.value",
   info: "description.value",
   price: "kostenlos",
-  duration: 1,
   weeks: [
     {
       week: 1,
