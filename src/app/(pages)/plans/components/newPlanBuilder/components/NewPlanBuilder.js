@@ -2,30 +2,73 @@
 import React, { useState } from "react";
 import Alert from "@/app/components/Alerts/Alert";
 import Image from "next/image";
+import { getSession } from "next-auth/react";
 import ChooseSportCheckBoxes from "./newPlanChooseSportCheckBoxes/NewPlanChooseSportCheckBoxes";
 import { useRecoilState } from "recoil";
 import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameState";
 import { newPlanDescriptionState } from "@/app/recoil/atoms/planBuilder/newPlanDescriptionState";
 import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
+import { newPlanSportTypeState } from "@/app/recoil/atoms/planBuilder/newPlanSportTypeState";
+import Loader from "@/app/components/Loader/Loader";
 
 const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
   const [showAlert, setShowAlert] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [newPlanName, setNewPlanName] = useRecoilState(newPlanNameState);
   const [newPlanDescription, setNewPlanDescription] = useRecoilState(
     newPlanDescriptionState
   );
-
-  const handlePlanTypeClick = (planType) => {
-    setActiveComponent(planType);
-  };
+  const [newPlanSportType, setNewPlanSportType] = useRecoilState(
+    newPlanSportTypeState
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!newPlanName) {
       setShowAlert(true);
       setError("Bitte gib deinem Plan einen Namen");
-    } else handlePlanTypeClick("newPlan");
+    } else {
+      const session = await getSession();
+      if (!session) {
+        setActiveComponent("newPlan");
+        return;
+      }
+
+      if (session) {
+        setIsLoading(true);
+        const planData = {
+          name: newPlanName,
+          category: newPlanSportType,
+          info: newPlanDescription,
+        };
+
+        try {
+          const updateUser = await fetch("/api/user/updateUserTrainingPlans", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: session.user.email,
+              trainingPlans: planData,
+            }),
+          });
+
+          if (updateUser.ok) {
+            const responseJson = await updateUser.json();
+            const serverMessage = responseJson.message;
+            // Show success message
+          } else {
+            // Handle case when the request fails
+          }
+        } catch (error) {
+          console.error("Error updating user:", error);
+        }
+        setIsLoading(false);
+        setActiveComponent("newPlan");
+      }
+    }
   };
 
   const handleBackClick = () => {
@@ -80,6 +123,7 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
             weiter
             {/* to NewPlanCalendar */}
           </button>
+          {isLoading ? <Loader error={error} isLoading={isLoading} /> : null}
         </form>
       </div>
     </>
