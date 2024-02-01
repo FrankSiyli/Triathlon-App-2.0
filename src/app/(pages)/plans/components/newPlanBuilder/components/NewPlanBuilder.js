@@ -66,7 +66,8 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
           if (updateUser.ok) {
             const responseJson = await updateUser.json();
           } else {
-            // Handle case when the request fails
+            setShowAlert(true);
+            setError("Ups, da ist etwas schief gelaufen");
           }
         } catch (error) {
           console.error("Error updating user:", error);
