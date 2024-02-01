@@ -18,7 +18,7 @@ const NewPlanChooseSessionSource = ({
     setError("Feature ist in Arbeit");
   };
 
-  const handleSiyliLibraryClick = () => {
+  const handleLibraryClick = () => {
     setActiveComponent("appLibrary");
   };
   const sessionBuildTypes = [
@@ -53,7 +53,7 @@ const NewPlanChooseSessionSource = ({
       arrow: <ArrowRightSvg />,
       align: "justify-between",
       backGround: "bg-fourth/5",
-      onclick: () => handleSiyliLibraryClick(),
+      onclick: () => handleLibraryClick(),
     },
   ];
 

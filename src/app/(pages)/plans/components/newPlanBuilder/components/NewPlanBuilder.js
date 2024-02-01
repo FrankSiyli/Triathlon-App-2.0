@@ -10,6 +10,7 @@ import { newPlanDescriptionState } from "@/app/recoil/atoms/planBuilder/newPlanD
 import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 import { newPlanSportTypeState } from "@/app/recoil/atoms/planBuilder/newPlanSportTypeState";
 import Loader from "@/app/components/Loader/Loader";
+import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 
 const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
   const [showAlert, setShowAlert] = useState(false);
@@ -23,6 +24,8 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
     newPlanSportTypeState
   );
 
+  const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!newPlanName) {
@@ -31,7 +34,14 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
     } else {
       const session = await getSession();
       if (!session) {
-        setActiveComponent("newPlan");
+        setIsLoading(true);
+        setShowAlert(true);
+        setError("Zum speichern bitte einloggen");
+        setTimeout(() => {
+          setIsLoading(false);
+          setActiveComponent("newPlan");
+        }, 4000);
+
         return;
       }
 
@@ -57,16 +67,20 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
 
           if (updateUser.ok) {
             const responseJson = await updateUser.json();
-            const serverMessage = responseJson.message;
-            // Show success message
           } else {
-            // Handle case when the request fails
+            setShowAlert(true);
+            setError("Ups, da ist etwas schief gelaufen");
           }
         } catch (error) {
           console.error("Error updating user:", error);
         }
-        setIsLoading(false);
-        setActiveComponent("newPlan");
+        setShowAlert(true);
+        setError("Unter Meine Pläne gespeichert");
+        setHomepagePlan(planData);
+        setTimeout(() => {
+          setIsLoading(false);
+          setActiveComponent("newPlan");
+        }, 4000);
       }
     }
   };
@@ -116,14 +130,18 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
             value={newPlanDescription}
             onChange={(e) => setNewPlanDescription(e.target.value)}
           />
-          <button
-            type="submit"
-            className="btn btn-sm my-5 mx-auto btn-outline border border-alert hover:text-alert text-first"
-          >
-            weiter
-            {/* to NewPlanCalendar */}
-          </button>
-          {isLoading ? <Loader error={error} isLoading={isLoading} /> : null}
+
+          {isLoading ? (
+            <Loader error={error} isLoading={isLoading} />
+          ) : (
+            <button
+              type="submit"
+              className="btn btn-sm my-5 mx-auto btn-outline border border-alert hover:text-alert text-first"
+            >
+              weiter
+            </button>
+          )}
+          {/* to NewPlanCalendar */}
         </form>
       </div>
     </>

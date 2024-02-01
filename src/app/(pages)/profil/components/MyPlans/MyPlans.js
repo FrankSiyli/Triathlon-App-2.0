@@ -49,7 +49,7 @@ function MyPlans({ setShowProfil }) {
     };
 
     fetchUserPlans();
-  }, [setUserEmail, loggedInUserLastLoadedPlan]);
+  }, [homepagePlan, setUserEmail, loggedInUserLastLoadedPlan]);
 
   const handleBackClick = () => {
     setShowProfil();
