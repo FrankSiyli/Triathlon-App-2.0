@@ -34,7 +34,12 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
     } else {
       const session = await getSession();
       if (!session) {
-        setActiveComponent("newPlan");
+        setShowAlert(true);
+        setError("Zum speichern bitte einloggen");
+        setTimeout(() => {
+          setActiveComponent("newPlan");
+        }, 4000);
+
         return;
       }
 
@@ -60,17 +65,19 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
 
           if (updateUser.ok) {
             const responseJson = await updateUser.json();
-            const serverMessage = responseJson.message;
-            // Show success message
           } else {
             // Handle case when the request fails
           }
         } catch (error) {
           console.error("Error updating user:", error);
         }
-        setIsLoading(false);
-        setActiveComponent("newPlan");
+        setShowAlert(true);
+        setError("Unter Meine Pläne gespeichert");
         setHomepagePlan(planData);
+        setTimeout(() => {
+          setIsLoading(false);
+          setActiveComponent("newPlan");
+        }, 4000);
       }
     }
   };
@@ -120,14 +127,18 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
             value={newPlanDescription}
             onChange={(e) => setNewPlanDescription(e.target.value)}
           />
-          <button
-            type="submit"
-            className="btn btn-sm my-5 mx-auto btn-outline border border-alert hover:text-alert text-first"
-          >
-            weiter
-            {/* to NewPlanCalendar */}
-          </button>
-          {isLoading ? <Loader error={error} isLoading={isLoading} /> : null}
+
+          {isLoading ? (
+            <Loader error={error} isLoading={isLoading} />
+          ) : (
+            <button
+              type="submit"
+              className="btn btn-sm my-5 mx-auto btn-outline border border-alert hover:text-alert text-first"
+            >
+              weiter
+            </button>
+          )}
+          {/* to NewPlanCalendar */}
         </form>
       </div>
     </>
