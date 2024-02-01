@@ -1,5 +1,6 @@
 import dbConnect from "../../../database/dbConnect";
 import User from "../../../database/models/User";
+import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
   await dbConnect();
@@ -11,8 +12,14 @@ export default async function handler(req, res) {
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
+
       const existingTrainingPlanIds = user.trainingPlans.map((plan) => plan.id);
       if (!existingTrainingPlanIds.includes(id)) {
+        const hasId = trainingPlans.id;
+        if (!hasId) {
+          const newId = new ObjectId();
+          trainingPlans.id = newId;
+        }
         user.trainingPlans.unshift(trainingPlans);
         await user.save();
         return res.status(201).json();
