@@ -10,6 +10,7 @@ import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 import { newPlanNameState } from "@/app/recoil/atoms/planBuilder/newPlanNameState";
 import NewPlanWeekSchedule from "./components/NewPlanWeekSchedule";
 import NewPlanAddWeekButton from "./components/NewPlanAddWeekButton";
+import NewPlanDeleteWeekButton from "./components/NewPlanDeleteWeekButton";
 
 const NewPlan = ({ image, title, setShowPlans, setActiveComponent }) => {
   const [newPlan, setNewPlan] = useRecoilState(newPlanState);
@@ -21,6 +22,7 @@ const NewPlan = ({ image, title, setShowPlans, setActiveComponent }) => {
   const handleBackClick = () => {
     setShowPlans();
   };
+  const week = newPlan?.weeks?.[currentWeek - 1];
 
   return (
     <>
@@ -62,6 +64,7 @@ const NewPlan = ({ image, title, setShowPlans, setActiveComponent }) => {
         />
         {/* to NewPlanCalendarSessionTypes*/}
       </div>
+      <NewPlanDeleteWeekButton week={week} currentWeek={currentWeek} />
     </>
   );
 };
