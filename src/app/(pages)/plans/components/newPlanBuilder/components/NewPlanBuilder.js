@@ -34,9 +34,11 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
     } else {
       const session = await getSession();
       if (!session) {
+        setIsLoading(true);
         setShowAlert(true);
         setError("Zum speichern bitte einloggen");
         setTimeout(() => {
+          setIsLoading(false);
           setActiveComponent("newPlan");
         }, 4000);
 

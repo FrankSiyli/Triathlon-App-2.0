@@ -64,7 +64,9 @@ const NewPlan = ({ image, title, setShowPlans, setActiveComponent }) => {
         />
         {/* to NewPlanCalendarSessionTypes*/}
       </div>
-      <NewPlanDeleteWeekButton week={week} currentWeek={currentWeek} />
+      {week && (
+        <NewPlanDeleteWeekButton week={week} currentWeek={currentWeek} />
+      )}
     </>
   );
 };
