@@ -10,6 +10,7 @@ import { newPlanDescriptionState } from "@/app/recoil/atoms/planBuilder/newPlanD
 import ArrowLeftSvg from "@/app/components/SVGs/arrows/ArrowLeftSvg";
 import { newPlanSportTypeState } from "@/app/recoil/atoms/planBuilder/newPlanSportTypeState";
 import Loader from "@/app/components/Loader/Loader";
+import { homepagePlanState } from "@/app/recoil/atoms/plans/homepagePlanState";
 
 const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
   const [showAlert, setShowAlert] = useState(false);
@@ -22,6 +23,8 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
   const [newPlanSportType, setNewPlanSportType] = useRecoilState(
     newPlanSportTypeState
   );
+
+  const [homepagePlan, setHomepagePlan] = useRecoilState(homepagePlanState);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,6 +70,7 @@ const PlanBuilder = ({ setShowPlans, title, image, setActiveComponent }) => {
         }
         setIsLoading(false);
         setActiveComponent("newPlan");
+        setHomepagePlan(planData);
       }
     }
   };
