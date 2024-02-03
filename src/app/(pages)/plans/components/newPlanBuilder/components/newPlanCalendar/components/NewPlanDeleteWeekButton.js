@@ -17,7 +17,7 @@ const NewPlanDeleteWeekButton = ({ week, currentWeek }) => {
   return (
     <button
       onClick={handleDeleteWeekClick}
-      className="mt-5 p-1 mx-auto border border-red rounded text-xs hover:text-alert shadow-xl"
+      className="mt-5 p-1 mx-auto border border-red rounded text-xs hover:text-alert active:scale-95 shadow-xl"
     >
       Woche löschen
     </button>
